@@ -4,6 +4,7 @@
 
 package baccord;
 
+import baccord.ui.MainWindow;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 
@@ -16,7 +17,7 @@ public class BaccordApp extends SingleFrameApplication {
      * At startup create and show the main frame of the application.
      */
     @Override protected void startup() {
-        show(new BaccordView(this));
+        show(new MainWindow(this));
     }
 
     /**
