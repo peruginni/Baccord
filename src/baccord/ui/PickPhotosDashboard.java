@@ -43,8 +43,12 @@ public class PickPhotosDashboard extends javax.swing.JPanel {
                 buttonDownloadFromInternet.setText(resourceMap.getString("buttonDownloadFromInternet.text")); // NOI18N
                 buttonDownloadFromInternet.setName("buttonDownloadFromInternet"); // NOI18N
 
+                labelRecentKeywords.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
+                labelRecentKeywords.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
                 labelRecentKeywords.setText(resourceMap.getString("labelRecentKeywords.text")); // NOI18N
+                labelRecentKeywords.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 labelRecentKeywords.setName("labelRecentKeywords"); // NOI18N
+                labelRecentKeywords.setOpaque(true);
 
                 buttonChooseFromFolder.setText(resourceMap.getString("buttonChooseFromFolder.text")); // NOI18N
                 buttonChooseFromFolder.setName("buttonChooseFromFolder"); // NOI18N
@@ -70,8 +74,13 @@ public class PickPhotosDashboard extends javax.swing.JPanel {
                 listRecentFolders.setName("listRecentFolders"); // NOI18N
                 scrollPaneRecentFolders.setViewportView(listRecentFolders);
 
+                labelRecentFolders.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
+                labelRecentFolders.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
+                labelRecentFolders.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
                 labelRecentFolders.setText(resourceMap.getString("labelRecentFolders.text")); // NOI18N
+                labelRecentFolders.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 labelRecentFolders.setName("labelRecentFolders"); // NOI18N
+                labelRecentFolders.setOpaque(true);
 
                 labelOr.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 labelOr.setText(resourceMap.getString("labelOr.text")); // NOI18N
@@ -83,21 +92,17 @@ public class PickPhotosDashboard extends javax.swing.JPanel {
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(labelRecentKeywords)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 378, Short.MAX_VALUE)
-                                                .addComponent(labelRecentFolders))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addComponent(scrollPaneRecentKeywords, javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(buttonDownloadFromInternet, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                                                .addComponent(labelOr, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addComponent(scrollPaneRecentFolders)
-                                                        .addComponent(buttonChooseFromFolder, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(labelRecentKeywords, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(scrollPaneRecentKeywords)
+                                        .addComponent(buttonDownloadFromInternet, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                                .addComponent(labelOr, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(labelRecentFolders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(scrollPaneRecentFolders)
+                                        .addComponent(buttonChooseFromFolder, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))
                                 .addContainerGap())
                 );
                 layout.setVerticalGroup(

@@ -21,25 +21,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="labelRecentKeywords" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="378" max="32767" attributes="0"/>
-                      <Component id="labelRecentFolders" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="scrollPaneRecentKeywords" alignment="0" max="32767" attributes="1"/>
-                          <Component id="buttonDownloadFromInternet" alignment="0" pref="261" max="32767" attributes="1"/>
-                      </Group>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
-                      <Component id="labelOr" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="scrollPaneRecentFolders" max="32767" attributes="1"/>
-                          <Component id="buttonChooseFromFolder" alignment="1" pref="259" max="32767" attributes="1"/>
-                      </Group>
-                  </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="labelRecentKeywords" alignment="1" max="32767" attributes="1"/>
+                  <Component id="scrollPaneRecentKeywords" alignment="0" max="32767" attributes="1"/>
+                  <Component id="buttonDownloadFromInternet" alignment="0" pref="261" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <Component id="labelOr" min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="labelRecentFolders" max="32767" attributes="1"/>
+                  <Component id="scrollPaneRecentFolders" max="32767" attributes="1"/>
+                  <Component id="buttonChooseFromFolder" alignment="1" pref="259" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -56,7 +49,7 @@
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelRecentKeywords" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelRecentKeywords" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelRecentFolders" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -78,8 +71,16 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelRecentKeywords">
       <Properties>
+        <Property name="background" type="java.awt.Color" resourceKey="sectionTitle.background"/>
+        <Property name="font" type="java.awt.Font" resourceKey="sectionTitle.font"/>
         <Property name="text" type="java.lang.String" resourceKey="labelRecentKeywords.text"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="5" left="5" right="5" top="5"/>
+          </Border>
+        </Property>
         <Property name="name" type="java.lang.String" value="labelRecentKeywords" noResource="true"/>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="buttonChooseFromFolder">
@@ -145,8 +146,17 @@
     </Container>
     <Component class="javax.swing.JLabel" name="labelRecentFolders">
       <Properties>
+        <Property name="background" type="java.awt.Color" resourceKey="sectionTitle.background"/>
+        <Property name="font" type="java.awt.Font" resourceKey="sectionTitle.font"/>
+        <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" resourceKey="labelRecentFolders.text"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="5" left="5" right="5" top="5"/>
+          </Border>
+        </Property>
         <Property name="name" type="java.lang.String" value="labelRecentFolders" noResource="true"/>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelOr">
