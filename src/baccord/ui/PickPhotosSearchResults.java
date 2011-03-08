@@ -27,22 +27,100 @@ public class PickPhotosSearchResults extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
+                labelSearchPhotos = new javax.swing.JLabel();
+                jButton1 = new javax.swing.JButton();
+                jComboBox1 = new javax.swing.JComboBox();
+                jLabel1 = new javax.swing.JLabel();
+                jSeparator1 = new javax.swing.JSeparator();
+                jButton6 = new javax.swing.JButton();
+                jButton3 = new javax.swing.JButton();
+                jScrollPane1 = new javax.swing.JScrollPane();
+
                 setName("Form"); // NOI18N
+                setPreferredSize(new java.awt.Dimension(810, 441));
+
+                org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(PickPhotosSearchResults.class);
+                labelSearchPhotos.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
+                labelSearchPhotos.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
+                labelSearchPhotos.setText(resourceMap.getString("labelSearchPhotos.text")); // NOI18N
+                labelSearchPhotos.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                labelSearchPhotos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+                labelSearchPhotos.setName("labelSearchPhotos"); // NOI18N
+                labelSearchPhotos.setOpaque(true);
+
+                jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+                jButton1.setName("jButton1"); // NOI18N
+
+                jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18 per page", "36 per page", "72 per page" }));
+                jComboBox1.setName("jComboBox1"); // NOI18N
+
+                jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+                jLabel1.setName("jLabel1"); // NOI18N
+
+                jSeparator1.setName("jSeparator1"); // NOI18N
+
+                jButton6.setText(resourceMap.getString("jButton6.text")); // NOI18N
+                jButton6.setName("jButton6"); // NOI18N
+
+                jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
+                jButton3.setName("jButton3"); // NOI18N
+
+                jScrollPane1.setName("jScrollPane1"); // NOI18N
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
                 layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 400, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+                                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(labelSearchPhotos, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(187, 187, 187)
+                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jButton6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
+                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap())
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 300, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton1)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton6))
+                                .addContainerGap())
                 );
         }// </editor-fold>//GEN-END:initComponents
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JButton jButton1;
+        private javax.swing.JButton jButton3;
+        private javax.swing.JButton jButton6;
+        private javax.swing.JComboBox jComboBox1;
+        private javax.swing.JLabel jLabel1;
+        private javax.swing.JScrollPane jScrollPane1;
+        private javax.swing.JSeparator jSeparator1;
+        private javax.swing.JLabel labelSearchPhotos;
         // End of variables declaration//GEN-END:variables
 
 }

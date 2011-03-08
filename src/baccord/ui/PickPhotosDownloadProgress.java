@@ -27,22 +27,139 @@ public class PickPhotosDownloadProgress extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
+                labelSearchPhotos = new javax.swing.JLabel();
+                jButton1 = new javax.swing.JButton();
+                jButton6 = new javax.swing.JButton();
+                jSeparator1 = new javax.swing.JSeparator();
+                jButton3 = new javax.swing.JButton();
+                jLabel1 = new javax.swing.JLabel();
+                jScrollPane1 = new javax.swing.JScrollPane();
+                jTable1 = new javax.swing.JTable();
+
                 setName("Form"); // NOI18N
+                setPreferredSize(new java.awt.Dimension(810, 441));
+
+                org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(PickPhotosDownloadProgress.class);
+                labelSearchPhotos.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
+                labelSearchPhotos.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
+                labelSearchPhotos.setText(resourceMap.getString("labelSearchPhotos.text")); // NOI18N
+                labelSearchPhotos.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                labelSearchPhotos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+                labelSearchPhotos.setName("labelSearchPhotos"); // NOI18N
+                labelSearchPhotos.setOpaque(true);
+
+                jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+                jButton1.setName("jButton1"); // NOI18N
+
+                jButton6.setText(resourceMap.getString("jButton6.text")); // NOI18N
+                jButton6.setName("jButton6"); // NOI18N
+
+                jSeparator1.setName("jSeparator1"); // NOI18N
+
+                jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
+                jButton3.setName("jButton3"); // NOI18N
+
+                jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+                jLabel1.setName("jLabel1"); // NOI18N
+
+                jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                        new Object [][] {
+                                {null, null},
+                                {null, null},
+                                {null, null},
+                                {null, null}
+                        },
+                        new String [] {
+                                "Title", "Status"
+                        }
+                ) {
+                        Class[] types = new Class [] {
+                                java.lang.String.class, java.lang.String.class
+                        };
+                        boolean[] canEdit = new boolean [] {
+                                false, false
+                        };
+
+                        public Class getColumnClass(int columnIndex) {
+                                return types [columnIndex];
+                        }
+
+                        public boolean isCellEditable(int rowIndex, int columnIndex) {
+                                return canEdit [columnIndex];
+                        }
+                });
+                jTable1.setName("jTable1"); // NOI18N
+                jTable1.setRowHeight(18);
+                jTable1.setRowMargin(3);
+                jTable1.setShowGrid(false);
+                jScrollPane1.setViewportView(jTable1);
+                jTable1.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("jTable1.columnModel.title0")); // NOI18N
+                jTable1.getColumnModel().getColumn(1).setMinWidth(150);
+                jTable1.getColumnModel().getColumn(1).setMaxWidth(150);
+                jTable1.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("jTable1.columnModel.title1")); // NOI18N
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
                 layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 400, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+                                        .addComponent(jLabel1))
+                                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                        .addComponent(labelSearchPhotos, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(317, 317, 317))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                        .addComponent(jButton6)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
+                                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addContainerGap()))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 300, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                                .addGap(91, 91, 91))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jButton1))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
+                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jButton6))
+                                        .addContainerGap()))
                 );
         }// </editor-fold>//GEN-END:initComponents
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JButton jButton1;
+        private javax.swing.JButton jButton3;
+        private javax.swing.JButton jButton6;
+        private javax.swing.JLabel jLabel1;
+        private javax.swing.JScrollPane jScrollPane1;
+        private javax.swing.JSeparator jSeparator1;
+        private javax.swing.JTable jTable1;
+        private javax.swing.JLabel labelSearchPhotos;
         // End of variables declaration//GEN-END:variables
 
 }
