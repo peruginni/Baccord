@@ -24,15 +24,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="770" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="progressScrollPane" pref="770" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="91" max="-2" attributes="0"/>
+                      <Component id="editQueryButton" min="-2" pref="91" max="-2" attributes="0"/>
                       <EmptySpace pref="276" max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="remainingDownloadsLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -41,12 +41,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jSeparator1" alignment="1" pref="770" max="32767" attributes="0"/>
-                      <Component id="labelSearchPhotos" alignment="0" min="-2" pref="236" max="-2" attributes="0"/>
+                      <Component id="title" alignment="0" min="-2" pref="236" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="314" max="32767" attributes="0"/>
-                          <Component id="jButton3" min="-2" pref="262" max="-2" attributes="0"/>
+                          <Component id="browseDownloadsButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="317" max="32767" attributes="0"/>
+                          <Component id="downloadButton" min="-2" pref="262" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -59,23 +58,21 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="editQueryButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="remainingDownloadsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="349" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+              <Component id="progressScrollPane" pref="327" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="labelSearchPhotos" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace pref="374" max="32767" attributes="0"/>
-                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="title" min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace pref="358" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton3" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="downloadButton" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="browseDownloadsButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
@@ -84,53 +81,48 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="labelSearchPhotos">
+    <Component class="javax.swing.JLabel" name="title">
       <Properties>
         <Property name="background" type="java.awt.Color" resourceKey="sectionTitle.background"/>
         <Property name="font" type="java.awt.Font" resourceKey="sectionTitle.font"/>
-        <Property name="text" type="java.lang.String" resourceKey="labelSearchPhotos.text"/>
+        <Property name="text" type="java.lang.String" resourceKey="title.text"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
             <EmptyBorder bottom="5" left="5" right="5" top="5"/>
           </Border>
         </Property>
         <Property name="horizontalTextPosition" type="int" value="2"/>
-        <Property name="name" type="java.lang.String" value="labelSearchPhotos" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="title" noResource="true"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="editQueryButton">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jButton1.text"/>
-        <Property name="name" type="java.lang.String" value="jButton1" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="editQueryButton.text"/>
+        <Property name="name" type="java.lang.String" value="editQueryButton" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="browseDownloadsButton">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jButton6.text"/>
-        <Property name="name" type="java.lang.String" value="jButton6" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="browseDownloadsButton.text"/>
+        <Property name="name" type="java.lang.String" value="browseDownloadsButton" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSeparator" name="jSeparator1">
+    <Component class="javax.swing.JButton" name="downloadButton">
       <Properties>
-        <Property name="name" type="java.lang.String" value="jSeparator1" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="downloadButton.text"/>
+        <Property name="name" type="java.lang.String" value="downloadButton" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JLabel" name="remainingDownloadsLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jButton3.text"/>
-        <Property name="name" type="java.lang.String" value="jButton3" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="remainingDownloadsLabel.text"/>
+        <Property name="name" type="java.lang.String" value="remainingDownloadsLabel" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Container class="javax.swing.JScrollPane" name="progressScrollPane">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
-        <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
-      </Properties>
-    </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="jScrollPane1" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="progressScrollPane" noResource="true"/>
       </Properties>
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -138,7 +130,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="progressTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="2" rowCount="4">
@@ -149,21 +141,18 @@
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title resourceKey="jTable1.columnModel.title0"/>
+                  <Title resourceKey="progressTable.columnModel.title0"/>
                   <Editor/>
                   <Renderer/>
                 </Column>
                 <Column maxWidth="150" minWidth="150" prefWidth="-1" resizable="true">
-                  <Title resourceKey="jTable1.columnModel.title1"/>
+                  <Title resourceKey="progressTable.columnModel.title1"/>
                   <Editor/>
                   <Renderer/>
                 </Column>
               </TableColumnModel>
             </Property>
-            <Property name="name" type="java.lang.String" value="jTable1" noResource="true"/>
-            <Property name="rowHeight" type="int" value="18"/>
-            <Property name="rowMargin" type="int" value="3"/>
-            <Property name="showGrid" type="boolean" value="false"/>
+            <Property name="name" type="java.lang.String" value="progressTable" noResource="true"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>

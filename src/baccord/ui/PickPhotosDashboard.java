@@ -27,69 +27,61 @@ public class PickPhotosDashboard extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
-                buttonDownloadFromInternet = new javax.swing.JButton();
-                labelRecentKeywords = new javax.swing.JLabel();
-                buttonChooseFromFolder = new javax.swing.JButton();
-                scrollPaneRecentKeywords = new javax.swing.JScrollPane();
-                listRecentKeywords = new javax.swing.JList();
-                scrollPaneRecentFolders = new javax.swing.JScrollPane();
-                listRecentFolders = new javax.swing.JList();
-                labelRecentFolders = new javax.swing.JLabel();
-                labelOr = new javax.swing.JLabel();
+                downloadButton = new javax.swing.JButton();
+                keywordsLabel = new javax.swing.JLabel();
+                chooseFolderButton = new javax.swing.JButton();
+                keywordsList = new javax.swing.JList();
+                foldersList = new javax.swing.JList();
+                foldersLabel = new javax.swing.JLabel();
+                orLabel = new javax.swing.JLabel();
 
                 setName("Form"); // NOI18N
 
                 org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(PickPhotosDashboard.class);
-                buttonDownloadFromInternet.setText(resourceMap.getString("buttonDownloadFromInternet.text")); // NOI18N
-                buttonDownloadFromInternet.setName("buttonDownloadFromInternet"); // NOI18N
+                downloadButton.setText(resourceMap.getString("downloadButton.text")); // NOI18N
+                downloadButton.setName("downloadButton"); // NOI18N
 
-                labelRecentKeywords.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
-                labelRecentKeywords.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
-                labelRecentKeywords.setText(resourceMap.getString("labelRecentKeywords.text")); // NOI18N
-                labelRecentKeywords.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-                labelRecentKeywords.setName("labelRecentKeywords"); // NOI18N
-                labelRecentKeywords.setOpaque(true);
+                keywordsLabel.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
+                keywordsLabel.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
+                keywordsLabel.setText(resourceMap.getString("keywordsLabel.text")); // NOI18N
+                keywordsLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                keywordsLabel.setName("keywordsLabel"); // NOI18N
+                keywordsLabel.setOpaque(true);
 
-                buttonChooseFromFolder.setText(resourceMap.getString("buttonChooseFromFolder.text")); // NOI18N
-                buttonChooseFromFolder.setName("buttonChooseFromFolder"); // NOI18N
-                buttonChooseFromFolder.addActionListener(new java.awt.event.ActionListener() {
+                chooseFolderButton.setText(resourceMap.getString("chooseFolderButton.text")); // NOI18N
+                chooseFolderButton.setName("chooseFolderButton"); // NOI18N
+                chooseFolderButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                buttonChooseFromFolderActionPerformed(evt);
+                                chooseFolderButtonActionPerformed(evt);
                         }
                 });
 
-                scrollPaneRecentKeywords.setName("scrollPaneRecentKeywords"); // NOI18N
-
-                listRecentKeywords.setModel(new javax.swing.AbstractListModel() {
+                keywordsList.setModel(new javax.swing.AbstractListModel() {
                         String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
                         public int getSize() { return strings.length; }
                         public Object getElementAt(int i) { return strings[i]; }
                 });
-                listRecentKeywords.setName("listRecentKeywords"); // NOI18N
-                scrollPaneRecentKeywords.setViewportView(listRecentKeywords);
+                keywordsList.setName("keywordsList"); // NOI18N
 
-                scrollPaneRecentFolders.setName("scrollPaneRecentFolders"); // NOI18N
-
-                listRecentFolders.setModel(new javax.swing.AbstractListModel() {
+                foldersList.setModel(new javax.swing.AbstractListModel() {
                         String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
                         public int getSize() { return strings.length; }
                         public Object getElementAt(int i) { return strings[i]; }
                 });
-                listRecentFolders.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                listRecentFolders.setName("listRecentFolders"); // NOI18N
-                scrollPaneRecentFolders.setViewportView(listRecentFolders);
+                foldersList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                foldersList.setName("foldersList"); // NOI18N
 
-                labelRecentFolders.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
-                labelRecentFolders.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
-                labelRecentFolders.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                labelRecentFolders.setText(resourceMap.getString("labelRecentFolders.text")); // NOI18N
-                labelRecentFolders.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-                labelRecentFolders.setName("labelRecentFolders"); // NOI18N
-                labelRecentFolders.setOpaque(true);
+                foldersLabel.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
+                foldersLabel.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
+                foldersLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+                foldersLabel.setText(resourceMap.getString("foldersLabel.text")); // NOI18N
+                foldersLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                foldersLabel.setName("foldersLabel"); // NOI18N
+                foldersLabel.setOpaque(true);
 
-                labelOr.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                labelOr.setText(resourceMap.getString("labelOr.text")); // NOI18N
-                labelOr.setName("labelOr"); // NOI18N
+                orLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                orLabel.setText(resourceMap.getString("orLabel.text")); // NOI18N
+                orLabel.setName("orLabel"); // NOI18N
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
@@ -98,16 +90,20 @@ public class PickPhotosDashboard extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelRecentKeywords, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                                        .addComponent(scrollPaneRecentKeywords, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                                        .addComponent(buttonDownloadFromInternet, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(labelOr, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(keywordsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                                                        .addComponent(downloadButton, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(orLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(keywordsList, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                                .addGap(65, 65, 65)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(labelRecentFolders, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
-                                        .addComponent(scrollPaneRecentFolders, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
-                                        .addComponent(buttonChooseFromFolder, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE))
+                                        .addComponent(foldersList, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                                        .addComponent(foldersLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                                        .addComponent(chooseFolderButton, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
                                 .addContainerGap())
                 );
                 layout.setVerticalGroup(
@@ -115,37 +111,35 @@ public class PickPhotosDashboard extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(buttonDownloadFromInternet, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(buttonChooseFromFolder, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                                        .addComponent(labelOr))
+                                        .addComponent(downloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(chooseFolderButton, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                                        .addComponent(orLabel))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(labelRecentKeywords)
-                                        .addComponent(labelRecentFolders))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(scrollPaneRecentKeywords, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                        .addComponent(scrollPaneRecentFolders, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                                        .addComponent(keywordsLabel)
+                                        .addComponent(foldersLabel))
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(keywordsList, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                                        .addComponent(foldersList, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
                                 .addContainerGap())
                 );
         }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonChooseFromFolderActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonChooseFromFolderActionPerformed
-    {//GEN-HEADEREND:event_buttonChooseFromFolderActionPerformed
+    private void chooseFolderButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chooseFolderButtonActionPerformed
+    {//GEN-HEADEREND:event_chooseFolderButtonActionPerformed
 	    // TODO add your handling code here:
-    }//GEN-LAST:event_buttonChooseFromFolderActionPerformed
+    }//GEN-LAST:event_chooseFolderButtonActionPerformed
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton buttonChooseFromFolder;
-        private javax.swing.JButton buttonDownloadFromInternet;
-        private javax.swing.JLabel labelOr;
-        private javax.swing.JLabel labelRecentFolders;
-        private javax.swing.JLabel labelRecentKeywords;
-        private javax.swing.JList listRecentFolders;
-        private javax.swing.JList listRecentKeywords;
-        private javax.swing.JScrollPane scrollPaneRecentFolders;
-        private javax.swing.JScrollPane scrollPaneRecentKeywords;
+        private javax.swing.JButton chooseFolderButton;
+        private javax.swing.JButton downloadButton;
+        private javax.swing.JLabel foldersLabel;
+        private javax.swing.JList foldersList;
+        private javax.swing.JLabel keywordsLabel;
+        private javax.swing.JList keywordsList;
+        private javax.swing.JLabel orLabel;
         // End of variables declaration//GEN-END:variables
 
 }

@@ -27,44 +27,41 @@ public class PickPhotosDownloadProgress extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
-                labelSearchPhotos = new javax.swing.JLabel();
-                jButton1 = new javax.swing.JButton();
-                jButton6 = new javax.swing.JButton();
-                jSeparator1 = new javax.swing.JSeparator();
-                jButton3 = new javax.swing.JButton();
-                jLabel1 = new javax.swing.JLabel();
-                jScrollPane1 = new javax.swing.JScrollPane();
-                jTable1 = new javax.swing.JTable();
+                title = new javax.swing.JLabel();
+                editQueryButton = new javax.swing.JButton();
+                browseDownloadsButton = new javax.swing.JButton();
+                downloadButton = new javax.swing.JButton();
+                remainingDownloadsLabel = new javax.swing.JLabel();
+                progressScrollPane = new javax.swing.JScrollPane();
+                progressTable = new javax.swing.JTable();
 
                 setName("Form"); // NOI18N
                 setPreferredSize(new java.awt.Dimension(810, 441));
 
                 org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(PickPhotosDownloadProgress.class);
-                labelSearchPhotos.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
-                labelSearchPhotos.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
-                labelSearchPhotos.setText(resourceMap.getString("labelSearchPhotos.text")); // NOI18N
-                labelSearchPhotos.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-                labelSearchPhotos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-                labelSearchPhotos.setName("labelSearchPhotos"); // NOI18N
-                labelSearchPhotos.setOpaque(true);
+                title.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
+                title.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
+                title.setText(resourceMap.getString("title.text")); // NOI18N
+                title.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                title.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+                title.setName("title"); // NOI18N
+                title.setOpaque(true);
 
-                jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-                jButton1.setName("jButton1"); // NOI18N
+                editQueryButton.setText(resourceMap.getString("editQueryButton.text")); // NOI18N
+                editQueryButton.setName("editQueryButton"); // NOI18N
 
-                jButton6.setText(resourceMap.getString("jButton6.text")); // NOI18N
-                jButton6.setName("jButton6"); // NOI18N
+                browseDownloadsButton.setText(resourceMap.getString("browseDownloadsButton.text")); // NOI18N
+                browseDownloadsButton.setName("browseDownloadsButton"); // NOI18N
 
-                jSeparator1.setName("jSeparator1"); // NOI18N
+                downloadButton.setText(resourceMap.getString("downloadButton.text")); // NOI18N
+                downloadButton.setName("downloadButton"); // NOI18N
 
-                jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
-                jButton3.setName("jButton3"); // NOI18N
+                remainingDownloadsLabel.setText(resourceMap.getString("remainingDownloadsLabel.text")); // NOI18N
+                remainingDownloadsLabel.setName("remainingDownloadsLabel"); // NOI18N
 
-                jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-                jLabel1.setName("jLabel1"); // NOI18N
+                progressScrollPane.setName("progressScrollPane"); // NOI18N
 
-                jScrollPane1.setName("jScrollPane1"); // NOI18N
-
-                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                progressTable.setModel(new javax.swing.table.DefaultTableModel(
                         new Object [][] {
                                 {null, null},
                                 {null, null},
@@ -90,15 +87,12 @@ public class PickPhotosDownloadProgress extends javax.swing.JPanel {
                                 return canEdit [columnIndex];
                         }
                 });
-                jTable1.setName("jTable1"); // NOI18N
-                jTable1.setRowHeight(18);
-                jTable1.setRowMargin(3);
-                jTable1.setShowGrid(false);
-                jScrollPane1.setViewportView(jTable1);
-                jTable1.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("jTable1.columnModel.title0")); // NOI18N
-                jTable1.getColumnModel().getColumn(1).setMinWidth(150);
-                jTable1.getColumnModel().getColumn(1).setMaxWidth(150);
-                jTable1.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("jTable1.columnModel.title1")); // NOI18N
+                progressTable.setName("progressTable"); // NOI18N
+                progressScrollPane.setViewportView(progressTable);
+                progressTable.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("progressTable.columnModel.title0")); // NOI18N
+                progressTable.getColumnModel().getColumn(1).setMinWidth(150);
+                progressTable.getColumnModel().getColumn(1).setMaxWidth(150);
+                progressTable.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("progressTable.columnModel.title1")); // NOI18N
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
@@ -106,25 +100,24 @@ public class PickPhotosDownloadProgress extends javax.swing.JPanel {
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(progressScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE))
+                                        .addGroup(layout.createSequentialGroup()
                                                 .addGap(268, 268, 268)
-                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(editQueryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
-                                                .addComponent(jLabel1)))
+                                                .addComponent(remainingDownloadsLabel)))
                                 .addContainerGap())
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                         .addContainerGap()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
-                                                .addComponent(labelSearchPhotos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(title, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                        .addComponent(jButton6)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
-                                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(browseDownloadsButton)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
+                                                        .addComponent(downloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addContainerGap()))
                 );
                 layout.setVerticalGroup(
@@ -132,35 +125,32 @@ public class PickPhotosDownloadProgress extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton1)
-                                        .addComponent(jLabel1))
+                                        .addComponent(editQueryButton)
+                                        .addComponent(remainingDownloadsLabel))
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                                .addGap(91, 91, 91))
+                                .addComponent(progressScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                                .addGap(75, 75, 75))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                         .addContainerGap()
-                                        .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
-                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 358, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jButton6))
+                                                .addComponent(downloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(browseDownloadsButton))
                                         .addContainerGap()))
                 );
         }// </editor-fold>//GEN-END:initComponents
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton jButton1;
-        private javax.swing.JButton jButton3;
-        private javax.swing.JButton jButton6;
-        private javax.swing.JLabel jLabel1;
-        private javax.swing.JScrollPane jScrollPane1;
-        private javax.swing.JSeparator jSeparator1;
-        private javax.swing.JTable jTable1;
-        private javax.swing.JLabel labelSearchPhotos;
+        private javax.swing.JButton browseDownloadsButton;
+        private javax.swing.JButton downloadButton;
+        private javax.swing.JButton editQueryButton;
+        private javax.swing.JScrollPane progressScrollPane;
+        private javax.swing.JTable progressTable;
+        private javax.swing.JLabel remainingDownloadsLabel;
+        private javax.swing.JLabel title;
         // End of variables declaration//GEN-END:variables
 
 }

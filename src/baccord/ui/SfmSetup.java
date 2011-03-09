@@ -30,7 +30,15 @@ public class SfmSetup extends javax.swing.JPanel {
                 jButton3 = new javax.swing.JButton();
                 jSeparator1 = new javax.swing.JSeparator();
                 labelSearchPhotos = new javax.swing.JLabel();
+                textfieldKeywords4 = new javax.swing.JTextField();
                 jButton1 = new javax.swing.JButton();
+                labelKeywords8 = new javax.swing.JLabel();
+                labelKeywords6 = new javax.swing.JLabel();
+                jComboBox1 = new javax.swing.JComboBox();
+                jTextArea1 = new javax.swing.JTextArea();
+                jButton2 = new javax.swing.JButton();
+                labelKeywords9 = new javax.swing.JLabel();
+                textfieldKeywords5 = new javax.swing.JTextField();
                 jButton4 = new javax.swing.JButton();
                 labelKeywords10 = new javax.swing.JLabel();
                 jScrollPane2 = new javax.swing.JScrollPane();
@@ -52,8 +60,38 @@ public class SfmSetup extends javax.swing.JPanel {
                 labelSearchPhotos.setName("labelSearchPhotos"); // NOI18N
                 labelSearchPhotos.setOpaque(true);
 
+                textfieldKeywords4.setText(resourceMap.getString("textfieldKeywords4.text")); // NOI18N
+                textfieldKeywords4.setName("textfieldKeywords4"); // NOI18N
+
                 jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
                 jButton1.setName("jButton1"); // NOI18N
+
+                labelKeywords8.setText(resourceMap.getString("labelKeywords8.text")); // NOI18N
+                labelKeywords8.setName("labelKeywords8"); // NOI18N
+
+                labelKeywords6.setText(resourceMap.getString("labelKeywords6.text")); // NOI18N
+                labelKeywords6.setName("labelKeywords6"); // NOI18N
+
+                jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Use original", "1024 x 1024 pixels" }));
+                jComboBox1.setName("jComboBox1"); // NOI18N
+
+                jTextArea1.setColumns(20);
+                jTextArea1.setFont(resourceMap.getFont("jTextArea1.font")); // NOI18N
+                jTextArea1.setLineWrap(true);
+                jTextArea1.setRows(3);
+                jTextArea1.setText(resourceMap.getString("jTextArea1.text")); // NOI18N
+                jTextArea1.setBorder(null);
+                jTextArea1.setName("jTextArea1"); // NOI18N
+                jTextArea1.setOpaque(false);
+
+                jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
+                jButton2.setName("jButton2"); // NOI18N
+
+                labelKeywords9.setText(resourceMap.getString("labelKeywords9.text")); // NOI18N
+                labelKeywords9.setName("labelKeywords9"); // NOI18N
+
+                textfieldKeywords5.setText(resourceMap.getString("textfieldKeywords5.text")); // NOI18N
+                textfieldKeywords5.setName("textfieldKeywords5"); // NOI18N
 
                 jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
                 jButton4.setName("jButton4"); // NOI18N
@@ -73,36 +111,73 @@ public class SfmSetup extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                                                .addContainerGap())
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                                                                .addComponent(jButton2))
+                                                        .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(labelKeywords8)
+                                                                .addGap(8, 8, 8)
+                                                                .addComponent(textfieldKeywords4, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addComponent(labelKeywords6)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addContainerGap())
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(labelKeywords9)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton1))
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelKeywords10))
-                                .addContainerGap())
+                                                .addComponent(textfieldKeywords5, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(20, 20, 20))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(labelKeywords10)
+                                                .addContainerGap(568, Short.MAX_VALUE))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createSequentialGroup()
                                         .addContainerGap()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jButton3)
-                                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE))
+                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE))
                                         .addContainerGap()))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
+                                .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton1))
+                                        .addComponent(labelKeywords8)
+                                        .addComponent(jButton1)
+                                        .addComponent(textfieldKeywords4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(8, 8, 8)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(labelKeywords6)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(textfieldKeywords5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelKeywords9)
+                                        .addComponent(jButton4))
+                                .addGap(18, 18, 18)
                                 .addComponent(labelKeywords10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(jButton4)
-                                .addGap(27, 27, 27))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(95, 95, 95))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addContainerGap(371, Short.MAX_VALUE)
@@ -116,14 +191,21 @@ public class SfmSetup extends javax.swing.JPanel {
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton jButton1;
+        private javax.swing.JButton jButton2;
         private javax.swing.JButton jButton3;
         private javax.swing.JButton jButton4;
-        private javax.swing.JScrollPane jScrollPane1;
+        private javax.swing.JComboBox jComboBox1;
         private javax.swing.JScrollPane jScrollPane2;
         private javax.swing.JSeparator jSeparator1;
+        private javax.swing.JTextArea jTextArea1;
         private javax.swing.JTextPane jTextPane1;
         private javax.swing.JLabel labelKeywords10;
+        private javax.swing.JLabel labelKeywords6;
+        private javax.swing.JLabel labelKeywords8;
+        private javax.swing.JLabel labelKeywords9;
         private javax.swing.JLabel labelSearchPhotos;
+        private javax.swing.JTextField textfieldKeywords4;
+        private javax.swing.JTextField textfieldKeywords5;
         // End of variables declaration//GEN-END:variables
 
 }
