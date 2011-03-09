@@ -52,6 +52,11 @@ public class PickPhotosDashboard extends javax.swing.JPanel {
 
                 buttonChooseFromFolder.setText(resourceMap.getString("buttonChooseFromFolder.text")); // NOI18N
                 buttonChooseFromFolder.setName("buttonChooseFromFolder"); // NOI18N
+                buttonChooseFromFolder.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                buttonChooseFromFolderActionPerformed(evt);
+                        }
+                });
 
                 scrollPaneRecentKeywords.setName("scrollPaneRecentKeywords"); // NOI18N
 
@@ -92,17 +97,17 @@ public class PickPhotosDashboard extends javax.swing.JPanel {
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(labelRecentKeywords, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(scrollPaneRecentKeywords)
-                                        .addComponent(buttonDownloadFromInternet, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                                .addComponent(labelOr, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelRecentKeywords, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                                        .addComponent(scrollPaneRecentKeywords, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                                        .addComponent(buttonDownloadFromInternet, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(labelOr, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(labelRecentFolders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(scrollPaneRecentFolders)
-                                        .addComponent(buttonChooseFromFolder, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(labelRecentFolders, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                                        .addComponent(scrollPaneRecentFolders, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                                        .addComponent(buttonChooseFromFolder, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE))
                                 .addContainerGap())
                 );
                 layout.setVerticalGroup(
@@ -119,11 +124,16 @@ public class PickPhotosDashboard extends javax.swing.JPanel {
                                         .addComponent(labelRecentFolders))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(scrollPaneRecentKeywords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(scrollPaneRecentFolders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(scrollPaneRecentKeywords, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                        .addComponent(scrollPaneRecentFolders, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
                                 .addContainerGap())
                 );
         }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonChooseFromFolderActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonChooseFromFolderActionPerformed
+    {//GEN-HEADEREND:event_buttonChooseFromFolderActionPerformed
+	    // TODO add your handling code here:
+    }//GEN-LAST:event_buttonChooseFromFolderActionPerformed
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

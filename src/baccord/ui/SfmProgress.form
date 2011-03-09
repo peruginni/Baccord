@@ -1,0 +1,250 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane2" pref="647" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jTextArea1" min="-2" pref="262" max="-2" attributes="0"/>
+                              <EmptySpace pref="200" max="32767" attributes="0"/>
+                              <Component id="jButton2" min="-2" max="-2" attributes="1"/>
+                          </Group>
+                          <Component id="labelSearchPhotos" alignment="0" min="-2" pref="321" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="labelKeywords8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                              <Component id="textfieldKeywords4" pref="434" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" pref="53" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="labelKeywords6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="243" max="32767" attributes="0"/>
+                              <Component id="jComboBox1" min="-2" max="-2" attributes="1"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="labelKeywords9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="textfieldKeywords5" pref="333" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton4" min="-2" pref="53" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="labelKeywords10" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="568" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jButton3" alignment="1" min="-2" pref="116" max="-2" attributes="0"/>
+                      <Component id="jSeparator1" alignment="0" pref="647" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="labelSearchPhotos" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelKeywords8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textfieldKeywords4" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelKeywords6" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jButton2" alignment="0" max="32767" attributes="1"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jTextArea1" min="-2" pref="29" max="-2" attributes="1"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="textfieldKeywords5" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="labelKeywords9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="labelKeywords10" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="90" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="371" max="32767" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton3" min="-2" pref="46" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="jButton3">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="jButton3.text"/>
+        <Property name="name" type="java.lang.String" value="jButton3" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="jSeparator1" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelSearchPhotos">
+      <Properties>
+        <Property name="background" type="java.awt.Color" resourceKey="sectionTitle.background"/>
+        <Property name="font" type="java.awt.Font" resourceKey="sectionTitle.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="labelSearchPhotos.text"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="5" left="5" right="5" top="5"/>
+          </Border>
+        </Property>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+        <Property name="name" type="java.lang.String" value="labelSearchPhotos" noResource="true"/>
+        <Property name="opaque" type="boolean" value="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="textfieldKeywords4">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="textfieldKeywords4.text"/>
+        <Property name="name" type="java.lang.String" value="textfieldKeywords4" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="jButton1.text"/>
+        <Property name="name" type="java.lang.String" value="jButton1" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelKeywords8">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="labelKeywords8.text"/>
+        <Property name="name" type="java.lang.String" value="labelKeywords8" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelKeywords6">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="labelKeywords6.text"/>
+        <Property name="name" type="java.lang.String" value="labelKeywords6" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Use original"/>
+            <StringItem index="1" value="1024 x 1024 pixels"/>
+          </StringArray>
+        </Property>
+        <Property name="name" type="java.lang.String" value="jComboBox1" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextArea" name="jTextArea1">
+      <Properties>
+        <Property name="columns" type="int" value="20"/>
+        <Property name="font" type="java.awt.Font" resourceKey="jTextArea1.font"/>
+        <Property name="lineWrap" type="boolean" value="true"/>
+        <Property name="rows" type="int" value="3"/>
+        <Property name="text" type="java.lang.String" resourceKey="jTextArea1.text"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="jTextArea1" noResource="true"/>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="jButton2.text"/>
+        <Property name="name" type="java.lang.String" value="jButton2" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelKeywords9">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="labelKeywords9.text"/>
+        <Property name="name" type="java.lang.String" value="labelKeywords9" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="textfieldKeywords5">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="textfieldKeywords5.text"/>
+        <Property name="name" type="java.lang.String" value="textfieldKeywords5" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton4">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="jButton4.text"/>
+        <Property name="name" type="java.lang.String" value="jButton4" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelKeywords10">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="labelKeywords10.text"/>
+        <Property name="name" type="java.lang.String" value="labelKeywords10" noResource="true"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="jScrollPane2" noResource="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextPane" name="jTextPane1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="jTextPane1" noResource="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
