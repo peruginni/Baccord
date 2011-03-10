@@ -3,9 +3,6 @@
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[810, 441]"/>
-    </Property>
   </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
@@ -22,81 +19,43 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="downloadProgressButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="453" max="32767" attributes="0"/>
+                      <EmptySpace pref="494" max="32767" attributes="0"/>
                       <Component id="searchButton" min="-2" pref="116" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="horizontalSeparator" alignment="0" pref="770" max="32767" attributes="0"/>
+                  <Component id="horizontalSeparator" alignment="0" pref="811" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="searchPhotosTitle" pref="312" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="searchEngineCombobox" min="-2" pref="133" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="licenseLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="licenseCombobox" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="62" max="32767" attributes="0"/>
+                              <EmptySpace pref="129" max="32767" attributes="0"/>
                               <Component id="contextLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="contextCombobox" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="downloadFolderLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="datePanel" alignment="1" max="32767" attributes="1"/>
+                          <Component id="gpsPanel" alignment="1" max="32767" attributes="1"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="searchPhotosTitle" pref="379" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="downloadFolderTextfield" pref="262" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="downloadFolderButton" min="-2" pref="81" max="-2" attributes="0"/>
+                              <Component id="searchEngineCombobox" min="-2" pref="133" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="keywordsLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="keywordsTextfield" pref="380" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="gpsLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="gpsLatTextfield" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="gpsLonTextfield" min="-2" pref="157" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="gpsRadiusTextfield" pref="90" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="takenDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="uploadedDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="18" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="takenDateFromSpinner" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
-                                  <Component id="uploadedDateFromSpinner" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="uploadedDateSeparator" min="-2" max="-2" attributes="0"/>
-                                  <Component id="takenDateSeparator" min="-2" pref="13" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="takenDateTillSpinner" max="32767" attributes="1"/>
-                                  <Component id="uploadedDateTillSpinner" alignment="0" min="-2" pref="149" max="-2" attributes="1"/>
-                              </Group>
-                          </Group>
+                          <Component id="keywordsPanel" alignment="0" min="-2" max="-2" attributes="2"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="verticalSeparator" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="downloadOptionsTitle" max="32767" attributes="1"/>
-                          <Component id="dimensionsPanel" alignment="0" max="32767" attributes="1"/>
-                          <Component id="siftPanel" alignment="0" max="32767" attributes="1"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="dimensionsPanel" max="32767" attributes="1"/>
+                          <Component id="siftPanel" max="32767" attributes="1"/>
+                          <Component id="downloadFolderPanel" max="32767" attributes="1"/>
+                          <Component id="downloadOptionsTitle" alignment="0" pref="258" max="32767" attributes="1"/>
                       </Group>
                   </Group>
               </Group>
@@ -109,86 +68,46 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="downloadOptionsTitle" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="siftPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="dimensionsPanel" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="searchPhotosTitle" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="searchEngineCombobox" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="searchPhotosTitle" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="searchEngineCombobox" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="verticalSeparator" alignment="0" min="-2" pref="277" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="keywordsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="keywordsTextfield" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="gpsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="gpsLatTextfield" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="gpsLonTextfield" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="gpsRadiusTextfield" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="takenDateLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="uploadedDateLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                              <Component id="takenDateSeparator" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="takenDateTillSpinner" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
-                                          <Component id="takenDateFromSpinner" min="-2" pref="36" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="uploadedDateFromSpinner" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                              <Component id="uploadedDateSeparator" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="uploadedDateTillSpinner" min="-2" pref="36" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="licenseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="licenseCombobox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="contextCombobox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="contextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="downloadFolderTextfield" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="downloadFolderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="downloadFolderButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
+                  <Component id="downloadOptionsTitle" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="horizontalSeparator" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="1">
+                      <Component id="downloadFolderPanel" min="-2" pref="119" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="siftPanel" min="-2" pref="67" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="dimensionsPanel" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="keywordsPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                      <Component id="gpsPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="datePanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="licenseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="licenseCombobox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="contextCombobox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="contextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="11" pref="11" max="11" attributes="0"/>
+                  </Group>
+                  <Component id="verticalSeparator" alignment="0" min="-2" pref="418" max="-2" attributes="1"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="horizontalSeparator" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="downloadProgressButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="searchButton" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -229,24 +148,18 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="siftCheckbox" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="28" pref="28" max="28" attributes="0"/>
-                          <Component id="siftLegend" min="-2" pref="198" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="siftCheckbox" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="94" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="siftCheckbox" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="siftLegend" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -259,20 +172,6 @@
               <Insets value="[1, 0, 0, 1]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="siftCheckbox" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextArea" name="siftLegend">
-          <Properties>
-            <Property name="columns" type="int" value="20"/>
-            <Property name="font" type="java.awt.Font" resourceKey="siftLegend.font"/>
-            <Property name="lineWrap" type="boolean" value="true"/>
-            <Property name="rows" type="int" value="3"/>
-            <Property name="text" type="java.lang.String" resourceKey="siftLegend.text"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="siftLegend" noResource="true"/>
-            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -291,20 +190,22 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="newDimensionButton" min="-2" max="-2" attributes="0"/>
                       <Component id="dimensionsTitle" min="-2" max="-2" attributes="0"/>
                       <Component id="keepOriginalCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="dim1024Checkbox" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="dim800Checkbox" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="newDimensionButton" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="78" max="32767" attributes="0"/>
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="dimensionsTitle" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="keepOriginalCheckbox" min="-2" max="-2" attributes="0"/>
@@ -312,8 +213,9 @@
                   <Component id="dim1024Checkbox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="dim800Checkbox" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="42" max="32767" attributes="0"/>
                   <Component id="newDimensionButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -368,46 +270,6 @@
         <Property name="name" type="java.lang.String" value="downloadProgressButton" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="keywordsLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="keywordsLabel.text"/>
-        <Property name="name" type="java.lang.String" value="keywordsLabel" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="keywordsTextfield">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="keywordsTextfield.text"/>
-        <Property name="name" type="java.lang.String" value="keywordsTextfield" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="uploadedDateSeparator">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="uploadedDateSeparator.text"/>
-        <Property name="name" type="java.lang.String" value="uploadedDateSeparator" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSpinner" name="uploadedDateTillSpinner">
-      <Properties>
-        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="now" stepSize="5" type="date"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="uploadedDateTillSpinner" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSpinner" name="uploadedDateFromSpinner">
-      <Properties>
-        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="now" stepSize="5" type="date"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="uploadedDateFromSpinner" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="uploadedDateLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="uploadedDateLabel.text"/>
-        <Property name="name" type="java.lang.String" value="uploadedDateLabel" noResource="true"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="searchPhotosTitle">
       <Properties>
         <Property name="background" type="java.awt.Color" resourceKey="sectionTitle.background"/>
@@ -432,30 +294,6 @@
           </StringArray>
         </Property>
         <Property name="name" type="java.lang.String" value="searchEngineCombobox" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="gpsLatTextfield">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="gpsLatTextfield.text"/>
-        <Property name="name" type="java.lang.String" value="gpsLatTextfield" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="gpsLonTextfield">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="gpsLonTextfield.text"/>
-        <Property name="name" type="java.lang.String" value="gpsLonTextfield" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="gpsLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="gpsLabel.text"/>
-        <Property name="name" type="java.lang.String" value="gpsLabel" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="gpsRadiusTextfield">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="gpsRadiusTextfield.text"/>
-        <Property name="name" type="java.lang.String" value="gpsRadiusTextfield" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="contextLabel">
@@ -492,51 +330,365 @@
         <Property name="name" type="java.lang.String" value="licenseCombobox" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSpinner" name="takenDateFromSpinner">
+    <Container class="javax.swing.JPanel" name="downloadFolderPanel">
       <Properties>
-        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="now" stepSize="5" type="date"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder/>
+          </Border>
         </Property>
-        <Property name="name" type="java.lang.String" value="takenDateFromSpinner" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="downloadFolderPanel" noResource="true"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JSpinner" name="takenDateTillSpinner">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="downloadFolderTextfield" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="downloadFolderLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
+                          <Component id="downloadFolderButton" min="-2" pref="81" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="downloadFolderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="downloadFolderButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="downloadFolderTextfield" min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="downloadFolderLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="downloadFolderLabel.text"/>
+            <Property name="name" type="java.lang.String" value="downloadFolderLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="downloadFolderButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="downloadFolderButton.text"/>
+            <Property name="name" type="java.lang.String" value="downloadFolderButton" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="downloadFolderTextfield">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="downloadFolderTextfield.text"/>
+            <Property name="name" type="java.lang.String" value="downloadFolderTextfield" noResource="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="datePanel">
       <Properties>
-        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="now" stepSize="5" type="date"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder/>
+          </Border>
         </Property>
-        <Property name="name" type="java.lang.String" value="takenDateTillSpinner" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="datePanel" noResource="true"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="takenDateLabel">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="takenDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="uploadedDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="takenDateFromSpinner" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="uploadedDateFromSpinner" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="uploadedDateSeparator" min="-2" max="-2" attributes="0"/>
+                      <Component id="takenDateSeparator" min="-2" pref="13" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="takenDateTillSpinner" max="32767" attributes="1"/>
+                      <Component id="uploadedDateTillSpinner" alignment="0" min="-2" pref="149" max="-2" attributes="1"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="takenDateLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="uploadedDateLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                  <Component id="takenDateSeparator" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="takenDateTillSpinner" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="takenDateFromSpinner" min="-2" pref="36" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="uploadedDateFromSpinner" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                  <Component id="uploadedDateSeparator" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="uploadedDateTillSpinner" min="-2" pref="36" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="takenDateLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="takenDateLabel.text"/>
+            <Property name="name" type="java.lang.String" value="takenDateLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="takenDateFromSpinner">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="now" stepSize="5" type="date"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="takenDateFromSpinner" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="uploadedDateLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="uploadedDateLabel.text"/>
+            <Property name="name" type="java.lang.String" value="uploadedDateLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="uploadedDateFromSpinner">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="now" stepSize="5" type="date"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="uploadedDateFromSpinner" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="uploadedDateSeparator">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="uploadedDateSeparator.text"/>
+            <Property name="name" type="java.lang.String" value="uploadedDateSeparator" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="takenDateSeparator">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="takenDateSeparator.text"/>
+            <Property name="name" type="java.lang.String" value="takenDateSeparator" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="takenDateTillSpinner">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="now" stepSize="5" type="date"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="takenDateTillSpinner" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="uploadedDateTillSpinner">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="now" stepSize="5" type="date"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="uploadedDateTillSpinner" noResource="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="gpsPanel">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="takenDateLabel.text"/>
-        <Property name="name" type="java.lang.String" value="takenDateLabel" noResource="true"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder/>
+          </Border>
+        </Property>
+        <Property name="name" type="java.lang.String" value="gpsPanel" noResource="true"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="takenDateSeparator">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="gpsLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="gpsLabel1" max="32767" attributes="1"/>
+                      <Component id="gpsLatTextfield" alignment="0" pref="164" max="32767" attributes="1"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="gpsLabel2" pref="161" max="32767" attributes="1"/>
+                      <Component id="gpsLonTextfield" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="gpsLabel3" alignment="1" pref="87" max="32767" attributes="1"/>
+                      <Component id="gpsRadiusTextfield" alignment="0" pref="87" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="gpsLonTextfield" min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="gpsLabel2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="gpsRadiusTextfield" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="gpsLabel3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="gpsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="gpsLatTextfield" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="gpsLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="gpsLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="gpsLabel.text"/>
+            <Property name="name" type="java.lang.String" value="gpsLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="gpsLatTextfield">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="gpsLatTextfield.text"/>
+            <Property name="name" type="java.lang.String" value="gpsLatTextfield" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="gpsLonTextfield">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="gpsLonTextfield.text"/>
+            <Property name="name" type="java.lang.String" value="gpsLonTextfield" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="gpsRadiusTextfield">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="gpsRadiusTextfield.text"/>
+            <Property name="name" type="java.lang.String" value="gpsRadiusTextfield" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="gpsLabel1">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" resourceKey="gpsLabel1.text"/>
+            <Property name="name" type="java.lang.String" value="gpsLabel1" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="gpsLabel2">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" resourceKey="gpsLabel2.text"/>
+            <Property name="name" type="java.lang.String" value="gpsLabel2" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="gpsLabel3">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" resourceKey="gpsLabel3.text"/>
+            <Property name="name" type="java.lang.String" value="gpsLabel3" noResource="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="keywordsPanel">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="takenDateSeparator.text"/>
-        <Property name="name" type="java.lang.String" value="takenDateSeparator" noResource="true"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder/>
+          </Border>
+        </Property>
+        <Property name="name" type="java.lang.String" value="keywordsPanel" noResource="true"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="downloadFolderButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="downloadFolderButton.text"/>
-        <Property name="name" type="java.lang.String" value="downloadFolderButton" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="downloadFolderTextfield">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="downloadFolderTextfield.text"/>
-        <Property name="name" type="java.lang.String" value="downloadFolderTextfield" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="downloadFolderLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="downloadFolderLabel.text"/>
-        <Property name="name" type="java.lang.String" value="downloadFolderLabel" noResource="true"/>
-      </Properties>
-    </Component>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="keywordsLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="keywordsTextfield" pref="395" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="keywordsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="keywordsTextfield" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="keywordsLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="keywordsLabel.text"/>
+            <Property name="name" type="java.lang.String" value="keywordsLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="keywordsTextfield">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="keywordsTextfield.text"/>
+            <Property name="name" type="java.lang.String" value="keywordsTextfield" noResource="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

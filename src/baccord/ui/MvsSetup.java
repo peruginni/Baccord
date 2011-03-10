@@ -44,8 +44,6 @@ public class MvsSetup extends javax.swing.JPanel {
                 pmvsOptionsTitle = new javax.swing.JLabel();
                 levelSpinner = new javax.swing.JSpinner();
                 levelLabel = new javax.swing.JLabel();
-                csizeLabel = new javax.swing.JLabel();
-                csizeSpinner = new javax.swing.JSpinner();
                 wsizeSpinner = new javax.swing.JSpinner();
                 thresholdSpinner = new javax.swing.JSpinner();
                 thresholdLabel = new javax.swing.JLabel();
@@ -54,6 +52,8 @@ public class MvsSetup extends javax.swing.JPanel {
                 minimumImageLabel = new javax.swing.JLabel();
                 cpuPmvsLabel = new javax.swing.JLabel();
                 cpuPmvsSpinner = new javax.swing.JSpinner();
+                csizeSpinner = new javax.swing.JSpinner();
+                csizeLabel = new javax.swing.JLabel();
 
                 setName("Form"); // NOI18N
 
@@ -86,6 +86,7 @@ public class MvsSetup extends javax.swing.JPanel {
                 cmvsOptionsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
                 cmvsOptionsPanel.setName("cmvsOptionsPanel"); // NOI18N
 
+                cmvsOptionsTitle.setFont(resourceMap.getFont("cmvsOptionsTitle.font")); // NOI18N
                 cmvsOptionsTitle.setText(resourceMap.getString("cmvsOptionsTitle.text")); // NOI18N
                 cmvsOptionsTitle.setName("cmvsOptionsTitle"); // NOI18N
 
@@ -104,39 +105,47 @@ public class MvsSetup extends javax.swing.JPanel {
                 cmvsOptionsPanelLayout.setHorizontalGroup(
                         cmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(cmvsOptionsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(cmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cmvsOptionsTitle)
                                         .addGroup(cmvsOptionsPanelLayout.createSequentialGroup()
-                                                .addGap(9, 9, 9)
-                                                .addGroup(cmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(cmvsOptionsPanelLayout.createSequentialGroup()
-                                                                .addComponent(cpuLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(cpuSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(cmvsOptionsPanelLayout.createSequentialGroup()
-                                                                .addComponent(maximumImagesLabel)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(maximumImagesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addContainerGap(450, Short.MAX_VALUE))
+                                                .addComponent(cmvsOptionsTitle)
+                                                .addContainerGap(110, Short.MAX_VALUE))
+                                        .addGroup(cmvsOptionsPanelLayout.createSequentialGroup()
+                                                .addComponent(maximumImagesLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(maximumImagesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap())
+                                        .addGroup(cmvsOptionsPanelLayout.createSequentialGroup()
+                                                .addComponent(cpuLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cpuSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 );
+
+                cmvsOptionsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cpuLabel, maximumImagesLabel});
+
+                cmvsOptionsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cpuSpinner, maximumImagesSpinner});
+
                 cmvsOptionsPanelLayout.setVerticalGroup(
                         cmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(cmvsOptionsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(cmvsOptionsTitle)
-                                .addGap(6, 6, 6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(cmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(maximumImagesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                                        .addComponent(maximumImagesSpinner))
+                                        .addComponent(maximumImagesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(maximumImagesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(cmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cpuLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                                        .addComponent(cpuSpinner))
-                                .addGap(20, 20, 20))
+                                .addGroup(cmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cpuSpinner)
+                                        .addComponent(cpuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(57, Short.MAX_VALUE))
                 );
 
                 pmvsOptionsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
                 pmvsOptionsPanel.setName("pmvsOptionsPanel"); // NOI18N
 
+                pmvsOptionsTitle.setFont(resourceMap.getFont("pmvsOptionsTitle.font")); // NOI18N
                 pmvsOptionsTitle.setText(resourceMap.getString("pmvsOptionsTitle.text")); // NOI18N
                 pmvsOptionsTitle.setName("pmvsOptionsTitle"); // NOI18N
 
@@ -144,11 +153,6 @@ public class MvsSetup extends javax.swing.JPanel {
 
                 levelLabel.setText(resourceMap.getString("levelLabel.text")); // NOI18N
                 levelLabel.setName("levelLabel"); // NOI18N
-
-                csizeLabel.setText(resourceMap.getString("csizeLabel.text")); // NOI18N
-                csizeLabel.setName("csizeLabel"); // NOI18N
-
-                csizeSpinner.setName("csizeSpinner"); // NOI18N
 
                 wsizeSpinner.setName("wsizeSpinner"); // NOI18N
 
@@ -170,83 +174,89 @@ public class MvsSetup extends javax.swing.JPanel {
 
                 cpuPmvsSpinner.setName("cpuPmvsSpinner"); // NOI18N
 
+                csizeSpinner.setName("csizeSpinner"); // NOI18N
+
+                csizeLabel.setText(resourceMap.getString("csizeLabel.text")); // NOI18N
+                csizeLabel.setName("csizeLabel"); // NOI18N
+
                 javax.swing.GroupLayout pmvsOptionsPanelLayout = new javax.swing.GroupLayout(pmvsOptionsPanel);
                 pmvsOptionsPanel.setLayout(pmvsOptionsPanelLayout);
                 pmvsOptionsPanelLayout.setHorizontalGroup(
                         pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
                                 .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(pmvsOptionsTitle)
                                         .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
-                                                .addGap(9, 9, 9)
-                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(csizeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(levelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(csizeSpinner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(levelSpinner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(wsizeLabel)
-                                                        .addComponent(thresholdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(wsizeSpinner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(thresholdSpinner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(88, 88, 88)
-                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(cpuPmvsLabel)
-                                                        .addComponent(minimumImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(cpuPmvsSpinner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(minimumImageSpinner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addContainerGap())
-                );
-                pmvsOptionsPanelLayout.setVerticalGroup(
-                        pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
-                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pmvsOptionsPanelLayout.createSequentialGroup()
-                                                .addGap(22, 22, 22)
-                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pmvsOptionsPanelLayout.createSequentialGroup()
-                                                                .addComponent(minimumImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(cpuPmvsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pmvsOptionsPanelLayout.createSequentialGroup()
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(minimumImageSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(cpuPmvsSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pmvsOptionsPanelLayout.createSequentialGroup()
-                                                .addComponent(pmvsOptionsTitle)
-                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
-                                                                .addGap(6, 6, 6)
-                                                                .addComponent(levelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(csizeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pmvsOptionsPanelLayout.createSequentialGroup()
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(levelSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(csizeSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))))
+                                                .addGap(20, 20, 20)
+                                                .addComponent(pmvsOptionsTitle))
                                         .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
                                                 .addContainerGap()
                                                 .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pmvsOptionsPanelLayout.createSequentialGroup()
-                                                                .addComponent(thresholdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(wsizeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                                                         .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(thresholdSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                                                                .addComponent(levelLabel)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(wsizeSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)))))
+                                                                .addComponent(levelSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
+                                                                .addComponent(thresholdLabel)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(thresholdSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
+                                                                .addComponent(minimumImageLabel)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(minimumImageSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(45, 45, 45)
+                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(wsizeLabel)
+                                                        .addComponent(csizeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(cpuPmvsLabel))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(csizeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(cpuPmvsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(wsizeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                );
+
+                pmvsOptionsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cpuPmvsSpinner, csizeSpinner, levelSpinner, minimumImageSpinner, thresholdSpinner, wsizeSpinner});
+
+                pmvsOptionsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {levelLabel, minimumImageLabel, thresholdLabel});
+
+                pmvsOptionsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cpuPmvsLabel, csizeLabel, wsizeLabel});
+
+                pmvsOptionsPanelLayout.setVerticalGroup(
+                        pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(pmvsOptionsTitle)
+                                .addGap(17, 17, 17)
+                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
+                                                .addComponent(wsizeSpinner)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(csizeSpinner)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cpuPmvsSpinner))
+                                        .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
+                                                .addComponent(wsizeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(csizeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cpuPmvsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                                        .addGroup(pmvsOptionsPanelLayout.createSequentialGroup()
+                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(levelLabel)
+                                                        .addComponent(levelSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(thresholdSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(thresholdLabel))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(pmvsOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(minimumImageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                                                        .addComponent(minimumImageSpinner, javax.swing.GroupLayout.Alignment.TRAILING))))
                                 .addContainerGap())
                 );
+
+                pmvsOptionsPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cpuPmvsLabel, cpuPmvsSpinner, csizeLabel, csizeSpinner, levelLabel, levelSpinner, minimumImageLabel, minimumImageSpinner, thresholdLabel, thresholdSpinner, wsizeLabel, wsizeSpinner});
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
@@ -255,19 +265,21 @@ public class MvsSetup extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cmvsOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(pmvsOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addComponent(runCmvsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(runCmvsPmvsButton))
-                                        .addComponent(pmvsOptionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cmvsOptionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(bundlerOutputLabel)
                                                 .addGap(8, 8, 8)
-                                                .addComponent(bundlerOutputTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                                                .addComponent(bundlerOutputTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(bundlerOutputChangeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(separatorBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                                        .addComponent(separatorBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
                                         .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())
                 );
@@ -281,11 +293,11 @@ public class MvsSetup extends javax.swing.JPanel {
                                         .addComponent(bundlerOutputLabel)
                                         .addComponent(bundlerOutputChangeButton)
                                         .addComponent(bundlerOutputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmvsOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pmvsOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cmvsOptionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(pmvsOptionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(separatorBottom, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

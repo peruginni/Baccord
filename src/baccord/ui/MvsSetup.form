@@ -22,21 +22,24 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="cmvsOptionsPanel" min="-2" max="-2" attributes="1"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="pmvsOptionsPanel" min="-2" max="-2" attributes="1"/>
+                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="runCmvsButton" min="-2" pref="98" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="runCmvsPmvsButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="pmvsOptionsPanel" alignment="0" max="32767" attributes="1"/>
-                  <Component id="cmvsOptionsPanel" alignment="0" max="32767" attributes="1"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bundlerOutputLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                      <Component id="bundlerOutputTextField" pref="392" max="32767" attributes="0"/>
+                      <Component id="bundlerOutputTextField" pref="410" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="bundlerOutputChangeButton" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="separatorBottom" alignment="0" pref="647" max="32767" attributes="0"/>
+                  <Component id="separatorBottom" alignment="0" pref="665" max="32767" attributes="0"/>
                   <Component id="titleLabel" alignment="0" min="-2" pref="247" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -54,11 +57,12 @@
                   <Component id="bundlerOutputChangeButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bundlerOutputTextField" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="cmvsOptionsPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-              <Component id="pmvsOptionsPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="cmvsOptionsPanel" max="32767" attributes="1"/>
+                  <Component id="pmvsOptionsPanel" alignment="0" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="separatorBottom" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -135,43 +139,44 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cmvsOptionsTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cpuLabel" pref="111" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cpuSpinner" min="-2" pref="55" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="maximumImagesLabel" min="-2" max="-2" attributes="1"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="maximumImagesSpinner" min="-2" pref="55" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="cmvsOptionsTitle" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="110" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="maximumImagesLabel" linkSize="7" min="-2" max="-2" attributes="1"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="maximumImagesSpinner" linkSize="8" min="-2" pref="55" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="cpuLabel" linkSize="7" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cpuSpinner" linkSize="8" min="-2" pref="60" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="1"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="450" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="cmvsOptionsTitle" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="maximumImagesLabel" pref="28" max="32767" attributes="1"/>
-                      <Component id="maximumImagesSpinner" alignment="0" max="32767" attributes="1"/>
+                      <Component id="maximumImagesSpinner" alignment="0" min="-2" max="-2" attributes="1"/>
+                      <Component id="maximumImagesLabel" alignment="0" min="-2" pref="26" max="-2" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cpuLabel" pref="28" max="32767" attributes="1"/>
-                      <Component id="cpuSpinner" alignment="0" max="32767" attributes="1"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="cpuSpinner" max="32767" attributes="1"/>
+                      <Component id="cpuLabel" alignment="0" min="-2" pref="30" max="-2" attributes="1"/>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <EmptySpace pref="57" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -179,6 +184,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="cmvsOptionsTitle">
           <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="cmvsOptionsTitle.font"/>
             <Property name="text" type="java.lang.String" resourceKey="cmvsOptionsTitle.text"/>
             <Property name="name" type="java.lang.String" value="cmvsOptionsTitle" noResource="true"/>
           </Properties>
@@ -220,101 +226,88 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pmvsOptionsTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="20" pref="20" max="20" attributes="0"/>
+                          <Component id="pmvsOptionsTitle" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="csizeLabel" max="32767" attributes="1"/>
-                              <Component id="levelLabel" alignment="0" pref="42" max="32767" attributes="1"/>
-                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="csizeSpinner" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="levelSpinner" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="levelLabel" linkSize="5" min="-2" max="-2" attributes="1"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="levelSpinner" linkSize="3" min="-2" pref="67" max="-2" attributes="1"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="thresholdLabel" linkSize="5" min="-2" max="-2" attributes="1"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="thresholdSpinner" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="minimumImageLabel" linkSize="5" min="-2" max="-2" attributes="1"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="minimumImageSpinner" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="99" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="wsizeLabel" min="-2" max="-2" attributes="1"/>
-                              <Component id="thresholdLabel" min="-2" pref="75" max="-2" attributes="1"/>
+                              <Component id="wsizeLabel" linkSize="6" alignment="0" min="-2" max="-2" attributes="1"/>
+                              <Component id="csizeLabel" linkSize="6" alignment="0" min="-2" pref="60" max="-2" attributes="1"/>
+                              <Component id="cpuPmvsLabel" linkSize="6" alignment="0" min="-2" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="wsizeSpinner" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="thresholdSpinner" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cpuPmvsLabel" min="-2" max="-2" attributes="1"/>
-                              <Component id="minimumImageLabel" min="-2" pref="107" max="-2" attributes="1"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cpuPmvsSpinner" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="minimumImageSpinner" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="csizeSpinner" linkSize="3" alignment="0" min="-2" max="-2" attributes="1"/>
+                              <Component id="cpuPmvsSpinner" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="wsizeSpinner" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="pmvsOptionsTitle" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="minimumImageLabel" pref="32" max="32767" attributes="1"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cpuPmvsLabel" pref="32" max="32767" attributes="1"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="2" max="-2" attributes="0"/>
-                                  <Component id="minimumImageSpinner" pref="31" max="32767" attributes="1"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cpuPmvsSpinner" pref="31" max="32767" attributes="1"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="pmvsOptionsTitle" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  <Component id="levelLabel" pref="32" max="32767" attributes="1"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="csizeLabel" pref="32" max="32767" attributes="1"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="levelSpinner" pref="31" max="32767" attributes="1"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="csizeSpinner" pref="31" max="32767" attributes="1"/>
-                              </Group>
-                          </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="wsizeSpinner" linkSize="2" max="32767" attributes="1"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="csizeSpinner" linkSize="2" max="32767" attributes="1"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cpuPmvsSpinner" linkSize="2" max="32767" attributes="1"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
+                          <Component id="wsizeLabel" linkSize="2" pref="28" max="32767" attributes="1"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="csizeLabel" linkSize="2" pref="28" max="32767" attributes="1"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cpuPmvsLabel" linkSize="2" pref="28" max="32767" attributes="1"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="levelLabel" linkSize="2" min="-2" max="-2" attributes="1"/>
+                              <Component id="levelSpinner" linkSize="2" min="-2" max="-2" attributes="1"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="thresholdLabel" pref="33" max="32767" attributes="1"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="wsizeLabel" pref="33" max="32767" attributes="1"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace pref="2" max="-2" attributes="0"/>
-                                  <Component id="thresholdSpinner" pref="32" max="32767" attributes="1"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="wsizeSpinner" pref="32" max="32767" attributes="1"/>
-                              </Group>
+                              <Component id="thresholdSpinner" linkSize="2" alignment="0" min="-2" max="-2" attributes="1"/>
+                              <Component id="thresholdLabel" linkSize="2" alignment="0" min="-2" max="-2" attributes="1"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="minimumImageLabel" linkSize="2" alignment="1" pref="28" max="32767" attributes="1"/>
+                              <Component id="minimumImageSpinner" linkSize="2" alignment="1" max="32767" attributes="1"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -322,6 +315,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="pmvsOptionsTitle">
           <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="pmvsOptionsTitle.font"/>
             <Property name="text" type="java.lang.String" resourceKey="pmvsOptionsTitle.text"/>
             <Property name="name" type="java.lang.String" value="pmvsOptionsTitle" noResource="true"/>
           </Properties>
@@ -335,17 +329,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="levelLabel.text"/>
             <Property name="name" type="java.lang.String" value="levelLabel" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="csizeLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="csizeLabel.text"/>
-            <Property name="name" type="java.lang.String" value="csizeLabel" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="csizeSpinner">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="csizeSpinner" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="wsizeSpinner">
@@ -390,6 +373,17 @@
         <Component class="javax.swing.JSpinner" name="cpuPmvsSpinner">
           <Properties>
             <Property name="name" type="java.lang.String" value="cpuPmvsSpinner" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="csizeSpinner">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="csizeSpinner" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="csizeLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="csizeLabel.text"/>
+            <Property name="name" type="java.lang.String" value="csizeLabel" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>

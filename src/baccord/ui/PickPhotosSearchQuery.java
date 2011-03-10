@@ -31,7 +31,6 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
                 downloadOptionsTitle = new javax.swing.JLabel();
                 siftPanel = new javax.swing.JPanel();
                 siftCheckbox = new javax.swing.JCheckBox();
-                siftLegend = new javax.swing.JTextArea();
                 dimensionsPanel = new javax.swing.JPanel();
                 dimensionsTitle = new javax.swing.JLabel();
                 keepOriginalCheckbox = new javax.swing.JCheckBox();
@@ -41,32 +40,38 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
                 horizontalSeparator = new javax.swing.JSeparator();
                 searchButton = new javax.swing.JButton();
                 downloadProgressButton = new javax.swing.JButton();
-                keywordsLabel = new javax.swing.JLabel();
-                keywordsTextfield = new javax.swing.JTextField();
-                uploadedDateSeparator = new javax.swing.JLabel();
-                uploadedDateTillSpinner = new javax.swing.JSpinner();
-                uploadedDateFromSpinner = new javax.swing.JSpinner();
-                uploadedDateLabel = new javax.swing.JLabel();
                 searchPhotosTitle = new javax.swing.JLabel();
                 searchEngineCombobox = new javax.swing.JComboBox();
-                gpsLatTextfield = new javax.swing.JTextField();
-                gpsLonTextfield = new javax.swing.JTextField();
-                gpsLabel = new javax.swing.JLabel();
-                gpsRadiusTextfield = new javax.swing.JTextField();
                 contextLabel = new javax.swing.JLabel();
                 contextCombobox = new javax.swing.JComboBox();
                 licenseLabel = new javax.swing.JLabel();
                 licenseCombobox = new javax.swing.JComboBox();
-                takenDateFromSpinner = new javax.swing.JSpinner();
-                takenDateTillSpinner = new javax.swing.JSpinner();
-                takenDateLabel = new javax.swing.JLabel();
-                takenDateSeparator = new javax.swing.JLabel();
+                downloadFolderPanel = new javax.swing.JPanel();
+                downloadFolderLabel = new javax.swing.JLabel();
                 downloadFolderButton = new javax.swing.JButton();
                 downloadFolderTextfield = new javax.swing.JTextField();
-                downloadFolderLabel = new javax.swing.JLabel();
+                datePanel = new javax.swing.JPanel();
+                takenDateLabel = new javax.swing.JLabel();
+                takenDateFromSpinner = new javax.swing.JSpinner();
+                uploadedDateLabel = new javax.swing.JLabel();
+                uploadedDateFromSpinner = new javax.swing.JSpinner();
+                uploadedDateSeparator = new javax.swing.JLabel();
+                takenDateSeparator = new javax.swing.JLabel();
+                takenDateTillSpinner = new javax.swing.JSpinner();
+                uploadedDateTillSpinner = new javax.swing.JSpinner();
+                gpsPanel = new javax.swing.JPanel();
+                gpsLabel = new javax.swing.JLabel();
+                gpsLatTextfield = new javax.swing.JTextField();
+                gpsLonTextfield = new javax.swing.JTextField();
+                gpsRadiusTextfield = new javax.swing.JTextField();
+                gpsLabel1 = new javax.swing.JLabel();
+                gpsLabel2 = new javax.swing.JLabel();
+                gpsLabel3 = new javax.swing.JLabel();
+                keywordsPanel = new javax.swing.JPanel();
+                keywordsLabel = new javax.swing.JLabel();
+                keywordsTextfield = new javax.swing.JTextField();
 
                 setName("Form"); // NOI18N
-                setPreferredSize(new java.awt.Dimension(810, 441));
 
                 verticalSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
                 verticalSeparator.setName("verticalSeparator"); // NOI18N
@@ -87,34 +92,21 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
                 siftCheckbox.setMargin(new java.awt.Insets(1, 0, 0, 1));
                 siftCheckbox.setName("siftCheckbox"); // NOI18N
 
-                siftLegend.setColumns(20);
-                siftLegend.setFont(resourceMap.getFont("siftLegend.font")); // NOI18N
-                siftLegend.setLineWrap(true);
-                siftLegend.setRows(3);
-                siftLegend.setText(resourceMap.getString("siftLegend.text")); // NOI18N
-                siftLegend.setBorder(null);
-                siftLegend.setName("siftLegend"); // NOI18N
-                siftLegend.setOpaque(false);
-
                 javax.swing.GroupLayout siftPanelLayout = new javax.swing.GroupLayout(siftPanel);
                 siftPanel.setLayout(siftPanelLayout);
                 siftPanelLayout.setHorizontalGroup(
                         siftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(siftPanelLayout.createSequentialGroup()
-                                .addGroup(siftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(siftCheckbox)
-                                        .addGroup(siftPanelLayout.createSequentialGroup()
-                                                .addGap(28, 28, 28)
-                                                .addComponent(siftLegend, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(34, Short.MAX_VALUE))
+                                .addContainerGap()
+                                .addComponent(siftCheckbox)
+                                .addContainerGap(94, Short.MAX_VALUE))
                 );
                 siftPanelLayout.setVerticalGroup(
                         siftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(siftPanelLayout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, siftPanelLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(siftCheckbox)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(siftLegend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(15, Short.MAX_VALUE))
+                                .addGap(48, 48, 48))
                 );
 
                 dimensionsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -140,17 +132,19 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
                 dimensionsPanelLayout.setHorizontalGroup(
                         dimensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(dimensionsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(dimensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(newDimensionButton)
                                         .addComponent(dimensionsTitle)
                                         .addComponent(keepOriginalCheckbox)
                                         .addComponent(dim1024Checkbox)
-                                        .addComponent(dim800Checkbox)
-                                        .addComponent(newDimensionButton))
-                                .addContainerGap(78, Short.MAX_VALUE))
+                                        .addComponent(dim800Checkbox))
+                                .addContainerGap(44, Short.MAX_VALUE))
                 );
                 dimensionsPanelLayout.setVerticalGroup(
                         dimensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(dimensionsPanelLayout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dimensionsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(dimensionsTitle)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(keepOriginalCheckbox)
@@ -158,8 +152,9 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
                                 .addComponent(dim1024Checkbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dim800Checkbox)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                                .addComponent(newDimensionButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                                .addComponent(newDimensionButton)
+                                .addGap(12, 12, 12))
                 );
 
                 horizontalSeparator.setName("horizontalSeparator"); // NOI18N
@@ -169,24 +164,6 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
 
                 downloadProgressButton.setText(resourceMap.getString("downloadProgressButton.text")); // NOI18N
                 downloadProgressButton.setName("downloadProgressButton"); // NOI18N
-
-                keywordsLabel.setText(resourceMap.getString("keywordsLabel.text")); // NOI18N
-                keywordsLabel.setName("keywordsLabel"); // NOI18N
-
-                keywordsTextfield.setText(resourceMap.getString("keywordsTextfield.text")); // NOI18N
-                keywordsTextfield.setName("keywordsTextfield"); // NOI18N
-
-                uploadedDateSeparator.setText(resourceMap.getString("uploadedDateSeparator.text")); // NOI18N
-                uploadedDateSeparator.setName("uploadedDateSeparator"); // NOI18N
-
-                uploadedDateTillSpinner.setModel(new javax.swing.SpinnerDateModel());
-                uploadedDateTillSpinner.setName("uploadedDateTillSpinner"); // NOI18N
-
-                uploadedDateFromSpinner.setModel(new javax.swing.SpinnerDateModel());
-                uploadedDateFromSpinner.setName("uploadedDateFromSpinner"); // NOI18N
-
-                uploadedDateLabel.setText(resourceMap.getString("uploadedDateLabel.text")); // NOI18N
-                uploadedDateLabel.setName("uploadedDateLabel"); // NOI18N
 
                 searchPhotosTitle.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
                 searchPhotosTitle.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
@@ -198,18 +175,6 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
 
                 searchEngineCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "via Flickr", "via Google Image Search" }));
                 searchEngineCombobox.setName("searchEngineCombobox"); // NOI18N
-
-                gpsLatTextfield.setText(resourceMap.getString("gpsLatTextfield.text")); // NOI18N
-                gpsLatTextfield.setName("gpsLatTextfield"); // NOI18N
-
-                gpsLonTextfield.setText(resourceMap.getString("gpsLonTextfield.text")); // NOI18N
-                gpsLonTextfield.setName("gpsLonTextfield"); // NOI18N
-
-                gpsLabel.setText(resourceMap.getString("gpsLabel.text")); // NOI18N
-                gpsLabel.setName("gpsLabel"); // NOI18N
-
-                gpsRadiusTextfield.setText(resourceMap.getString("gpsRadiusTextfield.text")); // NOI18N
-                gpsRadiusTextfield.setName("gpsRadiusTextfield"); // NOI18N
 
                 contextLabel.setText(resourceMap.getString("contextLabel.text")); // NOI18N
                 contextLabel.setName("contextLabel"); // NOI18N
@@ -223,17 +188,11 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
                 licenseCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Creative Commons" }));
                 licenseCombobox.setName("licenseCombobox"); // NOI18N
 
-                takenDateFromSpinner.setModel(new javax.swing.SpinnerDateModel());
-                takenDateFromSpinner.setName("takenDateFromSpinner"); // NOI18N
+                downloadFolderPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+                downloadFolderPanel.setName("downloadFolderPanel"); // NOI18N
 
-                takenDateTillSpinner.setModel(new javax.swing.SpinnerDateModel());
-                takenDateTillSpinner.setName("takenDateTillSpinner"); // NOI18N
-
-                takenDateLabel.setText(resourceMap.getString("takenDateLabel.text")); // NOI18N
-                takenDateLabel.setName("takenDateLabel"); // NOI18N
-
-                takenDateSeparator.setText(resourceMap.getString("takenDateSeparator.text")); // NOI18N
-                takenDateSeparator.setName("takenDateSeparator"); // NOI18N
+                downloadFolderLabel.setText(resourceMap.getString("downloadFolderLabel.text")); // NOI18N
+                downloadFolderLabel.setName("downloadFolderLabel"); // NOI18N
 
                 downloadFolderButton.setText(resourceMap.getString("downloadFolderButton.text")); // NOI18N
                 downloadFolderButton.setName("downloadFolderButton"); // NOI18N
@@ -241,76 +200,247 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
                 downloadFolderTextfield.setText(resourceMap.getString("downloadFolderTextfield.text")); // NOI18N
                 downloadFolderTextfield.setName("downloadFolderTextfield"); // NOI18N
 
-                downloadFolderLabel.setText(resourceMap.getString("downloadFolderLabel.text")); // NOI18N
-                downloadFolderLabel.setName("downloadFolderLabel"); // NOI18N
+                javax.swing.GroupLayout downloadFolderPanelLayout = new javax.swing.GroupLayout(downloadFolderPanel);
+                downloadFolderPanel.setLayout(downloadFolderPanelLayout);
+                downloadFolderPanelLayout.setHorizontalGroup(
+                        downloadFolderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(downloadFolderPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(downloadFolderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(downloadFolderTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(downloadFolderPanelLayout.createSequentialGroup()
+                                                .addComponent(downloadFolderLabel)
+                                                .addGap(24, 24, 24)
+                                                .addComponent(downloadFolderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap())
+                );
+                downloadFolderPanelLayout.setVerticalGroup(
+                        downloadFolderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(downloadFolderPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(downloadFolderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(downloadFolderLabel)
+                                        .addComponent(downloadFolderButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(downloadFolderTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                );
+
+                datePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+                datePanel.setName("datePanel"); // NOI18N
+
+                takenDateLabel.setText(resourceMap.getString("takenDateLabel.text")); // NOI18N
+                takenDateLabel.setName("takenDateLabel"); // NOI18N
+
+                takenDateFromSpinner.setModel(new javax.swing.SpinnerDateModel());
+                takenDateFromSpinner.setName("takenDateFromSpinner"); // NOI18N
+
+                uploadedDateLabel.setText(resourceMap.getString("uploadedDateLabel.text")); // NOI18N
+                uploadedDateLabel.setName("uploadedDateLabel"); // NOI18N
+
+                uploadedDateFromSpinner.setModel(new javax.swing.SpinnerDateModel());
+                uploadedDateFromSpinner.setName("uploadedDateFromSpinner"); // NOI18N
+
+                uploadedDateSeparator.setText(resourceMap.getString("uploadedDateSeparator.text")); // NOI18N
+                uploadedDateSeparator.setName("uploadedDateSeparator"); // NOI18N
+
+                takenDateSeparator.setText(resourceMap.getString("takenDateSeparator.text")); // NOI18N
+                takenDateSeparator.setName("takenDateSeparator"); // NOI18N
+
+                takenDateTillSpinner.setModel(new javax.swing.SpinnerDateModel());
+                takenDateTillSpinner.setName("takenDateTillSpinner"); // NOI18N
+
+                uploadedDateTillSpinner.setModel(new javax.swing.SpinnerDateModel());
+                uploadedDateTillSpinner.setName("uploadedDateTillSpinner"); // NOI18N
+
+                javax.swing.GroupLayout datePanelLayout = new javax.swing.GroupLayout(datePanel);
+                datePanel.setLayout(datePanelLayout);
+                datePanelLayout.setHorizontalGroup(
+                        datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(datePanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(takenDateLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(uploadedDateLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(takenDateFromSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(uploadedDateFromSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(uploadedDateSeparator)
+                                        .addComponent(takenDateSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(takenDateTillSpinner)
+                                        .addComponent(uploadedDateTillSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
+                );
+                datePanelLayout.setVerticalGroup(
+                        datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(datePanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(datePanelLayout.createSequentialGroup()
+                                                .addGap(12, 12, 12)
+                                                .addComponent(takenDateLabel)
+                                                .addGap(28, 28, 28)
+                                                .addComponent(uploadedDateLabel))
+                                        .addGroup(datePanelLayout.createSequentialGroup()
+                                                .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(datePanelLayout.createSequentialGroup()
+                                                                .addGap(11, 11, 11)
+                                                                .addComponent(takenDateSeparator))
+                                                        .addComponent(takenDateTillSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(takenDateFromSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(uploadedDateFromSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(datePanelLayout.createSequentialGroup()
+                                                                .addGap(9, 9, 9)
+                                                                .addComponent(uploadedDateSeparator))
+                                                        .addComponent(uploadedDateTillSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                );
+
+                gpsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+                gpsPanel.setName("gpsPanel"); // NOI18N
+
+                gpsLabel.setText(resourceMap.getString("gpsLabel.text")); // NOI18N
+                gpsLabel.setName("gpsLabel"); // NOI18N
+
+                gpsLatTextfield.setText(resourceMap.getString("gpsLatTextfield.text")); // NOI18N
+                gpsLatTextfield.setName("gpsLatTextfield"); // NOI18N
+
+                gpsLonTextfield.setText(resourceMap.getString("gpsLonTextfield.text")); // NOI18N
+                gpsLonTextfield.setName("gpsLonTextfield"); // NOI18N
+
+                gpsRadiusTextfield.setText(resourceMap.getString("gpsRadiusTextfield.text")); // NOI18N
+                gpsRadiusTextfield.setName("gpsRadiusTextfield"); // NOI18N
+
+                gpsLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                gpsLabel1.setText(resourceMap.getString("gpsLabel1.text")); // NOI18N
+                gpsLabel1.setName("gpsLabel1"); // NOI18N
+
+                gpsLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                gpsLabel2.setText(resourceMap.getString("gpsLabel2.text")); // NOI18N
+                gpsLabel2.setName("gpsLabel2"); // NOI18N
+
+                gpsLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                gpsLabel3.setText(resourceMap.getString("gpsLabel3.text")); // NOI18N
+                gpsLabel3.setName("gpsLabel3"); // NOI18N
+
+                javax.swing.GroupLayout gpsPanelLayout = new javax.swing.GroupLayout(gpsPanel);
+                gpsPanel.setLayout(gpsPanelLayout);
+                gpsPanelLayout.setHorizontalGroup(
+                        gpsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gpsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(gpsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(gpsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(gpsLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(gpsLatTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(gpsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(gpsLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                        .addComponent(gpsLonTextfield, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(gpsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(gpsLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                                        .addComponent(gpsRadiusTextfield, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE))
+                                .addContainerGap())
+                );
+                gpsPanelLayout.setVerticalGroup(
+                        gpsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(gpsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(gpsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(gpsPanelLayout.createSequentialGroup()
+                                                .addComponent(gpsLonTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(gpsLabel2))
+                                        .addGroup(gpsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(gpsPanelLayout.createSequentialGroup()
+                                                        .addComponent(gpsRadiusTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(gpsLabel3))
+                                                .addGroup(gpsPanelLayout.createSequentialGroup()
+                                                        .addGroup(gpsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                .addComponent(gpsLabel)
+                                                                .addComponent(gpsLatTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(gpsLabel1))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                );
+
+                keywordsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+                keywordsPanel.setName("keywordsPanel"); // NOI18N
+
+                keywordsLabel.setText(resourceMap.getString("keywordsLabel.text")); // NOI18N
+                keywordsLabel.setName("keywordsLabel"); // NOI18N
+
+                keywordsTextfield.setText(resourceMap.getString("keywordsTextfield.text")); // NOI18N
+                keywordsTextfield.setName("keywordsTextfield"); // NOI18N
+
+                javax.swing.GroupLayout keywordsPanelLayout = new javax.swing.GroupLayout(keywordsPanel);
+                keywordsPanel.setLayout(keywordsPanelLayout);
+                keywordsPanelLayout.setHorizontalGroup(
+                        keywordsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(keywordsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(keywordsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(keywordsTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                                .addContainerGap())
+                );
+                keywordsPanelLayout.setVerticalGroup(
+                        keywordsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(keywordsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(keywordsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(keywordsLabel)
+                                        .addComponent(keywordsTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                );
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
                 layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                 .addComponent(downloadProgressButton)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 453, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 494, Short.MAX_VALUE)
                                                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                .addComponent(searchPhotosTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(searchEngineCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                                 .addComponent(licenseLabel)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(licenseCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                                                                 .addComponent(contextLabel)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(contextCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(downloadFolderLabel)
+                                                        .addComponent(datePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(gpsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addComponent(searchPhotosTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(downloadFolderTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(downloadFolderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(keywordsLabel)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(keywordsTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(gpsLabel)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(gpsLatTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(gpsLonTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(gpsRadiusTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addComponent(takenDateLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(uploadedDateLabel, javax.swing.GroupLayout.Alignment.LEADING))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                                        .addComponent(takenDateFromSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(uploadedDateFromSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(uploadedDateSeparator)
-                                                                        .addComponent(takenDateSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                        .addComponent(takenDateTillSpinner)
-                                                                        .addComponent(uploadedDateTillSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                .addGap(18, 18, 18)
+                                                                .addComponent(searchEngineCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(keywordsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(verticalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(downloadOptionsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(dimensionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(siftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                        .addComponent(siftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(downloadFolderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(downloadOptionsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))))
                                 .addContainerGap())
                 );
                 layout.setVerticalGroup(
@@ -318,68 +448,39 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(searchPhotosTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(searchEngineCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(downloadOptionsTitle))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(downloadOptionsTitle)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(siftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(12, 12, 12)
-                                                .addComponent(dimensionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(searchPhotosTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(searchEngineCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(downloadFolderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(verticalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(keywordsLabel)
-                                                                        .addComponent(keywordsTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(gpsLabel)
-                                                                        .addComponent(gpsLatTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(gpsLonTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(gpsRadiusTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addGap(20, 20, 20)
-                                                                                .addComponent(takenDateLabel)
-                                                                                .addGap(28, 28, 28)
-                                                                                .addComponent(uploadedDateLabel))
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                                .addGap(11, 11, 11)
-                                                                                                .addComponent(takenDateSeparator))
-                                                                                        .addComponent(takenDateTillSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addComponent(takenDateFromSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(uploadedDateFromSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                                .addGap(9, 9, 9)
-                                                                                                .addComponent(uploadedDateSeparator))
-                                                                                        .addComponent(uploadedDateTillSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                                .addGap(18, 18, 18)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(licenseLabel)
-                                                                        .addComponent(licenseCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(contextCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(contextLabel))
-                                                                .addGap(14, 14, 14)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(downloadFolderTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(downloadFolderLabel)
-                                                                        .addComponent(downloadFolderButton))))))
-                                .addGap(18, 18, 18)
+                                                .addComponent(siftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(dimensionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(keywordsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                                                .addComponent(gpsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(datePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(licenseLabel)
+                                                        .addComponent(licenseCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(contextCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(contextLabel))
+                                                .addGap(11, 11, 11))
+                                        .addComponent(verticalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(horizontalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(downloadProgressButton)
                                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
                 );
         }// </editor-fold>//GEN-END:initComponents
 
@@ -387,22 +488,29 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JComboBox contextCombobox;
         private javax.swing.JLabel contextLabel;
+        private javax.swing.JPanel datePanel;
         private javax.swing.JCheckBox dim1024Checkbox;
         private javax.swing.JCheckBox dim800Checkbox;
         private javax.swing.JPanel dimensionsPanel;
         private javax.swing.JLabel dimensionsTitle;
         private javax.swing.JButton downloadFolderButton;
         private javax.swing.JLabel downloadFolderLabel;
+        private javax.swing.JPanel downloadFolderPanel;
         private javax.swing.JTextField downloadFolderTextfield;
         private javax.swing.JLabel downloadOptionsTitle;
         private javax.swing.JButton downloadProgressButton;
         private javax.swing.JLabel gpsLabel;
+        private javax.swing.JLabel gpsLabel1;
+        private javax.swing.JLabel gpsLabel2;
+        private javax.swing.JLabel gpsLabel3;
         private javax.swing.JTextField gpsLatTextfield;
         private javax.swing.JTextField gpsLonTextfield;
+        private javax.swing.JPanel gpsPanel;
         private javax.swing.JTextField gpsRadiusTextfield;
         private javax.swing.JSeparator horizontalSeparator;
         private javax.swing.JCheckBox keepOriginalCheckbox;
         private javax.swing.JLabel keywordsLabel;
+        private javax.swing.JPanel keywordsPanel;
         private javax.swing.JTextField keywordsTextfield;
         private javax.swing.JComboBox licenseCombobox;
         private javax.swing.JLabel licenseLabel;
@@ -411,7 +519,6 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
         private javax.swing.JComboBox searchEngineCombobox;
         private javax.swing.JLabel searchPhotosTitle;
         private javax.swing.JCheckBox siftCheckbox;
-        private javax.swing.JTextArea siftLegend;
         private javax.swing.JPanel siftPanel;
         private javax.swing.JSpinner takenDateFromSpinner;
         private javax.swing.JLabel takenDateLabel;
