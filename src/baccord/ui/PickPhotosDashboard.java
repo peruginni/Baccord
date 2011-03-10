@@ -120,8 +120,8 @@ public class PickPhotosDashboard extends javax.swing.JPanel {
                                         .addComponent(foldersLabel))
                                 .addGap(12, 12, 12)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(keywordsList, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                                        .addComponent(foldersList, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
+                                        .addComponent(keywordsList, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                                        .addComponent(foldersList, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
                                 .addContainerGap())
                 );
         }// </editor-fold>//GEN-END:initComponents

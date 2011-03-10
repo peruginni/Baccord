@@ -25,20 +25,20 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="770" max="32767" attributes="0"/>
-                  <Component id="jSeparator1" alignment="1" pref="770" max="32767" attributes="0"/>
+                  <Component id="searchResultsScrollPane" alignment="0" pref="770" max="32767" attributes="0"/>
+                  <Component id="horizontalSeparator" alignment="1" pref="770" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="labelSearchPhotos" pref="353" max="32767" attributes="0"/>
+                      <Component id="searchResultsTitle" pref="353" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="91" max="-2" attributes="0"/>
+                      <Component id="editQueryButton" min="-2" pref="91" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                      <Component id="pagingCombobox" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="helpLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                      <Component id="progressButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="307" max="32767" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="262" max="-2" attributes="0"/>
+                      <Component id="downloadButton" min="-2" pref="262" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -50,20 +50,20 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelSearchPhotos" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="searchResultsTitle" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="editQueryButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pagingCombobox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="helpLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="263" max="32767" attributes="0"/>
+              <Component id="searchResultsScrollPane" pref="263" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="horizontalSeparator" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton3" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="downloadButton" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="progressButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -71,28 +71,28 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="labelSearchPhotos">
+    <Component class="javax.swing.JLabel" name="searchResultsTitle">
       <Properties>
         <Property name="background" type="java.awt.Color" resourceKey="sectionTitle.background"/>
         <Property name="font" type="java.awt.Font" resourceKey="sectionTitle.font"/>
-        <Property name="text" type="java.lang.String" resourceKey="labelSearchPhotos.text"/>
+        <Property name="text" type="java.lang.String" resourceKey="searchResultsTitle.text"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
             <EmptyBorder bottom="5" left="5" right="5" top="5"/>
           </Border>
         </Property>
         <Property name="horizontalTextPosition" type="int" value="2"/>
-        <Property name="name" type="java.lang.String" value="labelSearchPhotos" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="searchResultsTitle" noResource="true"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="editQueryButton">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jButton1.text"/>
-        <Property name="name" type="java.lang.String" value="jButton1" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="editQueryButton.text"/>
+        <Property name="name" type="java.lang.String" value="editQueryButton" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="pagingCombobox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
@@ -101,35 +101,35 @@
             <StringItem index="2" value="72 per page"/>
           </StringArray>
         </Property>
-        <Property name="name" type="java.lang.String" value="jComboBox1" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="pagingCombobox" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="helpLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
-        <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="helpLabel.text"/>
+        <Property name="name" type="java.lang.String" value="helpLabel" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSeparator" name="jSeparator1">
+    <Component class="javax.swing.JSeparator" name="horizontalSeparator">
       <Properties>
-        <Property name="name" type="java.lang.String" value="jSeparator1" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="horizontalSeparator" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="progressButton">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jButton6.text"/>
-        <Property name="name" type="java.lang.String" value="jButton6" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="progressButton.text"/>
+        <Property name="name" type="java.lang.String" value="progressButton" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="downloadButton">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jButton3.text"/>
-        <Property name="name" type="java.lang.String" value="jButton3" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="downloadButton.text"/>
+        <Property name="name" type="java.lang.String" value="downloadButton" noResource="true"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Container class="javax.swing.JScrollPane" name="searchResultsScrollPane">
       <Properties>
-        <Property name="name" type="java.lang.String" value="jScrollPane1" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="searchResultsScrollPane" noResource="true"/>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>

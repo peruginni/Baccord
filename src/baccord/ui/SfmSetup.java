@@ -27,82 +27,82 @@ public class SfmSetup extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
-                jButton3 = new javax.swing.JButton();
-                jSeparator1 = new javax.swing.JSeparator();
-                labelSearchPhotos = new javax.swing.JLabel();
-                textfieldKeywords4 = new javax.swing.JTextField();
-                jButton1 = new javax.swing.JButton();
-                labelKeywords8 = new javax.swing.JLabel();
-                labelKeywords6 = new javax.swing.JLabel();
-                jComboBox1 = new javax.swing.JComboBox();
-                jTextArea1 = new javax.swing.JTextArea();
-                jButton2 = new javax.swing.JButton();
-                labelKeywords9 = new javax.swing.JLabel();
-                textfieldKeywords5 = new javax.swing.JTextField();
-                jButton4 = new javax.swing.JButton();
-                labelKeywords10 = new javax.swing.JLabel();
-                jScrollPane2 = new javax.swing.JScrollPane();
-                jTextPane1 = new javax.swing.JTextPane();
+                runButton = new javax.swing.JButton();
+                horizontalSeparator = new javax.swing.JSeparator();
+                sfmTitle = new javax.swing.JLabel();
+                inputImagesTextField = new javax.swing.JTextField();
+                inputImagesButton = new javax.swing.JButton();
+                inputImagesLabel = new javax.swing.JLabel();
+                imageSizeLabel = new javax.swing.JLabel();
+                imageSizeComboBox = new javax.swing.JComboBox();
+                ccdLabel = new javax.swing.JTextArea();
+                ccdButton = new javax.swing.JButton();
+                imagesToExistingLabel = new javax.swing.JLabel();
+                imagesToExistingTextField = new javax.swing.JTextField();
+                imagesToExistingButton = new javax.swing.JButton();
+                bundlerOptionsLabel = new javax.swing.JLabel();
+                bundlerOptionsScrollPane = new javax.swing.JScrollPane();
+                bundlerOptionsTextPane = new javax.swing.JTextPane();
 
                 setName("Form"); // NOI18N
 
                 org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(SfmSetup.class);
-                jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
-                jButton3.setName("jButton3"); // NOI18N
+                runButton.setText(resourceMap.getString("runButton.text")); // NOI18N
+                runButton.setName("runButton"); // NOI18N
 
-                jSeparator1.setName("jSeparator1"); // NOI18N
+                horizontalSeparator.setName("horizontalSeparator"); // NOI18N
 
-                labelSearchPhotos.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
-                labelSearchPhotos.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
-                labelSearchPhotos.setText(resourceMap.getString("labelSearchPhotos.text")); // NOI18N
-                labelSearchPhotos.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-                labelSearchPhotos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-                labelSearchPhotos.setName("labelSearchPhotos"); // NOI18N
-                labelSearchPhotos.setOpaque(true);
+                sfmTitle.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
+                sfmTitle.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
+                sfmTitle.setText(resourceMap.getString("sfmTitle.text")); // NOI18N
+                sfmTitle.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                sfmTitle.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+                sfmTitle.setName("sfmTitle"); // NOI18N
+                sfmTitle.setOpaque(true);
 
-                textfieldKeywords4.setText(resourceMap.getString("textfieldKeywords4.text")); // NOI18N
-                textfieldKeywords4.setName("textfieldKeywords4"); // NOI18N
+                inputImagesTextField.setText(resourceMap.getString("inputImagesTextField.text")); // NOI18N
+                inputImagesTextField.setName("inputImagesTextField"); // NOI18N
 
-                jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-                jButton1.setName("jButton1"); // NOI18N
+                inputImagesButton.setText(resourceMap.getString("inputImagesButton.text")); // NOI18N
+                inputImagesButton.setName("inputImagesButton"); // NOI18N
 
-                labelKeywords8.setText(resourceMap.getString("labelKeywords8.text")); // NOI18N
-                labelKeywords8.setName("labelKeywords8"); // NOI18N
+                inputImagesLabel.setText(resourceMap.getString("inputImagesLabel.text")); // NOI18N
+                inputImagesLabel.setName("inputImagesLabel"); // NOI18N
 
-                labelKeywords6.setText(resourceMap.getString("labelKeywords6.text")); // NOI18N
-                labelKeywords6.setName("labelKeywords6"); // NOI18N
+                imageSizeLabel.setText(resourceMap.getString("imageSizeLabel.text")); // NOI18N
+                imageSizeLabel.setName("imageSizeLabel"); // NOI18N
 
-                jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Use original", "1024 x 1024 pixels" }));
-                jComboBox1.setName("jComboBox1"); // NOI18N
+                imageSizeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Use original", "1024 x 1024 pixels" }));
+                imageSizeComboBox.setName("imageSizeComboBox"); // NOI18N
 
-                jTextArea1.setColumns(20);
-                jTextArea1.setFont(resourceMap.getFont("jTextArea1.font")); // NOI18N
-                jTextArea1.setLineWrap(true);
-                jTextArea1.setRows(3);
-                jTextArea1.setText(resourceMap.getString("jTextArea1.text")); // NOI18N
-                jTextArea1.setBorder(null);
-                jTextArea1.setName("jTextArea1"); // NOI18N
-                jTextArea1.setOpaque(false);
+                ccdLabel.setColumns(20);
+                ccdLabel.setFont(resourceMap.getFont("ccdLabel.font")); // NOI18N
+                ccdLabel.setLineWrap(true);
+                ccdLabel.setRows(3);
+                ccdLabel.setText(resourceMap.getString("ccdLabel.text")); // NOI18N
+                ccdLabel.setBorder(null);
+                ccdLabel.setName("ccdLabel"); // NOI18N
+                ccdLabel.setOpaque(false);
 
-                jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
-                jButton2.setName("jButton2"); // NOI18N
+                ccdButton.setText(resourceMap.getString("ccdButton.text")); // NOI18N
+                ccdButton.setName("ccdButton"); // NOI18N
 
-                labelKeywords9.setText(resourceMap.getString("labelKeywords9.text")); // NOI18N
-                labelKeywords9.setName("labelKeywords9"); // NOI18N
+                imagesToExistingLabel.setText(resourceMap.getString("imagesToExistingLabel.text")); // NOI18N
+                imagesToExistingLabel.setName("imagesToExistingLabel"); // NOI18N
 
-                textfieldKeywords5.setText(resourceMap.getString("textfieldKeywords5.text")); // NOI18N
-                textfieldKeywords5.setName("textfieldKeywords5"); // NOI18N
+                imagesToExistingTextField.setText(resourceMap.getString("imagesToExistingTextField.text")); // NOI18N
+                imagesToExistingTextField.setName("imagesToExistingTextField"); // NOI18N
 
-                jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
-                jButton4.setName("jButton4"); // NOI18N
+                imagesToExistingButton.setText(resourceMap.getString("imagesToExistingButton.text")); // NOI18N
+                imagesToExistingButton.setName("imagesToExistingButton"); // NOI18N
 
-                labelKeywords10.setText(resourceMap.getString("labelKeywords10.text")); // NOI18N
-                labelKeywords10.setName("labelKeywords10"); // NOI18N
+                bundlerOptionsLabel.setText(resourceMap.getString("bundlerOptionsLabel.text")); // NOI18N
+                bundlerOptionsLabel.setName("bundlerOptionsLabel"); // NOI18N
 
-                jScrollPane2.setName("jScrollPane2"); // NOI18N
+                bundlerOptionsScrollPane.setName("bundlerOptionsScrollPane"); // NOI18N
 
-                jTextPane1.setName("jTextPane1"); // NOI18N
-                jScrollPane2.setViewportView(jTextPane1);
+                bundlerOptionsTextPane.setName("bundlerOptionsTextPane"); // NOI18N
+                bundlerOptionsScrollPane.setViewportView(bundlerOptionsTextPane);
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
@@ -112,100 +112,100 @@ public class SfmSetup extends javax.swing.JPanel {
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                                                .addComponent(bundlerOptionsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
                                                 .addContainerGap())
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(ccdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
-                                                                .addComponent(jButton2))
-                                                        .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(ccdButton))
+                                                        .addComponent(sfmTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(labelKeywords8)
+                                                                .addComponent(inputImagesLabel)
                                                                 .addGap(8, 8, 8)
-                                                                .addComponent(textfieldKeywords4, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(inputImagesTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(inputImagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                .addComponent(labelKeywords6)
+                                                                .addComponent(imageSizeLabel)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
-                                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addComponent(imageSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                 .addContainerGap())
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(labelKeywords9)
+                                                .addComponent(imagesToExistingLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(textfieldKeywords5, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                                                .addComponent(imagesToExistingTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(imagesToExistingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(20, 20, 20))
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(labelKeywords10)
+                                                .addComponent(bundlerOptionsLabel)
                                                 .addContainerGap(568, Short.MAX_VALUE))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                         .addContainerGap()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE))
+                                                .addComponent(runButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(horizontalSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE))
                                         .addContainerGap()))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sfmTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(labelKeywords8)
-                                        .addComponent(jButton1)
-                                        .addComponent(textfieldKeywords4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(inputImagesLabel)
+                                        .addComponent(inputImagesButton)
+                                        .addComponent(inputImagesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(8, 8, 8)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(labelKeywords6)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(imageSizeLabel)
+                                        .addComponent(imageSizeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(ccdButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(ccdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(textfieldKeywords5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelKeywords9)
-                                        .addComponent(jButton4))
+                                        .addComponent(imagesToExistingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(imagesToExistingLabel)
+                                        .addComponent(imagesToExistingButton))
                                 .addGap(18, 18, 18)
-                                .addComponent(labelKeywords10)
+                                .addComponent(bundlerOptionsLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bundlerOptionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(95, 95, 95))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addContainerGap(371, Short.MAX_VALUE)
-                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(runButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addContainerGap()))
                 );
         }// </editor-fold>//GEN-END:initComponents
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton jButton1;
-        private javax.swing.JButton jButton2;
-        private javax.swing.JButton jButton3;
-        private javax.swing.JButton jButton4;
-        private javax.swing.JComboBox jComboBox1;
-        private javax.swing.JScrollPane jScrollPane2;
-        private javax.swing.JSeparator jSeparator1;
-        private javax.swing.JTextArea jTextArea1;
-        private javax.swing.JTextPane jTextPane1;
-        private javax.swing.JLabel labelKeywords10;
-        private javax.swing.JLabel labelKeywords6;
-        private javax.swing.JLabel labelKeywords8;
-        private javax.swing.JLabel labelKeywords9;
-        private javax.swing.JLabel labelSearchPhotos;
-        private javax.swing.JTextField textfieldKeywords4;
-        private javax.swing.JTextField textfieldKeywords5;
+        private javax.swing.JLabel bundlerOptionsLabel;
+        private javax.swing.JScrollPane bundlerOptionsScrollPane;
+        private javax.swing.JTextPane bundlerOptionsTextPane;
+        private javax.swing.JButton ccdButton;
+        private javax.swing.JTextArea ccdLabel;
+        private javax.swing.JSeparator horizontalSeparator;
+        private javax.swing.JComboBox imageSizeComboBox;
+        private javax.swing.JLabel imageSizeLabel;
+        private javax.swing.JButton imagesToExistingButton;
+        private javax.swing.JLabel imagesToExistingLabel;
+        private javax.swing.JTextField imagesToExistingTextField;
+        private javax.swing.JButton inputImagesButton;
+        private javax.swing.JLabel inputImagesLabel;
+        private javax.swing.JTextField inputImagesTextField;
+        private javax.swing.JButton runButton;
+        private javax.swing.JLabel sfmTitle;
         // End of variables declaration//GEN-END:variables
 
 }

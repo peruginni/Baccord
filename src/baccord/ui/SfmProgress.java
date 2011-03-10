@@ -27,36 +27,36 @@ public class SfmProgress extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
-                jButton3 = new javax.swing.JButton();
-                jSeparator1 = new javax.swing.JSeparator();
-                labelSearchPhotos = new javax.swing.JLabel();
-                jButton1 = new javax.swing.JButton();
-                jButton4 = new javax.swing.JButton();
-                jTextPane1 = new javax.swing.JTextPane();
+                continueButton = new javax.swing.JButton();
+                horizontalSeparator = new javax.swing.JSeparator();
+                sfmTitle = new javax.swing.JLabel();
+                stopButton = new javax.swing.JButton();
+                browseOutputButton = new javax.swing.JButton();
+                progressTextPane = new javax.swing.JTextPane();
 
                 setName("Form"); // NOI18N
 
                 org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(SfmProgress.class);
-                jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
-                jButton3.setName("jButton3"); // NOI18N
+                continueButton.setText(resourceMap.getString("continueButton.text")); // NOI18N
+                continueButton.setName("continueButton"); // NOI18N
 
-                jSeparator1.setName("jSeparator1"); // NOI18N
+                horizontalSeparator.setName("horizontalSeparator"); // NOI18N
 
-                labelSearchPhotos.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
-                labelSearchPhotos.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
-                labelSearchPhotos.setText(resourceMap.getString("labelSearchPhotos.text")); // NOI18N
-                labelSearchPhotos.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-                labelSearchPhotos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-                labelSearchPhotos.setName("labelSearchPhotos"); // NOI18N
-                labelSearchPhotos.setOpaque(true);
+                sfmTitle.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
+                sfmTitle.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
+                sfmTitle.setText(resourceMap.getString("sfmTitle.text")); // NOI18N
+                sfmTitle.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                sfmTitle.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+                sfmTitle.setName("sfmTitle"); // NOI18N
+                sfmTitle.setOpaque(true);
 
-                jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-                jButton1.setName("jButton1"); // NOI18N
+                stopButton.setText(resourceMap.getString("stopButton.text")); // NOI18N
+                stopButton.setName("stopButton"); // NOI18N
 
-                jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
-                jButton4.setName("jButton4"); // NOI18N
+                browseOutputButton.setText(resourceMap.getString("browseOutputButton.text")); // NOI18N
+                browseOutputButton.setName("browseOutputButton"); // NOI18N
 
-                jTextPane1.setName("jTextPane1"); // NOI18N
+                progressTextPane.setName("progressTextPane"); // NOI18N
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
@@ -65,19 +65,19 @@ public class SfmProgress extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                                        .addComponent(progressTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(sfmTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton1))
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(stopButton))
+                                        .addComponent(browseOutputButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(24, 24, 24))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addContainerGap()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jButton3)
-                                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE))
+                                                .addComponent(continueButton)
+                                                .addComponent(horizontalSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE))
                                         .addContainerGap()))
                 );
                 layout.setVerticalGroup(
@@ -85,31 +85,31 @@ public class SfmProgress extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton1))
+                                        .addComponent(sfmTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(stopButton))
                                 .addGap(14, 14, 14)
-                                .addComponent(jTextPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                                .addComponent(progressTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                                 .addGap(38, 38, 38)
-                                .addComponent(jButton4)
+                                .addComponent(browseOutputButton)
                                 .addGap(28, 28, 28))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addContainerGap(371, Short.MAX_VALUE)
-                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addContainerGap()))
                 );
         }// </editor-fold>//GEN-END:initComponents
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton jButton1;
-        private javax.swing.JButton jButton3;
-        private javax.swing.JButton jButton4;
-        private javax.swing.JSeparator jSeparator1;
-        private javax.swing.JTextPane jTextPane1;
-        private javax.swing.JLabel labelSearchPhotos;
+        private javax.swing.JButton browseOutputButton;
+        private javax.swing.JButton continueButton;
+        private javax.swing.JSeparator horizontalSeparator;
+        private javax.swing.JTextPane progressTextPane;
+        private javax.swing.JLabel sfmTitle;
+        private javax.swing.JButton stopButton;
         // End of variables declaration//GEN-END:variables
 
 }

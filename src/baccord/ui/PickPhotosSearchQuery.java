@@ -27,222 +27,222 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
-                jSeparator2 = new javax.swing.JSeparator();
-                labelDownloadOptions = new javax.swing.JLabel();
-                jPanel3 = new javax.swing.JPanel();
-                jCheckBox1 = new javax.swing.JCheckBox();
-                jTextArea1 = new javax.swing.JTextArea();
-                jPanel1 = new javax.swing.JPanel();
-                jLabel1 = new javax.swing.JLabel();
-                jCheckBox2 = new javax.swing.JCheckBox();
-                jCheckBox3 = new javax.swing.JCheckBox();
-                jCheckBox4 = new javax.swing.JCheckBox();
-                jButton2 = new javax.swing.JButton();
-                jSeparator1 = new javax.swing.JSeparator();
-                jButton3 = new javax.swing.JButton();
-                jButton4 = new javax.swing.JButton();
-                textfieldKeywords = new javax.swing.JTextField();
-                labelKeywords5 = new javax.swing.JLabel();
-                jSpinner4 = new javax.swing.JSpinner();
-                labelKeywords = new javax.swing.JLabel();
-                labelSearchPhotos = new javax.swing.JLabel();
-                jSpinner3 = new javax.swing.JSpinner();
-                textfieldKeywords1 = new javax.swing.JTextField();
-                dropdownSearchEngine = new javax.swing.JComboBox();
-                labelKeywords7 = new javax.swing.JLabel();
-                textfieldKeywords2 = new javax.swing.JTextField();
-                jComboBox2 = new javax.swing.JComboBox();
-                labelKeywords1 = new javax.swing.JLabel();
-                labelKeywords6 = new javax.swing.JLabel();
-                jSpinner1 = new javax.swing.JSpinner();
-                jComboBox1 = new javax.swing.JComboBox();
-                textfieldKeywords3 = new javax.swing.JTextField();
-                jSpinner2 = new javax.swing.JSpinner();
-                jButton1 = new javax.swing.JButton();
-                labelKeywords2 = new javax.swing.JLabel();
-                textfieldKeywords4 = new javax.swing.JTextField();
-                labelKeywords4 = new javax.swing.JLabel();
-                labelKeywords8 = new javax.swing.JLabel();
-                labelKeywords3 = new javax.swing.JLabel();
+                verticalSeparator = new javax.swing.JSeparator();
+                downloadOptionsTitle = new javax.swing.JLabel();
+                siftPanel = new javax.swing.JPanel();
+                siftCheckbox = new javax.swing.JCheckBox();
+                siftLegend = new javax.swing.JTextArea();
+                dimensionsPanel = new javax.swing.JPanel();
+                dimensionsTitle = new javax.swing.JLabel();
+                keepOriginalCheckbox = new javax.swing.JCheckBox();
+                dim1024Checkbox = new javax.swing.JCheckBox();
+                dim800Checkbox = new javax.swing.JCheckBox();
+                newDimensionButton = new javax.swing.JButton();
+                horizontalSeparator = new javax.swing.JSeparator();
+                searchButton = new javax.swing.JButton();
+                downloadProgressButton = new javax.swing.JButton();
+                keywordsLabel = new javax.swing.JLabel();
+                keywordsTextfield = new javax.swing.JTextField();
+                uploadedDateSeparator = new javax.swing.JLabel();
+                uploadedDateTillSpinner = new javax.swing.JSpinner();
+                uploadedDateFromSpinner = new javax.swing.JSpinner();
+                uploadedDateLabel = new javax.swing.JLabel();
+                searchPhotosTitle = new javax.swing.JLabel();
+                searchEngineCombobox = new javax.swing.JComboBox();
+                gpsLatTextfield = new javax.swing.JTextField();
+                gpsLonTextfield = new javax.swing.JTextField();
+                gpsLabel = new javax.swing.JLabel();
+                gpsRadiusTextfield = new javax.swing.JTextField();
+                contextLabel = new javax.swing.JLabel();
+                contextCombobox = new javax.swing.JComboBox();
+                licenseLabel = new javax.swing.JLabel();
+                licenseCombobox = new javax.swing.JComboBox();
+                takenDateFromSpinner = new javax.swing.JSpinner();
+                takenDateTillSpinner = new javax.swing.JSpinner();
+                takenDateLabel = new javax.swing.JLabel();
+                takenDateSeparator = new javax.swing.JLabel();
+                downloadFolderButton = new javax.swing.JButton();
+                downloadFolderTextfield = new javax.swing.JTextField();
+                downloadFolderLabel = new javax.swing.JLabel();
 
                 setName("Form"); // NOI18N
                 setPreferredSize(new java.awt.Dimension(810, 441));
 
-                jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-                jSeparator2.setName("jSeparator2"); // NOI18N
+                verticalSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
+                verticalSeparator.setName("verticalSeparator"); // NOI18N
 
                 org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(PickPhotosSearchQuery.class);
-                labelDownloadOptions.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
-                labelDownloadOptions.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
-                labelDownloadOptions.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                labelDownloadOptions.setText(resourceMap.getString("labelDownloadOptions.text")); // NOI18N
-                labelDownloadOptions.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-                labelDownloadOptions.setName("labelDownloadOptions"); // NOI18N
-                labelDownloadOptions.setOpaque(true);
+                downloadOptionsTitle.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
+                downloadOptionsTitle.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
+                downloadOptionsTitle.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+                downloadOptionsTitle.setText(resourceMap.getString("downloadOptionsTitle.text")); // NOI18N
+                downloadOptionsTitle.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                downloadOptionsTitle.setName("downloadOptionsTitle"); // NOI18N
+                downloadOptionsTitle.setOpaque(true);
 
-                jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-                jPanel3.setName("jPanel3"); // NOI18N
+                siftPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+                siftPanel.setName("siftPanel"); // NOI18N
 
-                jCheckBox1.setText(resourceMap.getString("jCheckBox1.text")); // NOI18N
-                jCheckBox1.setMargin(new java.awt.Insets(1, 0, 0, 1));
-                jCheckBox1.setName("jCheckBox1"); // NOI18N
+                siftCheckbox.setText(resourceMap.getString("siftCheckbox.text")); // NOI18N
+                siftCheckbox.setMargin(new java.awt.Insets(1, 0, 0, 1));
+                siftCheckbox.setName("siftCheckbox"); // NOI18N
 
-                jTextArea1.setColumns(20);
-                jTextArea1.setFont(resourceMap.getFont("jTextArea1.font")); // NOI18N
-                jTextArea1.setLineWrap(true);
-                jTextArea1.setRows(3);
-                jTextArea1.setText(resourceMap.getString("jTextArea1.text")); // NOI18N
-                jTextArea1.setBorder(null);
-                jTextArea1.setName("jTextArea1"); // NOI18N
-                jTextArea1.setOpaque(false);
+                siftLegend.setColumns(20);
+                siftLegend.setFont(resourceMap.getFont("siftLegend.font")); // NOI18N
+                siftLegend.setLineWrap(true);
+                siftLegend.setRows(3);
+                siftLegend.setText(resourceMap.getString("siftLegend.text")); // NOI18N
+                siftLegend.setBorder(null);
+                siftLegend.setName("siftLegend"); // NOI18N
+                siftLegend.setOpaque(false);
 
-                javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-                jPanel3.setLayout(jPanel3Layout);
-                jPanel3Layout.setHorizontalGroup(
-                        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jCheckBox1)
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
+                javax.swing.GroupLayout siftPanelLayout = new javax.swing.GroupLayout(siftPanel);
+                siftPanel.setLayout(siftPanelLayout);
+                siftPanelLayout.setHorizontalGroup(
+                        siftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(siftPanelLayout.createSequentialGroup()
+                                .addGroup(siftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(siftCheckbox)
+                                        .addGroup(siftPanelLayout.createSequentialGroup()
                                                 .addGap(28, 28, 28)
-                                                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(siftLegend, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap(34, Short.MAX_VALUE))
                 );
-                jPanel3Layout.setVerticalGroup(
-                        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jCheckBox1)
+                siftPanelLayout.setVerticalGroup(
+                        siftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(siftPanelLayout.createSequentialGroup()
+                                .addComponent(siftCheckbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(siftLegend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(15, Short.MAX_VALUE))
                 );
 
-                jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-                jPanel1.setName("jPanel1"); // NOI18N
+                dimensionsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+                dimensionsPanel.setName("dimensionsPanel"); // NOI18N
 
-                jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-                jLabel1.setName("jLabel1"); // NOI18N
+                dimensionsTitle.setText(resourceMap.getString("dimensionsTitle.text")); // NOI18N
+                dimensionsTitle.setName("dimensionsTitle"); // NOI18N
 
-                jCheckBox2.setText(resourceMap.getString("jCheckBox2.text")); // NOI18N
-                jCheckBox2.setName("jCheckBox2"); // NOI18N
+                keepOriginalCheckbox.setText(resourceMap.getString("keepOriginalCheckbox.text")); // NOI18N
+                keepOriginalCheckbox.setName("keepOriginalCheckbox"); // NOI18N
 
-                jCheckBox3.setText(resourceMap.getString("jCheckBox3.text")); // NOI18N
-                jCheckBox3.setName("jCheckBox3"); // NOI18N
+                dim1024Checkbox.setText(resourceMap.getString("dim1024Checkbox.text")); // NOI18N
+                dim1024Checkbox.setName("dim1024Checkbox"); // NOI18N
 
-                jCheckBox4.setText(resourceMap.getString("jCheckBox4.text")); // NOI18N
-                jCheckBox4.setName("jCheckBox4"); // NOI18N
+                dim800Checkbox.setText(resourceMap.getString("dim800Checkbox.text")); // NOI18N
+                dim800Checkbox.setName("dim800Checkbox"); // NOI18N
 
-                jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
-                jButton2.setName("jButton2"); // NOI18N
+                newDimensionButton.setText(resourceMap.getString("newDimensionButton.text")); // NOI18N
+                newDimensionButton.setName("newDimensionButton"); // NOI18N
 
-                javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-                jPanel1.setLayout(jPanel1Layout);
-                jPanel1Layout.setHorizontalGroup(
-                        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jCheckBox2)
-                                        .addComponent(jCheckBox3)
-                                        .addComponent(jCheckBox4)
-                                        .addComponent(jButton2))
+                javax.swing.GroupLayout dimensionsPanelLayout = new javax.swing.GroupLayout(dimensionsPanel);
+                dimensionsPanel.setLayout(dimensionsPanelLayout);
+                dimensionsPanelLayout.setHorizontalGroup(
+                        dimensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(dimensionsPanelLayout.createSequentialGroup()
+                                .addGroup(dimensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(dimensionsTitle)
+                                        .addComponent(keepOriginalCheckbox)
+                                        .addComponent(dim1024Checkbox)
+                                        .addComponent(dim800Checkbox)
+                                        .addComponent(newDimensionButton))
                                 .addContainerGap(78, Short.MAX_VALUE))
                 );
-                jPanel1Layout.setVerticalGroup(
-                        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                dimensionsPanelLayout.setVerticalGroup(
+                        dimensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(dimensionsPanelLayout.createSequentialGroup()
+                                .addComponent(dimensionsTitle)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox2)
+                                .addComponent(keepOriginalCheckbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox3)
+                                .addComponent(dim1024Checkbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox4)
+                                .addComponent(dim800Checkbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                                .addComponent(jButton2))
+                                .addComponent(newDimensionButton))
                 );
 
-                jSeparator1.setName("jSeparator1"); // NOI18N
+                horizontalSeparator.setName("horizontalSeparator"); // NOI18N
 
-                jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
-                jButton3.setName("jButton3"); // NOI18N
+                searchButton.setText(resourceMap.getString("searchButton.text")); // NOI18N
+                searchButton.setName("searchButton"); // NOI18N
 
-                jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
-                jButton4.setName("jButton4"); // NOI18N
+                downloadProgressButton.setText(resourceMap.getString("downloadProgressButton.text")); // NOI18N
+                downloadProgressButton.setName("downloadProgressButton"); // NOI18N
 
-                textfieldKeywords.setText(resourceMap.getString("textfieldKeywords.text")); // NOI18N
-                textfieldKeywords.setName("textfieldKeywords"); // NOI18N
+                keywordsLabel.setText(resourceMap.getString("keywordsLabel.text")); // NOI18N
+                keywordsLabel.setName("keywordsLabel"); // NOI18N
 
-                labelKeywords5.setText(resourceMap.getString("labelKeywords5.text")); // NOI18N
-                labelKeywords5.setName("labelKeywords5"); // NOI18N
+                keywordsTextfield.setText(resourceMap.getString("keywordsTextfield.text")); // NOI18N
+                keywordsTextfield.setName("keywordsTextfield"); // NOI18N
 
-                jSpinner4.setModel(new javax.swing.SpinnerDateModel());
-                jSpinner4.setName("jSpinner4"); // NOI18N
+                uploadedDateSeparator.setText(resourceMap.getString("uploadedDateSeparator.text")); // NOI18N
+                uploadedDateSeparator.setName("uploadedDateSeparator"); // NOI18N
 
-                labelKeywords.setText(resourceMap.getString("labelKeywords.text")); // NOI18N
-                labelKeywords.setName("labelKeywords"); // NOI18N
+                uploadedDateTillSpinner.setModel(new javax.swing.SpinnerDateModel());
+                uploadedDateTillSpinner.setName("uploadedDateTillSpinner"); // NOI18N
 
-                labelSearchPhotos.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
-                labelSearchPhotos.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
-                labelSearchPhotos.setText(resourceMap.getString("labelSearchPhotos.text")); // NOI18N
-                labelSearchPhotos.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-                labelSearchPhotos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-                labelSearchPhotos.setName("labelSearchPhotos"); // NOI18N
-                labelSearchPhotos.setOpaque(true);
+                uploadedDateFromSpinner.setModel(new javax.swing.SpinnerDateModel());
+                uploadedDateFromSpinner.setName("uploadedDateFromSpinner"); // NOI18N
 
-                jSpinner3.setModel(new javax.swing.SpinnerDateModel());
-                jSpinner3.setName("jSpinner3"); // NOI18N
+                uploadedDateLabel.setText(resourceMap.getString("uploadedDateLabel.text")); // NOI18N
+                uploadedDateLabel.setName("uploadedDateLabel"); // NOI18N
 
-                textfieldKeywords1.setText(resourceMap.getString("textfieldKeywords1.text")); // NOI18N
-                textfieldKeywords1.setName("textfieldKeywords1"); // NOI18N
+                searchPhotosTitle.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
+                searchPhotosTitle.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
+                searchPhotosTitle.setText(resourceMap.getString("searchPhotosTitle.text")); // NOI18N
+                searchPhotosTitle.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                searchPhotosTitle.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+                searchPhotosTitle.setName("searchPhotosTitle"); // NOI18N
+                searchPhotosTitle.setOpaque(true);
 
-                dropdownSearchEngine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "via Flickr", "via Google Image Search" }));
-                dropdownSearchEngine.setName("dropdownSearchEngine"); // NOI18N
+                searchEngineCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "via Flickr", "via Google Image Search" }));
+                searchEngineCombobox.setName("searchEngineCombobox"); // NOI18N
 
-                labelKeywords7.setText(resourceMap.getString("labelKeywords7.text")); // NOI18N
-                labelKeywords7.setName("labelKeywords7"); // NOI18N
+                gpsLatTextfield.setText(resourceMap.getString("gpsLatTextfield.text")); // NOI18N
+                gpsLatTextfield.setName("gpsLatTextfield"); // NOI18N
 
-                textfieldKeywords2.setText(resourceMap.getString("textfieldKeywords2.text")); // NOI18N
-                textfieldKeywords2.setName("textfieldKeywords2"); // NOI18N
+                gpsLonTextfield.setText(resourceMap.getString("gpsLonTextfield.text")); // NOI18N
+                gpsLonTextfield.setName("gpsLonTextfield"); // NOI18N
 
-                jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "all", "indoor", "outdoor" }));
-                jComboBox2.setName("jComboBox2"); // NOI18N
+                gpsLabel.setText(resourceMap.getString("gpsLabel.text")); // NOI18N
+                gpsLabel.setName("gpsLabel"); // NOI18N
 
-                labelKeywords1.setText(resourceMap.getString("labelKeywords1.text")); // NOI18N
-                labelKeywords1.setName("labelKeywords1"); // NOI18N
+                gpsRadiusTextfield.setText(resourceMap.getString("gpsRadiusTextfield.text")); // NOI18N
+                gpsRadiusTextfield.setName("gpsRadiusTextfield"); // NOI18N
 
-                labelKeywords6.setText(resourceMap.getString("labelKeywords6.text")); // NOI18N
-                labelKeywords6.setName("labelKeywords6"); // NOI18N
+                contextLabel.setText(resourceMap.getString("contextLabel.text")); // NOI18N
+                contextLabel.setName("contextLabel"); // NOI18N
 
-                jSpinner1.setModel(new javax.swing.SpinnerDateModel());
-                jSpinner1.setName("jSpinner1"); // NOI18N
+                contextCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "all", "indoor", "outdoor" }));
+                contextCombobox.setName("contextCombobox"); // NOI18N
 
-                jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Creative Commons" }));
-                jComboBox1.setName("jComboBox1"); // NOI18N
+                licenseLabel.setText(resourceMap.getString("licenseLabel.text")); // NOI18N
+                licenseLabel.setName("licenseLabel"); // NOI18N
 
-                textfieldKeywords3.setText(resourceMap.getString("textfieldKeywords3.text")); // NOI18N
-                textfieldKeywords3.setName("textfieldKeywords3"); // NOI18N
+                licenseCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Creative Commons" }));
+                licenseCombobox.setName("licenseCombobox"); // NOI18N
 
-                jSpinner2.setModel(new javax.swing.SpinnerDateModel());
-                jSpinner2.setName("jSpinner2"); // NOI18N
+                takenDateFromSpinner.setModel(new javax.swing.SpinnerDateModel());
+                takenDateFromSpinner.setName("takenDateFromSpinner"); // NOI18N
 
-                jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-                jButton1.setName("jButton1"); // NOI18N
+                takenDateTillSpinner.setModel(new javax.swing.SpinnerDateModel());
+                takenDateTillSpinner.setName("takenDateTillSpinner"); // NOI18N
 
-                labelKeywords2.setText(resourceMap.getString("labelKeywords2.text")); // NOI18N
-                labelKeywords2.setName("labelKeywords2"); // NOI18N
+                takenDateLabel.setText(resourceMap.getString("takenDateLabel.text")); // NOI18N
+                takenDateLabel.setName("takenDateLabel"); // NOI18N
 
-                textfieldKeywords4.setText(resourceMap.getString("textfieldKeywords4.text")); // NOI18N
-                textfieldKeywords4.setName("textfieldKeywords4"); // NOI18N
+                takenDateSeparator.setText(resourceMap.getString("takenDateSeparator.text")); // NOI18N
+                takenDateSeparator.setName("takenDateSeparator"); // NOI18N
 
-                labelKeywords4.setText(resourceMap.getString("labelKeywords4.text")); // NOI18N
-                labelKeywords4.setName("labelKeywords4"); // NOI18N
+                downloadFolderButton.setText(resourceMap.getString("downloadFolderButton.text")); // NOI18N
+                downloadFolderButton.setName("downloadFolderButton"); // NOI18N
 
-                labelKeywords8.setText(resourceMap.getString("labelKeywords8.text")); // NOI18N
-                labelKeywords8.setName("labelKeywords8"); // NOI18N
+                downloadFolderTextfield.setText(resourceMap.getString("downloadFolderTextfield.text")); // NOI18N
+                downloadFolderTextfield.setName("downloadFolderTextfield"); // NOI18N
 
-                labelKeywords3.setText(resourceMap.getString("labelKeywords3.text")); // NOI18N
-                labelKeywords3.setName("labelKeywords3"); // NOI18N
+                downloadFolderLabel.setText(resourceMap.getString("downloadFolderLabel.text")); // NOI18N
+                downloadFolderLabel.setName("downloadFolderLabel"); // NOI18N
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
@@ -252,65 +252,65 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jButton4)
+                                                .addComponent(downloadProgressButton)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 453, Short.MAX_VALUE)
-                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+                                                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                .addComponent(labelSearchPhotos, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                                                                .addComponent(searchPhotosTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(dropdownSearchEngine, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(searchEngineCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                .addComponent(labelKeywords6)
+                                                                .addComponent(licenseLabel)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(licenseCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                                                                .addComponent(labelKeywords7)
+                                                                .addComponent(contextLabel)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(contextCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(labelKeywords8)
+                                                                .addComponent(downloadFolderLabel)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textfieldKeywords4, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                                                                .addComponent(downloadFolderTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(downloadFolderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(labelKeywords)
+                                                                .addComponent(keywordsLabel)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textfieldKeywords, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+                                                                .addComponent(keywordsTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(labelKeywords1)
+                                                                .addComponent(gpsLabel)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textfieldKeywords1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(gpsLatTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textfieldKeywords2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(gpsLonTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textfieldKeywords3, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                                                                .addComponent(gpsRadiusTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addComponent(labelKeywords2, javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(labelKeywords4, javax.swing.GroupLayout.Alignment.LEADING))
+                                                                        .addComponent(takenDateLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(uploadedDateLabel, javax.swing.GroupLayout.Alignment.LEADING))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                                        .addComponent(jSpinner1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jSpinner3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(takenDateFromSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(uploadedDateFromSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(labelKeywords5)
-                                                                        .addComponent(labelKeywords3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(uploadedDateSeparator)
+                                                                        .addComponent(takenDateSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                        .addComponent(jSpinner2)
-                                                                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                                        .addComponent(takenDateTillSpinner)
+                                                                        .addComponent(uploadedDateTillSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(verticalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(labelDownloadOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                        .addComponent(downloadOptionsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(dimensionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(siftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addContainerGap())
                 );
                 layout.setVerticalGroup(
@@ -319,109 +319,109 @@ public class PickPhotosSearchQuery extends javax.swing.JPanel {
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(labelDownloadOptions)
+                                                .addComponent(downloadOptionsTitle)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(siftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(12, 12, 12)
-                                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(dimensionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(labelSearchPhotos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(dropdownSearchEngine, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(searchPhotosTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(searchEngineCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(verticalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(labelKeywords)
-                                                                        .addComponent(textfieldKeywords, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(keywordsLabel)
+                                                                        .addComponent(keywordsTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(labelKeywords1)
-                                                                        .addComponent(textfieldKeywords1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(textfieldKeywords2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(textfieldKeywords3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(gpsLabel)
+                                                                        .addComponent(gpsLatTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(gpsLonTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(gpsRadiusTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                         .addGroup(layout.createSequentialGroup()
                                                                                 .addGap(20, 20, 20)
-                                                                                .addComponent(labelKeywords2)
+                                                                                .addComponent(takenDateLabel)
                                                                                 .addGap(28, 28, 28)
-                                                                                .addComponent(labelKeywords4))
+                                                                                .addComponent(uploadedDateLabel))
                                                                         .addGroup(layout.createSequentialGroup()
                                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                         .addGroup(layout.createSequentialGroup()
                                                                                                 .addGap(11, 11, 11)
-                                                                                                .addComponent(labelKeywords3))
-                                                                                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                                .addComponent(takenDateSeparator))
+                                                                                        .addComponent(takenDateTillSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(takenDateFromSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(uploadedDateFromSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                         .addGroup(layout.createSequentialGroup()
                                                                                                 .addGap(9, 9, 9)
-                                                                                                .addComponent(labelKeywords5))
-                                                                                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                                                                .addComponent(uploadedDateSeparator))
+                                                                                        .addComponent(uploadedDateTillSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                                 .addGap(18, 18, 18)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(labelKeywords6)
-                                                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(labelKeywords7))
+                                                                        .addComponent(licenseLabel)
+                                                                        .addComponent(licenseCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(contextCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(contextLabel))
                                                                 .addGap(14, 14, 14)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(textfieldKeywords4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(labelKeywords8)
-                                                                        .addComponent(jButton1))))))
+                                                                        .addComponent(downloadFolderTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(downloadFolderLabel)
+                                                                        .addComponent(downloadFolderButton))))))
                                 .addGap(18, 18, 18)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(horizontalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton4)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(downloadProgressButton)
+                                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
         }// </editor-fold>//GEN-END:initComponents
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JComboBox dropdownSearchEngine;
-        private javax.swing.JButton jButton1;
-        private javax.swing.JButton jButton2;
-        private javax.swing.JButton jButton3;
-        private javax.swing.JButton jButton4;
-        private javax.swing.JCheckBox jCheckBox1;
-        private javax.swing.JCheckBox jCheckBox2;
-        private javax.swing.JCheckBox jCheckBox3;
-        private javax.swing.JCheckBox jCheckBox4;
-        private javax.swing.JComboBox jComboBox1;
-        private javax.swing.JComboBox jComboBox2;
-        private javax.swing.JLabel jLabel1;
-        private javax.swing.JPanel jPanel1;
-        private javax.swing.JPanel jPanel3;
-        private javax.swing.JSeparator jSeparator1;
-        private javax.swing.JSeparator jSeparator2;
-        private javax.swing.JSpinner jSpinner1;
-        private javax.swing.JSpinner jSpinner2;
-        private javax.swing.JSpinner jSpinner3;
-        private javax.swing.JSpinner jSpinner4;
-        private javax.swing.JTextArea jTextArea1;
-        private javax.swing.JLabel labelDownloadOptions;
-        private javax.swing.JLabel labelKeywords;
-        private javax.swing.JLabel labelKeywords1;
-        private javax.swing.JLabel labelKeywords2;
-        private javax.swing.JLabel labelKeywords3;
-        private javax.swing.JLabel labelKeywords4;
-        private javax.swing.JLabel labelKeywords5;
-        private javax.swing.JLabel labelKeywords6;
-        private javax.swing.JLabel labelKeywords7;
-        private javax.swing.JLabel labelKeywords8;
-        private javax.swing.JLabel labelSearchPhotos;
-        private javax.swing.JTextField textfieldKeywords;
-        private javax.swing.JTextField textfieldKeywords1;
-        private javax.swing.JTextField textfieldKeywords2;
-        private javax.swing.JTextField textfieldKeywords3;
-        private javax.swing.JTextField textfieldKeywords4;
+        private javax.swing.JComboBox contextCombobox;
+        private javax.swing.JLabel contextLabel;
+        private javax.swing.JCheckBox dim1024Checkbox;
+        private javax.swing.JCheckBox dim800Checkbox;
+        private javax.swing.JPanel dimensionsPanel;
+        private javax.swing.JLabel dimensionsTitle;
+        private javax.swing.JButton downloadFolderButton;
+        private javax.swing.JLabel downloadFolderLabel;
+        private javax.swing.JTextField downloadFolderTextfield;
+        private javax.swing.JLabel downloadOptionsTitle;
+        private javax.swing.JButton downloadProgressButton;
+        private javax.swing.JLabel gpsLabel;
+        private javax.swing.JTextField gpsLatTextfield;
+        private javax.swing.JTextField gpsLonTextfield;
+        private javax.swing.JTextField gpsRadiusTextfield;
+        private javax.swing.JSeparator horizontalSeparator;
+        private javax.swing.JCheckBox keepOriginalCheckbox;
+        private javax.swing.JLabel keywordsLabel;
+        private javax.swing.JTextField keywordsTextfield;
+        private javax.swing.JComboBox licenseCombobox;
+        private javax.swing.JLabel licenseLabel;
+        private javax.swing.JButton newDimensionButton;
+        private javax.swing.JButton searchButton;
+        private javax.swing.JComboBox searchEngineCombobox;
+        private javax.swing.JLabel searchPhotosTitle;
+        private javax.swing.JCheckBox siftCheckbox;
+        private javax.swing.JTextArea siftLegend;
+        private javax.swing.JPanel siftPanel;
+        private javax.swing.JSpinner takenDateFromSpinner;
+        private javax.swing.JLabel takenDateLabel;
+        private javax.swing.JLabel takenDateSeparator;
+        private javax.swing.JSpinner takenDateTillSpinner;
+        private javax.swing.JSpinner uploadedDateFromSpinner;
+        private javax.swing.JLabel uploadedDateLabel;
+        private javax.swing.JLabel uploadedDateSeparator;
+        private javax.swing.JSpinner uploadedDateTillSpinner;
+        private javax.swing.JSeparator verticalSeparator;
         // End of variables declaration//GEN-END:variables
 
 }
