@@ -4,6 +4,7 @@ package baccord.business.downloader;
 import baccord.business.BaseBusiness;
 import baccord.exceptions.CannotCreateDirectoryException;
 import baccord.exceptions.PathMustNotBeDirectoryException;
+import baccord.tools.FileHelper;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,7 +24,7 @@ import java.util.logging.Logger;
  */
 public class BasicDownloadManager extends BaseBusiness implements DownloadManager, Runnable
 {
-	private List<String> downloadedUrls;
+	private List<String> urls;
 	private int currentUrlIndex;
 	private String downloadDirectory;
 	private boolean isDownloading;
@@ -33,7 +34,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 
 	public BasicDownloadManager()
 	{
-		downloadedUrls = new LinkedList<String>();
+		urls = new LinkedList<String>();
 	}
 
 	public void setDownloadDirectory(String path)
@@ -48,17 +49,17 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 
 	public void addUrl(String url)
 	{
-		downloadedUrls.add(url);
+		urls.add(url);
 	}
 
 	public void removeUrl(String url)
 	{
-		downloadedUrls.remove(url);
+		urls.remove(url);
 	}
 
-	public List<String> getDownloadedUrls()
+	public List<String> getAllUrls()
 	{
-		return downloadedUrls;
+		return urls;
 	}
 
 	public void startDownloading()
@@ -90,78 +91,56 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 
 	public void run()
 	{
-		try {
+		currentUrlIndex = 0;
 
-			// while isdownloading
+		while(isDownloading) {
 
+			if(currentUrlIndex >= urls.size())
 
-			// partialy inspired by http://www.java2s.com/Tutorial/Java/0320__Network/SavebinaryfilefromURL.htm
-			// download bytes from internet
-			// write bytes to file
-			URL url = new URL(downloadedUrls.get(currentUrlIndex));
-			URLConnection urlConnection = url.openConnection();
-			int contentLength = urlConnection.getContentLength();
+			try {
+				// inspired by http://www.java2s.com/Tutorial/Java/0320__Network/SavebinaryfilefromURL.htm
 
-			InputStream raw = urlConnection.getInputStream();
-			InputStream in = new BufferedInputStream(raw);
-			byte[] data = new byte[contentLength];
+				URL url = new URL(urls.get(currentUrlIndex));
+				URLConnection urlConnection = url.openConnection();
+				int contentLength = urlConnection.getContentLength();
 
-			int bytesRead = 0;
-			int offset = 0;
-			while (offset < contentLength) {
-				bytesRead = in.read(data, offset, data.length - offset);
-				if(bytesRead == -1) break;
-				offset += bytesRead;
+				InputStream raw = urlConnection.getInputStream();
+				InputStream in = new BufferedInputStream(raw);
+				byte[] data = new byte[contentLength];
+
+				int bytesRead = 0;
+				int offset = 0;
+				while (offset < contentLength) {
+					bytesRead = in.read(data, offset, data.length - offset);
+					if(bytesRead == -1) break;
+					offset += bytesRead;
+				}
+				in.close();
+
+				if(offset != contentLength) {
+					throw new IOException("Downloaded only "+offset+" bytes, while expected "+contentLength+" bytes");
+				}
+
+				String filename = FileHelper.getFilenameFromUrl(url.getFile());
+				filename = FileHelper.generateUniqueFilename(downloadDirectory, filename);
+				String downloadedFilename = FileHelper.getAbsoluteFilePath(downloadDirectory, filename);
+
+				File downloadedFile = new File(downloadedFilename);
+				downloadedFile.createNewFile();
+
+				FileOutputStream out = new FileOutputStream(downloadedFile);
+				out.write(data);
+				out.flush();
+				out.close();
+
+				currentUrlIndex++;
+
+			} catch (MalformedURLException ex) {
+				logger.log(Level.SEVERE, null, ex);
+			} catch (IOException ex) {
+				logger.log(Level.SEVERE, null, ex);
 			}
-			in.close();
 
-			if(offset != contentLength) {
-				throw new IOException("During downloading read only "+offset+" bytes, while expected "+contentLength+" bytes");
-			}
-
-			String filename = url.getFile();
-			filename = filename.substring(filename.lastIndexOf('/')+1);
-
-			// check if unique name in target folder
-			FileOutputStream out = new FileOutputStream(filename);
-			out.write(data);
-			out.flush();
-			out.close();
-			
-			/*
-			URL u = new URL("http://www.java2s.com/binary.dat");
-			URLConnection uc = u.openConnection();
-			String contentType = uc.getContentType();
-			int contentLength = uc.getContentLength();
-			if (contentType.startsWith("text/") || contentLength == -1) {
-			throw new IOException("This is not a binary file.");
-			}
-			InputStream raw = uc.getInputStream();
-			InputStream in = new BufferedInputStream(raw);
-			byte[] data = new byte[contentLength];
-			int bytesRead = 0;
-			int offset = 0;
-			while (offset < contentLength) {
-			bytesRead = in.read(data, offset, data.length - offset);
-			if (bytesRead == -1)
-			break;
-			offset += bytesRead;
-			}
-			in.close();
-			if (offset != contentLength) {
-			throw new IOException("Only read " + offset + " bytes; Expected " + contentLength + " bytes");
-			}
-			String filename = u.getFile().substring(filename.lastIndexOf('/') + 1);
-			FileOutputStream out = new FileOutputStream(filename);
-			out.write(data);
-			out.flush();
-			out.close();
-			 *
-			 */
-		} catch (MalformedURLException ex) {
-			logger.log(Level.SEVERE, null, ex);
-		} catch (IOException ex) {
-			logger.log(Level.SEVERE, null, ex);
 		}
 
 	}

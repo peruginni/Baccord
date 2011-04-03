@@ -17,7 +17,7 @@ public interface DownloadManager
 
 	public void addUrl(String url);
 	public void removeUrl(String url);
-	public List<String> getDownloadedUrls();
+	public List<String> getAllUrls();
 
 	public void startDownloading();
 	public void stopDownloading();

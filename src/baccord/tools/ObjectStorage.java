@@ -3,6 +3,7 @@ package baccord.tools;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -21,9 +22,15 @@ public class ObjectStorage
 {
 	private static final Logger logger = Logger.getLogger(ObjectStorage.class.getPackage().getName());
 
-	public static void save(Object object, String path) throws FileNotFoundException
+	public static void save(Object object, String path)
 	{
 		try {
+			File file = new File(path);
+			if(!file.exists()) {
+				file.createNewFile();
+			}
+
+
 			FileOutputStream fout = new FileOutputStream(path);
 			BufferedOutputStream bout = new BufferedOutputStream(fout);
 			ObjectOutputStream oout = new ObjectOutputStream(bout);
@@ -35,7 +42,6 @@ public class ObjectStorage
 			}
 		} catch (FileNotFoundException ex) {
 			logger.log(Level.SEVERE, "File not found", ex);
-			throw ex;
 		} catch (IOException ex) {
 			logger.log(Level.SEVERE, "Cannot perform input", ex);
 		}
