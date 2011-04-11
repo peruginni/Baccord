@@ -9,10 +9,24 @@ import java.io.File;
  */
 public class FileHelper
 {
+	public static String getSystemIndependentPath(String ... dirs)
+	{
+		StringBuilder path = new StringBuilder();
+
+		for(int i = 0; i < dirs.length; i++) {
+			path.append(dirs[i]);
+			if(i < dirs.length - 1) {
+				path.append(File.separator);
+			}
+		}
+
+		return path.toString();
+	}
+
 	public static String getAbsoluteFilePath(String baseDirectory, String filename)
 	{
 		StringBuilder path = new StringBuilder(baseDirectory);
-		path.append(File.pathSeparator);
+		path.append(File.separator);
 		path.append(filename);
 		return path.toString();
 	}
@@ -60,7 +74,7 @@ public class FileHelper
 
 	public static String getFilename(String path)
 	{
-		return getFilename(path, File.pathSeparator);
+		return getFilename(path, File.separator);
 	}
 
 	public static String getFilename(String path, String separator)

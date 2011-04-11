@@ -2,12 +2,6 @@
 package baccord.tools;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import java.io.File;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -19,41 +13,34 @@ import static org.junit.Assert.*;
 public class FileHelperTest
 {
 
-	@BeforeClass
-	public static void setUpClass() throws Exception
+	public static String getSystemIndependentPath(String[] args)
 	{
-	}
+		StringBuilder path = new StringBuilder();
 
-	@AfterClass
-	public static void tearDownClass() throws Exception
-	{
-	}
-
-	@Before
-	public void setUp() {
-	}
-
-	@After
-	public void tearDown() {
-	}
-
-	private void createFile(String filename)
-	{
-		File file = new File(filename);
-		if(!file.exists()) {
-			try {
-				file.createNewFile();
-			} catch (IOException ex) {
-				Logger.getLogger(FileHelperTest.class.getName()).log(Level.SEVERE, null, ex);
+		for(int i = 0; i < args.length; i++) {
+			path.append(args[i]);
+			if(i < args.length - 1) {
+				path.append(File.separator);
 			}
 		}
+
+		return path.toString();
 	}
 
-	private void removeFile(String filename)
+	/**
+	 * Test of getAbsoluteFilePath method, of class FileHelper.
+	 */
+	@Test
+	public void testGetSystemIndependentPath()
 	{
-		File file = new File(filename);
-		file.delete();
+		System.out.println("getSystemIndependentPath");
+		String[] dir = {"deep","dir","ectory"};
+
+		String expResult = dir[0] + File.separator + dir[1] + File.separator + dir[2];
+		String result = FileHelper.getSystemIndependentPath(dir[0], dir[1], dir[2]);
+		assertEquals(expResult, result);
 	}
+
 
 	/**
 	 * Test of getAbsoluteFilePath method, of class FileHelper.
@@ -64,7 +51,7 @@ public class FileHelperTest
 		System.out.println("getAbsoluteFilePath");
 		String baseDirectory = "deep/test/directory";
 		String filename = "getAbsolutePath.jpg";
-		String expResult = baseDirectory + File.pathSeparator + filename;
+		String expResult = baseDirectory + File.separator + filename;
 		String result = FileHelper.getAbsoluteFilePath(baseDirectory, filename);
 		assertEquals(expResult, result);
 	}
@@ -129,7 +116,7 @@ public class FileHelperTest
 	{
 		System.out.println("getFilename");
 		String filename = "test.jpg";
-		String path = "dir" + File.pathSeparator + filename;
+		String path = "dir" + File.separator + filename;
 		String expResult = filename;
 		String result = FileHelper.getFilename(path);
 		assertEquals(expResult, result);
@@ -143,8 +130,8 @@ public class FileHelperTest
 	{
 		System.out.println("getFilename");
 		String filename = "test.jpg";
-		String path = "dir" + File.pathSeparator + filename;
-		String separator = File.pathSeparator;
+		String path = "dir" + File.separator + filename;
+		String separator = File.separator;
 		String expResult = filename;
 		String result = FileHelper.getFilename(path, separator);
 		assertEquals(expResult, result);

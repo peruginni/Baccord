@@ -19,51 +19,73 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * 
+ * Basic implementation of download manager.
+ *
+ * Manager responsible for downloading files from internet. User adds urls
+ * to download into the queue. For downloading uses one extra thread.
+ *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class BasicDownloadManager extends BaseBusiness implements DownloadManager, Runnable
 {
-	private List<String> urls;
-	private int currentUrlIndex;
-	private String downloadDirectory;
-	private boolean isDownloading;
+	private List<DownloadItem> items;
+	private int currentUrlIndex = 0;
+	private String downloadDirectory = "";
+	private boolean isDownloading = false;
 	private Thread downloadingThread;
 
 	private static final Logger logger = Logger.getLogger(BasicDownloadManager.class.getName());
 
 	public BasicDownloadManager()
 	{
-		urls = new LinkedList<String>();
+		items = new LinkedList<DownloadItem>();
 	}
 
-	public void setDownloadDirectory(String path)
+	public void setDownloadDirectory(String path) throws CannotCreateDirectoryException, PathMustNotBeDirectoryException
 	{
+		File directory = new File(path);
+
+		if(!directory.exists()) {
+			if(!directory.mkdirs()) {
+				throw new CannotCreateDirectoryException();
+			}
+		} else {
+			if(directory.isFile()) {
+				throw new PathMustNotBeDirectoryException();
+			}
+		}
+
 		downloadDirectory = path;
 	}
-
+	
 	public String getDownloadDirectory()
 	{
 		return downloadDirectory;
 	}
 
-	public void addUrl(String url)
+	public void add(DownloadItem item)
 	{
-		urls.add(url);
+		item.setTarget(downloadDirectory);
+		items.add(item);
 	}
 
-	public void removeUrl(String url)
+	public void remove(DownloadItem item)
 	{
-		urls.remove(url);
+		items.remove(item);
 	}
 
-	public List<String> getAllUrls()
+	public List<DownloadItem> getAll()
 	{
-		return urls;
+		return items;
+	}
+
+	public boolean isDownloading()
+	{
+		return isDownloading;
 	}
 
 	public void startDownloading()
-	{	
+	{
 		isDownloading = true;
 		downloadingThread = new Thread(this);
 		downloadingThread.start();
@@ -74,18 +96,61 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 		isDownloading = false;
 	}
 
-	public void prepareDownloadDirectory() throws CannotCreateDirectoryException, PathMustNotBeDirectoryException
+	public void downloadSingle(DownloadItem item)
 	{
-		File directory = new File(downloadDirectory);
-		
-		if(!directory.exists()) {
-			if(directory.mkdirs()) {
-				throw new CannotCreateDirectoryException();
+		try {
+			// inspired by http://www.java2s.com/Tutorial/Java/0320__Network/SavebinaryfilefromURL.htm
+
+			// get next url to download from queue
+			URL url = new URL(item.getSource());
+
+			// url information
+			URLConnection urlConnection = url.openConnection();
+			int contentLength = urlConnection.getContentLength();
+
+			// define stream objects
+			InputStream raw = urlConnection.getInputStream();
+			InputStream in = new BufferedInputStream(raw);
+
+			// array for storing incoming bytes
+			byte[] data = new byte[contentLength];
+
+			// read bytes up to lenght specified by http header earlier
+			int bytesRead = 0;
+			int offset = 0;
+			while (offset < contentLength) {
+				bytesRead = in.read(data, offset, data.length - offset);
+				if(bytesRead == -1) break;
+				offset += bytesRead;
 			}
-		} else {
-			if(directory.isFile()) {
-				throw new PathMustNotBeDirectoryException();
+			in.close();
+
+			// fail if not complete download
+			if(offset != contentLength) {
+				throw new IOException("Downloaded only "+offset+" bytes, while expected "+contentLength+" bytes");
 			}
+
+			// generate unique filename
+			String filename = FileHelper.getFilenameFromUrl(url.getFile());
+			filename = FileHelper.generateUniqueFilename(item.getTarget(), filename);
+			String absoluteTargetFilename = FileHelper.getAbsoluteFilePath(item.getTarget(), filename);
+			
+			// create new file for storing downloaded bytes
+			File targetFile = new File(absoluteTargetFilename);
+			targetFile.createNewFile();
+
+			// write down downloaded bytes
+			FileOutputStream out = new FileOutputStream(targetFile);
+			out.write(data);
+			out.flush();
+			out.close();
+
+			item.setTarget(absoluteTargetFilename);
+
+		} catch (MalformedURLException ex) {
+			logger.log(Level.SEVERE, null, ex);
+		} catch (IOException ex) {
+			logger.log(Level.SEVERE, null, ex);
 		}
 	}
 
@@ -94,55 +159,15 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 		currentUrlIndex = 0;
 
 		while(isDownloading) {
-
-			if(currentUrlIndex >= urls.size())
-
-			try {
-				// inspired by http://www.java2s.com/Tutorial/Java/0320__Network/SavebinaryfilefromURL.htm
-
-				URL url = new URL(urls.get(currentUrlIndex));
-				URLConnection urlConnection = url.openConnection();
-				int contentLength = urlConnection.getContentLength();
-
-				InputStream raw = urlConnection.getInputStream();
-				InputStream in = new BufferedInputStream(raw);
-				byte[] data = new byte[contentLength];
-
-				int bytesRead = 0;
-				int offset = 0;
-				while (offset < contentLength) {
-					bytesRead = in.read(data, offset, data.length - offset);
-					if(bytesRead == -1) break;
-					offset += bytesRead;
-				}
-				in.close();
-
-				if(offset != contentLength) {
-					throw new IOException("Downloaded only "+offset+" bytes, while expected "+contentLength+" bytes");
-				}
-
-				String filename = FileHelper.getFilenameFromUrl(url.getFile());
-				filename = FileHelper.generateUniqueFilename(downloadDirectory, filename);
-				String downloadedFilename = FileHelper.getAbsoluteFilePath(downloadDirectory, filename);
-
-				File downloadedFile = new File(downloadedFilename);
-				downloadedFile.createNewFile();
-
-				FileOutputStream out = new FileOutputStream(downloadedFile);
-				out.write(data);
-				out.flush();
-				out.close();
-
-				currentUrlIndex++;
-
-			} catch (MalformedURLException ex) {
-				logger.log(Level.SEVERE, null, ex);
-			} catch (IOException ex) {
-				logger.log(Level.SEVERE, null, ex);
+			if(currentUrlIndex >= items.size()) {
+				stopDownloading();
+				break;
 			}
 
-		}
+			downloadSingle(items.get(currentUrlIndex));
 
+			currentUrlIndex++;
+		}
 	}
 
 }
