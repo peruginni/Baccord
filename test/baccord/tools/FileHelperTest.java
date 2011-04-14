@@ -54,6 +54,13 @@ public class FileHelperTest
 		String expResult = baseDirectory + File.separator + filename;
 		String result = FileHelper.getAbsoluteFilePath(baseDirectory, filename);
 		assertEquals(expResult, result);
+		
+		baseDirectory = "";
+		expResult = filename;
+		result = FileHelper.getAbsoluteFilePath(baseDirectory, filename);
+		assertEquals(expResult, result);
+
+
 	}
 
 	/**

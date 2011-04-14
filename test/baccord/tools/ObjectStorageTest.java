@@ -1,8 +1,6 @@
 
 package baccord.tools;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.io.File;
 import org.junit.Test;
 import static org.junit.Assert.*;

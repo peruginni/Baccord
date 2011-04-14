@@ -3,7 +3,7 @@ package baccord.business.downloader;
 
 import baccord.business.BaseBusiness;
 import baccord.exceptions.CannotCreateDirectoryException;
-import baccord.exceptions.PathMustNotBeDirectoryException;
+import baccord.exceptions.PathMustBeDirectoryException;
 import baccord.tools.FileHelper;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -41,7 +41,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 		items = new LinkedList<DownloadItem>();
 	}
 
-	public void setDownloadDirectory(String path) throws CannotCreateDirectoryException, PathMustNotBeDirectoryException
+	public void setDownloadDirectory(String path) throws CannotCreateDirectoryException, PathMustBeDirectoryException
 	{
 		File directory = new File(path);
 
@@ -51,7 +51,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			}
 		} else {
 			if(directory.isFile()) {
-				throw new PathMustNotBeDirectoryException();
+				throw new PathMustBeDirectoryException();
 			}
 		}
 
@@ -65,7 +65,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 
 	public void add(DownloadItem item)
 	{
-		item.setTarget(downloadDirectory);
+		item.setTargetDirectory(downloadDirectory);
 		items.add(item);
 	}
 
@@ -101,6 +101,8 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 		try {
 			// inspired by http://www.java2s.com/Tutorial/Java/0320__Network/SavebinaryfilefromURL.htm
 
+			item.setStatus(DownloadItem.Status.DOWNLOADING);
+
 			// get next url to download from queue
 			URL url = new URL(item.getSource());
 
@@ -132,13 +134,13 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 
 			// generate unique filename
 			String filename = FileHelper.getFilenameFromUrl(url.getFile());
-			filename = FileHelper.generateUniqueFilename(item.getTarget(), filename);
-			String absoluteTargetFilename = FileHelper.getAbsoluteFilePath(item.getTarget(), filename);
+			filename = FileHelper.generateUniqueFilename(item.getTargetDirectory(), filename);
+			String absoluteTargetFilename = FileHelper.getAbsoluteFilePath(item.getTargetDirectory(), filename);
 			
 			// create new file for storing downloaded bytes
 			File targetFile = new File(absoluteTargetFilename);
 			targetFile.createNewFile();
-
+			
 			// write down downloaded bytes
 			FileOutputStream out = new FileOutputStream(targetFile);
 			out.write(data);
@@ -146,6 +148,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			out.close();
 
 			item.setTarget(absoluteTargetFilename);
+			item.setStatus(DownloadItem.Status.DONE);
 
 		} catch (MalformedURLException ex) {
 			logger.log(Level.SEVERE, null, ex);

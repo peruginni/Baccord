@@ -9,6 +9,7 @@ public class DownloadItem
 {	
 	private String source;
 	private String target;
+	private String targetDirectory;
 	private Status status;
 
 	public enum Status
@@ -28,10 +29,10 @@ public class DownloadItem
 		this(source, "", Status.WAITING);
 	}
 
-	public DownloadItem(String source, String target, Status status)
+	public DownloadItem(String source, String targetDirectory, Status status)
 	{
 		this.source = source;
-		this.target = target;
+		this.targetDirectory = targetDirectory;
 		this.status = status;
 	}
 
@@ -53,6 +54,16 @@ public class DownloadItem
 	public void setTarget(String target)
 	{
 		this.target = target;
+	}
+
+	public String getTargetDirectory()
+	{
+		return this.targetDirectory;
+	}
+
+	public void setTargetDirectory(String targetDirectory)
+	{
+		this.targetDirectory = targetDirectory;
 	}
 
 	public Status getStatus()

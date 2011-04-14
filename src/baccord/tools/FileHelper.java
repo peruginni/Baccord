@@ -26,7 +26,9 @@ public class FileHelper
 	public static String getAbsoluteFilePath(String baseDirectory, String filename)
 	{
 		StringBuilder path = new StringBuilder(baseDirectory);
-		path.append(File.separator);
+		if(!baseDirectory.isEmpty()) {
+			path.append(File.separator);
+		}
 		path.append(filename);
 		return path.toString();
 	}

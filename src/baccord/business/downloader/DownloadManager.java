@@ -2,7 +2,7 @@
 package baccord.business.downloader;
 
 import baccord.exceptions.CannotCreateDirectoryException;
-import baccord.exceptions.PathMustNotBeDirectoryException;
+import baccord.exceptions.PathMustBeDirectoryException;
 import java.util.List;
 
 /**
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface DownloadManager
 {
-	public void setDownloadDirectory(String path) throws CannotCreateDirectoryException, PathMustNotBeDirectoryException;
+	public void setDownloadDirectory(String path) throws CannotCreateDirectoryException, PathMustBeDirectoryException;
 	public String getDownloadDirectory();
 
 	public void add(DownloadItem item);
