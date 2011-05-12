@@ -32,7 +32,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 	private int currentUrlIndex = 0;
 	private String downloadDirectory = "";
 	private boolean isDownloading = false;
-	private Thread downloadingThread;
+	private Thread downloadThread;
 
 	private static final Logger logger = Logger.getLogger(BasicDownloadManager.class.getName());
 
@@ -69,6 +69,14 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 		items.add(item);
 	}
 
+	public void add(List<String> listOfUrls)
+	{
+		for(String url : listOfUrls) {
+			DownloadItem item = new DownloadItem(url);
+			add(item);
+		}
+	}
+
 	public void remove(DownloadItem item)
 	{
 		items.remove(item);
@@ -86,22 +94,35 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 
 	public void startDownloading()
 	{
-		isDownloading = true;
-		downloadingThread = new Thread(this);
-		downloadingThread.start();
+		if(!isDownloading) {
+			isDownloading = true;
+			downloadThread = new Thread(this);
+			downloadThread.start();
+		}
+		
+		//if(downloadThread != null && downloadThread.isAlive() == false) {
+		//}
+		
 	}
 
 	public void stopDownloading()
 	{
-		isDownloading = false;
+		if(isDownloading) {
+			isDownloading = false;
+			downloadThread.interrupt();
+		}
 	}
 
 	public void downloadSingle(DownloadItem item)
 	{
 		try {
+			if(item.getTargetDirectory() == null) {
+				item.setTargetDirectory(downloadDirectory);
+			}
+			
 			// inspired by http://www.java2s.com/Tutorial/Java/0320__Network/SavebinaryfilefromURL.htm
 
-			item.setStatus(DownloadItem.Status.DOWNLOADING);
+			item.setStatus(DownloadItem.Status.downloading);
 
 			// get next url to download from queue
 			URL url = new URL(item.getSource());
@@ -148,7 +169,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			out.close();
 
 			item.setTarget(absoluteTargetFilename);
-			item.setStatus(DownloadItem.Status.DONE);
+			item.setStatus(DownloadItem.Status.done);
 
 		} catch (MalformedURLException ex) {
 			logger.log(Level.SEVERE, null, ex);

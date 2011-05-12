@@ -28,8 +28,10 @@
                       <Component id="pmvsOptionsPanel" min="-2" max="-2" attributes="1"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="runCmvsButton" min="-2" pref="98" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Component id="runCmvsPmvsButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -67,7 +69,8 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="runCmvsPmvsButton" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="runCmvsButton" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -88,12 +91,6 @@
         <Property name="horizontalTextPosition" type="int" value="2"/>
         <Property name="name" type="java.lang.String" value="titleLabel" noResource="true"/>
         <Property name="opaque" type="boolean" value="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="runCmvsButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="runCmvsButton.text"/>
-        <Property name="name" type="java.lang.String" value="runCmvsButton" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="runCmvsPmvsButton">
@@ -141,23 +138,19 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="cmvsOptionsTitle" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="110" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="cmvsOptionsTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="maximumImagesLabel" linkSize="7" min="-2" max="-2" attributes="1"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="maximumImagesSpinner" linkSize="8" min="-2" pref="55" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="cpuLabel" linkSize="7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cpuSpinner" linkSize="8" min="-2" pref="60" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="1"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -388,5 +381,19 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+      <Properties>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="jCheckBox1.text"/>
+        <Property name="name" type="java.lang.String" value="jCheckBox1" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+      <Properties>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="jCheckBox2.text"/>
+        <Property name="name" type="java.lang.String" value="jCheckBox2" noResource="true"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

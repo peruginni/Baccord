@@ -14,19 +14,19 @@ public class DownloadItem
 
 	public enum Status
 	{
-		WAITING,
-		DOWNLOADING,
-		DONE,
+		waiting,
+		downloading,
+		done,
 	}
 
 	public DownloadItem()
 	{
-		this("", "", Status.WAITING);
+		this("", "", Status.waiting);
 	}
 
 	public DownloadItem(String source)
 	{
-		this(source, "", Status.WAITING);
+		this(source, "", Status.waiting);
 	}
 
 	public DownloadItem(String source, String targetDirectory, Status status)

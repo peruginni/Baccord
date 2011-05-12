@@ -12,7 +12,6 @@ public class Image
 	private int width;
 	private int height;
 	private float focalLength;
-	private float ccdWidth;
 
 	public String getPath()
 	{
@@ -42,25 +41,5 @@ public class Image
 	public void setHeight(int height)
 	{
 		this.height = height;
-	}
-
-	public float getFocalLength()
-	{
-		return this.focalLength;
-	}
-
-	public void setFocalLength(float focalLength)
-	{
-		this.focalLength = focalLength;
-	}
-
-	public float getCcdWidth()
-	{
-		return this.ccdWidth;
-	}
-
-	public void setCcdWidth(float ccdWidth)
-	{
-		this.ccdWidth = ccdWidth;
 	}
 }

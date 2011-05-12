@@ -98,8 +98,6 @@ public class MvsProgress extends javax.swing.JPanel {
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton browseOutputButton;
         private javax.swing.JButton continueButton;
-        private javax.swing.JButton jButton4;
-        private javax.swing.JButton jButton5;
         private javax.swing.JScrollPane progressScrollPane;
         private javax.swing.JTextPane progressTextPane;
         private javax.swing.JButton stopButton;

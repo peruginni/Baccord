@@ -5,6 +5,7 @@
 package baccord;
 
 import baccord.ui.MainWindow;
+import java.io.IOException;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 
@@ -39,7 +40,8 @@ public class BaccordApp extends SingleFrameApplication {
     /**
      * Main method launching the application.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         launch(BaccordApp.class, args);
     }
 }

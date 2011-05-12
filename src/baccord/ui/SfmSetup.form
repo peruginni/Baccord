@@ -22,46 +22,45 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="sfmTitle" alignment="0" min="-2" pref="321" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="bundlerOptionsScrollPane" pref="647" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="ccdLabel" min="-2" pref="262" max="-2" attributes="0"/>
-                              <EmptySpace pref="200" max="32767" attributes="0"/>
-                              <Component id="ccdButton" min="-2" max="-2" attributes="1"/>
-                          </Group>
-                          <Component id="sfmTitle" alignment="0" min="-2" pref="321" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="inputImagesLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Component id="inputImagesTextField" pref="411" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="inputImagesButton" min="-2" pref="78" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="imageSizeLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="243" max="32767" attributes="0"/>
-                              <Component id="imageSizeComboBox" min="-2" max="-2" attributes="1"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="imagesToExistingLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="imagesToExistingTextField" pref="308" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="imagesToExistingButton" min="-2" pref="78" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="ccdLabel" min="-2" pref="262" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="ccdButton" min="-2" max="-2" attributes="1"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bundlerOptionsLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="568" max="32767" attributes="0"/>
+                      <EmptySpace pref="544" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="bundlerOptionsScrollPane" alignment="0" max="32767" attributes="1"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="1">
+                                  <Component id="inputImagesLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  <Component id="inputImagesTextField" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="imagesToExistingLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="imagesToExistingTextField" min="-2" pref="304" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="imagesToExistingButton" min="-2" pref="78" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                  <Component id="inputImagesButton" min="-2" pref="78" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
@@ -83,20 +82,15 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="inputImagesLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="inputImagesButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="inputImagesTextField" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="inputImagesButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="imageSizeLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="imageSizeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ccdButton" alignment="0" max="32767" attributes="1"/>
-                  <Component id="ccdLabel" alignment="0" min="-2" pref="29" max="-2" attributes="1"/>
+                  <Component id="ccdLabel" min="-2" pref="29" max="-2" attributes="1"/>
+                  <Component id="ccdButton" max="32767" attributes="1"/>
               </Group>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="imagesToExistingTextField" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="imagesToExistingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -105,8 +99,8 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="bundlerOptionsLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="bundlerOptionsScrollPane" min="-2" pref="90" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+              <Component id="bundlerOptionsScrollPane" min="-2" pref="121" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
@@ -163,23 +157,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="inputImagesLabel.text"/>
         <Property name="name" type="java.lang.String" value="inputImagesLabel" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="imageSizeLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="imageSizeLabel.text"/>
-        <Property name="name" type="java.lang.String" value="imageSizeLabel" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="imageSizeComboBox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="Use original"/>
-            <StringItem index="1" value="1024 x 1024 pixels"/>
-          </StringArray>
-        </Property>
-        <Property name="name" type="java.lang.String" value="imageSizeComboBox" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextArea" name="ccdLabel">

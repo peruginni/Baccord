@@ -3,6 +3,7 @@ package baccord.business.search;
 
 import java.util.List;
 
+
 /**
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>

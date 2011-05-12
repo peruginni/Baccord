@@ -150,9 +150,9 @@ public class BasicDownloadManagerTest
 
 		DownloadManager instance = new BasicDownloadManager();
 		
-		assertEquals(DownloadItem.Status.WAITING, item.getStatus());
+		assertEquals(DownloadItem.Status.waiting, item.getStatus());
 		instance.downloadSingle(item);
-		assertEquals(DownloadItem.Status.DONE, item.getStatus());
+		assertEquals(DownloadItem.Status.done, item.getStatus());
 
 		File file = new File(item.getTarget());
 		assertTrue(file.isFile());
