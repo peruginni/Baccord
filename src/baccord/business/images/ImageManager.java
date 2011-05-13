@@ -31,6 +31,9 @@ public interface ImageManager
 	public void setCcdWidthForCamera(String camera, float width);
 	public float getCcdWidthForCamera(String camera);
 	
+	public String getCameraCcdWidthsStoragePath();
+	public void setCameraCcdWidthsStoragePath(String cameraCcdWidthsStoragePath);
+	
 	/**
 	 * --------------------------------------------------------------------
 	 *  Core logic
