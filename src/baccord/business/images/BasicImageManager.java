@@ -5,9 +5,9 @@ import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.imaging.jpeg.JpegProcessingException;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
-import com.drew.metadata.exif.ExifDescriptor;
+import com.drew.metadata.MetadataException;
 import com.drew.metadata.exif.ExifDirectory;
-import com.drew.metadata.iptc.IptcDescriptor;
+import com.drew.metadata.jpeg.JpegDirectory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -148,26 +148,48 @@ public class BasicImageManager implements ImageManager
 		// remove pgm temp image
 	}
 
-	public int getFocalLegth(Image image)
+	public float getFocalLegth(Image image)
 	{
-		// call jhead for exif info
-		// or some java tool instead of jhead
+		float result = 0;
+		
 		File file = new File(image.getPath());
 		try {
 			Metadata metadata = JpegMetadataReader.readMetadata(file);
 			Directory directory = metadata.getDirectory(ExifDirectory.class);
 			String make = directory.getString(ExifDirectory.TAG_MAKE);
 			String model = directory.getString(ExifDirectory.TAG_MODEL);
-			Float focalLegth = Float.valueOf(directory.getString(ExifDirectory.TAG_FOCAL_LENGTH).replace("mm", ""));			
+			Float focalLegthMm = Float.valueOf(directory.getString(ExifDirectory.TAG_FOCAL_LENGTH).replace("mm", ""));			
+			Float ccdWidthMm = getCcdWidthForCamera(make + " " + model);
+			int resolutionX = directory.getInt(ExifDirectory.TAG_X_RESOLUTION);
+			int resolutionY = directory.getInt(ExifDirectory.TAG_Y_RESOLUTION);
 			
+			if(focalLegthMm == 0 || ccdWidthMm == 0 || resolutionX == 0) {
+				result = 0;
+			} 
 			
+			if(resolutionX < resolutionY) {
+				// aspect ratio is wrong
+				int tmp = resolutionX;
+				resolutionX = resolutionY;
+				resolutionY = tmp;
+			}
+			
+			if(result != 0) {
+				//$focal_pixels = $res_x * ($focal_mm / $ccd_width_mm);
+				result = resolutionX * (focalLegthMm / ccdWidthMm);
+				//$line = sprintf("%s.jpg 0 %0.5f", $basename, $SCALE * $focal_pixels);
+				result = 1.0f * result;
+			}
+			
+		} catch (MetadataException ex) {
+			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (JpegProcessingException ex) {
 			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		
 		
 		
-		return 0;
+		return result;
 	}
 	
 	/**

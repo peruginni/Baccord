@@ -70,5 +70,5 @@ public interface ImageManager
 	 * 
 	 * @param image 
 	 */
-	public int getFocalLegth(Image image);
+	public float getFocalLegth(Image image);
 }	
