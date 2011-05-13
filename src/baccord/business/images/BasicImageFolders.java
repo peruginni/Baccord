@@ -3,10 +3,10 @@ package baccord.business.images;
 
 import baccord.business.BaseBusiness;
 import baccord.tools.ObjectStorage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -15,11 +15,21 @@ import java.util.logging.Logger;
  */
 public class BasicImageFolders extends BaseBusiness implements ImageFolders
 {
-	private String storagePath = "/RecentImageFolders.dat";
+	private String storagePath = "./RecentImageFolders.dat";
 	private int maximumStoredRecentFolders = 10;
 	private Queue<String> recentFolders;
 
 	private static final Logger logger = Logger.getLogger(BasicImageFolders.class.getName());
+
+	public String getStoragePath()
+	{
+		return storagePath;
+	}
+	
+	public void setStoragePath(String path)
+	{
+		storagePath = path;
+	}
 
 	public void saveRecentlyUsed(String folder)
 	{
@@ -51,4 +61,13 @@ public class BasicImageFolders extends BaseBusiness implements ImageFolders
 		return recentFolders;
 	}
 
+	public void clearRecentlyUsed()
+	{
+		File file = new File(storagePath);
+		if(file.exists()) {
+			file.delete();
+		}
+		recentFolders = new LinkedList();
+	}
+	
 }
