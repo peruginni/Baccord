@@ -40,6 +40,12 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 	{
 		items = new LinkedList<DownloadItem>();
 	}
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
 
 	public void setDownloadDirectory(String path) throws CannotCreateDirectoryException, PathMustBeDirectoryException
 	{
@@ -62,6 +68,12 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 	{
 		return downloadDirectory;
 	}
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Core logic
+	 * --------------------------------------------------------------------
+	 */
 
 	public void add(DownloadItem item)
 	{

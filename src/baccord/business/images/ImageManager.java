@@ -1,12 +1,42 @@
 
 package baccord.business.images;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public interface ImageManager
 {
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
+	
+	public void setImageMagickPath(String path);
+	public String getImageMagickPath();
+	
+	public void setJheadPath(String path);
+	public String getJheadPath();
+	
+	public void setSiftPath(String path);
+	public String getSiftPath();
+	
+	public HashMap<String, Float> getCameraCcdWidths();
+	public void setCameraCcdWidths(HashMap<String, Float> map);
+	
+	public void setCcdWidthForCamera(String camera, float width);
+	public float getCcdWidthForCamera(String camera);
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Core logic
+	 * --------------------------------------------------------------------
+	 */
+	
 	/**
 	 * Resize given image and save it to its original location.
 	 * 
