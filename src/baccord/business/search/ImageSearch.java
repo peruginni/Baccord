@@ -10,8 +10,41 @@ import java.util.List;
  */
 public interface ImageSearch
 {
+	/**
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
+	
 	public void setSearchEngine(SearchEngine searchEngine);
-	public List<Object> searchByQuery(SearchQuery searchQuery);
+	public SearchEngine getSearchEngine();
+	
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Core logic
+	 * --------------------------------------------------------------------
+	 */
+	
+	/** 
+	 * Will search images by query and return found results.
+	 * 
+	 * @param searchQuery
+	 * @return 
+	 */
+	public SearchResult searchByQuery(SearchQuery searchQuery);
+	
+	/**
+	 * Save keywords recently used in search query
+	 * 
+	 * @param keyword 
+	 */
 	public void saveRecentlyUsedKeyword(String keyword);
-	public List<String> getRecentlyUsedKeywords();
+	
+	/**
+	 * Return keywords recently used in search query
+	 * 
+	 * @return 
+	 */
+	public Queue<String> getRecentlyUsedKeywords();
 }

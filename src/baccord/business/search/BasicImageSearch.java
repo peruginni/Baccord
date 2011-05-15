@@ -1,7 +1,10 @@
 
 package baccord.business.search;
 
-import java.util.List;
+import baccord.tools.ObjectStorage;
+import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  *
@@ -9,25 +12,71 @@ import java.util.List;
  */
 public class BasicImageSearch implements ImageSearch
 {
-
+	private String storagePath = "./RecentSearchKeywords.dat";
+	private int maximumRecentKeywords = 10;
+	private Queue<String> recentKeywords;
+	
+	SearchEngine searchEngine;
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
+	
 	public void setSearchEngine(SearchEngine searchEngine)
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		this.searchEngine = searchEngine;
 	}
-
-	public List<Object> searchByQuery(SearchQuery searchQuery)
+	
+	public SearchEngine getSearchEngine()
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		if(searchEngine == null) {
+			this.searchEngine = new FlickrSearchEngine();
+		}
+		return this.searchEngine;
 	}
-
+	
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Core logic
+	 * --------------------------------------------------------------------
+	 */
+	
+	public SearchResult searchByQuery(SearchQuery searchQuery)
+	{
+		saveRecentlyUsedKeyword(searchQuery.getKeywords());
+		return getSearchEngine().searchByQuery(searchQuery);
+	}
+	
 	public void saveRecentlyUsedKeyword(String keyword)
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
+		// add keyword to list
+		Queue<String> list = getRecentlyUsedKeywords();
+		list.offer(keyword);
 
-	public List<String> getRecentlyUsedKeywords()
+		// remove older
+		if(list.size() > maximumRecentKeywords) {
+			list.poll();
+		}
+
+		ObjectStorage.save(list, storagePath);
+	}
+	
+	public Queue<String> getRecentlyUsedKeywords()
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
+		if(recentKeywords == null) {
+			try {
+				recentKeywords = (Queue<String>) ObjectStorage.load(storagePath);
+			} catch (FileNotFoundException ex) {
+				// file was probably not yet created
+			}
 
+			if(recentKeywords == null) {
+				recentKeywords = new LinkedList<String>();
+			}
+		}
+		return recentKeywords;
+	}
 }
