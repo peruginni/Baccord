@@ -62,7 +62,7 @@ public class ObjectStorage
 				oin.close();
 			}
 		} catch (FileNotFoundException ex) {
-			logger.log(Level.SEVERE, "File not found", ex);
+			//logger.log(Level.INFO, "File not found", ex);
 			throw ex;
 		} catch (ClassNotFoundException ex) {
 			logger.log(Level.SEVERE, "Serialized class not found", ex);

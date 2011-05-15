@@ -2,8 +2,10 @@
 package baccord.business.search;
 
 import baccord.tools.ObjectStorage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -14,7 +16,7 @@ public class BasicImageSearch implements ImageSearch
 {
 	private String storagePath = "./RecentSearchKeywords.dat";
 	private int maximumRecentKeywords = 10;
-	private Queue<String> recentKeywords;
+	private LinkedList<String> recentKeywords;
 	
 	SearchEngine searchEngine;
 	
@@ -24,6 +26,16 @@ public class BasicImageSearch implements ImageSearch
 	 * --------------------------------------------------------------------
 	 */
 	
+	public String getStoragePath()
+	{
+		return storagePath;
+	}
+	
+	public void setStoragePath(String path)
+	{
+		storagePath = path;
+	}
+
 	public void setSearchEngine(SearchEngine searchEngine)
 	{
 		this.searchEngine = searchEngine;
@@ -53,22 +65,22 @@ public class BasicImageSearch implements ImageSearch
 	public void saveRecentlyUsedKeyword(String keyword)
 	{
 		// add keyword to list
-		Queue<String> list = getRecentlyUsedKeywords();
-		list.offer(keyword);
+		LinkedList<String> list = getRecentlyUsedKeywords();
+		list.addLast(keyword);
 
 		// remove older
 		if(list.size() > maximumRecentKeywords) {
-			list.poll();
+			list.removeFirst();
 		}
 
 		ObjectStorage.save(list, storagePath);
 	}
 	
-	public Queue<String> getRecentlyUsedKeywords()
+	public LinkedList<String> getRecentlyUsedKeywords()
 	{
 		if(recentKeywords == null) {
 			try {
-				recentKeywords = (Queue<String>) ObjectStorage.load(storagePath);
+				recentKeywords = (LinkedList<String>) ObjectStorage.load(storagePath);
 			} catch (FileNotFoundException ex) {
 				// file was probably not yet created
 			}
@@ -77,6 +89,17 @@ public class BasicImageSearch implements ImageSearch
 				recentKeywords = new LinkedList<String>();
 			}
 		}
+		
 		return recentKeywords;
 	}
+	
+	public void clearRecentlyUsed()
+	{
+		File file = new File(storagePath);
+		if(file.exists()) {
+			file.delete();
+		}
+		recentKeywords = new LinkedList();
+	}
+	
 }

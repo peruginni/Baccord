@@ -1,7 +1,7 @@
 
 package baccord.business.search;
 
-import java.util.Queue;
+import java.util.LinkedList;
 
 
 /**
@@ -15,6 +15,10 @@ public interface ImageSearch
 	 *  Properties
 	 * --------------------------------------------------------------------
 	 */
+	
+	
+	public String getStoragePath();
+	public void setStoragePath(String path);
 	
 	public void setSearchEngine(SearchEngine searchEngine);
 	public SearchEngine getSearchEngine();
@@ -46,5 +50,10 @@ public interface ImageSearch
 	 * 
 	 * @return 
 	 */
-	public Queue<String> getRecentlyUsedKeywords();
+	public LinkedList<String> getRecentlyUsedKeywords();
+	
+	/**
+	 * Clear recently used keywords
+	 */
+	public void clearRecentlyUsed();
 }

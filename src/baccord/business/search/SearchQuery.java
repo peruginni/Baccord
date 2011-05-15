@@ -9,17 +9,17 @@ import java.util.Date;
  */
 public class SearchQuery
 {
-	public String keywords;
-	public String gpsLatitude;
-	public String gpsLongitude;
-	public int gpsRadius;
-	public Date takenFrom;
-	public Date takenTill;
-	public Date uploadedFrom;
-	public Date uploadedTill;
-	public String license;
-	public Context context;
-	public int resultsPerPage;
+	private String keywords;
+	private String gpsLatitude;
+	private String gpsLongitude;
+	private int gpsRadius;
+	private Date takenFrom;
+	private Date takenTill;
+	private Date uploadedFrom;
+	private Date uploadedTill;
+	private String license;
+	private Context context;
+	private int resultsPerPage;
 
 	public enum Context
 	{
