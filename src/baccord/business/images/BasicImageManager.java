@@ -49,11 +49,8 @@ public class BasicImageManager implements ImageManager
 		siftPath = path;
 	}
 	
-	public String getSiftPath() throws SiftAppMissingException
+	public String getSiftPath()
 	{
-		if(siftPath != null) {
-			throw new SiftAppMissingException();
-		}
 		return siftPath;
 	}
 	
@@ -152,9 +149,14 @@ public class BasicImageManager implements ImageManager
 		return siftFile.exists();
 	}
 
-	public void performSift(Image image) throws SiftAppMissingException
+	public void performSift(Image image)
 	{
 		String sift = getSiftPath();
+		 
+		if(sift == null) {
+			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, "Missing sift application", new SiftAppMissingException());
+			return;
+		}
 		
 		String imageJpgPath = image.getPath();
 		String imageDirectory = FileHelper.getDirectory(imageJpgPath);

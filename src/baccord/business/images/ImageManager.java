@@ -18,7 +18,7 @@ public interface ImageManager
 	 */
 	
 	public void setSiftPath(String path) throws SiftAppMissingException;
-	public String getSiftPath() throws SiftAppMissingException;
+	public String getSiftPath();
 	
 	public HashMap<String, Float> getCameraCcdWidths();
 	public void setCameraCcdWidths(HashMap<String, Float> map);
@@ -58,7 +58,7 @@ public interface ImageManager
 	 * 
 	 * @param image image to detect
 	 */
-	public void performSift(Image image) throws SiftAppMissingException;
+	public void performSift(Image image);
 	
 	/**
 	 * Extract focal length from image. 

@@ -1,5 +1,7 @@
 package baccord.business.images;
 
+import baccord.exceptions.SiftAppMissingException;
+import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -29,6 +31,9 @@ public class BasicEditor implements Editor, Runnable
 	
 	public ImageManager getImageManager()
 	{
+		if(imageManager == null) {
+			imageManager = new BasicImageManager();
+		}
 		return this.imageManager;
 	}
 	
@@ -73,10 +78,20 @@ public class BasicEditor implements Editor, Runnable
 	
 	public void editSingle(EditorTask task)
 	{
+		ImageManager im = getImageManager();
+		
+		Dimension dimension = task.getResizeDimension();
+		if(dimension != null) {
+			im.resize(task.getImage(), dimension.width, dimension.height);
+		}
+		
+		if(task.performSift()) {
+			im.performSift(task.getImage());
+		}
 		
 	}
 
-	public void run()
+	public void run() 
 	{
 		while(isEditing && !queue.isEmpty()) {
 			EditorTask task = queue.peek();

@@ -10,13 +10,13 @@ import java.awt.Dimension;
 public class EditorTask
 {
 	private Image image;
-	private boolean sift;
+	private boolean performSift;
 	private Dimension resizeDimension;
 	
 	public EditorTask(Image image, boolean sift, Dimension dimension)
 	{
 		this.image = image;
-		this.sift = sift;
+		this.performSift = sift;
 		this.resizeDimension = dimension;
 	}
 	
@@ -30,14 +30,14 @@ public class EditorTask
 		this.image = image;
 	}
 	
-	public boolean getSift()
+	public boolean performSift()
 	{
-		return this.sift;
+		return this.performSift;
 	}
 	
-	public void setSift(boolean sift)
+	public void setPerformSift(boolean sift)
 	{
-		this.sift = sift;
+		this.performSift = sift;
 	}
 	
 	public Dimension getResizeDimension()

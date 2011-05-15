@@ -1,5 +1,7 @@
 package baccord.business.images;
 
+import baccord.exceptions.SiftAppMissingException;
+
 /**
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
@@ -37,7 +39,7 @@ public interface Editor
 	/**
 	 * Start editing. Will start new thread if there is no running one.
 	 */
-	public void startEditing();
+	public void startEditing(); 
 	
 	/**
 	 * Stop editing
@@ -47,6 +49,6 @@ public interface Editor
 	/**
 	 * Edit single editor task
 	 */
-	public void editSingle(EditorTask task);
+	public void editSingle(EditorTask task) throws SiftAppMissingException;
 	
 }
