@@ -1,7 +1,7 @@
 
 package baccord.business.search;
 
-import java.util.List;
+import java.util.Queue;
 
 
 /**
