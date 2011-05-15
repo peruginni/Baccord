@@ -3,6 +3,7 @@ package baccord.business.images;
 import baccord.exceptions.SiftAppMissingException;
 import baccord.tools.FileHelper;
 import baccord.tools.ObjectStorage;
+import baccord.tools.OS;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.imaging.jpeg.JpegProcessingException;
 import com.drew.metadata.Directory;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  *
@@ -117,12 +119,20 @@ public class BasicImageManager implements ImageManager
 	
 	public void resize(Image image, int width, int height)
 	{
+		/**
+		 * http://www.imagemagick.org/Usage/resize/#shrink
+		 *
+		 * TODO: special escaping for windows/cygwin environments
+		 */
+		
 		// convert dragon.gif    -resize 64x64\>  shrink_dragon.gif
 		try {
+			String shrinkLargerFlag = (OS.isWindows()) ? "^>" : "\\>";
+			
 			Process p = new ProcessBuilder(
 				"convert",
 				image.getPath(),
-				"-resize " + width + "x" + height + "\\>",
+				"-resize " + width + "x" + height + shrinkLargerFlag,
 				image.getPath()
 			).start(); 
 			p.waitFor();
