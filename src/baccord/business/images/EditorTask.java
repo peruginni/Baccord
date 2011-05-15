@@ -4,6 +4,7 @@ import java.awt.Dimension;
 
 /**
  * Holds informations about changes or actions performed on image
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class EditorTask

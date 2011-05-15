@@ -7,7 +7,22 @@ package baccord.business.images;
 public interface Editor
 {
 	/**
-	 * Will add task to editor queue
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
+	
+	public ImageManager getImageManager();
+	public void setImageManager(ImageManager imageManager);
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Core logic
+	 * --------------------------------------------------------------------
+	 */
+	
+	/**
+	 * Will add task to editor queue and will run editing if not running yet
 	 * @param task 
 	 */
 	public void add(EditorTask task);
@@ -28,5 +43,10 @@ public interface Editor
 	 * Stop editing
 	 */
 	public void stopEditing();
+	
+	/**
+	 * Edit single editor task
+	 */
+	public void editSingle(EditorTask task);
 	
 }
