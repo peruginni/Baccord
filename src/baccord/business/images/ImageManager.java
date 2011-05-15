@@ -1,6 +1,7 @@
 
 package baccord.business.images;
 
+import baccord.exceptions.SiftAppMissingException;
 import java.util.HashMap;
 
 /**
@@ -16,14 +17,8 @@ public interface ImageManager
 	 * --------------------------------------------------------------------
 	 */
 	
-	public void setImageMagickPath(String path);
-	public String getImageMagickPath();
-	
-	public void setJheadPath(String path);
-	public String getJheadPath();
-	
-	public void setSiftPath(String path);
-	public String getSiftPath();
+	public void setSiftPath(String path) throws SiftAppMissingException;
+	public String getSiftPath() throws SiftAppMissingException;
 	
 	public HashMap<String, Float> getCameraCcdWidths();
 	public void setCameraCcdWidths(HashMap<String, Float> map);
@@ -63,7 +58,7 @@ public interface ImageManager
 	 * 
 	 * @param image image to detect
 	 */
-	public void performSift(Image image);
+	public void performSift(Image image) throws SiftAppMissingException;
 	
 	/**
 	 * Extract focal length from image. 

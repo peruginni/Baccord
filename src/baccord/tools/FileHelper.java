@@ -22,8 +22,13 @@ public class FileHelper
 
 		return path.toString();
 	}
+	
+	public static String getSystemAbsoluteIndependentPath(String ... dirs)
+	{
+		return File.separator + getSystemIndependentPath(dirs);
+	}
 
-	public static String getAbsoluteFilePath(String baseDirectory, String filename)
+	public static String mergePath(String baseDirectory, String filename)
 	{
 		StringBuilder path = new StringBuilder(baseDirectory);
 		if(!baseDirectory.isEmpty()) {
@@ -45,7 +50,7 @@ public class FileHelper
 		String basename = getBasename(currentFilename);
 		String extension = getExtension(currentFilename);
 		
-		File file = new File(getAbsoluteFilePath(baseDirectory, unique));
+		File file = new File(mergePath(baseDirectory, unique));
 		
 		while(file.exists()) {
 			StringBuilder generatedString = new StringBuilder()
@@ -56,7 +61,7 @@ public class FileHelper
 				.append(extension);
 			unique = generatedString.toString();
 
-			file = new File(getAbsoluteFilePath(baseDirectory, unique));
+			file = new File(mergePath(baseDirectory, unique));
 		}
 
 		return unique;
@@ -73,7 +78,7 @@ public class FileHelper
 		
 		return "";
 	}
-
+	
 	public static String getFilename(String path)
 	{
 		return getFilename(path, File.separator);
@@ -96,10 +101,26 @@ public class FileHelper
 		return getFilename(url, "/");
 	}
 
-	public static String getBasename(String filename)
+	public static String getBasename(String path)
 	{
-		String extension = getExtension(filename);
-		return filename.substring(0, filename.lastIndexOf(extension)-1);
+		int basenameStart = path.lastIndexOf(File.separator);
+		if(basenameStart != -1) {
+			path = path.substring(basenameStart+1);
+		}
+		String extension = getExtension(path);
+		return path.substring(0, path.lastIndexOf(extension)-1);
+	}
+	
+	public static String getDirectory(String pathWithFilename)
+	{
+		int directoryEnd = pathWithFilename.lastIndexOf(File.separator);
+
+		if(directoryEnd != -1) {
+			return pathWithFilename.substring(0, directoryEnd);
+		}
+
+		return "";
 	}
 
+	
 }

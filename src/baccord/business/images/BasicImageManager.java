@@ -1,5 +1,7 @@
 package baccord.business.images;
 
+import baccord.exceptions.SiftAppMissingException;
+import baccord.tools.FileHelper;
 import baccord.tools.ObjectStorage;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.imaging.jpeg.JpegProcessingException;
@@ -7,9 +9,9 @@ import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.MetadataException;
 import com.drew.metadata.exif.ExifDirectory;
-import com.drew.metadata.jpeg.JpegDirectory;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,10 +23,9 @@ import java.util.logging.Logger;
 public class BasicImageManager implements ImageManager
 {
 	
-	public final static String SIFT_EXTENSION = ".sift";
+	public final static String SIFT_EXTENSION = ".key";
+	public final static String PGM_EXTENSION = ".pgm";
 	
-	private String imageMagickPath;
-	private String jheadPath;
 	private String siftPath;
 	
 	private HashMap<String, Float> camerasCcdWidths;
@@ -37,33 +38,20 @@ public class BasicImageManager implements ImageManager
 	 * --------------------------------------------------------------------
 	 */
 	
-	public void setImageMagickPath(String path)
+	public void setSiftPath(String path) throws SiftAppMissingException
 	{
-		imageMagickPath = path;
-	}
-	
-	public String getImageMagickPath()
-	{
-		return imageMagickPath;
-	}
-	
-	public void setJheadPath(String path)
-	{
-		jheadPath = path;
-	}
-	
-	public String getJheadPath()
-	{
-		return jheadPath;
-	}
-	
-	public void setSiftPath(String path)
-	{
+		File siftFile = new File(path);
+		if(!siftFile.exists()) {
+			throw new SiftAppMissingException();
+		}
 		siftPath = path;
 	}
 	
-	public String getSiftPath()
+	public String getSiftPath() throws SiftAppMissingException
 	{
+		if(siftPath != null) {
+			throw new SiftAppMissingException();
+		}
 		return siftPath;
 	}
 	
@@ -129,23 +117,80 @@ public class BasicImageManager implements ImageManager
 	
 	public void resize(Image image, int width, int height)
 	{
-		// execute command on imagemagick
+		// convert dragon.gif    -resize 64x64\>  shrink_dragon.gif
+		try {
+			Process p = new ProcessBuilder(
+				"convert",
+				image.getPath(),
+				"-resize " + width + "x" + height + "\\>",
+				image.getPath()
+			).start(); 
+			p.waitFor();
+			
+		} catch (InterruptedException ex) {
+			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (IOException ex) {
+			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+		} 
 	}
 
 	public boolean hasSift(Image image)
 	{
-		// create path to sift file
-		// check if file is present
-		return true;
+		String imageDirectory = FileHelper.getDirectory(image.getPath());
+		String imageBasename = FileHelper.getBasename(image.getPath()); 
+		File siftFile = new File(FileHelper.mergePath(imageDirectory, imageBasename + SIFT_EXTENSION));
+		return siftFile.exists();
 	}
 
-	public void performSift(Image image)
+	public void performSift(Image image) throws SiftAppMissingException
 	{
-		// convert image to pgm
+		String sift = getSiftPath();
 		
-		// execute command on sift
+		String imageJpgPath = image.getPath();
+		String imageDirectory = FileHelper.getDirectory(imageJpgPath);
+		String imageBasename = FileHelper.getBasename(imageJpgPath);
+		String imagePgmPath = FileHelper.mergePath(imageDirectory, imageBasename + PGM_EXTENSION);
+		String imageSiftPath = FileHelper.mergePath(imageDirectory, imageBasename + SIFT_EXTENSION);
 		
-		// remove pgm temp image
+		try {
+			/*
+			 echo "mogrify -format pgm $IMAGE_DIR/$d; 
+			       $SIFT < $pgm_file > $key_file; 
+			       rm $pgm_file; 
+			       gzip -f $key_file"
+			 */
+			
+			// convert image to pgm 
+			Process p = new ProcessBuilder(
+				"mogrify",
+				"-format pgm " + imageJpgPath
+			).start(); 
+			p.waitFor();
+
+			// execute sift command and save keyfile
+			p = new ProcessBuilder(
+				sift + " < " + imagePgmPath + " > " + imageSiftPath
+			).start(); 
+			p.waitFor();
+			
+			// remove pgm temp image
+			p = new ProcessBuilder(
+				"rm", imagePgmPath
+			).start(); 
+			p.waitFor();
+			
+			// compress sift file
+			p = new ProcessBuilder(
+				"gzip", 
+				"-f " + imagePgmPath
+			).start(); 
+			p.waitFor();
+			
+		} catch (InterruptedException ex) {
+			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (IOException ex) {
+			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+		} 
 	}
 
 	public float getFocalLegth(Image image)
@@ -186,8 +231,6 @@ public class BasicImageManager implements ImageManager
 		} catch (JpegProcessingException ex) {
 			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		
-		
 		
 		return result;
 	}

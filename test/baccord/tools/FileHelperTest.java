@@ -28,7 +28,7 @@ public class FileHelperTest
 	}
 
 	/**
-	 * Test of getAbsoluteFilePath method, of class FileHelper.
+	 * Test of getSystemIndependentPath method, of class FileHelper.
 	 */
 	@Test
 	public void testGetSystemIndependentPath()
@@ -41,23 +41,38 @@ public class FileHelperTest
 		assertEquals(expResult, result);
 	}
 
-
+	
 	/**
-	 * Test of getAbsoluteFilePath method, of class FileHelper.
+	 * Test of getAbsoluteSystemIndependentPath method, of class FileHelper.
 	 */
 	@Test
-	public void testGetAbsoluteFilePath()
+	public void testGetAbsoluteSystemIndependentPath()
 	{
-		System.out.println("getAbsoluteFilePath");
-		String baseDirectory = "deep/test/directory";
+		System.out.println("getSystemIndependentPath");
+		String[] dir = {"deep","dir","ectory"};
+
+		String expResult = File.separator + dir[0] + File.separator + dir[1] + File.separator + dir[2];
+		String result = FileHelper.getSystemAbsoluteIndependentPath(dir[0], dir[1], dir[2]);
+		assertEquals(expResult, result);
+	}
+
+
+	/**
+	 * Test of mergePath method, of class FileHelper.
+	 */
+	@Test
+	public void testMergePath()
+	{
+		System.out.println("mergePath");
+		String baseDirectory = FileHelper.getSystemAbsoluteIndependentPath("deep","test");
 		String filename = "getAbsolutePath.jpg";
 		String expResult = baseDirectory + File.separator + filename;
-		String result = FileHelper.getAbsoluteFilePath(baseDirectory, filename);
+		String result = FileHelper.mergePath(baseDirectory, filename);
 		assertEquals(expResult, result);
 		
 		baseDirectory = "";
 		expResult = filename;
-		result = FileHelper.getAbsoluteFilePath(baseDirectory, filename);
+		result = FileHelper.mergePath(baseDirectory, filename);
 		assertEquals(expResult, result);
 
 
@@ -96,7 +111,7 @@ public class FileHelperTest
 		String result = FileHelper.generateUniqueFilename(baseDirectory, currentFilename);
 		assertEquals(currentFilename, result);
 
-		String absoluteFilePath = FileHelper.getAbsoluteFilePath(baseDirectory, currentFilename);
+		String absoluteFilePath = FileHelper.mergePath(baseDirectory, currentFilename);
 		File file = new File(absoluteFilePath);
 		file.createNewFile();
 		result = FileHelper.generateUniqueFilename(baseDirectory, currentFilename);
@@ -159,15 +174,37 @@ public class FileHelperTest
 
 	/**
 	 * Test of getBasename method, of class FileHelper.
-	 */ @Test
+	 */ 
+	@Test
 	public void testGetBasename()
 	{
 		System.out.println("getBasename");
 		String filename = "filename.jpg";
 		String expResult = "filename";
 		String result = FileHelper.getBasename(filename);
-		System.out.println(result);
 		assertEquals(expResult, result);
+		
+		filename = FileHelper.mergePath(
+			FileHelper.getSystemAbsoluteIndependentPath("home","test"), 
+			"filename.jpg"
+		);
+		expResult = "filename";
+		result = FileHelper.getBasename(filename);
+		assertEquals(expResult, result);
+	}
+	 
+	 
+
+	/**
+	 * Test of getDirectory method, of class FileHelper.
+	 */ @Test
+	public void testGetDirectory()
+	{
+		System.out.println("getDirectory");
+		String path = FileHelper.getSystemIndependentPath("home","images");
+		String filePath = FileHelper.mergePath(path, "filename.jpg");
+		String result = FileHelper.getDirectory(filePath);
+		assertEquals(path, result);
 	}
 
 }

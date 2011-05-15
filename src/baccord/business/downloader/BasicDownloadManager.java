@@ -168,7 +168,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			// generate unique filename
 			String filename = FileHelper.getFilenameFromUrl(url.getFile());
 			filename = FileHelper.generateUniqueFilename(item.getTargetDirectory(), filename);
-			String absoluteTargetFilename = FileHelper.getAbsoluteFilePath(item.getTargetDirectory(), filename);
+			String absoluteTargetFilename = FileHelper.mergePath(item.getTargetDirectory(), filename);
 			
 			// create new file for storing downloaded bytes
 			File targetFile = new File(absoluteTargetFilename);
