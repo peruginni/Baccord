@@ -18,17 +18,37 @@ public class SearchQuery
 	private Date uploadedFrom;
 	private Date uploadedTill;
 	private String license;
-	private Context context;
+	private GeoContext geoContext;
+	private int page;
 	private int resultsPerPage;
 
-	public enum Context
+	public enum GeoContext
+
 	{
 		indoor("indoor"),
 		outdoor("outdoor"),
 		both("both");
 
 		public final String name;
-		Context(String name)
+		GeoContext(String name)
+		{
+			this.name = name;
+		}
+	}
+	
+	// http://www.flickr.com/services/api/flickr.photos.licenses.getInfo.html
+	public enum License
+	{
+		ccAtribution("Attribution License"),
+		ccAtributionNoDerivs("Attribution-NoDerivs License"),
+		ccAtributionNonCommercialNoDerivs("Attribution-NonCommercial-NoDerivs License"),
+		ccAtributionNonCommercial("Attribution-NonCommercial License"),
+		ccAtributionNonCommercialShareAlike("Attribution-NonCommercial-ShareAlike License"),
+		ccAtributionShareAlike("Attribution-ShareAlike License"),
+		noKnownRestrictions("No known copyright restrictions");
+		
+		public final String name;
+		License(String name)
 		{
 			this.name = name;
 		}
@@ -124,14 +144,24 @@ public class SearchQuery
 		this.license = license;
 	}
 	
-	public Context getContext()
+	public GeoContext getGeoContext()
 	{
-		return this.context;
+		return this.geoContext;
 	}
 
-	public void setContext(Context context)
+	public void setGeoContext(GeoContext context)
 	{
-		this.context = context;
+		this.geoContext = context;
+	}
+	
+	public int getPage()
+	{
+		return this.page;
+	}
+	
+	public void setPage(int page)
+	{
+		this.page = page;
 	}
 
 	public int getResultsPerPage()
