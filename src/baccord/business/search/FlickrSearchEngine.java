@@ -214,13 +214,37 @@ public class FlickrSearchEngine implements SearchEngine
 	public String getImageOriginalUrl(ResultItem item)
 	{
 		// http://www.flickr.com/services/api/misc.urls.html
-		// http://farm{farm-id}.static.flickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
-		throw new UnsupportedOperationException("Not supported yet.");
+		
+		StringBuilder result = new StringBuilder();
+		result.append("http://farm");
+		result.append(item.getFarm());
+		result.append(".static.flickr.com/");
+		result.append(item.getServer());
+		result.append("/");
+		result.append(item.getId());
+		result.append("_");
+		result.append(item.getSecret());
+		result.append("_b.jpg");
+		
+		return result.toString();
 	}
 
 	public String getImageThumbnailUrl(ResultItem item)
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		// http://www.flickr.com/services/api/misc.urls.html
+		
+		StringBuilder result = new StringBuilder();
+		result.append("http://farm");
+		result.append(item.getFarm());
+		result.append(".static.flickr.com/");
+		result.append(item.getServer());
+		result.append("/");
+		result.append(item.getId());
+		result.append("_");
+		result.append(item.getSecret());
+		result.append("_s.jpg");
+		
+		return result.toString();
 	}
 
 }

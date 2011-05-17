@@ -53,4 +53,30 @@ public class FlickrSearchEngineTest
 			assertNotNull(item.getServer());
 		}
 	}
+	
+	@Test
+	public void testImageUrls()
+	{
+		FlickrSearchEngine instance = new FlickrSearchEngine();
+		SearchQuery searchQuery;
+		SearchResult result;
+		
+		searchQuery = new SearchQuery();
+		searchQuery.setKeywords("notre dame");
+		searchQuery.setResultsPerPage(1);
+		result = instance.searchByQuery(searchQuery);
+		assertNotNull(result);
+		
+		ResultItem item = result.getItems().get(0);
+		
+		String originalUrl = instance.getImageOriginalUrl(item);
+		String originalUrlExpected = "http://farm"+item.getFarm()+".static.flickr.com/"
+			+item.getServer()+"/"+item.getId()+"_"+item.getSecret()+"_b.jpg";
+		assertEquals(originalUrl, originalUrlExpected);
+		
+		String thumbnailUrl = instance.getImageThumbnailUrl(item);
+		String thumbnailUrlExpected = "http://farm"+item.getFarm()+".static.flickr.com/"
+			+item.getServer()+"/"+item.getId()+"_"+item.getSecret()+"_s.jpg";
+		assertEquals(thumbnailUrl, thumbnailUrlExpected);
+	}
 }
