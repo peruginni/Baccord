@@ -182,6 +182,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 
 			item.setTarget(absoluteTargetFilename);
 			item.setStatus(DownloadItem.Status.done);
+			notifyObservers(item);
 
 		} catch (MalformedURLException ex) {
 			logger.log(Level.SEVERE, null, ex);

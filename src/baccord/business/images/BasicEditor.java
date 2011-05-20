@@ -1,7 +1,9 @@
 package baccord.business.images;
 
+import baccord.business.downloader.DownloadItem;
 import java.awt.Dimension;
 import java.util.LinkedList;
+import java.util.Observable;
 import java.util.Queue;
 
 /**
@@ -11,6 +13,9 @@ import java.util.Queue;
  */
 public class BasicEditor implements Editor, Runnable
 {
+	private boolean autoSift = false;
+	private Dimension autoResizeDimension = null;
+	
 	private boolean isEditing;
 	private Queue<EditorTask> queue;
 	private Thread editingThread;
@@ -39,6 +44,26 @@ public class BasicEditor implements Editor, Runnable
 	public void setImageManager(ImageManager imageManager)
 	{
 		this.imageManager = imageManager;
+	}
+	
+	public boolean getAutoSift() 
+	{
+		return autoSift;
+	}
+	
+	public void setAutoSift(boolean autoSift)
+	{
+		this.autoSift = autoSift;
+	}
+	
+	public Dimension getAutoResizeDimension()
+	{
+		return this.autoResizeDimension;
+	}
+	
+	public void setAutoResizeDimension(Dimension autoResizeDimension)
+	{
+		this.autoResizeDimension = autoResizeDimension;
 	}
 	
 	/**
@@ -106,6 +131,17 @@ public class BasicEditor implements Editor, Runnable
 		}
 		
 		isEditing = false;
+	}
+
+	public void update(Observable o, Object o1)
+	{
+		if(o1 instanceof DownloadItem) {
+			DownloadItem item = (DownloadItem)o1;
+			Image image = new Image(item.getTarget());
+			
+			EditorTask task = new EditorTask(image, getAutoSift(), getAutoResizeDimension());
+			add(task);
+		}
 	}
 	
 }

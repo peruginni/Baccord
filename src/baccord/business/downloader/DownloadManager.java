@@ -11,8 +11,9 @@ import java.util.List;
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public interface DownloadManager
+public interface DownloadManager 
 {
+	
 	/**
 	 * --------------------------------------------------------------------
 	 *  Properties

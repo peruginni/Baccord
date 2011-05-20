@@ -1,13 +1,15 @@
 package baccord.business.images;
 
 import baccord.exceptions.SiftAppMissingException;
+import java.awt.Dimension;
+import java.util.Observer;
 import java.util.Queue;
 
 /**
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public interface Editor
+public interface Editor extends Observer
 {
 	/**
 	 * --------------------------------------------------------------------
@@ -17,6 +19,10 @@ public interface Editor
 	
 	public ImageManager getImageManager();
 	public void setImageManager(ImageManager imageManager);
+	public boolean getAutoSift();
+	public void setAutoSift(boolean autoSift);
+	public Dimension getAutoResizeDimension();
+	public void setAutoResizeDimension(Dimension autoResizeDimension);
 	
 	/**
 	 * --------------------------------------------------------------------
