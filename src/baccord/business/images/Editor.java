@@ -1,6 +1,7 @@
 package baccord.business.images;
 
 import baccord.exceptions.SiftAppMissingException;
+import java.util.Queue;
 
 /**
  *
@@ -28,6 +29,7 @@ public interface Editor
 	 * @param task 
 	 */
 	public void add(EditorTask task);
+	public Queue<EditorTask> getAllTasks();
 	
 	/**
 	 * Determine if is currently editing

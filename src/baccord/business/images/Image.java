@@ -12,6 +12,16 @@ public class Image
 	private int width;
 	private int height;
 	private float focalLength;
+	
+	public Image() 
+	{
+		
+	}
+	
+	public Image(String path)
+	{
+		this.path = path;
+	}
 
 	public String getPath()
 	{
@@ -42,4 +52,15 @@ public class Image
 	{
 		this.height = height;
 	}
+	
+	public float getFocalLength()
+	{
+		return this.focalLength;
+	}
+	
+	public void setFocalLength(float focalLength)
+	{
+		this.focalLength = focalLength;
+	}
+	
 }

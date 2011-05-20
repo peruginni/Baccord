@@ -10,6 +10,7 @@ import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.MetadataException;
 import com.drew.metadata.exif.ExifDirectory;
+import com.drew.metadata.jpeg.JpegDirectory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -205,23 +206,28 @@ public class BasicImageManager implements ImageManager
 		} 
 	}
 
-	public float getFocalLegth(Image image)
+	public void loadExifInformation(Image image)
 	{
-		float result = 0;
+		float focalLength = 0;
 		
 		File file = new File(image.getPath());
 		try {
 			Metadata metadata = JpegMetadataReader.readMetadata(file);
-			Directory directory = metadata.getDirectory(ExifDirectory.class);
-			String make = directory.getString(ExifDirectory.TAG_MAKE);
-			String model = directory.getString(ExifDirectory.TAG_MODEL);
-			Float focalLegthMm = Float.valueOf(directory.getString(ExifDirectory.TAG_FOCAL_LENGTH).replace("mm", ""));			
+			Directory exifDirectory = metadata.getDirectory(ExifDirectory.class);
+			Directory jpegDirectory = metadata.getDirectory(JpegDirectory.class);
+			
+			image.setWidth(jpegDirectory.getInt(JpegDirectory.TAG_JPEG_IMAGE_WIDTH));
+			image.setHeight(jpegDirectory.getInt(JpegDirectory.TAG_JPEG_IMAGE_HEIGHT));
+			
+			String make = exifDirectory.getString(ExifDirectory.TAG_MAKE);
+			String model = exifDirectory.getString(ExifDirectory.TAG_MODEL);
+			Float focalLegthMm = Float.valueOf(exifDirectory.getString(ExifDirectory.TAG_FOCAL_LENGTH).replace("mm", ""));			
 			Float ccdWidthMm = getCcdWidthForCamera(make + " " + model);
-			int resolutionX = directory.getInt(ExifDirectory.TAG_X_RESOLUTION);
-			int resolutionY = directory.getInt(ExifDirectory.TAG_Y_RESOLUTION);
+			int resolutionX = exifDirectory.getInt(ExifDirectory.TAG_X_RESOLUTION);
+			int resolutionY = exifDirectory.getInt(ExifDirectory.TAG_Y_RESOLUTION);
 			
 			if(focalLegthMm == 0 || ccdWidthMm == 0 || resolutionX == 0) {
-				result = 0;
+				focalLength = 0;
 			} 
 			
 			if(resolutionX < resolutionY) {
@@ -231,11 +237,11 @@ public class BasicImageManager implements ImageManager
 				resolutionY = tmp;
 			}
 			
-			if(result != 0) {
+			if(focalLength != 0) {
 				//$focal_pixels = $res_x * ($focal_mm / $ccd_width_mm);
-				result = resolutionX * (focalLegthMm / ccdWidthMm);
+				focalLength = resolutionX * (focalLegthMm / ccdWidthMm);
 				//$line = sprintf("%s.jpg 0 %0.5f", $basename, $SCALE * $focal_pixels);
-				result = 1.0f * result;
+				focalLength = 1.0f * focalLength;
 			}
 			
 		} catch (MetadataException ex) {
@@ -244,8 +250,11 @@ public class BasicImageManager implements ImageManager
 			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		
-		return result;
+		image.setFocalLength(focalLength);
+		
+		
 	}
+	
 	
 	/**
 	 * Fill map with default values

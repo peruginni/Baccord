@@ -1,7 +1,14 @@
 package baccord.business.images;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import baccord.tools.FileHelper;
+import java.io.File;
+import java.io.IOException;
+import org.junit.After;
+import java.awt.Dimension;
+import java.util.LinkedList;
+import java.util.List;
+import org.junit.Before;
+import java.util.Queue;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -11,34 +18,53 @@ import static org.junit.Assert.*;
  */
 public class BasicEditorTest
 {
+	private List<EditorTask> testItems;
+	
+	private EditorTask task;
+	private Image image;
+	private File testFile = new File("./test/data/image800x600_f1.6tmp.jpg");
+	private File sourceFile = new File("./test/data/image800x600_f1.6.jpg");
+	
+	@Before
+	public void setUp() throws IOException 
+	{
+		FileHelper.copyFile(sourceFile, testFile);
+		image = new Image(testFile.getPath());
+		task = new EditorTask(image, true, new Dimension(640, 480));
+		
+		testItems = new LinkedList<EditorTask>();
+		testItems.add(task);
+	}
+	
+	
+	@After
+	public void tearDown() 
+	{
+		testFile.delete();
+	}
+
+	private void fillWithTestData(Editor editor)
+	{
+		for(EditorTask item : testItems) {
+			editor.add(item);
+		}
+	}
+	
 	
 	/**
 	 * Test of getImageManager method, of class BasicEditor.
 	 */
 	@Test
-	public void testGetImageManager()
+	public void testGetSetImageManager()
 	{
-		System.out.println("getImageManager");
+		System.out.println("get/setImageManager");
 		BasicEditor instance = new BasicEditor();
-		ImageManager expResult = null;
+		assertNotNull(instance.getImageManager());
+		
+		ImageManager expResult = new BasicImageManager();
+		instance.setImageManager(expResult);
 		ImageManager result = instance.getImageManager();
 		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
-	}
-
-	/**
-	 * Test of setImageManager method, of class BasicEditor.
-	 */
-	@Test
-	public void testSetImageManager()
-	{
-		System.out.println("setImageManager");
-		ImageManager imageManager = null;
-		BasicEditor instance = new BasicEditor();
-		instance.setImageManager(imageManager);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -48,39 +74,40 @@ public class BasicEditorTest
 	public void testAdd()
 	{
 		System.out.println("add");
-		EditorTask task = null;
+		EditorTask task = new EditorTask(new Image(), true, null);
 		BasicEditor instance = new BasicEditor();
 		instance.add(task);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
-	}
-
-	/**
-	 * Test of isEditing method, of class BasicEditor.
-	 */
-	@Test
-	public void testIsEditing()
-	{
-		System.out.println("isEditing");
-		BasicEditor instance = new BasicEditor();
-		boolean expResult = false;
-		boolean result = instance.isEditing();
-		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		
+		boolean foundTask = false;
+		for(EditorTask returnedTask : instance.getAllTasks()) {
+			if(returnedTask == task) {
+				foundTask = true;
+			}
+		}
+		assertTrue(foundTask);
 	}
 
 	/**
 	 * Test of startEditing method, of class BasicEditor.
 	 */
 	@Test
-	public void testStartEditing()
+	public void testStartEditing() throws InterruptedException
 	{
-		System.out.println("startEditing");
 		BasicEditor instance = new BasicEditor();
+		fillWithTestData(instance);
+		
+		assertFalse(instance.isEditing());
 		instance.startEditing();
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		assertTrue(instance.isEditing());
+		
+		while(instance.isEditing()) { 
+			Thread.sleep(1000); 
+		}
+		assertFalse(instance.isEditing());
+		
+		Queue<EditorTask> tasks = instance.getAllTasks();
+		assertNotNull(tasks);
+		assertTrue(tasks.isEmpty());
 	}
 
 	/**
@@ -89,11 +116,17 @@ public class BasicEditorTest
 	@Test
 	public void testStopEditing()
 	{
-		System.out.println("stopEditing");
 		BasicEditor instance = new BasicEditor();
-		instance.stopEditing();
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		fillWithTestData(instance);
+		
+		assertFalse(instance.isEditing());
+		instance.startEditing();
+		assertTrue(instance.isEditing());
+		
+		while(instance.isEditing()) { 
+			instance.stopEditing();
+		}
+		assertFalse(instance.isEditing());
 	}
 
 	/**
@@ -103,23 +136,36 @@ public class BasicEditorTest
 	public void testEditSingle()
 	{
 		System.out.println("editSingle");
-		EditorTask task = null;
+		ImageManager imageManager = new BasicImageManager();
 		BasicEditor instance = new BasicEditor();
 		instance.editSingle(task);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		Image taskImage = task.getImage();
+		
+		if(task.performSift()) {
+			assertTrue(imageManager.equals(taskImage));
+		} 
+		
+		if(task.getResizeDimension() != null) {
+			Dimension dim = task.getResizeDimension();
+			int longerSide = (dim.height > dim.width) ? dim.height : dim.width;
+			
+			imageManager.loadExifInformation(taskImage);
+			assertTrue(image.getWidth() == longerSide || image.getHeight() == longerSide);
+		}
+		
 	}
 
-	/**
-	 * Test of run method, of class BasicEditor.
-	 */
-	@Test
-	public void testRun()
-	{
-		System.out.println("run");
-		BasicEditor instance = new BasicEditor();
-		instance.run();
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
-	}
+//	/**
+//	 * Test of run method, of class BasicEditor.
+//	 */
+//	@Test
+//	public void testRun()
+//	{
+//		System.out.println("run");
+//		BasicEditor instance = new BasicEditor();
+//		instance.run();
+//		// TODO review the generated test code and remove the default call to fail.
+//		fail("The test case is a prototype.");
+//	}
+
 }

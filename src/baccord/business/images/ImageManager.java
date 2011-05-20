@@ -61,9 +61,10 @@ public interface ImageManager
 	public void performSift(Image image);
 	
 	/**
-	 * Extract focal length from image. 
+	 * Given entity will be filled with information about dimensiona and focal lenght
 	 * 
 	 * @param image 
 	 */
-	public float getFocalLegth(Image image);
+	public void loadExifInformation(Image image);
+	
 }	

@@ -1,6 +1,5 @@
 package baccord.business.images;
 
-import baccord.exceptions.SiftAppMissingException;
 import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -52,6 +51,11 @@ public class BasicEditor implements Editor, Runnable
 	{
 		queue.add(task);
 		startEditing();
+	}
+	
+	public Queue<EditorTask> getAllTasks()
+	{
+		return queue;
 	}
 
 	public boolean isEditing()

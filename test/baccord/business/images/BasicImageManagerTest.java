@@ -1,9 +1,12 @@
 package baccord.business.images;
 
+import java.io.File;
+import java.io.IOException;
+import org.junit.Before;
 import baccord.exceptions.SiftAppMissingException;
+import baccord.tools.FileHelper;
 import java.util.HashMap;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,7 +16,24 @@ import static org.junit.Assert.*;
  */
 public class BasicImageManagerTest
 {
-
+	private Image image;
+	private File testFile = new File("./test/data/image800x600_f1.6.jpg");
+	private File sourceFile = new File("./test/data/image800x600_f1.6.jpg");
+	
+	@Before
+	public void setUp() throws IOException 
+	{
+		FileHelper.copyFile(sourceFile, testFile);
+		image = new Image(testFile.getPath());
+	}
+	
+	
+	@After
+	public void tearDown() 
+	{
+		testFile.delete();
+	}
+	
 	/**
 	 * Test of setSiftPath method, of class BasicImageManager.
 	 */
@@ -93,58 +113,44 @@ public class BasicImageManagerTest
 	public void testResize()
 	{
 		System.out.println("resize");
-		Image image = null;
-		int width = 0;
-		int height = 0;
+		int longerSide = 640;
+		int shorterSide = 480;
 		BasicImageManager instance = new BasicImageManager();
-		instance.resize(image, width, height);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		instance.resize(image, longerSide, shorterSide);
+		
+		instance.loadExifInformation(image);
+		
+		assertTrue(image.getWidth() == longerSide || image.getHeight() == longerSide);
 	}
 
 	/**
-	 * Test of hasSift method, of class BasicImageManager.
+	 * Test of hasSift and parformSift method, of class BasicImageManager.
 	 */
 	@Test
-	public void testHasSift()
+	public void testSift()
 	{
 		System.out.println("hasSift");
-		fail("todo create image");
-		Image image = null; // crate image
 		BasicImageManager instance = new BasicImageManager();
 		assertFalse(instance.hasSift(image));
 		instance.performSift(image);
 		assertTrue(instance.hasSift(image));
 	}
-
+	
+	
 	/**
-	 * Test of performSift method, of class BasicImageManager.
+	 * Test of loadExifInformation method, of class BasicImageManager.
 	 */
 	@Test
-	public void testPerformSift()
+	public void testLoadExifInformation()
 	{
-		System.out.println("performSift");
-		Image image = null;
+		System.out.println("fillDefaultCameraCcdWidths");
 		BasicImageManager instance = new BasicImageManager();
-		instance.performSift(image);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
-	}
+		
+		instance.loadExifInformation(image);
 
-	/**
-	 * Test of getFocalLegth method, of class BasicImageManager.
-	 */
-	@Test
-	public void testGetFocalLegth()
-	{
-		System.out.println("getFocalLegth");
-		Image image = null;
-		BasicImageManager instance = new BasicImageManager();
-		float expResult = 0.0F;
-		float result = instance.getFocalLegth(image);
-		assertEquals(expResult, result, 0.0);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		assertEquals(image.getWidth(), 800);
+		assertEquals(image.getHeight(), 600);
+		assertEquals(image.getFocalLength(), 1.6, 0.001);
 	}
 
 	/**
@@ -154,9 +160,8 @@ public class BasicImageManagerTest
 	public void testFillDefaultCameraCcdWidths()
 	{
 		System.out.println("fillDefaultCameraCcdWidths");
-		HashMap<String, Float> map = null;
+		HashMap<String, Float> map = new HashMap<String, Float>();
 		BasicImageManager.fillDefaultCameraCcdWidths(map);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		assertFalse(map.isEmpty());
 	}
 }
