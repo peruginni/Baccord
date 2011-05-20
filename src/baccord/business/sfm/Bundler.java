@@ -31,5 +31,10 @@ public class Bundler implements StructureFromMotion, Runnable
 	{
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
+
+	public void matchKeypoints(List<Image> images)
+	{
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 	
 }

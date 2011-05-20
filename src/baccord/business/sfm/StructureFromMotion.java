@@ -11,6 +11,7 @@ import java.util.List;
 public interface StructureFromMotion
 {
 	public void addImages(List<Image> images);
+	public void matchKeypoints(List<Image> images);
 
 	public void start();
 	public void stop();
