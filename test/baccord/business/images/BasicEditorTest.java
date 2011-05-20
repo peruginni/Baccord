@@ -1,5 +1,7 @@
 package baccord.business.images;
 
+import baccord.exceptions.SiftAppMissingException;
+import baccord.tools.DI;
 import baccord.tools.FileHelper;
 import java.io.File;
 import java.io.IOException;
@@ -58,7 +60,7 @@ public class BasicEditorTest
 	public void testGetSetImageManager()
 	{
 		System.out.println("get/setImageManager");
-		BasicEditor instance = new BasicEditor();
+		Editor instance = DI.get(Editor.class);
 		assertNotNull(instance.getImageManager());
 		
 		ImageManager expResult = new BasicImageManager();
@@ -74,8 +76,10 @@ public class BasicEditorTest
 	public void testAdd()
 	{
 		System.out.println("add");
+		
 		EditorTask task = new EditorTask(new Image(), true, null);
-		BasicEditor instance = new BasicEditor();
+		
+		Editor instance = DI.get(Editor.class);
 		instance.add(task);
 		
 		boolean foundTask = false;
@@ -93,7 +97,7 @@ public class BasicEditorTest
 	@Test
 	public void testStartEditing() throws InterruptedException
 	{
-		BasicEditor instance = new BasicEditor();
+		Editor instance = DI.get(Editor.class);
 		fillWithTestData(instance);
 		
 		assertFalse(instance.isEditing());
@@ -116,7 +120,7 @@ public class BasicEditorTest
 	@Test
 	public void testStopEditing()
 	{
-		BasicEditor instance = new BasicEditor();
+		Editor instance = DI.get(Editor.class);
 		fillWithTestData(instance);
 		
 		assertFalse(instance.isEditing());
@@ -133,11 +137,11 @@ public class BasicEditorTest
 	 * Test of editSingle method, of class BasicEditor.
 	 */
 	@Test
-	public void testEditSingle()
+	public void testEditSingle() throws SiftAppMissingException
 	{
 		System.out.println("editSingle");
-		ImageManager imageManager = new BasicImageManager();
-		BasicEditor instance = new BasicEditor();
+		ImageManager imageManager = DI.get(ImageManager.class);
+		Editor instance = DI.get(Editor.class);
 		instance.editSingle(task);
 		Image taskImage = task.getImage();
 		

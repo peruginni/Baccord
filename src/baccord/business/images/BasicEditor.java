@@ -1,6 +1,7 @@
 package baccord.business.images;
 
 import baccord.business.downloader.DownloadItem;
+import com.google.inject.Inject;
 import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.Observable;
@@ -19,6 +20,7 @@ public class BasicEditor implements Editor, Runnable
 	private boolean isEditing;
 	private Queue<EditorTask> queue;
 	private Thread editingThread;
+	
 	private ImageManager imageManager;
 	
 	public BasicEditor()
@@ -35,12 +37,10 @@ public class BasicEditor implements Editor, Runnable
 	
 	public ImageManager getImageManager()
 	{
-		if(imageManager == null) {
-			imageManager = new BasicImageManager();
-		}
 		return this.imageManager;
 	}
 	
+	@Inject
 	public void setImageManager(ImageManager imageManager)
 	{
 		this.imageManager = imageManager;
