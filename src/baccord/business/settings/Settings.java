@@ -1,75 +1,65 @@
 package baccord.business.settings;
 
+import baccord.business.BaseBusiness;
+import baccord.tools.ObjectStorage;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class Settings
+public class Settings extends BaseBusiness
 {
-	private String workingDirectory;
-	private String bundlerPath;
-	private String keypointMatcherPath;
-	private String keypointDetectorPath;
-	private String pmvsPath;
-	private String cmvsPath;
+	public static final int BUNDLER_PATH = 0;
+	public static final int KEYPOINT_MATCHER_PATH = 1;
+	public static final int KEYPOINT_DETECTOR_PATH = 2;
+	public static final int PMVS_PATH = 3;
+	public static final int CMVS_PATH = 4;
 	
-	public String getWorkingDirectory()
+	private String storagePath = "./settings.dat";
+	private Map<Integer, String> map;
+	
+	public String getStoragePath()
 	{
-		return this.workingDirectory;
+		return this.storagePath;
 	}
 	
-	public void setWorkingDirectory(String workingDirectory)
+	public void setStoragePath(String storagePath)
 	{
-		this.workingDirectory = workingDirectory;
+		this.storagePath = storagePath;
 	}
 	
-	public String getBundlerPath()
+	public Map<Integer, String> getMap()
 	{
-		return this.bundlerPath;
+		if(map == null) {
+			try {
+				map = (Map<Integer, String>) ObjectStorage.load(storagePath);
+			} catch(FileNotFoundException ex) {}
+
+			if(map == null) {
+				map = new HashMap<Integer, String>();
+			}
+		}
+		return map;
 	}
 	
-	public void setBundlerPath(String bundlerPath)
+	public void setMap(Map<Integer, String> map)
 	{
-		this.bundlerPath = bundlerPath;
+		this.map = map;
 	}
 	
-	public String getKeypointMatcherPath()
+	public String get(int name) 
 	{
-		return this.keypointMatcherPath;
+		return getMap().get(name);
 	}
 	
-	public void setKeypointMatcherPath(String keypointMatcherPath)
+	public void set(int name, String value)
 	{
-		this.keypointMatcherPath = keypointMatcherPath;
-	}
-	
-	public String getKeypointDetectorPath()
-	{
-		return this.keypointDetectorPath;
-	}
-	
-	public void setKeypointDetectorPath(String keypointDetectorPath)
-	{
-		this.keypointDetectorPath = keypointDetectorPath;
-	}
-	
-	public String getPmvsPath()
-	{
-		return this.pmvsPath;
-	}
-	
-	public void setPmvsPath(String pmvsPath)
-	{
-		this.pmvsPath = pmvsPath;
-	}
-	
-	public String getCmvsPath()
-	{
-		return this.cmvsPath;
-	}
-	
-	public void setCmvsPath(String cmvsPath)
-	{
-		this.cmvsPath = cmvsPath;
+		getMap();
+		map.put(name, value);
+		ObjectStorage.save(map, storagePath);
+		notifyObservers();
 	}
 }

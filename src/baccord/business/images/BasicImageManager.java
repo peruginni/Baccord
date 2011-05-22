@@ -1,5 +1,6 @@
 package baccord.business.images;
 
+import baccord.business.settings.Settings;
 import baccord.exceptions.SiftAppMissingException;
 import baccord.tools.FileHelper;
 import baccord.tools.ObjectStorage;
@@ -11,10 +12,17 @@ import com.drew.metadata.Metadata;
 import com.drew.metadata.MetadataException;
 import com.drew.metadata.exif.ExifDirectory;
 import com.drew.metadata.jpeg.JpegDirectory;
+import com.google.inject.Inject;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,15 +31,15 @@ import java.util.logging.Logger;
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class BasicImageManager implements ImageManager
+public class BasicImageManager implements ImageManager, Observer
 {
-	
 	public final static String SIFT_EXTENSION = ".key";
 	public final static String PGM_EXTENSION = ".pgm";
 	
+	private Settings settings;
 	private String siftPath;
 	
-	private HashMap<String, Float> camerasCcdWidths;
+	private Map<String, Float> camerasCcdWidths;
 	private String cameraCcdWidthsStoragePath = "./cameraCcdWidths.dat";
 	
 	
@@ -41,13 +49,17 @@ public class BasicImageManager implements ImageManager
 	 * --------------------------------------------------------------------
 	 */
 	
-	public void setSiftPath(String path) throws SiftAppMissingException
+	public Settings getSettings()
 	{
-		File siftFile = new File(path);
-		if(!siftFile.exists()) {
-			throw new SiftAppMissingException();
-		}
-		siftPath = path;
+		return this.settings;
+	}
+	
+	@Inject
+	public void setSettings(Settings settings)
+	{
+		this.settings = settings;
+		settings.addObserver(this);
+		setSiftPath(settings.get(Settings.KEYPOINT_DETECTOR_PATH));
 	}
 	
 	public String getSiftPath()
@@ -55,7 +67,13 @@ public class BasicImageManager implements ImageManager
 		return siftPath;
 	}
 	
-	public HashMap<String, Float> getCameraCcdWidths()
+	public void setSiftPath(String path)
+	{
+		siftPath = path;
+	}
+	
+	
+	public Map<String, Float> getCameraCcdWidths()
 	{
 		if(camerasCcdWidths == null) {
 			try {
@@ -74,21 +92,21 @@ public class BasicImageManager implements ImageManager
 		return camerasCcdWidths;
 	}
 	
-	public void setCameraCcdWidths(HashMap<String, Float> map)
+	public void setCameraCcdWidths(Map<String, Float> map)
 	{
 		camerasCcdWidths = map;
 	}
 	
 	public void setCcdWidthForCamera(String camera, float width)
 	{
-		HashMap<String, Float> map = getCameraCcdWidths();
+		Map<String, Float> map = getCameraCcdWidths();
 		map.put(camera, new Float(width));
 		ObjectStorage.save(map, cameraCcdWidthsStoragePath);
 	}
 	
 	public float getCcdWidthForCamera(String camera)
 	{
-		HashMap<String, Float> map = getCameraCcdWidths();
+		Map<String, Float> map = getCameraCcdWidths();
 		Float result = map.get(camera);
 		if(result != null) {
 			return result.floatValue();
@@ -119,8 +137,7 @@ public class BasicImageManager implements ImageManager
 	{
 		/**
 		 * http://www.imagemagick.org/Usage/resize/#shrink
-		 *
-		 * TODO: special escaping for windows/cygwin environments
+		 * special escaping for windows/cygwin environments
 		 */
 		
 		// convert dragon.gif    -resize 64x64\>  shrink_dragon.gif
@@ -255,6 +272,35 @@ public class BasicImageManager implements ImageManager
 		
 	}
 	
+	public List<Image> loadImagesFromDirectory(String directory, boolean loadExif)
+	{
+		List<Image> list = new LinkedList<Image>();
+		
+		File dir = new File(directory);
+		if(dir.exists()) {
+			File[] files = dir.listFiles(new FilenameFilter() {
+				public boolean accept(File directory, String filename)
+				{
+					return filename.endsWith(".jpg");
+				}
+			});
+			
+			for (File file : files) {
+				try {
+					Image image = new Image(file.getCanonicalPath());
+					if(loadExif) {
+						loadExifInformation(image);
+					}
+					list.add(image);
+				} catch (IOException ex) {
+					Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+				}
+			}
+			
+		}
+		
+		return list;
+	}
 	
 	/**
 	 * Fill map with default values
@@ -263,7 +309,7 @@ public class BasicImageManager implements ImageManager
 	 * 
 	 * @param map 
 	 */
-	public static void fillDefaultCameraCcdWidths(HashMap<String, Float> map)
+	public static void fillDefaultCameraCcdWidths(Map<String, Float> map)
 	{
 		map.put("Asahi Optical Co.,Ltd.  PENTAX Optio330RS", new Float(7.176));
 		map.put("Canon Canon DIGITAL IXUS 400", new Float(7.176));
@@ -533,6 +579,20 @@ public class BasicImageManager implements ImageManager
 		map.put("SONY DSC-W5", new Float(7.176));
 		map.put("SONY DSC-W7", new Float(7.176));
 		map.put("SONY DSC-W80", new Float(5.75));
+	}
+
+	/**
+	 * --------------------------------------------------------------------
+	 *  Implementation of Observer
+	 * --------------------------------------------------------------------
+	 */
+	
+	public void update(Observable o, Object o1)
+	{
+		if(o instanceof Settings) {
+			Settings givenSettings = (Settings) o;
+			setSiftPath(givenSettings.get(Settings.KEYPOINT_DETECTOR_PATH));
+		}
 	}
 	
 }

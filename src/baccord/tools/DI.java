@@ -8,6 +8,8 @@ import baccord.business.images.BasicImageManager;
 import baccord.business.images.Editor;
 import baccord.business.images.ImageFolders;
 import baccord.business.images.ImageManager;
+import baccord.business.settings.Settings;
+import baccord.business.settings.Settings;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -32,6 +34,9 @@ public class DI extends AbstractModule
 		bind(Editor.class).to(BasicEditor.class).in(Singleton.class);
 		bind(ImageFolders.class).to(BasicImageFolders.class).in(Singleton.class);
 		bind(ImageManager.class).to(BasicImageManager.class).in(Singleton.class);
+		
+		// settings
+		bind(Settings.class).to(Settings.class).in(Singleton.class);
 	}
 	
 	

@@ -1,8 +1,9 @@
 
 package baccord.business.images;
 
-import baccord.exceptions.SiftAppMissingException;
-import java.util.HashMap;
+import baccord.business.settings.Settings;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -17,11 +18,14 @@ public interface ImageManager
 	 * --------------------------------------------------------------------
 	 */
 	
-	public void setSiftPath(String path) throws SiftAppMissingException;
-	public String getSiftPath();
+	public Settings getSettings();
+	public void setSettings(Settings settings);
 	
-	public HashMap<String, Float> getCameraCcdWidths();
-	public void setCameraCcdWidths(HashMap<String, Float> map);
+	public String getSiftPath();
+	public void setSiftPath(String path);
+	
+	public Map<String, Float> getCameraCcdWidths();
+	public void setCameraCcdWidths(Map<String, Float> map);
 	
 	public void setCcdWidthForCamera(String camera, float width);
 	public float getCcdWidthForCamera(String camera);
@@ -67,4 +71,12 @@ public interface ImageManager
 	 */
 	public void loadExifInformation(Image image);
 	
+	/**
+	 * Scan directory for jpg images, for each will load exif information
+	 * and return results as list
+	 * 
+	 * @param directory to scan
+	 * @return list of found images
+	 */
+	public List<Image> loadImagesFromDirectory(String directory, boolean loadExif);
 }	
