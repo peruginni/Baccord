@@ -97,14 +97,14 @@ public class BasicImageManager implements ImageManager, Observer
 		camerasCcdWidths = map;
 	}
 	
-	public void setCcdWidthForCamera(String camera, float width)
+	public void addCcdWidth(String camera, float width)
 	{
 		Map<String, Float> map = getCameraCcdWidths();
 		map.put(camera, new Float(width));
 		ObjectStorage.save(map, cameraCcdWidthsStoragePath);
 	}
 	
-	public float getCcdWidthForCamera(String camera)
+	public float getCcdWidth(String camera)
 	{
 		Map<String, Float> map = getCameraCcdWidths();
 		Float result = map.get(camera);
@@ -239,7 +239,7 @@ public class BasicImageManager implements ImageManager, Observer
 			String make = exifDirectory.getString(ExifDirectory.TAG_MAKE);
 			String model = exifDirectory.getString(ExifDirectory.TAG_MODEL);
 			Float focalLegthMm = Float.valueOf(exifDirectory.getString(ExifDirectory.TAG_FOCAL_LENGTH).replace("mm", ""));			
-			Float ccdWidthMm = getCcdWidthForCamera(make + " " + model);
+			Float ccdWidthMm = getCcdWidth(make + " " + model);
 			int resolutionX = exifDirectory.getInt(ExifDirectory.TAG_X_RESOLUTION);
 			int resolutionY = exifDirectory.getInt(ExifDirectory.TAG_Y_RESOLUTION);
 			

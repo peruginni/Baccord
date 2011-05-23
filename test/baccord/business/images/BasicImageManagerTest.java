@@ -1,9 +1,10 @@
 package baccord.business.images;
 
+import baccord.tools.DI;
+import java.util.Map;
 import java.io.File;
 import java.io.IOException;
 import org.junit.Before;
-import baccord.exceptions.SiftAppMissingException;
 import baccord.tools.FileHelper;
 import java.util.HashMap;
 import org.junit.After;
@@ -35,30 +36,14 @@ public class BasicImageManagerTest
 	}
 	
 	/**
-	 * Test of setSiftPath method, of class BasicImageManager.
-	 */
-	@Test
-	public void testSetSiftPath() throws Exception
-	{
-		System.out.println("setSiftPath");
-		BasicImageManager instance = new BasicImageManager();
-		
-		boolean siftMissing = false;
-		try {
-			instance.setSiftPath("");
-		} catch(SiftAppMissingException ex) { siftMissing = true; }
-		assertTrue(siftMissing);
-	}
-
-	/**
 	 * Test of getCameraCcdWidths method, of class BasicImageManager.
 	 */
 	@Test
 	public void testGetCameraCcdWidths()
 	{
 		System.out.println("getCameraCcdWidths");
-		BasicImageManager instance = new BasicImageManager();
-		HashMap result = instance.getCameraCcdWidths();
+		ImageManager instance = DI.get(ImageManager.class);
+		Map result = instance.getCameraCcdWidths();
 		assertNotNull(result);
 	}
 
@@ -69,10 +54,10 @@ public class BasicImageManagerTest
 	public void testSetCameraCcdWidths()
 	{
 		System.out.println("setCameraCcdWidths");
-		BasicImageManager instance = new BasicImageManager();
+		ImageManager instance = DI.get(ImageManager.class);
 		
 		HashMap<String, Float> map = new HashMap<String, Float>();
-		instance.fillDefaultCameraCcdWidths(map);
+		BasicImageManager.fillDefaultCameraCcdWidths(map);
 		
 		instance.setCameraCcdWidths(map);
 		assertEquals(map, instance.getCameraCcdWidths());
@@ -82,14 +67,14 @@ public class BasicImageManagerTest
 	 * Test of setCcdWidthForCamera method, of class BasicImageManager.
 	 */
 	@Test
-	public void testSetCcdWidthForCamera()
+	public void testAddCcdWidth()
 	{
 		System.out.println("setCcdWidthForCamera");
 		String camera = "Baccord Test Camera";
 		float width = 5.4f;
-		BasicImageManager instance = new BasicImageManager();
-		instance.setCcdWidthForCamera(camera, width);
-		assertEquals(width, instance.getCcdWidthForCamera(camera), 0.001);
+		ImageManager instance = DI.get(ImageManager.class);
+		instance.addCcdWidth(camera, width);
+		assertEquals(width, instance.getCcdWidth(camera), 0.001);
 	}
 
 	/**
@@ -100,7 +85,7 @@ public class BasicImageManagerTest
 	{
 		System.out.println("setCameraCcdWidthsStoragePath");
 		String cameraCcdWidthsStoragePath = "path";
-		BasicImageManager instance = new BasicImageManager();
+		ImageManager instance = DI.get(ImageManager.class);
 		instance.setCameraCcdWidthsStoragePath(cameraCcdWidthsStoragePath);
 		String result = instance.getCameraCcdWidthsStoragePath();
 		assertEquals(result, cameraCcdWidthsStoragePath);
@@ -115,7 +100,7 @@ public class BasicImageManagerTest
 		System.out.println("resize");
 		int longerSide = 640;
 		int shorterSide = 480;
-		BasicImageManager instance = new BasicImageManager();
+		ImageManager instance = DI.get(ImageManager.class);
 		instance.resize(image, longerSide, shorterSide);
 		
 		instance.loadExifInformation(image);
@@ -130,7 +115,7 @@ public class BasicImageManagerTest
 	public void testSift()
 	{
 		System.out.println("hasSift");
-		BasicImageManager instance = new BasicImageManager();
+		ImageManager instance = DI.get(ImageManager.class);
 		assertFalse(instance.hasSift(image));
 		instance.performSift(image);
 		assertTrue(instance.hasSift(image));
@@ -144,7 +129,7 @@ public class BasicImageManagerTest
 	public void testLoadExifInformation()
 	{
 		System.out.println("fillDefaultCameraCcdWidths");
-		BasicImageManager instance = new BasicImageManager();
+		ImageManager instance = DI.get(ImageManager.class);
 		
 		instance.loadExifInformation(image);
 

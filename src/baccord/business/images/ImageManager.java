@@ -26,9 +26,8 @@ public interface ImageManager
 	
 	public Map<String, Float> getCameraCcdWidths();
 	public void setCameraCcdWidths(Map<String, Float> map);
-	
-	public void setCcdWidthForCamera(String camera, float width);
-	public float getCcdWidthForCamera(String camera);
+	public void addCcdWidth(String camera, float width);
+	public float getCcdWidth(String camera);
 	
 	public String getCameraCcdWidthsStoragePath();
 	public void setCameraCcdWidthsStoragePath(String cameraCcdWidthsStoragePath);
@@ -79,4 +78,5 @@ public interface ImageManager
 	 * @return list of found images
 	 */
 	public List<Image> loadImagesFromDirectory(String directory, boolean loadExif);
+	
 }	
