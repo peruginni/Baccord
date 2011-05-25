@@ -93,6 +93,15 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 	{
 		items.clear();
 	}
+	
+	public void clearFinished()
+	{
+		for (DownloadItem downloadItem : items) {
+			if(downloadItem.isFinished()) {
+				items.remove(downloadItem);
+			}
+		}
+	}
 
 	public void remove(DownloadItem item)
 	{
@@ -139,7 +148,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			
 			// inspired by http://www.java2s.com/Tutorial/Java/0320__Network/SavebinaryfilefromURL.htm
 
-			item.setStatus(DownloadItem.Status.downloading);
+			item.setStatus(DownloadItem.DOWNLOADING);
 
 			// get next url to download from queue
 			URL url = new URL(item.getSource());
@@ -186,7 +195,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			out.close();
 
 			item.setTarget(absoluteTargetFilename);
-			item.setStatus(DownloadItem.Status.done);
+			item.setStatus(DownloadItem.FINISHED);
 			notifyObservers(item);
 
 		} catch (MalformedURLException ex) {

@@ -73,6 +73,11 @@ public interface DownloadManager
 	public void clear();
 	
 	/**
+	 * Will clear only finished items
+	 */
+	public void clearFinished();
+	
+	/**
 	 * Get all items in current download queue
 	 * 
 	 * @return 

@@ -108,6 +108,34 @@ public class BasicDownloadManagerTest
 			assertEquals(foundUrl, expectedUrl);
 		}
 	}
+	
+	@Test
+	public void testClear()
+	{
+		System.out.println("clear");
+		
+		DownloadManager instance = DI.get(DownloadManager.class);
+		fillWithTestData(instance);
+	
+		assertFalse(instance.getAll().isEmpty());
+		instance.clear();
+		assertTrue(instance.getAll().isEmpty());
+		
+
+	}
+	
+	@Test
+	public void testClearFinished()
+	{
+		System.out.println("clearFinished");
+		
+		
+		DownloadManager instance = DI.get(DownloadManager.class);
+		fillWithTestData(instance);
+		
+		instance.getAll().get(0).setStatus(DownloadItem.FINISHED);
+	}
+	
 
 	/**
 	 * Test of remove method, of class BasicDownloadManager.
@@ -167,9 +195,9 @@ public class BasicDownloadManagerTest
 
 		DownloadManager instance = DI.get(DownloadManager.class);
 		
-		assertEquals(DownloadItem.Status.waiting, item.getStatus());
+		assertTrue(item.isWaiting());
 		instance.downloadSingle(item);
-		assertEquals(DownloadItem.Status.done, item.getStatus());
+		assertTrue(item.isFinished());
 
 		File file = new File(item.getTarget());
 		assertTrue(file.isFile());

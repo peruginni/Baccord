@@ -7,29 +7,26 @@ package baccord.business.downloader;
  */
 public class DownloadItem
 {	
+	public static final int WAITING = 0;
+	public static final int DOWNLOADING = 1;
+	public static final int FINISHED = 2;
+	
 	private String source;
 	private String target;
 	private String targetDirectory;
-	private Status status;
-
-	public enum Status
-	{
-		waiting,
-		downloading,
-		done,
-	}
+	private int status;
 
 	public DownloadItem()
 	{
-		this("", "", Status.waiting);
+		this("", "", WAITING);
 	}
 
 	public DownloadItem(String source)
 	{
-		this(source, "", Status.waiting);
+		this(source, "", WAITING);
 	}
 
-	public DownloadItem(String source, String targetDirectory, Status status)
+	public DownloadItem(String source, String targetDirectory, int status)
 	{
 		this.source = source;
 		this.targetDirectory = targetDirectory;
@@ -66,13 +63,28 @@ public class DownloadItem
 		this.targetDirectory = targetDirectory;
 	}
 
-	public Status getStatus()
+	public int getStatus()
 	{
 		return this.status;
 	}
 
-	public void setStatus(Status status)
+	public void setStatus(int status)
 	{
 		this.status = status;
+	}
+	
+	public boolean isFinished()
+	{
+		return status == FINISHED;
+	}
+	
+	public boolean isWaiting()
+	{
+		return status == WAITING;
+	}
+	
+	public boolean isDownloading()
+	{
+		return status == DOWNLOADING;
 	}
 }
