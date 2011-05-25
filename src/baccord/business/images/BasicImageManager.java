@@ -1,10 +1,9 @@
 package baccord.business.images;
 
 import baccord.business.settings.Settings;
-import baccord.exceptions.SiftAppMissingException;
+import baccord.exceptions.InvalidAppPathException;
 import baccord.tools.FileHelper;
 import baccord.tools.ObjectStorage;
-import baccord.tools.OS;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.imaging.jpeg.JpegProcessingException;
 import com.drew.metadata.Directory;
@@ -33,14 +32,18 @@ import java.util.logging.Logger;
  */
 public class BasicImageManager implements ImageManager, Observer
 {
+	private static final Logger logger = Logger.getLogger(BasicImageManager.class.getName());
+	
 	public final static String SIFT_EXTENSION = ".key";
 	public final static String PGM_EXTENSION = ".pgm";
 	
 	private Settings settings;
 	private String siftPath;
+	private String convertPath;
+	private String mogrifyPath;
 	
-	private Map<String, Float> camerasCcdWidths;
-	private String cameraCcdWidthsStoragePath = "./cameraCcdWidths.dat";
+	private Map<String, Float> ccdWidths;
+	private String ccdWidthsStoragePath = "./ccdWidths.dat";
 	
 	
 	/**
@@ -59,7 +62,7 @@ public class BasicImageManager implements ImageManager, Observer
 	{
 		this.settings = settings;
 		settings.addObserver(this);
-		setSiftPath(settings.get(Settings.KEYPOINT_DETECTOR_PATH));
+		update(settings, null);
 	}
 	
 	public String getSiftPath()
@@ -72,41 +75,61 @@ public class BasicImageManager implements ImageManager, Observer
 		siftPath = path;
 	}
 	
-	
-	public Map<String, Float> getCameraCcdWidths()
+	public String getConvertPath()
 	{
-		if(camerasCcdWidths == null) {
+		return this.convertPath;
+	}
+	
+	public void setConvertPath(String convertPath)
+	{
+		this.convertPath = convertPath;
+	}
+	
+	public String getMogrifyPath()
+	{
+		return this.mogrifyPath;
+	}
+	
+	public void setMogrifyPath(String mogrifyPath)
+	{
+		this.mogrifyPath = mogrifyPath;
+	}
+	
+	public Map<String, Float> getCcdWidths()
+	{
+		if(ccdWidths == null) {
 			try {
-				camerasCcdWidths = (HashMap<String, Float>) ObjectStorage.load(cameraCcdWidthsStoragePath);
+				ccdWidths = (HashMap<String, Float>) ObjectStorage.load(ccdWidthsStoragePath);
 				
 			} catch (FileNotFoundException ex) {
 				// file was probably not yet created
 			}
 
-			if(camerasCcdWidths == null) {
-				camerasCcdWidths = new HashMap<String, Float>();
-				fillDefaultCameraCcdWidths(camerasCcdWidths);
+			if(ccdWidths == null) {
+				ccdWidths = new HashMap<String, Float>();
+				fillDefaultCameraCcdWidths(ccdWidths);
 			}
 		}
 		
-		return camerasCcdWidths;
+		return ccdWidths;
 	}
 	
-	public void setCameraCcdWidths(Map<String, Float> map)
+	public void setCcdWidths(Map<String, Float> map)
 	{
-		camerasCcdWidths = map;
+		ccdWidths = map;
+		ObjectStorage.save(ccdWidths, ccdWidthsStoragePath);
 	}
 	
 	public void addCcdWidth(String camera, float width)
 	{
-		Map<String, Float> map = getCameraCcdWidths();
-		map.put(camera, new Float(width));
-		ObjectStorage.save(map, cameraCcdWidthsStoragePath);
+		getCcdWidths();
+		ccdWidths.put(camera, new Float(width));
+		ObjectStorage.save(ccdWidths, ccdWidthsStoragePath);
 	}
 	
 	public float getCcdWidth(String camera)
 	{
-		Map<String, Float> map = getCameraCcdWidths();
+		Map<String, Float> map = getCcdWidths();
 		Float result = map.get(camera);
 		if(result != null) {
 			return result.floatValue();
@@ -115,14 +138,14 @@ public class BasicImageManager implements ImageManager, Observer
 		}
 	}
 	
-	public String getCameraCcdWidthsStoragePath()
+	public String getCcdWidthsStoragePath()
 	{
-		return this.cameraCcdWidthsStoragePath;
+		return this.ccdWidthsStoragePath;
 	}
 	
-	public void setCameraCcdWidthsStoragePath(String cameraCcdWidthsStoragePath)
+	public void setCcdWidthsStoragePath(String ccdWidthsStoragePath)
 	{
-		this.cameraCcdWidthsStoragePath = cameraCcdWidthsStoragePath;
+		this.ccdWidthsStoragePath = ccdWidthsStoragePath;
 	}
 		
 	
@@ -135,27 +158,35 @@ public class BasicImageManager implements ImageManager, Observer
 	
 	public void resize(Image image, int width, int height)
 	{
+		if(convertPath == null) {
+			logger.log(Level.SEVERE, "Missing convert application", new InvalidAppPathException());
+			return;
+		}
+		
 		/**
 		 * http://www.imagemagick.org/Usage/resize/#shrink
-		 * special escaping for windows/cygwin environments
+		 * special escaping for windows/cygwin environments - processbuilder automaticale escapes
 		 */
-		
+		 
 		// convert dragon.gif    -resize 64x64\>  shrink_dragon.gif
 		try {
-			String shrinkLargerFlag = (OS.isWindows()) ? "^>" : "\\>";
+			//String shrinkLargerFlag = (OS.isWindows()) ? "^>" : ">";
 			
 			Process p = new ProcessBuilder(
-				"convert",
+				convertPath,
 				image.getPath(),
-				"-resize " + width + "x" + height + shrinkLargerFlag,
+				"-resize",
+				width + "x" + height + ">",
 				image.getPath()
 			).start(); 
-			p.waitFor();
+			
+			if(p.waitFor() != 0)
+				logger.log(Level.SEVERE, "Resize error");
 			
 		} catch (InterruptedException ex) {
-			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+			logger.log(Level.SEVERE, null, ex);
 		} catch (IOException ex) {
-			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+			logger.log(Level.SEVERE, null, ex);
 		} 
 	}
 
@@ -169,10 +200,13 @@ public class BasicImageManager implements ImageManager, Observer
 
 	public void performSift(Image image)
 	{
-		String sift = getSiftPath();
-		 
-		if(sift == null) {
-			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, "Missing sift application", new SiftAppMissingException());
+		if(siftPath == null) {
+			logger.log(Level.SEVERE, "Missing sift application", new InvalidAppPathException());
+			return;
+		}
+		
+		if(mogrifyPath == null) {
+			logger.log(Level.SEVERE, "Missing mogrify application", new InvalidAppPathException());
 			return;
 		}
 		
@@ -192,34 +226,34 @@ public class BasicImageManager implements ImageManager, Observer
 			
 			// convert image to pgm 
 			Process p = new ProcessBuilder(
-				"mogrify",
+				mogrifyPath,
 				"-format pgm " + imageJpgPath
 			).start(); 
-			p.waitFor();
+			if(p.waitFor() != 0) logger.log(Level.SEVERE, "Mogrify error");
 
 			// execute sift command and save keyfile
 			p = new ProcessBuilder(
-				sift + " < " + imagePgmPath + " > " + imageSiftPath
+				siftPath + " < " + imagePgmPath + " > " + imageSiftPath
 			).start(); 
-			p.waitFor();
+			if(p.waitFor() != 0) logger.log(Level.SEVERE, "Sift error");
 			
 			// remove pgm temp image
 			p = new ProcessBuilder(
 				"rm", imagePgmPath
 			).start(); 
-			p.waitFor();
+			if(p.waitFor() != 0) logger.log(Level.SEVERE, "Remove tmp image error");
 			
 			// compress sift file
 			p = new ProcessBuilder(
 				"gzip", 
 				"-f " + imagePgmPath
 			).start(); 
-			p.waitFor();
+			if(p.waitFor() != 0) logger.log(Level.SEVERE, "Gzip error");
 			
 		} catch (InterruptedException ex) {
-			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+			logger.log(Level.SEVERE, null, ex);
 		} catch (IOException ex) {
-			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+			logger.log(Level.SEVERE, null, ex);
 		} 
 	}
 
@@ -243,18 +277,13 @@ public class BasicImageManager implements ImageManager, Observer
 			int resolutionX = exifDirectory.getInt(ExifDirectory.TAG_X_RESOLUTION);
 			int resolutionY = exifDirectory.getInt(ExifDirectory.TAG_Y_RESOLUTION);
 			
-			if(focalLegthMm == 0 || ccdWidthMm == 0 || resolutionX == 0) {
-				focalLength = 0;
-			} 
-			
 			if(resolutionX < resolutionY) {
 				// aspect ratio is wrong
 				int tmp = resolutionX;
 				resolutionX = resolutionY;
 				resolutionY = tmp;
 			}
-			
-			if(focalLength != 0) {
+			if(focalLegthMm != 0 && ccdWidthMm != 0 && resolutionX != 0) {
 				//$focal_pixels = $res_x * ($focal_mm / $ccd_width_mm);
 				focalLength = resolutionX * (focalLegthMm / ccdWidthMm);
 				//$line = sprintf("%s.jpg 0 %0.5f", $basename, $SCALE * $focal_pixels);
@@ -262,14 +291,12 @@ public class BasicImageManager implements ImageManager, Observer
 			}
 			
 		} catch (MetadataException ex) {
-			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+			logger.log(Level.SEVERE, null, ex);
 		} catch (JpegProcessingException ex) {
-			Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+			logger.log(Level.SEVERE, null, ex);
 		}
 		
 		image.setFocalLength(focalLength);
-		
-		
 	}
 	
 	public List<Image> loadImagesFromDirectory(String directory, boolean loadExif)
@@ -293,7 +320,7 @@ public class BasicImageManager implements ImageManager, Observer
 					}
 					list.add(image);
 				} catch (IOException ex) {
-					Logger.getLogger(BasicImageManager.class.getName()).log(Level.SEVERE, null, ex);
+					logger.log(Level.SEVERE, null, ex);
 				}
 			}
 			
@@ -525,6 +552,7 @@ public class BasicImageManager implements ImageManager, Observer
 		map.put("Panasonic DMC-FX01", new Float(5.76));
 		map.put("Panasonic DMC-FX07", new Float(5.75));
 		map.put("Panasonic DMC-FX9", new Float(5.76));
+		map.put("Panasonic DMC-FX10", new Float(5.76)); // added
 		map.put("Panasonic DMC-FZ20", new Float(5.760));
 		map.put("Panasonic DMC-FZ2", new Float(4.54));
 		map.put("Panasonic DMC-FZ30", new Float(7.176));
@@ -592,6 +620,8 @@ public class BasicImageManager implements ImageManager, Observer
 		if(o instanceof Settings) {
 			Settings givenSettings = (Settings) o;
 			setSiftPath(givenSettings.get(Settings.KEYPOINT_DETECTOR_PATH));
+			setConvertPath(givenSettings.get(Settings.IMAGEMAGICK_CONVERT_PATH));
+			setMogrifyPath(givenSettings.get(Settings.IMAGEMAGICK_MOGRIFY_PATH));
 		}
 	}
 	

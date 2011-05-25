@@ -3,6 +3,8 @@ package baccord.tools;
 
 import java.io.IOException;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -207,4 +209,31 @@ public class FileHelperTest
 		assertEquals(path, result);
 	}
 
+	 
+	@Test
+	public void testCopyFile() throws IOException
+	{
+		System.out.println("copyFile");
+		File file1 = new File("./copyFileTest.txt");
+		File file2 = new File("./copyFileTest2.txt");
+		try {
+			file1.delete();
+			file2.delete();
+			
+			file1.createNewFile();
+			assertTrue(file1.exists());
+			FileHelper.copyFile(file1, file2);
+			assertTrue(file2.exists());
+			
+			// TODO: test equality of content of files
+			
+		} catch (IOException ex) {
+			Logger.getLogger(FileHelperTest.class.getName()).log(Level.SEVERE, null, ex);
+			throw ex;
+		} finally {
+			file1.delete();
+			file2.delete();
+		}
+	}
+	 
 }

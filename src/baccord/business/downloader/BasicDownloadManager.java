@@ -88,6 +88,11 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			add(item);
 		}
 	}
+	
+	public void clear()
+	{
+		items.clear();
+	}
 
 	public void remove(DownloadItem item)
 	{

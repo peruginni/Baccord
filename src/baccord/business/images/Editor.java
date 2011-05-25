@@ -19,8 +19,13 @@ public interface Editor extends Observer
 	
 	public ImageManager getImageManager();
 	public void setImageManager(ImageManager imageManager);
+	
+	public boolean getAutoStart();
+	public void setAutoStart(boolean autoStart);
+	
 	public boolean getAutoSift();
 	public void setAutoSift(boolean autoSift);
+	
 	public Dimension getAutoResizeDimension();
 	public void setAutoResizeDimension(Dimension autoResizeDimension);
 	
@@ -35,6 +40,7 @@ public interface Editor extends Observer
 	 * @param task 
 	 */
 	public void add(EditorTask task);
+	public void clear();
 	public Queue<EditorTask> getAllTasks();
 	
 	/**

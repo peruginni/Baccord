@@ -8,7 +8,10 @@ import baccord.business.images.BasicImageManager;
 import baccord.business.images.Editor;
 import baccord.business.images.ImageFolders;
 import baccord.business.images.ImageManager;
-import baccord.business.settings.Settings;
+import baccord.business.search.BasicImageSearch;
+import baccord.business.search.FlickrSearchEngine;
+import baccord.business.search.ImageSearch;
+import baccord.business.search.SearchEngine;
 import baccord.business.settings.Settings;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
@@ -35,8 +38,12 @@ public class DI extends AbstractModule
 		bind(ImageFolders.class).to(BasicImageFolders.class).in(Singleton.class);
 		bind(ImageManager.class).to(BasicImageManager.class).in(Singleton.class);
 		
+		// search
+		bind(SearchEngine.class).to(FlickrSearchEngine.class).in(Singleton.class);
+		bind(ImageSearch.class).to(BasicImageSearch.class).in(Singleton.class);
+		
 		// settings
-		bind(Settings.class).to(Settings.class).in(Singleton.class);
+		bind(Settings.class).in(Singleton.class);
 	}
 	
 	

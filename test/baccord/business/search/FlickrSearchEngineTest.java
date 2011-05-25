@@ -46,11 +46,13 @@ public class FlickrSearchEngineTest
 		}
 		
 		for(ResultItem item : result.getItems()) {
+			assertNotNull(item);
 			assertNotNull(item.getId());
 			assertNotNull(item.getTitle());
 			assertNotNull(item.getFarm());
 			assertNotNull(item.getSecret());
 			assertNotNull(item.getServer());
+			// TODO: ping the image (test that there is no 404)
 		}
 	}
 	

@@ -3,7 +3,7 @@ package baccord.business.sfm;
 
 import baccord.business.images.Editor;
 import baccord.business.images.Image;
-import baccord.business.images.ImageManager;
+import baccord.business.settings.Settings;
 import java.io.IOException;
 import java.util.List;
 
@@ -18,6 +18,9 @@ public interface StructureFromMotion
 	 *  Properties
 	 * --------------------------------------------------------------------
 	 */
+	
+	public Settings getSettings();
+	public void setSettings(Settings settings);
 	
 	public Editor getEditor();
 	public void setEditor(Editor editor);

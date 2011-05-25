@@ -68,6 +68,11 @@ public interface DownloadManager
 	public void remove(DownloadItem item);
 	
 	/**
+	 * Will clear list of urls
+	 */
+	public void clear();
+	
+	/**
 	 * Get all items in current download queue
 	 * 
 	 * @return 

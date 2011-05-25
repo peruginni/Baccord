@@ -18,8 +18,8 @@ import static org.junit.Assert.*;
 public class BasicImageManagerTest
 {
 	private Image image;
-	private File testFile = new File("./test/data/image800x600_f1.6.jpg");
-	private File sourceFile = new File("./test/data/image800x600_f1.6.jpg");
+	private File testFile = new File("./test/data/image800x600_f72.5tmp.jpg");
+	private File sourceFile = new File("./test/data/image800x600_f72.5.jpg");
 	
 	@Before
 	public void setUp() throws IOException 
@@ -35,65 +35,64 @@ public class BasicImageManagerTest
 		testFile.delete();
 	}
 	
-	/**
-	 * Test of getCameraCcdWidths method, of class BasicImageManager.
-	 */
 	@Test
-	public void testGetCameraCcdWidths()
+	public void testGetCcdWidths()
 	{
-		System.out.println("getCameraCcdWidths");
+		System.out.println("getCcdWidths");
 		ImageManager instance = DI.get(ImageManager.class);
-		Map result = instance.getCameraCcdWidths();
+		Map result = instance.getCcdWidths();
 		assertNotNull(result);
 	}
-
-	/**
-	 * Test of setCameraCcdWidths method, of class BasicImageManager.
-	 */
+	
 	@Test
-	public void testSetCameraCcdWidths()
+	public void testSetCcdWidths()
 	{
-		System.out.println("setCameraCcdWidths");
+		System.out.println("setCcdWidths");
 		ImageManager instance = DI.get(ImageManager.class);
+		File file = new File(instance.getCcdWidthsStoragePath());
+		file.delete();
 		
 		HashMap<String, Float> map = new HashMap<String, Float>();
 		BasicImageManager.fillDefaultCameraCcdWidths(map);
 		
-		instance.setCameraCcdWidths(map);
-		assertEquals(map, instance.getCameraCcdWidths());
+		instance.setCcdWidths(map);
+		assertEquals(map, instance.getCcdWidths());
+		
+		assertTrue(file.exists());
+		file.delete();
+		assertFalse(file.exists());
 	}
 
-	/**
-	 * Test of setCcdWidthForCamera method, of class BasicImageManager.
-	 */
 	@Test
 	public void testAddCcdWidth()
 	{
 		System.out.println("setCcdWidthForCamera");
 		String camera = "Baccord Test Camera";
 		float width = 5.4f;
+		
 		ImageManager instance = DI.get(ImageManager.class);
+		File file = new File(instance.getCcdWidthsStoragePath());
+		file.delete();
+		
 		instance.addCcdWidth(camera, width);
 		assertEquals(width, instance.getCcdWidth(camera), 0.001);
+		
+		assertTrue(file.exists());
+		file.delete();
+		assertFalse(file.exists());
 	}
 
-	/**
-	 * Test of setCameraCcdWidthsStoragePath method, of class BasicImageManager.
-	 */
 	@Test
-	public void testSetCameraCcdWidthsStoragePath()
+	public void testSetCcdWidthsStoragePath()
 	{
-		System.out.println("setCameraCcdWidthsStoragePath");
+		System.out.println("setCcdWidthsStoragePath");
 		String cameraCcdWidthsStoragePath = "path";
 		ImageManager instance = DI.get(ImageManager.class);
-		instance.setCameraCcdWidthsStoragePath(cameraCcdWidthsStoragePath);
-		String result = instance.getCameraCcdWidthsStoragePath();
+		instance.setCcdWidthsStoragePath(cameraCcdWidthsStoragePath);
+		String result = instance.getCcdWidthsStoragePath();
 		assertEquals(result, cameraCcdWidthsStoragePath);
 	}
 
-	/**
-	 * Test of resize method, of class BasicImageManager.
-	 */
 	@Test
 	public void testResize()
 	{
@@ -101,30 +100,36 @@ public class BasicImageManagerTest
 		int longerSide = 640;
 		int shorterSide = 480;
 		ImageManager instance = DI.get(ImageManager.class);
-		instance.resize(image, longerSide, shorterSide);
 		
+		if(instance.getConvertPath() == null) {
+			fail("Convert app missing");
+		}
+		
+		if(instance.getMogrifyPath() == null) {
+			fail("Mogrify app missing");
+		}
+		
+		instance.resize(image, longerSide, shorterSide);
 		instance.loadExifInformation(image);
 		
 		assertTrue(image.getWidth() == longerSide || image.getHeight() == longerSide);
 	}
 
-	/**
-	 * Test of hasSift and parformSift method, of class BasicImageManager.
-	 */
 	@Test
 	public void testSift()
 	{
 		System.out.println("hasSift");
 		ImageManager instance = DI.get(ImageManager.class);
+		
+		if(instance.getSiftPath() == null) {
+			fail("Sift app missing");
+		}
+		
 		assertFalse(instance.hasSift(image));
 		instance.performSift(image);
 		assertTrue(instance.hasSift(image));
 	}
 	
-	
-	/**
-	 * Test of loadExifInformation method, of class BasicImageManager.
-	 */
 	@Test
 	public void testLoadExifInformation()
 	{
@@ -133,14 +138,11 @@ public class BasicImageManagerTest
 		
 		instance.loadExifInformation(image);
 
-		assertEquals(image.getWidth(), 800);
-		assertEquals(image.getHeight(), 600);
-		assertEquals(image.getFocalLength(), 1.6, 0.001);
+		assertEquals(800, image.getWidth());
+		assertEquals(600, image.getHeight());
+		assertEquals(72.5, image.getFocalLength(), 0.001);
 	}
-
-	/**
-	 * Test of fillDefaultCameraCcdWidths method, of class BasicImageManager.
-	 */
+	
 	@Test
 	public void testFillDefaultCameraCcdWidths()
 	{

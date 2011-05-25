@@ -14,6 +14,7 @@ import java.util.Queue;
  */
 public class BasicEditor implements Editor, Runnable
 {
+	private boolean autoStart = false;
 	private boolean autoSift = false;
 	private Dimension autoResizeDimension = null;
 	
@@ -46,6 +47,16 @@ public class BasicEditor implements Editor, Runnable
 		this.imageManager = imageManager;
 	}
 	
+	public boolean getAutoStart()
+	{
+		return autoStart;
+	}
+	
+	public void setAutoStart(boolean autoStart)
+	{
+		this.autoStart = autoStart;
+	}
+	
 	public boolean getAutoSift() 
 	{
 		return autoSift;
@@ -75,7 +86,14 @@ public class BasicEditor implements Editor, Runnable
 	public void add(EditorTask task)
 	{
 		queue.add(task);
-		startEditing();
+		if(autoStart) {
+			startEditing();
+		}
+	}
+	
+	public void clear()
+	{
+		queue.clear();
 	}
 	
 	public Queue<EditorTask> getAllTasks()

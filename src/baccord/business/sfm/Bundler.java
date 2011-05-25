@@ -59,7 +59,7 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	{
 		this.settings = settings;
 		settings.addObserver(this);
-		setKeypointMatcherPath(settings.get(Settings.KEYPOINT_MATCHER_PATH));
+		update(settings, null);
 	}
 	
 	public Editor getEditor()

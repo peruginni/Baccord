@@ -1,5 +1,6 @@
 package baccord.business.search;
 
+import baccord.tools.DI;
 import java.util.LinkedList;
 import java.io.File;
 import org.junit.Test;
@@ -11,32 +12,6 @@ import static org.junit.Assert.*;
  */
 public class BasicImageSearchTest
 {
-	
-	/**
-	 * Test of setSearchEngine method, of class BasicImageSearch.
-	 */
-	@Test
-	public void testSetSearchEngine()
-	{
-		System.out.println("setSearchEngine");
-		SearchEngine searchEngine = new FlickrSearchEngine();
-		BasicImageSearch instance = new BasicImageSearch();
-		instance.setSearchEngine(searchEngine);
-		assertEquals(instance.getSearchEngine(), searchEngine);
-	}
-
-	/**
-	 * Test of getSearchEngine method, of class BasicImageSearch.
-	 */
-	@Test
-	public void testGetSearchEngine()
-	{
-		System.out.println("getSearchEngine");
-		BasicImageSearch instance = new BasicImageSearch();
-		SearchEngine result = instance.getSearchEngine();
-		assertTrue(result instanceof SearchEngine);
-	}
-
 	/**
 	 * Test of searchByQuery method, of class BasicImageSearch.
 	 */
@@ -47,10 +22,20 @@ public class BasicImageSearchTest
 		SearchQuery searchQuery = new SearchQuery();
 		searchQuery.setKeywords("notre dame");
 		
-		BasicImageSearch instance = new BasicImageSearch();
+		ImageSearch instance = DI.get(ImageSearch.class);
 		SearchResult result = instance.searchByQuery(searchQuery);
 		
+		// test if recently used keyword was saved
 		assertEquals(instance.getRecentlyUsedKeywords().getLast(), searchQuery.getKeywords());
+		
+		// test if has result
+		assertNotNull(result);
+		
+		assertFalse(result.getItems().isEmpty());
+		for (ResultItem resultItem : result.getItems()) {
+			assertNotNull(resultItem);
+			// more extensively tested in tests for implementation of search engines
+		}
 	}
 
 	/**
@@ -61,7 +46,7 @@ public class BasicImageSearchTest
 	{
 		System.out.println("saveRecentlyUsedKeyword");
 		String keyword = "notre dame";
-		BasicImageSearch instance = new BasicImageSearch();
+		ImageSearch instance = DI.get(ImageSearch.class);
 		
 		instance.clearRecentlyUsed();
 		instance.saveRecentlyUsedKeyword(keyword);
@@ -78,7 +63,7 @@ public class BasicImageSearchTest
 	{
 		System.out.println("clearRecentlyused");
 		
-		ImageSearch instance = new BasicImageSearch();
+		ImageSearch instance = DI.get(ImageSearch.class);
 		instance.saveRecentlyUsedKeyword("notre dame");
 		
 		File storage = new File(instance.getStoragePath());

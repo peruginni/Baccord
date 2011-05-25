@@ -24,8 +24,8 @@ public class BasicEditorTest
 	
 	private EditorTask task;
 	private Image image;
-	private File testFile = new File("./test/data/image800x600_f1.6tmp.jpg");
-	private File sourceFile = new File("./test/data/image800x600_f1.6.jpg");
+	private File testFile = new File("./test/data/image800x600_f72.5tmp.jpg");
+	private File sourceFile = new File("./test/data/image800x600_f72.5.jpg");
 	
 	@Before
 	public void setUp() throws IOException 
@@ -49,26 +49,15 @@ public class BasicEditorTest
 	{
 		for(EditorTask item : testItems) {
 			editor.add(item);
+			if(editor.getAutoStart()) {
+				assertTrue(editor.isEditing());
+			} else {
+				assertFalse(editor.isEditing());
+			}
 		}
 	}
 	
 	
-	/**
-	 * Test of getImageManager method, of class BasicEditor.
-	 */
-	@Test
-	public void testGetSetImageManager()
-	{
-		System.out.println("get/setImageManager");
-		Editor instance = DI.get(Editor.class);
-		assertNotNull(instance.getImageManager());
-		
-		ImageManager expResult = new BasicImageManager();
-		instance.setImageManager(expResult);
-		ImageManager result = instance.getImageManager();
-		assertEquals(expResult, result);
-	}
-
 	/**
 	 * Test of add method, of class BasicEditor.
 	 */
@@ -77,9 +66,8 @@ public class BasicEditorTest
 	{
 		System.out.println("add");
 		
-		EditorTask task = new EditorTask(new Image(), true, null);
-		
 		Editor instance = DI.get(Editor.class);
+		instance.clear();
 		instance.add(task);
 		
 		boolean foundTask = false;
@@ -98,9 +86,11 @@ public class BasicEditorTest
 	public void testStartEditing() throws InterruptedException
 	{
 		Editor instance = DI.get(Editor.class);
-		fillWithTestData(instance);
+		instance.setAutoStart(false);
 		
+		fillWithTestData(instance);
 		assertFalse(instance.isEditing());
+		
 		instance.startEditing();
 		assertTrue(instance.isEditing());
 		
@@ -146,7 +136,9 @@ public class BasicEditorTest
 		Image taskImage = task.getImage();
 		
 		if(task.performSift()) {
-			assertTrue(imageManager.equals(taskImage));
+			if(imageManager.getSiftPath() != null) {
+				assertTrue(imageManager.hasSift(taskImage));
+			}
 		} 
 		
 		if(task.getResizeDimension() != null) {

@@ -1,8 +1,9 @@
 
 package baccord.business.downloader;
 
+import java.io.IOException;
 import org.junit.After;
-import org.junit.AfterClass;
+import baccord.tools.DI;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import java.io.File;
@@ -27,7 +28,7 @@ public class BasicDownloadManagerTest
 	@BeforeClass
 	public static void setUpClass() throws Exception
 	{
-		defaultDownloadDirectory = FileHelper.getSystemIndependentPath("tmp","deep","download","directory");
+		defaultDownloadDirectory = FileHelper.getSystemIndependentPath("tmp");
 	}
 
 	@Before
@@ -43,6 +44,17 @@ public class BasicDownloadManagerTest
 
 		// flute
 		testItems.add(new DownloadItem("https://lh5.googleusercontent.com/_ydViQL_1CPo/RhqCpvVsq4I/AAAAAAAABE0/Yasnj0P8Cy0/s640/65696199_fa2c77fb73_o.jpg"));
+	}
+	
+	@After
+	public void tearDown() throws InterruptedException, IOException
+	{
+		Process p = new ProcessBuilder(
+			"rm",
+			"-Rf",
+			defaultDownloadDirectory
+		).start();
+		p.waitFor();
 	}
 
 	private void fillWithTestData(DownloadManager instance)
@@ -60,7 +72,7 @@ public class BasicDownloadManagerTest
 	{
 		System.out.println("get/set DownloadDirectory");
 
-		DownloadManager instance = new BasicDownloadManager();
+		DownloadManager instance = DI.get(DownloadManager.class);
 
 		instance.setDownloadDirectory(defaultDownloadDirectory);
 		
@@ -75,7 +87,7 @@ public class BasicDownloadManagerTest
 	{
 		System.out.println("add");
 
-		DownloadManager instance = new BasicDownloadManager();
+		DownloadManager instance = DI.get(DownloadManager.class);
 
 		testAdd(instance); // will add items
 		testAdd(instance); // will maintain current and add some more 
@@ -105,7 +117,7 @@ public class BasicDownloadManagerTest
 	{
 		System.out.println("remove");
 		DownloadItem itemToRemove = testItems.getFirst();
-		DownloadManager instance = new BasicDownloadManager();
+		DownloadManager instance = DI.get(DownloadManager.class);
 
 		fillWithTestData(instance);
 
@@ -123,9 +135,11 @@ public class BasicDownloadManagerTest
 	public void testGetAll() throws CannotCreateDirectoryException, PathMustBeDirectoryException
 	{
 		System.out.println("getAll");
-		DownloadManager instance = new BasicDownloadManager();
+		DownloadManager instance = DI.get(DownloadManager.class);
 
 		instance.setDownloadDirectory(defaultDownloadDirectory);
+		instance.clear();
+			
 		fillWithTestData(instance);
 
 		List result = instance.getAll();
@@ -145,10 +159,13 @@ public class BasicDownloadManagerTest
 	{
 		System.out.println("downloadSingle");
 
+		File dir = new File(defaultDownloadDirectory);
+		dir.mkdirs();
+		
 		DownloadItem item = testItems.getFirst();
 		item.setTargetDirectory(defaultDownloadDirectory);
 
-		DownloadManager instance = new BasicDownloadManager();
+		DownloadManager instance = DI.get(DownloadManager.class);
 		
 		assertEquals(DownloadItem.Status.waiting, item.getStatus());
 		instance.downloadSingle(item);
@@ -169,7 +186,7 @@ public class BasicDownloadManagerTest
 	{
 		System.out.println("startDownloading");
 
-		DownloadManager instance = new BasicDownloadManager();
+		DownloadManager instance = DI.get(DownloadManager.class);
 		
 		try {
 			instance.setDownloadDirectory(defaultDownloadDirectory);
@@ -208,7 +225,7 @@ public class BasicDownloadManagerTest
 	{
 		System.out.println("stopDownloading");
 
-		DownloadManager instance = new BasicDownloadManager();
+		DownloadManager instance = DI.get(DownloadManager.class);
 
 		try {
 			instance.setDownloadDirectory(defaultDownloadDirectory);

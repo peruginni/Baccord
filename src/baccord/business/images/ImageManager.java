@@ -24,13 +24,19 @@ public interface ImageManager
 	public String getSiftPath();
 	public void setSiftPath(String path);
 	
-	public Map<String, Float> getCameraCcdWidths();
-	public void setCameraCcdWidths(Map<String, Float> map);
+	public String getConvertPath();
+	public void setConvertPath(String convertPath);
+	
+	public String getMogrifyPath();
+	public void setMogrifyPath(String mogrifyPath);
+	
+	public Map<String, Float> getCcdWidths();
+	public void setCcdWidths(Map<String, Float> map);
 	public void addCcdWidth(String camera, float width);
 	public float getCcdWidth(String camera);
 	
-	public String getCameraCcdWidthsStoragePath();
-	public void setCameraCcdWidthsStoragePath(String cameraCcdWidthsStoragePath);
+	public String getCcdWidthsStoragePath();
+	public void setCcdWidthsStoragePath(String cameraCcdWidthsStoragePath);
 	
 	/**
 	 * --------------------------------------------------------------------

@@ -2,6 +2,7 @@
 package baccord.business.search;
 
 import baccord.tools.ObjectStorage;
+import com.google.inject.Inject;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -36,6 +37,7 @@ public class BasicImageSearch implements ImageSearch
 		storagePath = path;
 	}
 
+	@Inject
 	public void setSearchEngine(SearchEngine searchEngine)
 	{
 		this.searchEngine = searchEngine;
@@ -43,9 +45,6 @@ public class BasicImageSearch implements ImageSearch
 	
 	public SearchEngine getSearchEngine()
 	{
-		if(searchEngine == null) {
-			this.searchEngine = new FlickrSearchEngine();
-		}
 		return this.searchEngine;
 	}
 	
