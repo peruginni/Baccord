@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 /**
  *
@@ -15,11 +14,12 @@ import java.util.Queue;
  */
 public class BasicImageSearch implements ImageSearch
 {
-	private String storagePath = "./RecentSearchKeywords.dat";
+	private String recentKeywordsStoragePath = "./RecentSearchKeywords.dat";
 	private int maximumRecentKeywords = 10;
 	private LinkedList<String> recentKeywords;
 	
 	SearchEngine searchEngine;
+	SearchQuery currentQuery;
 	
 	/**
 	 * --------------------------------------------------------------------
@@ -27,14 +27,14 @@ public class BasicImageSearch implements ImageSearch
 	 * --------------------------------------------------------------------
 	 */
 	
-	public String getStoragePath()
+	public String getRecentKeywordsStoragePath()
 	{
-		return storagePath;
+		return recentKeywordsStoragePath;
 	}
 	
-	public void setStoragePath(String path)
+	public void setRecentKeywordsStoragePath(String path)
 	{
-		storagePath = path;
+		recentKeywordsStoragePath = path;
 	}
 
 	@Inject
@@ -48,6 +48,17 @@ public class BasicImageSearch implements ImageSearch
 		return this.searchEngine;
 	}
 	
+	public SearchQuery getCurrentQuery()
+	{
+		return this.currentQuery;
+	}
+	
+	@Inject
+	public void setCurrentQuery(SearchQuery currentQuery)
+	{
+		this.currentQuery = currentQuery;
+	}
+	
 	
 	/**
 	 * --------------------------------------------------------------------
@@ -55,10 +66,10 @@ public class BasicImageSearch implements ImageSearch
 	 * --------------------------------------------------------------------
 	 */
 	
-	public SearchResult searchByQuery(SearchQuery searchQuery)
+	public SearchResult searchByQuery()
 	{
-		saveRecentlyUsedKeyword(searchQuery.getKeywords());
-		return getSearchEngine().searchByQuery(searchQuery);
+		saveRecentlyUsedKeyword(currentQuery.getKeywords());
+		return getSearchEngine().searchByQuery(currentQuery);
 	}
 	
 	public void saveRecentlyUsedKeyword(String keyword)
@@ -73,14 +84,14 @@ public class BasicImageSearch implements ImageSearch
 			recentKeywords.removeLast();
 		}
 
-		ObjectStorage.save(recentKeywords, storagePath);
+		ObjectStorage.save(recentKeywords, recentKeywordsStoragePath);
 	}
 	
 	public List<String> getRecentlyUsedKeywords()
 	{
 		if(recentKeywords == null) {
 			try {
-				recentKeywords = (LinkedList<String>) ObjectStorage.load(storagePath);
+				recentKeywords = (LinkedList<String>) ObjectStorage.load(recentKeywordsStoragePath);
 			} catch (FileNotFoundException ex) {
 				// file was probably not yet created
 			}
@@ -95,7 +106,7 @@ public class BasicImageSearch implements ImageSearch
 	
 	public void clearRecentlyUsed()
 	{
-		File file = new File(storagePath);
+		File file = new File(recentKeywordsStoragePath);
 		if(file.exists()) {
 			file.delete();
 		}

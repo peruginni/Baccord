@@ -7,10 +7,13 @@
 
 package baccord.ui;
 
+import baccord.BaccordApp;
 import baccord.business.images.ImageFolders;
 import baccord.business.search.ImageSearch;
+import baccord.tools.DI;
 import com.google.inject.Inject;
 import java.io.File;
+import java.io.IOException;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 
@@ -46,6 +49,25 @@ public class ImagesDashboard extends BaseUi
 		}
 		keywordsList.setModel(keywordsListModel);
 	}
+
+	private void chooseKeyword(String keyword)
+	{
+		ImagesSearchQuery imagesSearchQuery = DI.get(ImagesSearchQuery.class);
+		imagesSearchQuery.setDefaultKeyword(keyword);
+		BaccordApp.getApplication().changeScreen(imagesSearchQuery);
+	}
+
+	private void chooseFolder(String folder)
+	{
+		if(!(new File(folder)).exists()) { 
+			Dialog.error(this, "Folder does not exists. Please, pick different one.");
+			return;
+		}
+
+		imageFolders.saveRecentlyUsed(folder);
+		BaccordApp.getApplication().changeScreen(SfmSetup.class);
+	}
+	
 	
 
     /** This method is called from within the constructor to
@@ -91,10 +113,23 @@ public class ImagesDashboard extends BaseUi
                         }
                 });
 
+                keywordsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+                keywordsList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 keywordsList.setName("keywordsList"); // NOI18N
+                keywordsList.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                keywordsListMouseClicked(evt);
+                        }
+                });
 
+                foldersList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
                 foldersList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 foldersList.setName("foldersList"); // NOI18N
+                foldersList.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                foldersListMouseClicked(evt);
+                        }
+                });
 
                 foldersLabel.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
                 foldersLabel.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
@@ -158,14 +193,34 @@ public class ImagesDashboard extends BaseUi
 	    
 	    if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 		   File selectedFolder = fileChooser.getSelectedFile();
+		   try {
+			chooseFolder(selectedFolder.getCanonicalPath());
+		   } catch (IOException ex) {
+			Dialog.error(this, "Error during getting canonical path for selected folder");
+		   }
 	    }
     }//GEN-LAST:event_chooseFolderButtonActionPerformed
 
     private void downloadButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_downloadButtonActionPerformed
     {//GEN-HEADEREND:event_downloadButtonActionPerformed
-	    // TODO add your handling code here:
+	    chooseKeyword("");
     }//GEN-LAST:event_downloadButtonActionPerformed
 
+    private void keywordsListMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_keywordsListMouseClicked
+    {//GEN-HEADEREND:event_keywordsListMouseClicked
+	    String keyword = (String) keywordsList.getSelectedValue();
+	    if(keyword != null) {
+		    chooseKeyword(keyword);
+	    }
+    }//GEN-LAST:event_keywordsListMouseClicked
+
+    private void foldersListMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_foldersListMouseClicked
+    {//GEN-HEADEREND:event_foldersListMouseClicked
+	    String folder = (String) foldersList.getSelectedValue();
+	    if(folder != null) {
+		    chooseFolder(folder);
+	    }
+    }//GEN-LAST:event_foldersListMouseClicked
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton chooseFolderButton;

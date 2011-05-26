@@ -16,13 +16,14 @@ public interface ImageSearch
 	 * --------------------------------------------------------------------
 	 */
 	
-	
-	public String getStoragePath();
-	public void setStoragePath(String path);
+	public String getRecentKeywordsStoragePath();
+	public void setRecentKeywordsStoragePath(String path);
 	
 	public void setSearchEngine(SearchEngine searchEngine);
 	public SearchEngine getSearchEngine();
 	
+	public SearchQuery getCurrentQuery();
+	public void setCurrentQuery(SearchQuery currentQuery);
 	
 	/**
 	 * --------------------------------------------------------------------
@@ -36,7 +37,7 @@ public interface ImageSearch
 	 * @param searchQuery
 	 * @return 
 	 */
-	public SearchResult searchByQuery(SearchQuery searchQuery);
+	public SearchResult searchByQuery();
 	
 	/**
 	 * Save keywords recently used in search query

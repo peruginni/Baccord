@@ -4,9 +4,8 @@
 
 package baccord.ui;
 
-import baccord.tools.DI;
+import baccord.BaccordApp;
 import java.awt.Dimension;
-import javax.swing.JPanel;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
 
@@ -16,7 +15,6 @@ import org.jdesktop.application.FrameView;
 public class MainWindow extends FrameView 
 {
 	public Dimension toolBarItemMinimalSize = new Dimension(80, 40);
-	public JPanel epicenterPanel;
 	
 	public MainWindow(SingleFrameApplication app) 
 	{
@@ -24,17 +22,11 @@ public class MainWindow extends FrameView
 		initComponents();
 	}
 	
-	public void init()
-	{
-		showPanel(ImagesDashboard.class);
-	}
-	
-	public void showPanel(Class type)
+	public void changeEpicenterTo(BaseUi component)
 	{
 		epicenter.removeAll();
-		BaseUi component = (BaseUi) DI.get(type);
-		component.init();
 		epicenter.add(component);
+		epicenter.repaint();
 		epicenter.updateUI();
 		getFrame().pack();
 	}
@@ -135,27 +127,27 @@ public class MainWindow extends FrameView
 
     private void pickPhotosButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pickPhotosButtonActionPerformed
     {//GEN-HEADEREND:event_pickPhotosButtonActionPerformed
-	    showPanel(ImagesDashboard.class);
+	    BaccordApp.getApplication().changeScreen(ImagesDashboard.class);
     }//GEN-LAST:event_pickPhotosButtonActionPerformed
 
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_settingsButtonActionPerformed
     {//GEN-HEADEREND:event_settingsButtonActionPerformed
-	    showPanel(Settings.class);
+	    BaccordApp.getApplication().changeScreen(Settings.class);
     }//GEN-LAST:event_settingsButtonActionPerformed
 
     private void sfmButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_sfmButtonActionPerformed
     {//GEN-HEADEREND:event_sfmButtonActionPerformed
-	    showPanel(SfmSetup.class);
+	    BaccordApp.getApplication().changeScreen(SfmSetup.class);
     }//GEN-LAST:event_sfmButtonActionPerformed
 
     private void mvsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mvsButtonActionPerformed
     {//GEN-HEADEREND:event_mvsButtonActionPerformed
-	    showPanel(MvsSetup.class);
+	    BaccordApp.getApplication().changeScreen(MvsSetup.class);
     }//GEN-LAST:event_mvsButtonActionPerformed
 
     private void exportButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_exportButtonActionPerformed
     {//GEN-HEADEREND:event_exportButtonActionPerformed
-	    showPanel(Export.class);
+	    BaccordApp.getApplication().changeScreen(Export.class);
     }//GEN-LAST:event_exportButtonActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

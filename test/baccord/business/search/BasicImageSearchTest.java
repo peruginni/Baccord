@@ -52,7 +52,7 @@ public class BasicImageSearchTest
 		
 		instance.clearRecentlyUsed();
 		instance.saveRecentlyUsedKeyword(keyword);
-		File storage = new File(instance.getStoragePath());
+		File storage = new File(instance.getRecentKeywordsStoragePath());
 		assertTrue(storage.exists());
 		
 		instance = new BasicImageSearch();
@@ -69,7 +69,7 @@ public class BasicImageSearchTest
 		ImageSearch instance = DI.get(ImageSearch.class);
 		instance.saveRecentlyUsedKeyword("notre dame");
 		
-		File storage = new File(instance.getStoragePath());
+		File storage = new File(instance.getRecentKeywordsStoragePath());
 		assertTrue(storage.exists());
 		
 		instance.clearRecentlyUsed();
