@@ -11,7 +11,7 @@ package baccord.ui;
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class ImagesDownloadProgress extends javax.swing.JPanel {
+public class ImagesDownloadProgress extends BaseUi {
 
     /** Creates new form ImagesDownloadProgress */
     public ImagesDownloadProgress() {

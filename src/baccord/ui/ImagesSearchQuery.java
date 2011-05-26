@@ -11,7 +11,7 @@ package baccord.ui;
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class ImagesSearchQuery extends javax.swing.JPanel {
+public class ImagesSearchQuery extends BaseUi {
 
     /** Creates new form ImagesSearchQuery */
     public ImagesSearchQuery() {

@@ -11,7 +11,8 @@ package baccord.ui;
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class SfmSetup extends javax.swing.JPanel {
+public class SfmSetup extends BaseUi
+{
 
     /** Creates new form SfmSetup */
     public SfmSetup() {

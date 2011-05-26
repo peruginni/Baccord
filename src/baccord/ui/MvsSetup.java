@@ -11,7 +11,7 @@ package baccord.ui;
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class MvsSetup extends javax.swing.JPanel {
+public class MvsSetup extends BaseUi {
 
     /** Creates new form SfmSetup */
     public MvsSetup() {

@@ -11,7 +11,7 @@ package baccord.ui;
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class SfmProgress extends javax.swing.JPanel {
+public class SfmProgress extends BaseUi {
 
     /** Creates new form SfmProgress */
     public SfmProgress() {

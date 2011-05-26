@@ -8,6 +8,7 @@
 package baccord.ui;
 
 import baccord.business.images.ImageFolders;
+import baccord.business.search.ImageSearch;
 import com.google.inject.Inject;
 import java.io.File;
 import javax.swing.DefaultListModel;
@@ -20,6 +21,7 @@ import javax.swing.JFileChooser;
 public class ImagesDashboard extends BaseUi
 {
 	@Inject private ImageFolders imageFolders;
+	@Inject private ImageSearch imageSearch;
 	
 	/** Creates new form ImagesDashboard */
 	public ImagesDashboard() 
@@ -29,18 +31,20 @@ public class ImagesDashboard extends BaseUi
 	
 	@Override
 	public void init()
-	{
-		imageFolders.saveRecentlyUsed("test 1");
-		imageFolders.saveRecentlyUsed("test 2");
-		imageFolders.saveRecentlyUsed("test 3");
-		
+	{	
+		// loading folders list
 		DefaultListModel foldersListModel = new DefaultListModel();
-		
 		for (String folder : imageFolders.getRecentlyUsed()) {
 			foldersListModel.addElement(folder);
 		}
-		
 		foldersList.setModel(foldersListModel);
+		
+		// loading keywords list
+		DefaultListModel keywordsListModel = new DefaultListModel();
+		for (String keyword : imageSearch.getRecentlyUsedKeywords()) {
+			keywordsListModel.addElement(keyword);
+		}
+		keywordsList.setModel(keywordsListModel);
 	}
 	
 

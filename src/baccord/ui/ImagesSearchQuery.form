@@ -85,7 +85,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="keywordsPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace pref="39" max="32767" attributes="0"/>
                       <Component id="gpsPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="datePanel" min="-2" max="-2" attributes="0"/>

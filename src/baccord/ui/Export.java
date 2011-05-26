@@ -11,7 +11,7 @@ package baccord.ui;
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class Export extends javax.swing.JPanel {
+public class Export extends BaseUi {
 
     /** Creates new form PickPhotosSearchQuery */
     public Export() {

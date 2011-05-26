@@ -28,10 +28,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="ccdButton" min="-2" max="-2" attributes="1"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="bundlerOptionsLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="544" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="bundlerOptionsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Component id="bundlerOptionsScrollPane" alignment="0" max="32767" attributes="1"/>
                       <Group type="102" alignment="0" attributes="0">
