@@ -7,16 +7,42 @@
 
 package baccord.ui;
 
+import baccord.business.images.ImageFolders;
+import com.google.inject.Inject;
+import java.io.File;
+import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class ImagesDashboard extends javax.swing.JPanel {
-
-    /** Creates new form ImagesDashboard */
-    public ImagesDashboard() {
-        initComponents();
-    }
+public class ImagesDashboard extends BaseUi
+{
+	@Inject private ImageFolders imageFolders;
+	
+	/** Creates new form ImagesDashboard */
+	public ImagesDashboard() 
+	{
+		initComponents();
+	}
+	
+	@Override
+	public void init()
+	{
+		imageFolders.saveRecentlyUsed("test 1");
+		imageFolders.saveRecentlyUsed("test 2");
+		imageFolders.saveRecentlyUsed("test 3");
+		
+		DefaultListModel foldersListModel = new DefaultListModel();
+		
+		for (String folder : imageFolders.getRecentlyUsed()) {
+			foldersListModel.addElement(folder);
+		}
+		
+		foldersList.setModel(foldersListModel);
+	}
+	
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -40,6 +66,11 @@ public class ImagesDashboard extends javax.swing.JPanel {
                 org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(ImagesDashboard.class);
                 downloadButton.setText(resourceMap.getString("downloadButton.text")); // NOI18N
                 downloadButton.setName("downloadButton"); // NOI18N
+                downloadButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                downloadButtonActionPerformed(evt);
+                        }
+                });
 
                 keywordsLabel.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
                 keywordsLabel.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
@@ -56,18 +87,8 @@ public class ImagesDashboard extends javax.swing.JPanel {
                         }
                 });
 
-                keywordsList.setModel(new javax.swing.AbstractListModel() {
-                        String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-                        public int getSize() { return strings.length; }
-                        public Object getElementAt(int i) { return strings[i]; }
-                });
                 keywordsList.setName("keywordsList"); // NOI18N
 
-                foldersList.setModel(new javax.swing.AbstractListModel() {
-                        String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-                        public int getSize() { return strings.length; }
-                        public Object getElementAt(int i) { return strings[i]; }
-                });
                 foldersList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 foldersList.setName("foldersList"); // NOI18N
 
@@ -128,8 +149,18 @@ public class ImagesDashboard extends javax.swing.JPanel {
 
     private void chooseFolderButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chooseFolderButtonActionPerformed
     {//GEN-HEADEREND:event_chooseFolderButtonActionPerformed
-	    // TODO add your handling code here:
+	    JFileChooser fileChooser = new JFileChooser();
+	    fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+	    
+	    if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+		   File selectedFolder = fileChooser.getSelectedFile();
+	    }
     }//GEN-LAST:event_chooseFolderButtonActionPerformed
+
+    private void downloadButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_downloadButtonActionPerformed
+    {//GEN-HEADEREND:event_downloadButtonActionPerformed
+	    // TODO add your handling code here:
+    }//GEN-LAST:event_downloadButtonActionPerformed
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

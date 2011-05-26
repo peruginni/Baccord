@@ -6,6 +6,7 @@ import baccord.tools.ObjectStorage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.logging.Logger;
 
@@ -17,7 +18,7 @@ public class BasicImageFolders extends BaseBusiness implements ImageFolders
 {
 	private String storagePath = "./RecentImageFolders.dat";
 	private int maximumStoredRecentFolders = 10;
-	private Queue<String> recentFolders;
+	private LinkedList<String> recentFolders;
 
 	private static final Logger logger = Logger.getLogger(BasicImageFolders.class.getName());
 
@@ -33,23 +34,24 @@ public class BasicImageFolders extends BaseBusiness implements ImageFolders
 
 	public void saveRecentlyUsed(String folder)
 	{
+		getRecentlyUsed();
 		// add path to list
-		Queue<String> list = getRecentlyUsed();
-		list.offer(folder);
+		
+		recentFolders.addFirst(folder);
 
 		// remove older
-		if(list.size() > maximumStoredRecentFolders) {
-			list.poll();
+		if(recentFolders.size() > maximumStoredRecentFolders) {
+			recentFolders.removeLast();
 		}
 
-		ObjectStorage.save(list, storagePath);
+		ObjectStorage.save(recentFolders, storagePath);
 	}
 
-	public Queue<String> getRecentlyUsed()
+	public List<String> getRecentlyUsed()
 	{
 		if(recentFolders == null) {
 			try {
-				recentFolders = (Queue<String>) ObjectStorage.load(storagePath);
+				recentFolders = (LinkedList<String>) ObjectStorage.load(storagePath);
 			} catch (FileNotFoundException ex) {
 				// file was probably not yet created
 			}

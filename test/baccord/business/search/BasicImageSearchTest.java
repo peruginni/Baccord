@@ -1,7 +1,7 @@
 package baccord.business.search;
 
+import java.util.List;
 import baccord.tools.DI;
-import java.util.LinkedList;
 import java.io.File;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -26,7 +26,9 @@ public class BasicImageSearchTest
 		SearchResult result = instance.searchByQuery(searchQuery);
 		
 		// test if recently used keyword was saved
-		assertEquals(instance.getRecentlyUsedKeywords().getLast(), searchQuery.getKeywords());
+		List<String> recentlyUsed = instance.getRecentlyUsedKeywords();
+		String newest = recentlyUsed.get(0);
+		assertEquals(searchQuery.getKeywords(), newest);
 		
 		// test if has result
 		assertNotNull(result);
@@ -54,8 +56,9 @@ public class BasicImageSearchTest
 		assertTrue(storage.exists());
 		
 		instance = new BasicImageSearch();
-		LinkedList<String> folders = instance.getRecentlyUsedKeywords();
-		assertEquals(folders.getLast(), keyword);
+		List<String> recentlyUsed = instance.getRecentlyUsedKeywords();
+		String newest = recentlyUsed.get(0);
+		assertEquals(keyword, newest);
 	}
 
 	@Test

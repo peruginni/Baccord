@@ -5,7 +5,6 @@
 package baccord.ui;
 
 import baccord.tools.DI;
-import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import org.jdesktop.application.SingleFrameApplication;
@@ -33,12 +32,11 @@ public class MainWindow extends FrameView
 	public void showPanel(Class type)
 	{
 		epicenter.removeAll();
-		Component c = (Component) DI.get(type);
-		epicenter.add(c);
-		epicenter.grabFocus();
-		epicenter.repaint();
+		BaseUi component = (BaseUi) DI.get(type);
+		component.init();
+		epicenter.add(component);
 		epicenter.updateUI();
-		this.getFrame().pack();
+		getFrame().pack();
 	}
 
     /** 

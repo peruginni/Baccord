@@ -1,9 +1,9 @@
 
 package baccord.business.images;
 
+import java.util.List;
 import baccord.tools.DI;
 import java.io.File;
-import java.util.Queue;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -44,8 +44,9 @@ public class BasicImageFoldersTest
 		assertTrue(storage.exists());
 		
 		instance = new BasicImageFolders();
-		Queue<String> folders = instance.getRecentlyUsed();
-		assertEquals(folders.element(), folder);
+		List<String> recentlyUsed = instance.getRecentlyUsed();
+		String newest = recentlyUsed.get(0);
+		assertEquals(folder, newest);
 		
 		storage.delete();
 		assertFalse(storage.exists());

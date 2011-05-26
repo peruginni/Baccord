@@ -18,9 +18,9 @@ public class BaccordApp extends SingleFrameApplication
 	 */
 	@Override protected void startup() 
 	{	    
-		MainWindow mw = new MainWindow(this);
-		mw.init();
-		show(mw);
+		MainWindow mainWindow = new MainWindow(this);
+		mainWindow.init();
+		show(mainWindow);
 	}
 
 	/**

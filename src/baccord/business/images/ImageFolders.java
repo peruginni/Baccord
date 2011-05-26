@@ -1,7 +1,7 @@
 
 package baccord.business.images;
 
-import java.util.Queue;
+import java.util.List;
 
 /**
  *
@@ -24,7 +24,7 @@ public interface ImageFolders
 	 * 
 	 * @return 
 	 */
-	public Queue<String> getRecentlyUsed();
+	public List<String> getRecentlyUsed();
 	
 	/**
 	 * Clear recently used folders

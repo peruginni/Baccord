@@ -1,7 +1,7 @@
 
 package baccord.business.search;
 
-import java.util.LinkedList;
+import java.util.List;
 
 
 /**
@@ -50,7 +50,7 @@ public interface ImageSearch
 	 * 
 	 * @return 
 	 */
-	public LinkedList<String> getRecentlyUsedKeywords();
+	public List<String> getRecentlyUsedKeywords();
 	
 	/**
 	 * Clear recently used keywords

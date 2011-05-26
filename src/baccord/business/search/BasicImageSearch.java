@@ -63,19 +63,20 @@ public class BasicImageSearch implements ImageSearch
 	
 	public void saveRecentlyUsedKeyword(String keyword)
 	{
+		getRecentlyUsedKeywords();
+		
 		// add keyword to list
-		LinkedList<String> list = getRecentlyUsedKeywords();
-		list.addLast(keyword);
+		recentKeywords.addFirst(keyword);
 
 		// remove older
-		if(list.size() > maximumRecentKeywords) {
-			list.removeFirst();
+		if(recentKeywords.size() > maximumRecentKeywords) {
+			recentKeywords.removeLast();
 		}
 
-		ObjectStorage.save(list, storagePath);
+		ObjectStorage.save(recentKeywords, storagePath);
 	}
 	
-	public LinkedList<String> getRecentlyUsedKeywords()
+	public List<String> getRecentlyUsedKeywords()
 	{
 		if(recentKeywords == null) {
 			try {
