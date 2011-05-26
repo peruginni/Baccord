@@ -157,6 +157,11 @@ public class FileHelper
 		}
 		
 	}
+	
+	public static boolean exists(String path)
+	{
+		return (new File(path)).exists();
+	}
 
 	
 }

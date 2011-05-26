@@ -25,17 +25,29 @@ public interface StructureFromMotion
 	public Editor getEditor();
 	public void setEditor(Editor editor);
 	
+	public String getBundlerPath();
+	public void setBundlerPath(String bundlerPath);
+
+	public String getKeypointMatcherPath();
+	public void setKeypointMatcherPath(String path);
+	
+	public String getExistingBundlePath();
+	public void setExistingBundlePath(String path);
+	
 	public String getOutputDirectory();
 	public void setOutputDirectory(String path);
 	
-	public String getImageListFilename();
-	public void setImageListFilename(String path);
+	public String getImageListFocalFilename();
+	public void setImageListFocalFilename(String path);
+	
+	public String getImageListExtraFilename();
+	public void setImageListExtraFilename(String imageListExtraFilename);
+	
+	public String getImageListBasicFilename();
+	public void setImageListBasicFilename(String path);
 	
 	public String getKeypointMatchTableFilename();
-	public void setKeypointMatchTableFilename(String path);
-	
-	public String getKeypointMatcherPath();
-	public void setKeypointMatcherPath(String path);
+	public void setKeypointMatchTableFilename(String filename);
 	
 	public List<Image> getImages();
 	public void setImages(List<Image> images);
@@ -56,6 +68,7 @@ public interface StructureFromMotion
 	public void loadExifInformation();
 	public void createImageList() throws IOException;
 	public void createMatchTable() throws IOException, InterruptedException;
+	public void performSfm() throws IOException, InterruptedException;
 	
 	public boolean isRunning();
 	public void start();
