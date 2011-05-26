@@ -13,6 +13,8 @@ import baccord.business.search.FlickrSearchEngine;
 import baccord.business.search.ImageSearch;
 import baccord.business.search.SearchEngine;
 import baccord.business.settings.Settings;
+import baccord.business.sfm.Bundler;
+import baccord.business.sfm.StructureFromMotion;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -41,6 +43,9 @@ public class DI extends AbstractModule
 		// search
 		bind(SearchEngine.class).to(FlickrSearchEngine.class).in(Singleton.class);
 		bind(ImageSearch.class).to(BasicImageSearch.class).in(Singleton.class);
+		
+		// sfm
+		bind(StructureFromMotion.class).to(Bundler.class).in(Singleton.class);
 		
 		// settings
 		bind(Settings.class).in(Singleton.class);
