@@ -102,10 +102,10 @@ public interface DownloadManager
 	/**
 	 * Start downloading. Will start new thread if there is no running one.
 	 */
-	public void startDownloading();
+	public void start();
 	
 	/**
 	 * Stop downloading
 	 */
-	public void stopDownloading();
+	public void stop();
 }

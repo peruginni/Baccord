@@ -57,7 +57,7 @@ public interface StructureFromMotion
 	public void createImageList() throws IOException;
 	public void createMatchTable() throws IOException, InterruptedException;
 	
-	public void isRunning();
+	public boolean isRunning();
 	public void start();
 	public void stop();
 }

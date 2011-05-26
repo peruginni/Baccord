@@ -118,7 +118,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 		return isDownloading;
 	}
 
-	public void startDownloading()
+	public void start()
 	{
 		if(!isDownloading) {
 			isDownloading = true;
@@ -131,7 +131,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 		
 	}
 
-	public void stopDownloading()
+	public void stop()
 	{
 		if(isDownloading) {
 			isDownloading = false;
@@ -211,7 +211,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 
 		while(isDownloading) {
 			if(currentUrlIndex >= items.size()) {
-				stopDownloading();
+				stop();
 				break;
 			}
 

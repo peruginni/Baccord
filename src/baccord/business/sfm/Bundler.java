@@ -206,20 +206,20 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 		p.waitFor();
 	}
 
-	public void isRunning()
+	public boolean isRunning()
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		return isRunning;
 	}
 
 	public void start()
 	{
-		addReport("SfM started");
+		addReport("Bundler started");
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
 	public void stop()
 	{
-		addReport("SfM stopped");
+		addReport("Bundler stopped");
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 

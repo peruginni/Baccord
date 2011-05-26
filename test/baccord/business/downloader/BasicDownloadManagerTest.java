@@ -207,7 +207,7 @@ public class BasicDownloadManagerTest
 	}
 
 	/**
-	 * Test of startDownloading method, of class BasicDownloadManager.
+	 * Test of start method, of class BasicDownloadManager.
 	 */
 	@Test
 	public void testStartDownloading() throws InterruptedException, DownloadMaxTimeExceededException
@@ -225,7 +225,7 @@ public class BasicDownloadManagerTest
 		fillWithTestData(instance);
 
 		assertFalse(instance.isDownloading());
-		instance.startDownloading();
+		instance.start();
 		assertTrue(instance.isDownloading());
 
 		while(instance.isDownloading()) {
@@ -246,7 +246,7 @@ public class BasicDownloadManagerTest
 	}
 
 	/**
-	 * Test of stopDownloading method, of class BasicDownloadManager.
+	 * Test of stop method, of class BasicDownloadManager.
 	 */
 	@Test
 	public void testStopDownloading() throws InterruptedException
@@ -264,11 +264,11 @@ public class BasicDownloadManagerTest
 		fillWithTestData(instance);
 
 		assertFalse(instance.isDownloading());
-		instance.startDownloading();
+		instance.start();
 		assertTrue(instance.isDownloading());
 
 		while(instance.isDownloading()) {
-			instance.stopDownloading();
+			instance.stop();
 			//Thread.sleep(1000);
 		}
 		assertFalse(instance.isDownloading());
