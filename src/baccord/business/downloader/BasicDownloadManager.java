@@ -133,6 +133,11 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 	{
 		return items;
 	}
+	
+	public List<DownloadItem> getRemaining()
+	{
+		return itemsToDownload;
+	}
 
 	public boolean isDownloading()
 	{
@@ -146,10 +151,6 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			downloadThread = new Thread(this);
 			downloadThread.start();
 		}
-		
-		//if(downloadThread != null && downloadThread.isAlive() == false) {
-		//}
-		
 	}
 
 	public void stop()
@@ -218,15 +219,16 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			
 			// if image unavailable, flag as waiting
 			if(FileHelper.isBinaryEqual(targetFile, flickrUnavailableFile)) {
-				item.setStatus(DownloadItem.WAITING);
+				item.setStatus(DownloadItem.SKIPPED);
 				targetFile.delete();
-				logger.log(Level.INFO, "Flickr Unavailable File, try later");
+				logger.log(Level.INFO, "Flickr Unavailable File, try later / " + item.getSource());
+			} else {
+				item.setTarget(absoluteTargetFilename);
+				item.setStatus(DownloadItem.FINISHED);
 			}
-
-			item.setTarget(absoluteTargetFilename);
-			item.setStatus(DownloadItem.FINISHED);
+			
 			notifyObservers(item);
-
+			
 		} catch (MalformedURLException ex) {
 			logger.log(Level.SEVERE, null, ex);
 		} catch (IOException ex) {
@@ -246,8 +248,11 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			
 			downloadSingle(item);
 			
-			if(item.getStatus() == DownloadItem.FINISHED) {
-				itemsToDownload.remove(item);
+			switch(item.getStatus()) {
+				case DownloadItem.FINISHED:
+				case DownloadItem.SKIPPED:
+					itemsToDownload.remove(item);
+					break;
 			}
 		}
 	}

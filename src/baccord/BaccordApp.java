@@ -17,6 +17,7 @@ import org.jdesktop.application.SingleFrameApplication;
 public class BaccordApp extends SingleFrameApplication 
 {
 	private MainWindow mainWindow;
+	private BaseUi currentScreen;
 	
 	public BaseUi changeScreen(Class type)
 	{
@@ -25,10 +26,19 @@ public class BaccordApp extends SingleFrameApplication
 	
 	public BaseUi changeScreen(BaseUi component)
 	{
+		if(currentScreen != null) {
+			currentScreen.close();
+		}
+		currentScreen = component;
 		component.init();
 		mainWindow.changeEpicenterTo(component);
 		component.start();
 		return component;
+	}
+	
+	public BaseUi getCurrentScreen()
+	{
+		return currentScreen;
 	}
 	
 	/**

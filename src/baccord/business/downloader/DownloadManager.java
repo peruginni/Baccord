@@ -86,6 +86,8 @@ public interface DownloadManager
 	 * @return 
 	 */
 	public List<DownloadItem> getAll();
+	
+	public List<DownloadItem> getRemaining();
 
 	/**
 	 * Will download single file. If item does not have target directory, 

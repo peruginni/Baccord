@@ -10,6 +10,7 @@ public class DownloadItem
 	public static final int WAITING = 0;
 	public static final int DOWNLOADING = 1;
 	public static final int FINISHED = 2;
+	public static final int SKIPPED = 3;
 	
 	private String source;
 	private String target;
