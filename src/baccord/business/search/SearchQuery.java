@@ -23,11 +23,10 @@ public class SearchQuery
 	private int resultsPerPage;
 
 	public enum GeoContext
-
 	{
+		both("both"),
 		indoor("indoor"),
-		outdoor("outdoor"),
-		both("both");
+		outdoor("outdoor");
 
 		public final String name;
 		GeoContext(String name)
@@ -71,6 +70,9 @@ public class SearchQuery
 
 	public void setGpsLatitude(String gpsLatitude)
 	{
+		if(gpsLatitude != null && gpsLatitude.isEmpty()) {
+			gpsLatitude = null;
+		}
 		this.gpsLatitude = gpsLatitude;
 	}
 	
@@ -81,6 +83,9 @@ public class SearchQuery
 
 	public void setGpsLongitude(String gpsLongitude)
 	{
+		if(gpsLongitude != null && gpsLongitude.isEmpty()) {
+			gpsLongitude = null;
+		}
 		this.gpsLongitude = gpsLongitude;
 	}
 	

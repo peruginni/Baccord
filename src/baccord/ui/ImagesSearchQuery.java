@@ -12,6 +12,7 @@ import baccord.business.downloader.DownloadManager;
 import baccord.business.images.Editor;
 import baccord.business.search.ImageSearch;
 import baccord.business.search.SearchQuery;
+import baccord.business.search.SearchQuery.GeoContext;
 import baccord.exceptions.CannotCreateDirectoryException;
 import baccord.exceptions.PathMustBeDirectoryException;
 import com.google.inject.Inject;
@@ -35,6 +36,7 @@ public class ImagesSearchQuery extends BaseUi
 	@Inject private Editor editor;
 	
 	private String defaultKeyword;
+	int[] perPageRange = {10, 50, 100, 200, 300, 400, 500};
 	
 	
 	/** Creates new form ImagesSearchQuery */
@@ -56,6 +58,14 @@ public class ImagesSearchQuery extends BaseUi
 	@Override
 	public void init()
 	{
+		try {
+			downloadManager.setDownloadDirectory("/Users/peruginni/Downloads/Bac");
+		} catch (CannotCreateDirectoryException ex) {
+			Logger.getLogger(ImagesSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (PathMustBeDirectoryException ex) {
+			Logger.getLogger(ImagesSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		
 		SearchQuery query = imageSearch.getCurrentQuery();
 		if(query != null) {
 			keywordsTextfield.setText(query.getKeywords());
@@ -63,6 +73,17 @@ public class ImagesSearchQuery extends BaseUi
 			gpsLatTextfield.setText(query.getGpsLatitude());
 			gpsLonTextfield.setText(query.getGpsLongitude());
 			gpsRadiusTextfield.setText(""+query.getGpsRadius());
+			
+			// setup per page
+			int resultsPerPage = perPageRange[0];
+			query.setResultsPerPage(resultsPerPage);
+
+			for (int i : perPageRange) {
+				perPageCombobox.addItem(""+i+" per page");
+			} 
+			perPageCombobox.setSelectedIndex(0);
+			
+			query.setPage(1);
 		}
 		
 		downloadFolderTextfield.setText(
@@ -84,13 +105,11 @@ public class ImagesSearchQuery extends BaseUi
 			keywordsTextfield.setText(defaultKeyword);
 			defaultKeyword = null;
 		}
+		
 	}
 	
-	
-	public boolean saveCurrentQuery()
+	public void saveCurrentQuery() throws CannotCreateDirectoryException, PathMustBeDirectoryException
 	{
-		boolean hasErrors = false; 
-		
 		SearchQuery query = imageSearch.getCurrentQuery();
 		if(query == null) {
 			query = new SearchQuery();
@@ -103,18 +122,10 @@ public class ImagesSearchQuery extends BaseUi
 		query.setGpsLongitude(gpsLonTextfield.getText());
 		query.setGpsRadius(Integer.parseInt(gpsRadiusTextfield.getText()));
 		
-		try {
-			downloadManager.setDownloadDirectory(
-				downloadFolderTextfield.getText()
-			);
-		} catch (CannotCreateDirectoryException ex) {
-			Dialog.error(this, "Cannot create download directory");
-			hasErrors = true;
-		} catch (PathMustBeDirectoryException ex) {
-			Dialog.error(this, "Download directory must be directory");
-			hasErrors = true;
-		}
-		
+		downloadManager.setDownloadDirectory(
+			downloadFolderTextfield.getText()
+		);
+
 		editor.setAutoSift(siftCheckbox.isSelected());
 		
 		if(resizeCheckbox.isSelected()) {
@@ -125,8 +136,6 @@ public class ImagesSearchQuery extends BaseUi
 				)	
 			);
 		}
-		
-		return hasErrors;
 	}
 	
 
@@ -151,7 +160,7 @@ public class ImagesSearchQuery extends BaseUi
                 searchButton = new javax.swing.JButton();
                 downloadProgressButton = new javax.swing.JButton();
                 searchPhotosTitle = new javax.swing.JLabel();
-                searchEngineCombobox = new javax.swing.JComboBox();
+                perPageCombobox = new javax.swing.JComboBox();
                 downloadFolderPanel = new javax.swing.JPanel();
                 downloadFolderLabel = new javax.swing.JLabel();
                 downloadFolderButton = new javax.swing.JButton();
@@ -202,7 +211,7 @@ public class ImagesSearchQuery extends BaseUi
                         .addGroup(siftPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(siftCheckbox)
-                                .addContainerGap(97, Short.MAX_VALUE))
+                                .addContainerGap(116, Short.MAX_VALUE))
                 );
                 siftPanelLayout.setVerticalGroup(
                         siftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,8 +309,12 @@ public class ImagesSearchQuery extends BaseUi
                 searchPhotosTitle.setName("searchPhotosTitle"); // NOI18N
                 searchPhotosTitle.setOpaque(true);
 
-                searchEngineCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "via Flickr" }));
-                searchEngineCombobox.setName("searchEngineCombobox"); // NOI18N
+                perPageCombobox.setName("perPageCombobox"); // NOI18N
+                perPageCombobox.addItemListener(new java.awt.event.ItemListener() {
+                        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                                perPageComboboxItemStateChanged(evt);
+                        }
+                });
 
                 downloadFolderPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
                 downloadFolderPanel.setName("downloadFolderPanel"); // NOI18N
@@ -396,8 +409,8 @@ public class ImagesSearchQuery extends BaseUi
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datePanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(takenDateCheckbox, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                                        .addComponent(uploadedDateCheckbox, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))
+                                        .addComponent(takenDateCheckbox, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                                        .addComponent(uploadedDateCheckbox, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(takenDateFromSpinner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -490,7 +503,7 @@ public class ImagesSearchQuery extends BaseUi
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(gpsRadiusTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(gpsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(37, Short.MAX_VALUE))
                 );
 
                 gpsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {gpsLatTextfield, gpsLonTextfield});
@@ -528,7 +541,7 @@ public class ImagesSearchQuery extends BaseUi
                                 .addContainerGap()
                                 .addComponent(keywordsLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(keywordsTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
+                                .addComponent(keywordsTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
                                 .addContainerGap())
                 );
                 keywordsPanelLayout.setVerticalGroup(
@@ -547,27 +560,27 @@ public class ImagesSearchQuery extends BaseUi
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(downloadProgressButton)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 627, Short.MAX_VALUE)
-                                                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
+                                                .addComponent(downloadProgressButton)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 646, Short.MAX_VALUE)
+                                                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addComponent(gpsPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(searchPhotosTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+                                                                .addComponent(searchPhotosTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(searchEngineCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(perPageCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addComponent(keywordsPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(datePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addGap(24, 24, 24)
+                                                .addGap(7, 7, 7)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                         .addComponent(downloadOptionsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(dimensionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(dimensionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                                                         .addComponent(siftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(downloadFolderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                        .addComponent(downloadFolderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))))
                                 .addContainerGap())
                 );
                 layout.setVerticalGroup(
@@ -577,7 +590,7 @@ public class ImagesSearchQuery extends BaseUi
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(searchPhotosTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(searchEngineCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(perPageCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(downloadOptionsTitle))
                                 .addGap(12, 12, 12)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -620,15 +633,26 @@ public class ImagesSearchQuery extends BaseUi
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_searchButtonActionPerformed
     {//GEN-HEADEREND:event_searchButtonActionPerformed
-	    saveCurrentQuery();
-	    BaccordApp.getApplication().changeScreen(ImagesSearchResults.class);
+	    try {
+		    saveCurrentQuery();
+		    BaccordApp.getApplication().changeScreen(ImagesSearchResults.class);
+	    } catch (CannotCreateDirectoryException ex) {
+		    Dialog.error(this, "Cannot create download directory");
+	    } catch (PathMustBeDirectoryException ex) {
+		    Dialog.error(this, "Download directory must be directory");
+	    }
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void downloadProgressButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_downloadProgressButtonActionPerformed
     {//GEN-HEADEREND:event_downloadProgressButtonActionPerformed
-	    if(saveCurrentQuery()) {
-		    BaccordApp.getApplication().changeScreen(ImagesDownloadProgress.class);
+	    try {
+		    saveCurrentQuery();
+	    } catch (CannotCreateDirectoryException ex) {
+		    Logger.getLogger(ImagesSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
+	    } catch (PathMustBeDirectoryException ex) {
+		    Logger.getLogger(ImagesSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
 	    }
+	    BaccordApp.getApplication().changeScreen(ImagesDownloadProgress.class);
     }//GEN-LAST:event_downloadProgressButtonActionPerformed
 
     private void resizeCheckboxStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_resizeCheckboxStateChanged
@@ -667,12 +691,21 @@ public class ImagesSearchQuery extends BaseUi
     private void numberTextFieldFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_numberTextFieldFocusLost
     {//GEN-HEADEREND:event_numberTextFieldFocusLost
 	    JTextField field = (JTextField) evt.getSource();
+	    
+	    // remove all non-digit characters
 	    String str = field.getText();
 	    Pattern p = Pattern.compile("\\D*");
 	    str = p.matcher(str).replaceAll("");
 	    if(str.isEmpty()) str = "0";
 	    field.setText(str);
     }//GEN-LAST:event_numberTextFieldFocusLost
+
+    private void perPageComboboxItemStateChanged(java.awt.event.ItemEvent evt)//GEN-FIRST:event_perPageComboboxItemStateChanged
+    {//GEN-HEADEREND:event_perPageComboboxItemStateChanged
+	    imageSearch.getCurrentQuery().setResultsPerPage(
+		    perPageRange[perPageCombobox.getSelectedIndex()]
+	    );
+    }//GEN-LAST:event_perPageComboboxItemStateChanged
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -697,9 +730,9 @@ public class ImagesSearchQuery extends BaseUi
         private javax.swing.JLabel keywordsLabel;
         private javax.swing.JPanel keywordsPanel;
         private javax.swing.JTextField keywordsTextfield;
+        private javax.swing.JComboBox perPageCombobox;
         private javax.swing.JCheckBox resizeCheckbox;
         private javax.swing.JButton searchButton;
-        private javax.swing.JComboBox searchEngineCombobox;
         private javax.swing.JLabel searchPhotosTitle;
         private javax.swing.JCheckBox siftCheckbox;
         private javax.swing.JPanel siftPanel;

@@ -80,6 +80,8 @@ public class FlickrSearchEngine implements SearchEngine
 			query.append("&text=");
 			query.append(URLEncoder.encode(searchQuery.getKeywords(), "ISO-8859-1"));
 			
+			query.append("&sort=relevance");
+			
 			if((date = searchQuery.getUploadedFrom()) != null) {
 				query.append("&min_upload_date=");
 				query.append(date.getTime());
@@ -211,7 +213,7 @@ public class FlickrSearchEngine implements SearchEngine
 		return result;
 	}
 
-	public String getImageOriginalUrl(ResultItem item)
+	public String getImageOriginalPath(ResultItem item)
 	{
 		// http://www.flickr.com/services/api/misc.urls.html
 		
@@ -229,7 +231,7 @@ public class FlickrSearchEngine implements SearchEngine
 		return result.toString();
 	}
 
-	public String getImageThumbnailUrl(ResultItem item)
+	public String getImageThumbnailPath(ResultItem item)
 	{
 		// http://www.flickr.com/services/api/misc.urls.html
 		

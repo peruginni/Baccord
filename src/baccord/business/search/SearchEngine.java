@@ -8,6 +8,6 @@ package baccord.business.search;
 public interface SearchEngine
 {
 	public SearchResult searchByQuery(SearchQuery searchQuery);
-	public String getImageOriginalUrl(ResultItem item);
-	public String getImageThumbnailUrl(ResultItem item);
+	public String getImageOriginalPath(ResultItem item);
+	public String getImageThumbnailPath(ResultItem item);
 }

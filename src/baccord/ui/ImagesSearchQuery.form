@@ -19,36 +19,36 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="downloadProgressButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="627" max="32767" attributes="0"/>
+                      <EmptySpace pref="646" max="32767" attributes="0"/>
                       <Component id="searchButton" min="-2" pref="116" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="horizontalSeparator" alignment="0" pref="944" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Component id="horizontalSeparator" alignment="0" pref="963" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="gpsPanel" alignment="0" max="32767" attributes="1"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="searchPhotosTitle" pref="521" max="32767" attributes="0"/>
+                              <Component id="searchPhotosTitle" pref="538" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="searchEngineCombobox" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="perPageCombobox" min="-2" pref="133" max="-2" attributes="0"/>
                           </Group>
                           <Component id="keywordsPanel" alignment="0" max="32767" attributes="2"/>
                           <Component id="datePanel" alignment="0" max="32767" attributes="1"/>
                       </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="downloadOptionsTitle" max="32767" attributes="1"/>
-                          <Component id="dimensionsPanel" alignment="0" max="32767" attributes="1"/>
+                          <Component id="dimensionsPanel" alignment="0" pref="280" max="32767" attributes="1"/>
                           <Component id="siftPanel" alignment="0" max="32767" attributes="1"/>
-                          <Component id="downloadFolderPanel" alignment="0" max="32767" attributes="1"/>
+                          <Component id="downloadFolderPanel" alignment="0" pref="280" max="32767" attributes="1"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,7 +59,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="searchPhotosTitle" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="searchEngineCombobox" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="perPageCombobox" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
                   <Component id="downloadOptionsTitle" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -124,7 +124,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="siftCheckbox" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="97" max="32767" attributes="0"/>
+                  <EmptySpace pref="116" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -274,15 +274,13 @@
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="searchEngineCombobox">
+    <Component class="javax.swing.JComboBox" name="perPageCombobox">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="via Flickr"/>
-          </StringArray>
-        </Property>
-        <Property name="name" type="java.lang.String" value="searchEngineCombobox" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="perPageCombobox" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="perPageComboboxItemStateChanged"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="downloadFolderPanel">
       <Properties>
@@ -366,8 +364,8 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="takenDateCheckbox" pref="269" max="32767" attributes="1"/>
-                      <Component id="uploadedDateCheckbox" alignment="0" pref="269" max="32767" attributes="1"/>
+                      <Component id="takenDateCheckbox" pref="286" max="32767" attributes="1"/>
+                      <Component id="uploadedDateCheckbox" alignment="0" pref="286" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -529,7 +527,7 @@
                       </Group>
                       <Component id="gpsLabel" alignment="0" min="-2" pref="584" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -620,7 +618,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="keywordsLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="keywordsTextfield" pref="537" max="32767" attributes="0"/>
+                  <Component id="keywordsTextfield" pref="554" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>

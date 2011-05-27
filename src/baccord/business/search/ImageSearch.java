@@ -37,7 +37,7 @@ public interface ImageSearch
 	 * @param searchQuery
 	 * @return 
 	 */
-	public SearchResult searchByQuery();
+	public SearchResult search();
 	
 	/**
 	 * Save keywords recently used in search query

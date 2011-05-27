@@ -2,9 +2,11 @@
 package baccord.business.downloader;
 
 import baccord.business.BaseBusiness;
+import baccord.business.images.Editor;
 import baccord.exceptions.CannotCreateDirectoryException;
 import baccord.exceptions.PathMustBeDirectoryException;
 import baccord.tools.FileHelper;
+import com.google.inject.Inject;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,17 +30,21 @@ import java.util.logging.Logger;
  */
 public class BasicDownloadManager extends BaseBusiness implements DownloadManager, Runnable
 {
-	private List<DownloadItem> items;
-	private int currentUrlIndex = 0;
+	private Editor editor;
+		
+	private LinkedList<DownloadItem> items;
+	private LinkedList<DownloadItem> itemsToDownload;
 	private String downloadDirectory = "";
 	private boolean isDownloading = false;
 	private Thread downloadThread;
-
+	private File flickrUnavailableFile = new File("./lib/flickr.unavailable.jpg");
+	
 	private static final Logger logger = Logger.getLogger(BasicDownloadManager.class.getName());
 
 	public BasicDownloadManager()
 	{
 		items = new LinkedList<DownloadItem>();
+		itemsToDownload = new LinkedList<DownloadItem>();
 	}
 	
 	/**
@@ -69,6 +75,18 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 		return downloadDirectory;
 	}
 	
+	public Editor getEditor()
+	{
+		return this.editor;
+	}
+	
+	@Inject
+	public void setEditor(Editor editor)
+	{
+		addObserver(editor);
+		this.editor = editor;
+	}
+	
 	/**
 	 * --------------------------------------------------------------------
 	 *  Core logic
@@ -79,6 +97,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 	{
 		item.setTargetDirectory(downloadDirectory);
 		items.add(item);
+		itemsToDownload.add(item);
 	}
 
 	public void add(List<String> listOfUrls)
@@ -92,6 +111,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 	public void clear()
 	{
 		items.clear();
+		itemsToDownload.clear();
 	}
 	
 	public void clearFinished()
@@ -106,6 +126,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 	public void remove(DownloadItem item)
 	{
 		items.remove(item);
+		itemsToDownload.remove(item);
 	}
 
 	public List<DownloadItem> getAll()
@@ -181,11 +202,12 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 
 			// generate unique filename
 			String filename = FileHelper.getFilenameFromUrl(url.getFile());
-			filename = FileHelper.generateUniqueFilename(item.getTargetDirectory(), filename);
+			//filename = FileHelper.generateUniqueFilename(item.getTargetDirectory(), filename);
 			String absoluteTargetFilename = FileHelper.mergePath(item.getTargetDirectory(), filename);
 			
 			// create new file for storing downloaded bytes
 			File targetFile = new File(absoluteTargetFilename);
+			targetFile.delete();
 			targetFile.createNewFile();
 			
 			// write down downloaded bytes
@@ -193,6 +215,13 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			out.write(data);
 			out.flush();
 			out.close();
+			
+			// if image unavailable, flag as waiting
+			if(FileHelper.isBinaryEqual(targetFile, flickrUnavailableFile)) {
+				item.setStatus(DownloadItem.WAITING);
+				targetFile.delete();
+				logger.log(Level.INFO, "Flickr Unavailable File, try later");
+			}
 
 			item.setTarget(absoluteTargetFilename);
 			item.setStatus(DownloadItem.FINISHED);
@@ -207,17 +236,19 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 
 	public void run()
 	{
-		currentUrlIndex = 0;
-
 		while(isDownloading) {
-			if(currentUrlIndex >= items.size()) {
+			if(itemsToDownload.isEmpty()) {
 				stop();
 				break;
 			}
 
-			downloadSingle(items.get(currentUrlIndex));
-
-			currentUrlIndex++;
+			DownloadItem item = itemsToDownload.getFirst();
+			
+			downloadSingle(item);
+			
+			if(item.getStatus() == DownloadItem.FINISHED) {
+				itemsToDownload.remove(item);
+			}
 		}
 	}
 

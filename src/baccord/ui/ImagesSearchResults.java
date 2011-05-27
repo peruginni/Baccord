@@ -7,16 +7,106 @@
 
 package baccord.ui;
 
+import baccord.BaccordApp;
+import baccord.business.downloader.DownloadItem;
+import baccord.business.downloader.DownloadManager;
+import baccord.business.search.ImageSearch;
+import baccord.business.search.ResultItem;
+import baccord.business.search.SearchEngine;
+import baccord.business.search.SearchQuery;
+import baccord.business.search.SearchResult;
+import com.google.inject.Inject;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class ImagesSearchResults extends BaseUi {
+public class ImagesSearchResults extends BaseUi
+{
+	private static Logger logger = Logger.getLogger(ImagesSearchResults.class.getName());
+	
+	@Inject private ImageSearch imageSearch;
+	@Inject private DownloadManager downloadManager;
+	
+	SearchResult searchResult;
+	
+	
+	public ImagesSearchResults() 
+	{
+		initComponents();
+		
+		searchResultsPanel.setLayout(new ModifiedFlowLayout(FlowLayout.LEFT));
+		jScrollPane1.getVerticalScrollBar().setUnitIncrement(50);
+	}
 
-    /** Creates new form ImagesSearchResults */
-    public ImagesSearchResults() {
-        initComponents();
-    }
+	@Override 
+	public void init()
+	{
+		searchResultsPanel.add(new JLabel("Searching ..."));
+		
+		
+	}
+	
+	@Override 
+	public void start()
+	{
+		Thread t = new Thread() {
+			@Override
+			public void run()
+			{
+				SearchResult results = imageSearch.search();
+				showResults(results);
+			}
+		};
+		t.start();
+	}
+	
+	public void showResults(SearchResult results)
+	{
+		if(results == null) {
+			Dialog.notice(this, "No results");
+			return;
+		}
+		
+		searchResult = results;
+		
+		pageLabel.setText("Page: "+searchResult.getPage()+"/"+searchResult.getPages());
+		
+		SearchEngine searchEngine = imageSearch.getSearchEngine();
+		
+		searchResultsPanel.removeAll();
+		for (ResultItem resultItem : results.getItems()) {
+			SingleResult singleResult = new SingleResult();
+			try {
+				singleResult.init(resultItem, new URL(searchEngine.getImageThumbnailPath(resultItem)));
+			} catch (MalformedURLException ex) {
+				logger.log(Level.SEVERE, null, ex);
+			}
+			
+			searchResultsPanel.add(singleResult);
+		}
+		searchResultsPanel.revalidate();
+	}
+	
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -27,19 +117,41 @@ public class ImagesSearchResults extends BaseUi {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
+                jScrollPane1 = new javax.swing.JScrollPane();
+                searchResultsPanel = new javax.swing.JPanel();
                 searchResultsTitle = new javax.swing.JLabel();
                 editQueryButton = new javax.swing.JButton();
-                pagingCombobox = new javax.swing.JComboBox();
                 helpLabel = new javax.swing.JLabel();
                 horizontalSeparator = new javax.swing.JSeparator();
                 progressButton = new javax.swing.JButton();
                 downloadButton = new javax.swing.JButton();
-                searchResultsScrollPane = new javax.swing.JScrollPane();
+                pageLabel = new javax.swing.JLabel();
 
                 setName("Form"); // NOI18N
                 setPreferredSize(new java.awt.Dimension(810, 441));
 
+                jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                jScrollPane1.setName("jScrollPane1"); // NOI18N
+                jScrollPane1.setViewportView(searchResultsPanel);
+
                 org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(ImagesSearchResults.class);
+                searchResultsPanel.setBackground(resourceMap.getColor("searchResultsPanel.background")); // NOI18N
+                searchResultsPanel.setName("searchResultsPanel"); // NOI18N
+                searchResultsPanel.setSize(new java.awt.Dimension(716, 32767));
+
+                javax.swing.GroupLayout searchResultsPanelLayout = new javax.swing.GroupLayout(searchResultsPanel);
+                searchResultsPanel.setLayout(searchResultsPanelLayout);
+                searchResultsPanelLayout.setHorizontalGroup(
+                        searchResultsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 766, Short.MAX_VALUE)
+                );
+                searchResultsPanelLayout.setVerticalGroup(
+                        searchResultsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 253, Short.MAX_VALUE)
+                );
+
+                jScrollPane1.setViewportView(searchResultsPanel);
+
                 searchResultsTitle.setBackground(resourceMap.getColor("sectionTitle.background")); // NOI18N
                 searchResultsTitle.setFont(resourceMap.getFont("sectionTitle.font")); // NOI18N
                 searchResultsTitle.setText(resourceMap.getString("searchResultsTitle.text")); // NOI18N
@@ -50,9 +162,11 @@ public class ImagesSearchResults extends BaseUi {
 
                 editQueryButton.setText(resourceMap.getString("editQueryButton.text")); // NOI18N
                 editQueryButton.setName("editQueryButton"); // NOI18N
-
-                pagingCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18 per page", "36 per page", "72 per page" }));
-                pagingCombobox.setName("pagingCombobox"); // NOI18N
+                editQueryButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                editQueryButtonActionPerformed(evt);
+                        }
+                });
 
                 helpLabel.setText(resourceMap.getString("helpLabel.text")); // NOI18N
                 helpLabel.setName("helpLabel"); // NOI18N
@@ -61,11 +175,23 @@ public class ImagesSearchResults extends BaseUi {
 
                 progressButton.setText(resourceMap.getString("progressButton.text")); // NOI18N
                 progressButton.setName("progressButton"); // NOI18N
+                progressButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                progressButtonActionPerformed(evt);
+                        }
+                });
 
                 downloadButton.setText(resourceMap.getString("downloadButton.text")); // NOI18N
                 downloadButton.setName("downloadButton"); // NOI18N
+                downloadButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                downloadButtonActionPerformed(evt);
+                        }
+                });
 
-                searchResultsScrollPane.setName("searchResultsScrollPane"); // NOI18N
+                pageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                pageLabel.setText(resourceMap.getString("pageLabel.text")); // NOI18N
+                pageLabel.setName("pageLabel"); // NOI18N
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
@@ -74,18 +200,19 @@ public class ImagesSearchResults extends BaseUi {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(searchResultsScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(horizontalSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(searchResultsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                                                .addComponent(searchResultsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(editQueryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(187, 187, 187)
-                                                .addComponent(pagingCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(239, 239, 239))
                                         .addComponent(helpLabel, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                 .addComponent(progressButton)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
+                                                .addGap(41, 41, 41)
+                                                .addComponent(pageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                                                 .addComponent(downloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())
                 );
@@ -95,21 +222,61 @@ public class ImagesSearchResults extends BaseUi {
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(searchResultsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(editQueryButton)
-                                        .addComponent(pagingCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(editQueryButton))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(helpLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(searchResultsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(horizontalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(downloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(progressButton))
-                                .addContainerGap())
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(downloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(progressButton))
+                                        .addComponent(pageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20))
                 );
         }// </editor-fold>//GEN-END:initComponents
+
+    private void editQueryButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_editQueryButtonActionPerformed
+    {//GEN-HEADEREND:event_editQueryButtonActionPerformed
+	    BaccordApp.getApplication().changeScreen(ImagesSearchQuery.class);
+    }//GEN-LAST:event_editQueryButtonActionPerformed
+
+    private void progressButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_progressButtonActionPerformed
+    {//GEN-HEADEREND:event_progressButtonActionPerformed
+	    BaccordApp.getApplication().changeScreen(ImagesDownloadProgress.class);
+    }//GEN-LAST:event_progressButtonActionPerformed
+
+    private void downloadButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_downloadButtonActionPerformed
+    {//GEN-HEADEREND:event_downloadButtonActionPerformed
+	    if(searchResult == null) {
+		    Dialog.notice(this, "No images to download.");
+		    return;
+	    }
+	    
+	    // download selected
+	    SearchEngine searchEngine = imageSearch.getSearchEngine();
+	    for (Component component : searchResultsPanel.getComponents()) {
+		    SingleResult resultView = (SingleResult) component;
+		    if(!resultView.isSelected()) continue;
+		    
+		    DownloadItem item = new DownloadItem(
+			    searchEngine.getImageOriginalPath(resultView.getResult())
+		    );
+		    downloadManager.add(item);
+	    }
+	    downloadManager.start();
+	    
+	    // load next page
+	    SearchQuery query = imageSearch.getCurrentQuery();
+	    int nextPage = query.getPage()+1;
+	    if(nextPage <= searchResult.getPages()) {
+		    query.setPage(nextPage);
+		    start();
+	    }
+    }//GEN-LAST:event_downloadButtonActionPerformed
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -117,10 +284,140 @@ public class ImagesSearchResults extends BaseUi {
         private javax.swing.JButton editQueryButton;
         private javax.swing.JLabel helpLabel;
         private javax.swing.JSeparator horizontalSeparator;
-        private javax.swing.JComboBox pagingCombobox;
+        private javax.swing.JScrollPane jScrollPane1;
+        private javax.swing.JLabel pageLabel;
         private javax.swing.JButton progressButton;
-        private javax.swing.JScrollPane searchResultsScrollPane;
+        private javax.swing.JPanel searchResultsPanel;
         private javax.swing.JLabel searchResultsTitle;
         // End of variables declaration//GEN-END:variables
 
+}
+
+class SingleResult extends JPanel implements MouseListener
+{
+	private ResultItem result;
+	private boolean isSelected = false;
+	private boolean isMouseOver = false;
+	private BufferedImage image;
+	private URL thumbnail;
+	
+	public SingleResult()
+	{
+		super();
+		addMouseListener(this);
+		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	}
+	
+	public ResultItem getResult()
+	{
+		return this.result;
+	}
+	
+	public void setResult(ResultItem result)
+	{
+		this.result = result;
+	}
+	
+	public boolean isSelected()
+	{
+		return this.isSelected;
+	}
+	
+	public void setSelected(boolean isSelected)
+	{
+		this.isSelected = isSelected;
+	}
+	
+	public void init(ResultItem result, URL thumbnailUrl)
+	{
+		this.result = result;
+		this.thumbnail = thumbnailUrl;
+		
+		Thread t = new Thread() {
+			@Override
+			public void run()
+			{
+				try {
+					image = ImageIO.read(thumbnail);
+					isSelected = true;
+					repaint();
+				} catch (IOException ex) {
+					Logger.getLogger(SingleResult.class.getName()).log(Level.SEVERE, null, ex);
+				} catch (java.awt.color.CMMException ex) {
+					System.out.println(thumbnail.toString());
+					throw ex;
+				}
+			}
+		};
+		t.setPriority(Thread.MIN_PRIORITY);
+		t.start();
+		 
+		setPreferredSize(new Dimension(75+10, 75+10));
+		repaint();
+	}
+
+	@Override
+	public void paint(Graphics g)
+	{
+		Graphics2D g2 = (Graphics2D) g;
+		
+		if(isSelected) {
+			g.setColor(new Color(200, 200, 200));
+		} else {
+			g.setColor(new Color(255, 255, 255));
+		}
+		
+		Dimension preferedSize = getPreferredSize();
+		g.fillRect(0, 0, preferedSize.width, preferedSize.height);
+		
+		if(image != null) {
+			g.drawImage(image, 5, 5, null);
+		} 
+		
+		if(!isSelected) {
+			g.setColor(new Color(255, 255, 255, 210));
+			g.fillRect(5, 5, 75, 75);
+		}
+		
+		if(image == null) {
+			g2.setColor(Color.black);
+			g2.drawString("Loading...", 10, 30);
+		}
+		
+		if(isMouseOver) {
+			g2.setColor(new Color(50, 50, 50));
+			g2.setStroke(new BasicStroke(2));
+			g.drawRect(0, 0, preferedSize.width, preferedSize.height);
+		}
+	}
+
+	public void mouseClicked(MouseEvent me)
+	{
+		isSelected = !isSelected;
+		repaint();
+	}
+
+	public void mousePressed(MouseEvent me)
+	{
+		// empty
+	}
+
+	public void mouseReleased(MouseEvent me)
+	{
+		// empty
+	}
+
+	public void mouseEntered(MouseEvent me)
+	{
+		isMouseOver = true;
+		repaint();
+	}
+
+	public void mouseExited(MouseEvent me)
+	{
+		isMouseOver = false;
+		repaint();
+	}
+	
+	
 }

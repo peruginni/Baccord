@@ -9,4 +9,5 @@ import javax.swing.JPanel;
 public class BaseUi extends JPanel 
 {
 	public void init() {}
+	public void start() {}
 }

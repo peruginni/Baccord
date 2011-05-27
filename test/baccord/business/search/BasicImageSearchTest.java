@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 public class BasicImageSearchTest
 {
 	/**
-	 * Test of searchByQuery method, of class BasicImageSearch.
+	 * Test of search method, of class BasicImageSearch.
 	 */
 	@Test
 	public void testSearchByQuery()
@@ -23,7 +23,8 @@ public class BasicImageSearchTest
 		searchQuery.setKeywords("notre dame");
 		
 		ImageSearch instance = DI.get(ImageSearch.class);
-		SearchResult result = instance.searchByQuery(searchQuery);
+		instance.setCurrentQuery(searchQuery);
+		SearchResult result = instance.search();
 		
 		// test if recently used keyword was saved
 		List<String> recentlyUsed = instance.getRecentlyUsedKeywords();

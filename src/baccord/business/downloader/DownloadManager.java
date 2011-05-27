@@ -1,6 +1,7 @@
 
 package baccord.business.downloader;
 
+import baccord.business.images.Editor;
 import baccord.exceptions.CannotCreateDirectoryException;
 import baccord.exceptions.PathMustBeDirectoryException;
 import java.util.List;
@@ -38,6 +39,8 @@ public interface DownloadManager
 	 */
 	public String getDownloadDirectory();
 
+	public Editor getEditor();
+	public void setEditor(Editor editor);
 	
 	
 	/**

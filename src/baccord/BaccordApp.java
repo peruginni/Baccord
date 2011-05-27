@@ -18,15 +18,17 @@ public class BaccordApp extends SingleFrameApplication
 {
 	private MainWindow mainWindow;
 	
-	public void changeScreen(Class type)
+	public BaseUi changeScreen(Class type)
 	{
-		changeScreen((BaseUi) DI.get(type));
+		return changeScreen((BaseUi) DI.get(type));
 	}
 	
-	public void changeScreen(BaseUi component)
+	public BaseUi changeScreen(BaseUi component)
 	{
 		component.init();
 		mainWindow.changeEpicenterTo(component);
+		component.start();
+		return component;
 	}
 	
 	/**
@@ -37,6 +39,7 @@ public class BaccordApp extends SingleFrameApplication
 		mainWindow = new MainWindow(this);
 		changeScreen(ImagesDashboard.class);
 		show(mainWindow);
+		mainWindow.getFrame().pack();
 	}
 	
 	/**

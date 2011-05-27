@@ -235,5 +235,18 @@ public class FileHelperTest
 			file2.delete();
 		}
 	}
+	
+	@Test
+	public void testIsBinaryEqual()
+	{
+		System.out.println("isBinaryEqual");
+		
+		File file1 = new File("./lib/flickr.unavailable.jpg");
+		File file2 = new File("./lib/flickr.unavailable.jpg");
+		assertTrue(FileHelper.isBinaryEqual(file1, file2));
+		
+		file2 = new File("./test/data/image800x600_f72.5.jpg");
+		assertFalse(FileHelper.isBinaryEqual(file1, file2));
+	}
 	 
 }

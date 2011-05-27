@@ -66,7 +66,7 @@ public class BasicImageSearch implements ImageSearch
 	 * --------------------------------------------------------------------
 	 */
 	
-	public SearchResult searchByQuery()
+	public SearchResult search()
 	{
 		saveRecentlyUsedKeyword(currentQuery.getKeywords());
 		return getSearchEngine().searchByQuery(currentQuery);

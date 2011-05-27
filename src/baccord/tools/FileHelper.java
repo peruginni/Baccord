@@ -1,11 +1,15 @@
 
 package baccord.tools;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.channels.FileChannel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -161,6 +165,67 @@ public class FileHelper
 	public static boolean exists(String path)
 	{
 		return (new File(path)).exists();
+	}
+	
+	
+	/**
+	 * Inspired by http://www.java2s.com/Code/Java/File-Input-Output/Comparebinaryfiles.htm
+	 * 
+	 * @param first
+	 * @param second
+	 * @return 
+	 */
+	public static boolean isBinaryEqual(File first, File second)
+	{
+		boolean result = true;
+		
+		InputStream firstIs = null;
+		InputStream secondIs = null;
+		BufferedInputStream firstBis = null;
+		BufferedInputStream secondBis = null;
+		
+		int bufferSize = 100;
+		
+		try {
+			firstIs = new FileInputStream(first);
+			secondIs = new FileInputStream(second);
+			firstBis = new BufferedInputStream(firstIs, bufferSize);
+			secondBis = new BufferedInputStream(secondIs, bufferSize);
+			
+			int firstByte;
+			int secondByte;
+			
+			while(true) {
+				firstByte = firstBis.read();
+				secondByte = secondBis.read();
+				
+				if(firstByte != secondByte) {
+					result = false;
+					break;
+				}
+				
+				if(firstByte < 0 && secondByte < 0) {
+					break;
+				}
+			}	
+			
+		} catch (IOException ex) {
+			Logger.getLogger(FileHelper.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				if(firstBis != null) firstBis.close();
+			} catch (IOException ex) {
+				Logger.getLogger(FileHelper.class.getName()).log(Level.SEVERE, null, ex);
+			} finally {
+				if(secondBis != null) try {
+					secondBis.close();
+				} catch (IOException ex) {
+					Logger.getLogger(FileHelper.class.getName()).log(Level.SEVERE, null, ex);
+				}
+			}
+		}
+		
+		return result;
 	}
 
 	
