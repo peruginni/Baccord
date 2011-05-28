@@ -7,18 +7,27 @@
 
 package baccord.ui;
 
+import baccord.BaccordApp;
+import baccord.business.images.ImageManager;
+import baccord.business.sfm.StructureFromMotion;
+import com.google.inject.Inject;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class SfmSetup extends BaseUi
 {
+	@Inject private StructureFromMotion sfm;
+	@Inject private ImageManager imageManager;
 
-    /** Creates new form SfmSetup */
-    public SfmSetup() {
-        initComponents();
-    }
+	public SfmSetup() 
+	{
+		initComponents();
+	}
 
+	
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -46,8 +55,14 @@ public class SfmSetup extends BaseUi
                 setName("Form"); // NOI18N
 
                 org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(SfmSetup.class);
+                runButton.setFont(resourceMap.getFont("runButton.font")); // NOI18N
                 runButton.setText(resourceMap.getString("runButton.text")); // NOI18N
                 runButton.setName("runButton"); // NOI18N
+                runButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                runButtonMouseClicked(evt);
+                        }
+                });
 
                 horizontalSeparator.setName("horizontalSeparator"); // NOI18N
 
@@ -64,6 +79,11 @@ public class SfmSetup extends BaseUi
 
                 inputImagesButton.setText(resourceMap.getString("inputImagesButton.text")); // NOI18N
                 inputImagesButton.setName("inputImagesButton"); // NOI18N
+                inputImagesButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                inputImagesButtonMouseClicked(evt);
+                        }
+                });
 
                 inputImagesLabel.setText(resourceMap.getString("inputImagesLabel.text")); // NOI18N
                 inputImagesLabel.setName("inputImagesLabel"); // NOI18N
@@ -79,6 +99,11 @@ public class SfmSetup extends BaseUi
 
                 ccdButton.setText(resourceMap.getString("ccdButton.text")); // NOI18N
                 ccdButton.setName("ccdButton"); // NOI18N
+                ccdButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                ccdButtonMouseClicked(evt);
+                        }
+                });
 
                 imagesToExistingLabel.setText(resourceMap.getString("imagesToExistingLabel.text")); // NOI18N
                 imagesToExistingLabel.setName("imagesToExistingLabel"); // NOI18N
@@ -88,6 +113,11 @@ public class SfmSetup extends BaseUi
 
                 imagesToExistingButton.setText(resourceMap.getString("imagesToExistingButton.text")); // NOI18N
                 imagesToExistingButton.setName("imagesToExistingButton"); // NOI18N
+                imagesToExistingButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                imagesToExistingButtonMouseClicked(evt);
+                        }
+                });
 
                 bundlerOptionsLabel.setText(resourceMap.getString("bundlerOptionsLabel.text")); // NOI18N
                 bundlerOptionsLabel.setName("bundlerOptionsLabel"); // NOI18N
@@ -104,41 +134,39 @@ public class SfmSetup extends BaseUi
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(sfmTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(ccdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(ccdButton))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(bundlerOptionsLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 544, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(bundlerOptionsScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(sfmTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(ccdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(ccdButton))
+                                                        .addComponent(bundlerOptionsLabel)
                                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addComponent(bundlerOptionsScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                                        .addComponent(inputImagesLabel)
-                                                                        .addGap(8, 8, 8)
-                                                                        .addComponent(inputImagesTextField))
-                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                                        .addComponent(imagesToExistingLabel)
-                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(imagesToExistingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(layout.createSequentialGroup()
-                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(imagesToExistingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                        .addGap(3, 3, 3)
-                                                                        .addComponent(inputImagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                .addContainerGap())
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(runButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(horizontalSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE))
-                                        .addContainerGap()))
+                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                                                        .addComponent(inputImagesLabel)
+                                                                                        .addGap(8, 8, 8)
+                                                                                        .addComponent(inputImagesTextField))
+                                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                                                        .addComponent(imagesToExistingLabel)
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(imagesToExistingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(imagesToExistingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                                        .addGap(3, 3, 3)
+                                                                                        .addComponent(inputImagesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                .addContainerGap())
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(runButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE))
+                                                .addGap(23, 23, 23))))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,10 +178,10 @@ public class SfmSetup extends BaseUi
                                         .addComponent(inputImagesLabel)
                                         .addComponent(inputImagesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(inputImagesButton))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(ccdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ccdButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(ccdButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(ccdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(imagesToExistingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,16 +191,72 @@ public class SfmSetup extends BaseUi
                                 .addComponent(bundlerOptionsLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bundlerOptionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(98, 98, 98))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addContainerGap(371, Short.MAX_VALUE)
-                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(runButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap()))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(horizontalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(runButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
                 );
         }// </editor-fold>//GEN-END:initComponents
+
+    private void ccdButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_ccdButtonMouseClicked
+    {//GEN-HEADEREND:event_ccdButtonMouseClicked
+	    String cameraName = null;
+	    Float cameraWidth = null;
+	    
+	    // ask for new camera and widht
+	    
+	    if(cameraName == null) {
+		    Dialog.error(this, "Fill camera name"); 
+		    return;
+	    }
+	    
+	    if(cameraWidth == null) {
+		    Dialog.error(this, "Fill camera width"); 
+		    return;
+	    }
+	    
+	    imageManager.addCcdWidth(cameraName, cameraWidth.floatValue());
+	    
+	    
+    }//GEN-LAST:event_ccdButtonMouseClicked
+
+    private void inputImagesButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_inputImagesButtonMouseClicked
+    {//GEN-HEADEREND:event_inputImagesButtonMouseClicked
+	    String path = Dialog.askForPath(this, JFileChooser.DIRECTORIES_ONLY);
+	    if(path != null) {
+		    inputImagesTextField.setText(path);
+	    }
+    }//GEN-LAST:event_inputImagesButtonMouseClicked
+
+    private void imagesToExistingButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_imagesToExistingButtonMouseClicked
+    {//GEN-HEADEREND:event_imagesToExistingButtonMouseClicked
+	    String path = Dialog.askForPath(this, JFileChooser.FILES_ONLY);
+	    if(path != null) {
+		    imagesToExistingTextField.setText(path);
+	    }
+    }//GEN-LAST:event_imagesToExistingButtonMouseClicked
+
+    private void runButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_runButtonMouseClicked
+    {//GEN-HEADEREND:event_runButtonMouseClicked
+	    String inputDir = inputImagesTextField.getText();
+	    String existingBundle = imagesToExistingTextField.getText();
+	    
+	    if(inputDir == null || inputDir.isEmpty()) {
+		    Dialog.error(this, "Fill directory with input images");
+		    return;
+	    } else {
+		    sfm.addImagesFromDirectory(inputDir);
+	    }
+	    
+	    if(existingBundle != null && !existingBundle.isEmpty()) {
+		    sfm.setExistingBundlePath(existingBundle);
+	    } else {
+		    sfm.setExistingBundlePath(null);
+	    }
+	    
+	    BaccordApp.getApplication().changeScreen(SfmProgress.class);
+    }//GEN-LAST:event_runButtonMouseClicked
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

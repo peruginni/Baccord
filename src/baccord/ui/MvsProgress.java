@@ -45,14 +45,30 @@ public class MvsProgress extends BaseUi {
                 titleLabel.setName("titleLabel"); // NOI18N
                 titleLabel.setOpaque(true);
 
+                continueButton.setFont(resourceMap.getFont("continueButton.font")); // NOI18N
                 continueButton.setText(resourceMap.getString("continueButton.text")); // NOI18N
                 continueButton.setName("continueButton"); // NOI18N
+                continueButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                continueButtonMouseClicked(evt);
+                        }
+                });
 
                 stopButton.setText(resourceMap.getString("stopButton.text")); // NOI18N
                 stopButton.setName("stopButton"); // NOI18N
+                stopButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                stopButtonMouseClicked(evt);
+                        }
+                });
 
                 browseOutputButton.setText(resourceMap.getString("browseOutputButton.text")); // NOI18N
                 browseOutputButton.setName("browseOutputButton"); // NOI18N
+                browseOutputButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                browseOutputButtonMouseClicked(evt);
+                        }
+                });
 
                 progressScrollPane.setName("progressScrollPane"); // NOI18N
 
@@ -73,10 +89,13 @@ public class MvsProgress extends BaseUi {
                                                 .addComponent(stopButton))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(browseOutputButton)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
                                                 .addComponent(continueButton)))
                                 .addContainerGap())
                 );
+
+                layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {browseOutputButton, continueButton});
+
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -85,14 +104,32 @@ public class MvsProgress extends BaseUi {
                                         .addComponent(titleLabel)
                                         .addComponent(stopButton))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(progressScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                                .addComponent(progressScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(browseOutputButton)
                                         .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())
                 );
+
+                layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {browseOutputButton, continueButton});
+
         }// </editor-fold>//GEN-END:initComponents
+
+    private void stopButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_stopButtonMouseClicked
+    {//GEN-HEADEREND:event_stopButtonMouseClicked
+	    // TODO add your handling code here:
+    }//GEN-LAST:event_stopButtonMouseClicked
+
+    private void browseOutputButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_browseOutputButtonMouseClicked
+    {//GEN-HEADEREND:event_browseOutputButtonMouseClicked
+	    // TODO add your handling code here:
+    }//GEN-LAST:event_browseOutputButtonMouseClicked
+
+    private void continueButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_continueButtonMouseClicked
+    {//GEN-HEADEREND:event_continueButtonMouseClicked
+	    // TODO add your handling code here:
+    }//GEN-LAST:event_continueButtonMouseClicked
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

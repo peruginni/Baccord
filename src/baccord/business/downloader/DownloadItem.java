@@ -88,4 +88,9 @@ public class DownloadItem
 	{
 		return status == DOWNLOADING;
 	}
+	
+	public boolean isSkipped()
+	{
+		return status == SKIPPED;
+	}
 }

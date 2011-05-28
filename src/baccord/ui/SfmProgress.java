@@ -7,16 +7,33 @@
 
 package baccord.ui;
 
+import baccord.BaccordApp;
+import baccord.business.settings.Settings;
+import baccord.business.sfm.StructureFromMotion;
+import com.google.inject.Inject;
+import java.io.IOException;
+
 /**
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class SfmProgress extends BaseUi {
+public class SfmProgress extends BaseUi 
+{
+	@Inject private StructureFromMotion sfm;
+	@Inject private Settings settings;
+	
+	public SfmProgress() 
+	{
+		initComponents();
+	}
 
-    /** Creates new form SfmProgress */
-    public SfmProgress() {
-        initComponents();
-    }
+	@Override
+	public void start()
+	{
+		super.start();
+		sfm.start();
+	}
+	
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -37,8 +54,14 @@ public class SfmProgress extends BaseUi {
                 setName("Form"); // NOI18N
 
                 org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(SfmProgress.class);
+                continueButton.setFont(resourceMap.getFont("continueButton.font")); // NOI18N
                 continueButton.setText(resourceMap.getString("continueButton.text")); // NOI18N
                 continueButton.setName("continueButton"); // NOI18N
+                continueButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                continueButtonMouseClicked(evt);
+                        }
+                });
 
                 horizontalSeparator.setName("horizontalSeparator"); // NOI18N
 
@@ -52,9 +75,19 @@ public class SfmProgress extends BaseUi {
 
                 stopButton.setText(resourceMap.getString("stopButton.text")); // NOI18N
                 stopButton.setName("stopButton"); // NOI18N
+                stopButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                stopButtonMouseClicked(evt);
+                        }
+                });
 
                 browseOutputButton.setText(resourceMap.getString("browseOutputButton.text")); // NOI18N
                 browseOutputButton.setName("browseOutputButton"); // NOI18N
+                browseOutputButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                browseOutputButtonMouseClicked(evt);
+                        }
+                });
 
                 progressTextPane.setName("progressTextPane"); // NOI18N
 
@@ -62,24 +95,24 @@ public class SfmProgress extends BaseUi {
                 this.setLayout(layout);
                 layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(progressTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                 .addComponent(sfmTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(stopButton))
-                                        .addComponent(browseOutputButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(24, 24, 24))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(continueButton)
-                                                .addComponent(horizontalSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE))
-                                        .addContainerGap()))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(browseOutputButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
+                                                .addComponent(continueButton))
+                                        .addComponent(progressTextPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
                 );
+
+                layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {browseOutputButton, continueButton});
+
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -87,20 +120,47 @@ public class SfmProgress extends BaseUi {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(sfmTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(stopButton))
-                                .addGap(14, 14, 14)
-                                .addComponent(progressTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
-                                .addGap(38, 38, 38)
-                                .addComponent(browseOutputButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                                .addComponent(progressTextPane, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(horizontalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(browseOutputButton)
+                                        .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(28, 28, 28))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addContainerGap(371, Short.MAX_VALUE)
-                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap()))
                 );
+
+                layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {browseOutputButton, continueButton});
+
         }// </editor-fold>//GEN-END:initComponents
+
+    private void browseOutputButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_browseOutputButtonMouseClicked
+    {//GEN-HEADEREND:event_browseOutputButtonMouseClicked
+		try {
+			Process p = new ProcessBuilder(
+				settings.get(Settings.FILE_EXPLORER_PATH),
+				sfm.getOutputDirectory()
+			).start(); 
+		} catch (IOException ex) {
+			Dialog.error(this, "Cannot open file browser");
+		} 
+    }//GEN-LAST:event_browseOutputButtonMouseClicked
+
+    private void continueButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_continueButtonMouseClicked
+    {//GEN-HEADEREND:event_continueButtonMouseClicked
+	    if(sfm.isRunning()) {
+		    Dialog.error(this, "Structure from motion is still running");
+		    return;
+	    }
+	    BaccordApp.getApplication().changeScreen(MvsProgress.class);
+    }//GEN-LAST:event_continueButtonMouseClicked
+
+    private void stopButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_stopButtonMouseClicked
+    {//GEN-HEADEREND:event_stopButtonMouseClicked
+	    sfm.stop();
+	    BaccordApp.getApplication().changeScreen(SfmSetup.class);
+    }//GEN-LAST:event_stopButtonMouseClicked
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

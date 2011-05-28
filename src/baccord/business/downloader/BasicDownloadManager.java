@@ -6,6 +6,7 @@ import baccord.business.images.Editor;
 import baccord.exceptions.CannotCreateDirectoryException;
 import baccord.exceptions.PathMustBeDirectoryException;
 import baccord.tools.FileHelper;
+import baccord.tools.Observer;
 import com.google.inject.Inject;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -15,8 +16,10 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,8 +69,12 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 				throw new PathMustBeDirectoryException();
 			}
 		}
-
-		downloadDirectory = path;
+		
+		try {
+			downloadDirectory = directory.getCanonicalPath();
+		} catch (IOException ex) {
+			logger.log(Level.SEVERE, null, ex);
+		}
 	}
 	
 	public String getDownloadDirectory()
@@ -83,7 +90,8 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 	@Inject
 	public void setEditor(Editor editor)
 	{
-		addObserver(editor);
+		registerObserver(editor);
+		editor.setAutoStart(true);
 		this.editor = editor;
 	}
 	
@@ -92,7 +100,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 	 *  Core logic
 	 * --------------------------------------------------------------------
 	 */
-
+	
 	public void add(DownloadItem item)
 	{
 		item.setTargetDirectory(downloadDirectory);
@@ -217,7 +225,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			out.flush();
 			out.close();
 			
-			// if image unavailable, flag as waiting
+			// if image unavailable, flag as skipped
 			if(FileHelper.isBinaryEqual(targetFile, flickrUnavailableFile)) {
 				item.setStatus(DownloadItem.SKIPPED);
 				targetFile.delete();
@@ -226,8 +234,6 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 				item.setTarget(absoluteTargetFilename);
 				item.setStatus(DownloadItem.FINISHED);
 			}
-			
-			notifyObservers(item);
 			
 		} catch (MalformedURLException ex) {
 			logger.log(Level.SEVERE, null, ex);
@@ -254,6 +260,8 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 					itemsToDownload.remove(item);
 					break;
 			}
+			
+			notifyObservers(item);
 		}
 	}
 

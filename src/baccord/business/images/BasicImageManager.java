@@ -4,6 +4,8 @@ import baccord.business.settings.Settings;
 import baccord.exceptions.InvalidAppPathException;
 import baccord.tools.FileHelper;
 import baccord.tools.ObjectStorage;
+import baccord.tools.Observable;
+import baccord.tools.Observer;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.imaging.jpeg.JpegProcessingException;
 import com.drew.metadata.Directory;
@@ -20,8 +22,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -61,7 +61,7 @@ public class BasicImageManager implements ImageManager, Observer
 	public void setSettings(Settings settings)
 	{
 		this.settings = settings;
-		settings.addObserver(this);
+		settings.registerObserver(this);
 		update(settings, null);
 	}
 	

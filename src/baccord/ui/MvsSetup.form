@@ -19,21 +19,16 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="titleLabel" alignment="0" pref="665" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="cmvsOptionsPanel" min="-2" max="-2" attributes="1"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="pmvsOptionsPanel" min="-2" max="-2" attributes="1"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="runCmvsPmvsButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="runCmvsPmvsButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bundlerOutputLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
@@ -42,7 +37,6 @@
                       <Component id="bundlerOutputChangeButton" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
                   <Component id="separatorBottom" alignment="0" pref="665" max="32767" attributes="0"/>
-                  <Component id="titleLabel" alignment="0" min="-2" pref="247" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -67,11 +61,7 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="separatorBottom" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="runCmvsPmvsButton" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="runCmvsPmvsButton" min="-2" pref="46" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -95,9 +85,13 @@
     </Component>
     <Component class="javax.swing.JButton" name="runCmvsPmvsButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="runCmvsPmvsButton.font"/>
         <Property name="text" type="java.lang.String" resourceKey="runCmvsPmvsButton.text"/>
         <Property name="name" type="java.lang.String" value="runCmvsPmvsButton" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="runCmvsPmvsButtonMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="separatorBottom">
       <Properties>
@@ -115,6 +109,9 @@
         <Property name="text" type="java.lang.String" resourceKey="bundlerOutputChangeButton.text"/>
         <Property name="name" type="java.lang.String" value="bundlerOutputChangeButton" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bundlerOutputChangeButtonMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="bundlerOutputLabel">
       <Properties>
@@ -381,19 +378,5 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
-      <Properties>
-        <Property name="selected" type="boolean" value="true"/>
-        <Property name="text" type="java.lang.String" resourceKey="jCheckBox1.text"/>
-        <Property name="name" type="java.lang.String" value="jCheckBox1" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox2">
-      <Properties>
-        <Property name="selected" type="boolean" value="true"/>
-        <Property name="text" type="java.lang.String" resourceKey="jCheckBox2.text"/>
-        <Property name="name" type="java.lang.String" value="jCheckBox2" noResource="true"/>
-      </Properties>
-    </Component>
   </SubComponents>
 </Form>

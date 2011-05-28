@@ -20,6 +20,7 @@ public class MainWindow extends FrameView
 	{
 		super(app);
 		initComponents();
+		getFrame().setResizable(false);
 	}
 	
 	public void changeEpicenterTo(BaseUi component)
@@ -132,7 +133,7 @@ public class MainWindow extends FrameView
 
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_settingsButtonActionPerformed
     {//GEN-HEADEREND:event_settingsButtonActionPerformed
-	    BaccordApp.getApplication().changeScreen(Settings.class);
+	    BaccordApp.getApplication().changeScreen(AppSettings.class);
     }//GEN-LAST:event_settingsButtonActionPerformed
 
     private void sfmButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_sfmButtonActionPerformed

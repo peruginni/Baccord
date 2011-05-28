@@ -58,6 +58,8 @@ public class ImagesSearchQuery extends BaseUi
 	@Override
 	public void init()
 	{
+		super.init();
+		
 		try {
 			downloadManager.setDownloadDirectory("/Users/peruginni/Downloads/Bac");
 		} catch (CannotCreateDirectoryException ex) {
@@ -135,6 +137,8 @@ public class ImagesSearchQuery extends BaseUi
 					Integer.parseInt(heightTextField.getText())
 				)	
 			);
+		} else {
+			editor.setAutoResizeDimension(null);
 		}
 	}
 	
@@ -285,6 +289,7 @@ public class ImagesSearchQuery extends BaseUi
 
                 horizontalSeparator.setName("horizontalSeparator"); // NOI18N
 
+                searchButton.setFont(resourceMap.getFont("searchButton.font")); // NOI18N
                 searchButton.setText(resourceMap.getString("searchButton.text")); // NOI18N
                 searchButton.setName("searchButton"); // NOI18N
                 searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -606,7 +611,7 @@ public class ImagesSearchQuery extends BaseUi
                                                 .addComponent(siftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(dimensionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                                 .addComponent(horizontalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -614,20 +619,16 @@ public class ImagesSearchQuery extends BaseUi
                                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())
                 );
+
+                layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {downloadProgressButton, searchButton});
+
         }// </editor-fold>//GEN-END:initComponents
 
     private void downloadFolderButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_downloadFolderButtonActionPerformed
     {//GEN-HEADEREND:event_downloadFolderButtonActionPerformed
-	    JFileChooser fileChooser = new JFileChooser();
-	    fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-	    
-	    if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-		   File selectedFolder = fileChooser.getSelectedFile();
-		   try {
-			downloadFolderTextfield.setText(selectedFolder.getCanonicalPath());
-		   } catch (IOException ex) {
-			Dialog.error(this, "Error during getting canonical path for selected folder");
-		   }
+	    String path = Dialog.askForPath(this, JFileChooser.DIRECTORIES_ONLY);
+	    if(path != null) {
+		    downloadFolderTextfield.setText(path);
 	    }
     }//GEN-LAST:event_downloadFolderButtonActionPerformed
 
@@ -635,7 +636,13 @@ public class ImagesSearchQuery extends BaseUi
     {//GEN-HEADEREND:event_searchButtonActionPerformed
 	    try {
 		    saveCurrentQuery();
-		    BaccordApp.getApplication().changeScreen(ImagesSearchResults.class);
+		    
+		    if(!imageSearch.getCurrentQuery().getKeywords().isEmpty()) {
+			    BaccordApp.getApplication().changeScreen(ImagesSearchResults.class);
+		    } else {
+			    Dialog.error(this, "Please fill keyword to search");
+		    }
+		    
 	    } catch (CannotCreateDirectoryException ex) {
 		    Dialog.error(this, "Cannot create download directory");
 	    } catch (PathMustBeDirectoryException ex) {

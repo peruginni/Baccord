@@ -80,12 +80,12 @@
                       <Component id="dimensionsPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
               <Component id="horizontalSeparator" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="downloadProgressButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="searchButton" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="downloadProgressButton" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="searchButton" linkSize="2" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -243,6 +243,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="searchButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="searchButton.font"/>
         <Property name="text" type="java.lang.String" resourceKey="searchButton.text"/>
         <Property name="name" type="java.lang.String" value="searchButton" noResource="true"/>
       </Properties>

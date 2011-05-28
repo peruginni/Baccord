@@ -61,14 +61,15 @@ public class ImagesSearchResults extends BaseUi
 	@Override 
 	public void init()
 	{
+		super.init();
+		
 		searchResultsPanel.add(new JLabel("Searching ..."));
-		
-		
 	}
 	
 	@Override 
 	public void start()
 	{
+		super.start();
 		Thread t = new Thread() {
 			@Override
 			public void run()
@@ -128,7 +129,6 @@ public class ImagesSearchResults extends BaseUi
                 pageLabel = new javax.swing.JLabel();
 
                 setName("Form"); // NOI18N
-                setPreferredSize(new java.awt.Dimension(810, 441));
 
                 jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
                 jScrollPane1.setName("jScrollPane1"); // NOI18N
@@ -137,17 +137,16 @@ public class ImagesSearchResults extends BaseUi
                 org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(ImagesSearchResults.class);
                 searchResultsPanel.setBackground(resourceMap.getColor("searchResultsPanel.background")); // NOI18N
                 searchResultsPanel.setName("searchResultsPanel"); // NOI18N
-                searchResultsPanel.setSize(new java.awt.Dimension(716, 32767));
 
                 javax.swing.GroupLayout searchResultsPanelLayout = new javax.swing.GroupLayout(searchResultsPanel);
                 searchResultsPanel.setLayout(searchResultsPanelLayout);
                 searchResultsPanelLayout.setHorizontalGroup(
                         searchResultsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 766, Short.MAX_VALUE)
+                        .addGap(0, 1144, Short.MAX_VALUE)
                 );
                 searchResultsPanelLayout.setVerticalGroup(
                         searchResultsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 253, Short.MAX_VALUE)
+                        .addGap(0, 268, Short.MAX_VALUE)
                 );
 
                 jScrollPane1.setViewportView(searchResultsPanel);
@@ -181,6 +180,7 @@ public class ImagesSearchResults extends BaseUi
                         }
                 });
 
+                downloadButton.setFont(resourceMap.getFont("downloadButton.font")); // NOI18N
                 downloadButton.setText(resourceMap.getString("downloadButton.text")); // NOI18N
                 downloadButton.setName("downloadButton"); // NOI18N
                 downloadButton.addActionListener(new java.awt.event.ActionListener() {
@@ -197,46 +197,49 @@ public class ImagesSearchResults extends BaseUi
                 this.setLayout(layout);
                 layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(searchResultsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(editQueryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(239, 239, 239))
-                                        .addComponent(helpLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(searchResultsTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
+                                                        .addComponent(horizontalSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
+                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(1, 1, 1))
+                                        .addComponent(helpLabel)
+                                        .addGroup(layout.createSequentialGroup()
                                                 .addComponent(progressButton)
-                                                .addGap(41, 41, 41)
-                                                .addComponent(pageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                                                .addComponent(downloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap())
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(editQueryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(pageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(downloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(25, 25, 25))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(searchResultsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(editQueryButton))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(helpLabel)
+                                .addComponent(searchResultsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                                .addComponent(helpLabel)
+                                .addGap(6, 6, 6)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(horizontalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(downloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(progressButton))
-                                        .addComponent(pageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20))
+                                        .addComponent(pageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                                        .addComponent(downloadButton, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(progressButton, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                                                .addComponent(editQueryButton)))
+                                .addContainerGap())
                 );
+
+                layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {downloadButton, editQueryButton, pageLabel, progressButton});
+
         }// </editor-fold>//GEN-END:initComponents
 
     private void editQueryButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_editQueryButtonActionPerformed
@@ -372,16 +375,17 @@ class SingleResult extends JPanel implements MouseListener
 		
 		if(image != null) {
 			g.drawImage(image, 5, 5, null);
-		} 
+		} else {
+			g.setColor(new Color(180, 180, 180));
+			g2.drawString("Loading...", 10, 35);
+			return;
+		}
 		
 		if(!isSelected) {
 			g.setColor(new Color(255, 255, 255, 210));
 			g.fillRect(5, 5, 75, 75);
-		}
-		
-		if(image == null) {
-			g2.setColor(Color.black);
-			g2.drawString("Loading...", 10, 30);
+			g.setColor(new Color(180, 180, 180));
+			g2.drawString("Excluded", 15, 35);
 		}
 		
 		if(isMouseOver) {

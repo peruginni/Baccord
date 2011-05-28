@@ -4,6 +4,7 @@ package baccord.business.downloader;
 import baccord.business.images.Editor;
 import baccord.exceptions.CannotCreateDirectoryException;
 import baccord.exceptions.PathMustBeDirectoryException;
+import baccord.tools.Observable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public interface DownloadManager 
+public interface DownloadManager extends Observable
 {
 	
 	/**

@@ -13,8 +13,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import baccord.tools.Observable;
+import baccord.tools.Observer;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,6 +50,7 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 
 	public Bundler()
 	{
+		images = new LinkedList<Image>();
 		report = new StringBuilder();
 		options = "--output bundle.out" + "\n"
 			+ "--output_all bundle_" + "\n"
@@ -75,7 +77,7 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	public void setSettings(Settings settings)
 	{
 		this.settings = settings;
-		settings.addObserver(this);
+		settings.registerObserver(this);
 		update(settings, null);
 	}
 	
@@ -213,6 +215,15 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	 * --------------------------------------------------------------------
 	 */
 
+	public void addImagesFromDirectory(String directory)
+	{
+		images.addAll(
+			editor.getImageManager().loadImagesFromDirectory(directory, false)
+		);
+		
+		outputDirectory = new File(directory, "bundler").getPath();
+	}
+	
 	public void loadExifInformation()
 	{
 		addReport("Loading focal information");

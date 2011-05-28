@@ -1,10 +1,10 @@
 package baccord.business.images;
 
 import baccord.business.downloader.DownloadItem;
+import baccord.tools.Observable;
 import com.google.inject.Inject;
 import java.awt.Dimension;
 import java.util.LinkedList;
-import java.util.Observable;
 import java.util.Queue;
 
 /**
@@ -155,10 +155,11 @@ public class BasicEditor implements Editor, Runnable
 	{
 		if(o1 instanceof DownloadItem) {
 			DownloadItem item = (DownloadItem)o1;
-			Image image = new Image(item.getTarget());
-			
-			EditorTask task = new EditorTask(image, getAutoSift(), getAutoResizeDimension());
-			add(task);
+			if(item.isFinished()) {
+				Image image = new Image(item.getTarget());
+				EditorTask task = new EditorTask(image, getAutoSift(), getAutoResizeDimension());
+				add(task);
+			}
 		}
 	}
 	

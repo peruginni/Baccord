@@ -35,6 +35,8 @@ public class ImagesDashboard extends BaseUi
 	@Override
 	public void init()
 	{	
+		super.init();
+		
 		// loading folders list
 		DefaultListModel foldersListModel = new DefaultListModel();
 		for (String folder : imageFolders.getRecentlyUsed()) {
@@ -90,6 +92,7 @@ public class ImagesDashboard extends BaseUi
                 setName("Form"); // NOI18N
 
                 org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(ImagesDashboard.class);
+                downloadButton.setFont(resourceMap.getFont("chooseFolderButton.font")); // NOI18N
                 downloadButton.setText(resourceMap.getString("downloadButton.text")); // NOI18N
                 downloadButton.setName("downloadButton"); // NOI18N
                 downloadButton.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +108,7 @@ public class ImagesDashboard extends BaseUi
                 keywordsLabel.setName("keywordsLabel"); // NOI18N
                 keywordsLabel.setOpaque(true);
 
+                chooseFolderButton.setFont(resourceMap.getFont("chooseFolderButton.font")); // NOI18N
                 chooseFolderButton.setText(resourceMap.getString("chooseFolderButton.text")); // NOI18N
                 chooseFolderButton.setName("chooseFolderButton"); // NOI18N
                 chooseFolderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +146,7 @@ public class ImagesDashboard extends BaseUi
                 orLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 orLabel.setText(resourceMap.getString("orLabel.text")); // NOI18N
                 orLabel.setName("orLabel"); // NOI18N
+                orLabel.setPreferredSize(new java.awt.Dimension(20, 16));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
@@ -149,41 +154,47 @@ public class ImagesDashboard extends BaseUi
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(keywordsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                                                        .addComponent(downloadButton, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(orLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(keywordsList, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                                                .addGap(65, 65, 65)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(keywordsList, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(downloadButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(keywordsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(foldersList, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                                        .addComponent(foldersLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                                        .addComponent(chooseFolderButton, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
+                                .addComponent(orLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(foldersList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(foldersLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(chooseFolderButton))
                                 .addContainerGap())
                 );
+
+                layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {chooseFolderButton, downloadButton, foldersLabel, foldersList, keywordsLabel, keywordsList});
+
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(downloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(chooseFolderButton, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                                        .addComponent(orLabel))
+                                        .addComponent(orLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(chooseFolderButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(keywordsLabel)
                                         .addComponent(foldersLabel))
                                 .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(keywordsList, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                                        .addComponent(foldersList, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                                        .addComponent(keywordsList, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(foldersList, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())
                 );
+
+                layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {chooseFolderButton, downloadButton});
+
+                layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {foldersLabel, keywordsLabel});
+
+                layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {foldersList, keywordsList});
+
         }// </editor-fold>//GEN-END:initComponents
 
     private void chooseFolderButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chooseFolderButtonActionPerformed

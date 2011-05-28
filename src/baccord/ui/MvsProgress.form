@@ -29,9 +29,9 @@
                       <Component id="stopButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="browseOutputButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="336" max="32767" attributes="0"/>
-                      <Component id="continueButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="browseOutputButton" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="314" max="32767" attributes="0"/>
+                      <Component id="continueButton" linkSize="1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -47,11 +47,11 @@
                   <Component id="stopButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="progressScrollPane" pref="310" max="32767" attributes="0"/>
+              <Component id="progressScrollPane" pref="309" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="browseOutputButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="continueButton" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="browseOutputButton" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="continueButton" linkSize="2" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -76,21 +76,31 @@
     </Component>
     <Component class="javax.swing.JButton" name="continueButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="continueButton.font"/>
         <Property name="text" type="java.lang.String" resourceKey="continueButton.text"/>
         <Property name="name" type="java.lang.String" value="continueButton" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="continueButtonMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="stopButton">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="stopButton.text"/>
         <Property name="name" type="java.lang.String" value="stopButton" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stopButtonMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="browseOutputButton">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="browseOutputButton.text"/>
         <Property name="name" type="java.lang.String" value="browseOutputButton" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="browseOutputButtonMouseClicked"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="progressScrollPane">
       <Properties>

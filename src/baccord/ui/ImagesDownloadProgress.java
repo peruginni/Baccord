@@ -7,13 +7,15 @@
 
 package baccord.ui;
 
-import baccord.business.BaseBusiness;
+import baccord.BaccordApp;
 import baccord.business.downloader.DownloadItem;
 import baccord.business.downloader.DownloadManager;
+import baccord.business.settings.Settings;
+import baccord.tools.Observable;
+import baccord.tools.Observer;
 import com.google.inject.Inject;
+import java.io.IOException;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -23,6 +25,7 @@ import javax.swing.table.AbstractTableModel;
 public class ImagesDownloadProgress extends BaseUi implements Observer
 {
 	@Inject private DownloadManager downloadManager;
+	@Inject private Settings settings;
 	private DownloadTableModel tableModel;
 	
 	/** Creates new form ImagesDownloadProgress */
@@ -34,8 +37,15 @@ public class ImagesDownloadProgress extends BaseUi implements Observer
 	@Override
 	public void init()
 	{
-		((BaseBusiness)downloadManager).addObserver(this);
+		super.init();
 		
+		downloadManager.registerObserver(this);
+		
+		refresh();
+	}
+
+	public void refresh()
+	{
 		org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(baccord.BaccordApp.class).getContext().getResourceMap(ImagesDownloadProgress.class);
 		tableModel = new DownloadTableModel(downloadManager.getAll());
 		progressTable.setModel(tableModel);
@@ -46,23 +56,31 @@ public class ImagesDownloadProgress extends BaseUi implements Observer
                 progressTable.getColumnModel().getColumn(1).setMaxWidth(150);
                 progressTable.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("progressTable.columnModel.title1")); // NOI18N
 		
-		refresh();
-	}
-
-	public void refresh()
-	{
-		progressTable.revalidate();
-		
+		int remaining = downloadManager.getRemaining().size();
 		remainingDownloadsLabel.setText(
-			"Remaining:" + downloadManager.getRemaining().size()
+			(remaining > 0) 
+			? "Remaining: " + remaining 
+			: "No remaining downloads"
 		);
 	}
 	
 	@Override
 	public void close()
 	{
-		((BaseBusiness)downloadManager).deleteObserver(this);
+		downloadManager.removeObserver(this);
+		super.close();
 	}
+	
+	public void update(Observable caller, Object arg)
+	{
+		if(caller instanceof DownloadManager) {
+			refresh();
+		}
+	}
+	
+	
+	
+	
 	
     /** This method is called from within the constructor to
      * initialize the form.
@@ -95,6 +113,11 @@ public class ImagesDownloadProgress extends BaseUi implements Observer
 
                 searchResultsButton.setText(resourceMap.getString("searchResultsButton.text")); // NOI18N
                 searchResultsButton.setName("searchResultsButton"); // NOI18N
+                searchResultsButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                searchResultsButtonActionPerformed(evt);
+                        }
+                });
 
                 browseDownloadsButton.setText(resourceMap.getString("browseDownloadsButton.text")); // NOI18N
                 browseDownloadsButton.setName("browseDownloadsButton"); // NOI18N
@@ -104,6 +127,7 @@ public class ImagesDownloadProgress extends BaseUi implements Observer
                         }
                 });
 
+                continueSfmButton.setFont(resourceMap.getFont("continueSfmButton.font")); // NOI18N
                 continueSfmButton.setText(resourceMap.getString("continueSfmButton.text")); // NOI18N
                 continueSfmButton.setName("continueSfmButton"); // NOI18N
                 continueSfmButton.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +136,7 @@ public class ImagesDownloadProgress extends BaseUi implements Observer
                         }
                 });
 
+                remainingDownloadsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 remainingDownloadsLabel.setText(resourceMap.getString("remainingDownloadsLabel.text")); // NOI18N
                 remainingDownloadsLabel.setName("remainingDownloadsLabel"); // NOI18N
 
@@ -162,58 +187,61 @@ public class ImagesDownloadProgress extends BaseUi implements Observer
                 layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGap(268, 268, 268)
+                                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(browseDownloadsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(searchResultsButton)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
-                                                .addComponent(remainingDownloadsLabel))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(progressScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 35, Short.MAX_VALUE)
+                                                .addComponent(remainingDownloadsLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 35, Short.MAX_VALUE)
+                                                .addComponent(continueSfmButton))
+                                        .addComponent(progressScrollPane))
                                 .addContainerGap())
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(title, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                        .addComponent(browseDownloadsButton)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 432, Short.MAX_VALUE)
-                                                        .addComponent(continueSfmButton)))
-                                        .addContainerGap()))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(searchResultsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(remainingDownloadsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap()
+                                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addComponent(progressScrollPane)
                                 .addGap(18, 18, 18)
-                                .addComponent(progressScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
-                                .addGap(73, 73, 73))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 328, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(continueSfmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(browseDownloadsButton))
-                                        .addContainerGap()))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(searchResultsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(browseDownloadsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(continueSfmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(remainingDownloadsLabel))
+                                .addContainerGap())
                 );
+
+                layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {browseDownloadsButton, continueSfmButton, searchResultsButton});
+
         }// </editor-fold>//GEN-END:initComponents
 
     private void browseDownloadsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_browseDownloadsButtonActionPerformed
     {//GEN-HEADEREND:event_browseDownloadsButtonActionPerformed
-	    // TODO add your handling code here:
+	   	try {
+			Process p = new ProcessBuilder(
+				settings.get(Settings.FILE_EXPLORER_PATH),
+				downloadManager.getDownloadDirectory()
+			).start(); 
+		} catch (IOException ex) {
+			Dialog.error(this, "Cannot open file browser");
+		} 
     }//GEN-LAST:event_browseDownloadsButtonActionPerformed
 
     private void continueSfmButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_continueSfmButtonActionPerformed
     {//GEN-HEADEREND:event_continueSfmButtonActionPerformed
-	    // TODO add your handling code here:
+	    BaccordApp.getApplication().changeScreen(SfmSetup.class);
     }//GEN-LAST:event_continueSfmButtonActionPerformed
+
+    private void searchResultsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_searchResultsButtonActionPerformed
+    {//GEN-HEADEREND:event_searchResultsButtonActionPerformed
+	    BaccordApp.getApplication().changeScreen(ImagesSearchResults.class);
+    }//GEN-LAST:event_searchResultsButtonActionPerformed
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -225,14 +253,6 @@ public class ImagesDownloadProgress extends BaseUi implements Observer
         private javax.swing.JButton searchResultsButton;
         private javax.swing.JLabel title;
         // End of variables declaration//GEN-END:variables
-
-	public void update(Observable o, Object o1)
-	{
-		if(o instanceof DownloadManager) {
-			System.out.println("sdfasd");
-			refresh();
-		}
-	}
 
 }
 
@@ -268,10 +288,10 @@ class DownloadTableModel extends AbstractTableModel
 	{
 		String result;
 		switch(status) {
-			case DownloadItem.FINISHED: result = "Finished."; break;
-			case DownloadItem.DOWNLOADING: result = "Downloading."; break;
-			case DownloadItem.WAITING: result = "Waiting.";
-			case DownloadItem.SKIPPED: result = "Skipped.";
+			case DownloadItem.FINISHED: result = "Finished"; break;
+			case DownloadItem.DOWNLOADING: result = "Downloading"; break;
+			case DownloadItem.WAITING: result = "Waiting"; break;
+			case DownloadItem.SKIPPED: result = "Skipped"; break;
 			default: result = ""+status;
 		}
 		return result;

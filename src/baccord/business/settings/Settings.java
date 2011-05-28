@@ -2,6 +2,7 @@ package baccord.business.settings;
 
 import baccord.business.BaseBusiness;
 import baccord.exceptions.InvalidAppPathException;
+import baccord.tools.OS;
 import baccord.tools.ObjectStorage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,6 +22,8 @@ public class Settings extends BaseBusiness
 	public static final int CMVS_PATH = 4;
 	public static final int IMAGEMAGICK_CONVERT_PATH = 5;
 	public static final int IMAGEMAGICK_MOGRIFY_PATH = 6;
+	public static final int PLY_EXPLORER_PATH = 7;
+	public static final int FILE_EXPLORER_PATH = 8;
 	
 	private String storagePath = "./settings.dat";
 	private Map<Integer, String> map;
@@ -70,11 +73,13 @@ public class Settings extends BaseBusiness
 			case CMVS_PATH:
 			case IMAGEMAGICK_CONVERT_PATH:
 			case IMAGEMAGICK_MOGRIFY_PATH:
+			case PLY_EXPLORER_PATH:
 				File file = new File(value);
 				if(!file.exists() && !file.canExecute()) {
 					throw new InvalidAppPathException();
 				}
 				break;
+			case FILE_EXPLORER_PATH:
 			default:	
 		}
 		
@@ -93,5 +98,13 @@ public class Settings extends BaseBusiness
 		map.put(KEYPOINT_MATCHER_PATH, null);
 		map.put(IMAGEMAGICK_CONVERT_PATH, "/usr/local/bin/convert");
 		map.put(IMAGEMAGICK_MOGRIFY_PATH, "/usr/local/bin/mogrify");
+		map.put(PLY_EXPLORER_PATH, null);
+		if(OS.isMacOSX()) {
+			map.put(FILE_EXPLORER_PATH, "open");
+		} else if(OS.isWindows()) {
+			map.put(FILE_EXPLORER_PATH, "explorer.exe");
+		} else if(OS.isLinux()) {
+			map.put(FILE_EXPLORER_PATH, "nautilus");
+		}
 	}
 }

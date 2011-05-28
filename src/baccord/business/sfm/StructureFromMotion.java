@@ -65,6 +65,7 @@ public interface StructureFromMotion
 	 * --------------------------------------------------------------------
 	 */
 	
+	public void addImagesFromDirectory(String directory);
 	public void loadExifInformation();
 	public void createImageList() throws IOException;
 	public void createMatchTable() throws IOException, InterruptedException;

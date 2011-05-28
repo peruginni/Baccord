@@ -53,8 +53,6 @@ public class MvsSetup extends BaseUi {
                 cpuPmvsSpinner = new javax.swing.JSpinner();
                 csizeSpinner = new javax.swing.JSpinner();
                 csizeLabel = new javax.swing.JLabel();
-                jCheckBox1 = new javax.swing.JCheckBox();
-                jCheckBox2 = new javax.swing.JCheckBox();
 
                 setName("Form"); // NOI18N
 
@@ -67,8 +65,14 @@ public class MvsSetup extends BaseUi {
                 titleLabel.setName("titleLabel"); // NOI18N
                 titleLabel.setOpaque(true);
 
+                runCmvsPmvsButton.setFont(resourceMap.getFont("runCmvsPmvsButton.font")); // NOI18N
                 runCmvsPmvsButton.setText(resourceMap.getString("runCmvsPmvsButton.text")); // NOI18N
                 runCmvsPmvsButton.setName("runCmvsPmvsButton"); // NOI18N
+                runCmvsPmvsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                runCmvsPmvsButtonMouseClicked(evt);
+                        }
+                });
 
                 separatorBottom.setName("separatorBottom"); // NOI18N
 
@@ -77,6 +81,11 @@ public class MvsSetup extends BaseUi {
 
                 bundlerOutputChangeButton.setText(resourceMap.getString("bundlerOutputChangeButton.text")); // NOI18N
                 bundlerOutputChangeButton.setName("bundlerOutputChangeButton"); // NOI18N
+                bundlerOutputChangeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                bundlerOutputChangeButtonMouseClicked(evt);
+                        }
+                });
 
                 bundlerOutputLabel.setText(resourceMap.getString("bundlerOutputLabel.text")); // NOI18N
                 bundlerOutputLabel.setName("bundlerOutputLabel"); // NOI18N
@@ -253,14 +262,6 @@ public class MvsSetup extends BaseUi {
 
                 pmvsOptionsPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cpuPmvsLabel, cpuPmvsSpinner, csizeLabel, csizeSpinner, levelLabel, levelSpinner, minimumImageLabel, minimumImageSpinner, thresholdLabel, thresholdSpinner, wsizeLabel, wsizeSpinner});
 
-                jCheckBox1.setSelected(true);
-                jCheckBox1.setText(resourceMap.getString("jCheckBox1.text")); // NOI18N
-                jCheckBox1.setName("jCheckBox1"); // NOI18N
-
-                jCheckBox2.setSelected(true);
-                jCheckBox2.setText(resourceMap.getString("jCheckBox2.text")); // NOI18N
-                jCheckBox2.setName("jCheckBox2"); // NOI18N
-
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
                 layout.setHorizontalGroup(
@@ -268,24 +269,19 @@ public class MvsSetup extends BaseUi {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(cmvsOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(pmvsOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jCheckBox1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jCheckBox2)
-                                                .addGap(19, 19, 19)
-                                                .addComponent(runCmvsPmvsButton))
+                                        .addComponent(runCmvsPmvsButton, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(bundlerOutputLabel)
                                                 .addGap(8, 8, 8)
                                                 .addComponent(bundlerOutputTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(bundlerOutputChangeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(separatorBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
-                                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(separatorBottom, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
                                 .addContainerGap())
                 );
                 layout.setVerticalGroup(
@@ -305,13 +301,20 @@ public class MvsSetup extends BaseUi {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(separatorBottom, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(runCmvsPmvsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jCheckBox1)
-                                        .addComponent(jCheckBox2))
+                                .addComponent(runCmvsPmvsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
                 );
         }// </editor-fold>//GEN-END:initComponents
+
+    private void bundlerOutputChangeButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_bundlerOutputChangeButtonMouseClicked
+    {//GEN-HEADEREND:event_bundlerOutputChangeButtonMouseClicked
+	    // TODO add your handling code here:
+    }//GEN-LAST:event_bundlerOutputChangeButtonMouseClicked
+
+    private void runCmvsPmvsButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_runCmvsPmvsButtonMouseClicked
+    {//GEN-HEADEREND:event_runCmvsPmvsButtonMouseClicked
+	    // TODO add your handling code here:
+    }//GEN-LAST:event_runCmvsPmvsButtonMouseClicked
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -326,8 +329,6 @@ public class MvsSetup extends BaseUi {
         private javax.swing.JSpinner cpuSpinner;
         private javax.swing.JLabel csizeLabel;
         private javax.swing.JSpinner csizeSpinner;
-        private javax.swing.JCheckBox jCheckBox1;
-        private javax.swing.JCheckBox jCheckBox2;
         private javax.swing.JLabel levelLabel;
         private javax.swing.JSpinner levelSpinner;
         private javax.swing.JLabel maximumImagesLabel;

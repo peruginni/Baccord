@@ -1,8 +1,8 @@
 package baccord.business.images;
 
 import baccord.exceptions.SiftAppMissingException;
+import baccord.tools.Observer;
 import java.awt.Dimension;
-import java.util.Observer;
 import java.util.Queue;
 
 /**
