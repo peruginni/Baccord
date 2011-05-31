@@ -6,7 +6,6 @@ import baccord.business.images.Editor;
 import baccord.exceptions.CannotCreateDirectoryException;
 import baccord.exceptions.PathMustBeDirectoryException;
 import baccord.tools.FileHelper;
-import baccord.tools.Observer;
 import com.google.inject.Inject;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -16,10 +15,8 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -172,6 +169,16 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 	public void downloadSingle(DownloadItem item)
 	{
 		try {
+			if(item == null) {
+				logger.log(Level.SEVERE, "Item is null");
+				return;
+			}
+			
+			if(item.getSource() == null) {
+				logger.log(Level.SEVERE, "Item source is null");
+				return;
+			}
+			
 			if(item.getTargetDirectory() == null) {
 				item.setTargetDirectory(downloadDirectory);
 			}
@@ -210,7 +217,7 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			}
 
 			// generate unique filename
-			String filename = FileHelper.getFilenameFromUrl(url.getFile());
+			String filename = FileHelper.getFilenameFromUrl(url.getFile()).toLowerCase();
 			//filename = FileHelper.generateUniqueFilename(item.getTargetDirectory(), filename);
 			String absoluteTargetFilename = FileHelper.mergePath(item.getTargetDirectory(), filename);
 			
@@ -241,6 +248,12 @@ public class BasicDownloadManager extends BaseBusiness implements DownloadManage
 			logger.log(Level.SEVERE, null, ex);
 		}
 	}
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Implementation of runnable
+	 * --------------------------------------------------------------------
+	 */
 
 	public void run()
 	{

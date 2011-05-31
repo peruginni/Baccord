@@ -12,7 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Utility for routine processes with files
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class FileHelper
@@ -130,6 +131,15 @@ public class FileHelper
 		return "";
 	}
 	
+	public static String extensionToLowerCase(String path)
+	{
+		String dir = FileHelper.getDirectory(path);
+		String basename = FileHelper.getBasename(path);
+		String ext = FileHelper.getExtension(path).toLowerCase();
+		return FileHelper.mergePath(dir, basename + "." + ext);
+	}
+	
+	
 	/**
 	 * Inspired by http://stackoverflow.com/questions/106770/standard-concise-way-to-copy-a-file-in-java/115086#115086
 	 * 
@@ -228,5 +238,27 @@ public class FileHelper
 		return result;
 	}
 
+	/**
+	 * Source: http://stackoverflow.com/questions/453018/number-of-lines-in-a-file-in-java
+	 * Licensed under http://creativecommons.org/licenses/by-sa/3.0/
+	 */
+	public static int countLines(String filename) throws IOException 
+	{
+		InputStream is = new BufferedInputStream(new FileInputStream(filename));
+		try {
+			byte[] c = new byte[1024];
+			int count = 0;
+			int readChars = 0;
+			while ((readChars = is.read(c)) != -1) {
+				for (int i = 0; i < readChars; ++i) {
+					if (c[i] == '\n')
+					++count;
+				}
+			}
+			return count;
+		} finally {
+			is.close();
+		}
+	}
 	
 }

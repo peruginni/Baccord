@@ -28,7 +28,7 @@ public class BasicDownloadManagerTest
 	@BeforeClass
 	public static void setUpClass() throws Exception
 	{
-		defaultDownloadDirectory = FileHelper.getSystemIndependentPath("tmp");
+		defaultDownloadDirectory = new File(FileHelper.getSystemIndependentPath("tmp")).getCanonicalPath();
 	}
 
 	@Before
@@ -74,6 +74,7 @@ public class BasicDownloadManagerTest
 
 		DownloadManager instance = DI.get(DownloadManager.class);
 
+		
 		instance.setDownloadDirectory(defaultDownloadDirectory);
 		
 		assertEquals(defaultDownloadDirectory, instance.getDownloadDirectory());

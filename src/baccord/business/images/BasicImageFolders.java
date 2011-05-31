@@ -11,7 +11,7 @@ import java.util.Queue;
 import java.util.logging.Logger;
 
 /**
- *
+ * Basic implementation of ImageFolders
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class BasicImageFolders extends BaseBusiness implements ImageFolders
@@ -22,6 +22,12 @@ public class BasicImageFolders extends BaseBusiness implements ImageFolders
 
 	private static final Logger logger = Logger.getLogger(BasicImageFolders.class.getName());
 
+	/**
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
+	
 	public String getStoragePath()
 	{
 		return storagePath;
@@ -31,6 +37,13 @@ public class BasicImageFolders extends BaseBusiness implements ImageFolders
 	{
 		storagePath = path;
 	}
+	
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Core logic
+	 * --------------------------------------------------------------------
+	 */
 
 	public void saveRecentlyUsed(String folder)
 	{

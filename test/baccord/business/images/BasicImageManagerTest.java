@@ -52,7 +52,7 @@ public class BasicImageManagerTest
 		File file = new File(instance.getCcdWidthsStoragePath());
 		file.delete();
 		
-		HashMap<String, Float> map = new HashMap<String, Float>();
+		HashMap<String, Double> map = new HashMap<String, Double>();
 		BasicImageManager.fillDefaultCameraCcdWidths(map);
 		
 		instance.setCcdWidths(map);
@@ -68,7 +68,7 @@ public class BasicImageManagerTest
 	{
 		System.out.println("setCcdWidthForCamera");
 		String camera = "Baccord Test Camera";
-		float width = 5.4f;
+		double width = 5.4;
 		
 		ImageManager instance = DI.get(ImageManager.class);
 		File file = new File(instance.getCcdWidthsStoragePath());
@@ -121,13 +121,27 @@ public class BasicImageManagerTest
 		System.out.println("hasSift");
 		ImageManager instance = DI.get(ImageManager.class);
 		
-		if(instance.getSiftPath() == null) {
-			fail("Sift app missing");
-		}
+		String sift = instance.getSiftPath();
+		File siftF = new File(sift);
+		assertNotNull(sift);
+		assertTrue(siftF.exists());
+		assertTrue(siftF.canExecute());
+		
+		
+		String imageJpgPath = image.getPath();
+		String imageDirectory = FileHelper.getDirectory(imageJpgPath);
+		String imageBasename = FileHelper.getBasename(imageJpgPath);
+		File imagePgmFile = new File(FileHelper.mergePath(imageDirectory, imageBasename + instance.getPgmExtension()));
+		File imageKeyFile = new File(FileHelper.mergePath(imageDirectory, imageBasename + instance.getSiftExtension() + ".gz"));
+		imagePgmFile.delete();
+		imageKeyFile.delete();
 		
 		assertFalse(instance.hasSift(image));
 		instance.performSift(image);
 		assertTrue(instance.hasSift(image));
+		
+		imagePgmFile.delete();
+		imageKeyFile.delete();
 	}
 	
 	@Test
@@ -147,7 +161,7 @@ public class BasicImageManagerTest
 	public void testFillDefaultCameraCcdWidths()
 	{
 		System.out.println("fillDefaultCameraCcdWidths");
-		HashMap<String, Float> map = new HashMap<String, Float>();
+		HashMap<String, Double> map = new HashMap<String, Double>();
 		BasicImageManager.fillDefaultCameraCcdWidths(map);
 		assertFalse(map.isEmpty());
 	}

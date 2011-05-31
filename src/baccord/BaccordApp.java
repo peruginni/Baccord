@@ -19,11 +19,26 @@ public class BaccordApp extends SingleFrameApplication
 	private MainWindow mainWindow;
 	private BaseUi currentScreen;
 	
+	/**
+	 * Ensure change of screen in applications user interface epicenter
+	 * to given screen. Will automatically load class instance with DI.
+	 * 
+	 * @param type class name of screen to show
+	 * @return 
+	 */
 	public BaseUi changeScreen(Class type)
 	{
 		return changeScreen((BaseUi) DI.get(type));
 	}
 	
+	/**
+	 * Change of current screen in epicenter to given BaseUi ancestor.
+	 * Will ensure calling methods init, start, close in proper time.
+	 * (close before assiging new screen, init to initialize new screen
+	 * and start after assigning screen to epicenter.)
+	 * @param component
+	 * @return 
+	 */
 	public BaseUi changeScreen(BaseUi component)
 	{
 		if(currentScreen != null) {
@@ -36,6 +51,10 @@ public class BaccordApp extends SingleFrameApplication
 		return component;
 	}
 	
+	/**
+	 * Will return current screen shown in epicenter
+	 * @return 
+	 */
 	public BaseUi getCurrentScreen()
 	{
 		return currentScreen;
@@ -65,7 +84,7 @@ public class BaccordApp extends SingleFrameApplication
 	 * Main method launching the application.
 	 */
 	public static void main(String[] args)
-	{
+	{	
 		launch(BaccordApp.class, args);
 	}
 }

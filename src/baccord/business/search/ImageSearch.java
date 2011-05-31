@@ -5,7 +5,8 @@ import java.util.List;
 
 
 /**
- *
+ * Manager for searching images. Search itself will be delegated to SearchEngine.
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public interface ImageSearch

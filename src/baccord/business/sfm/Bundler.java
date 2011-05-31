@@ -2,7 +2,6 @@
 package baccord.business.sfm;
 
 import baccord.business.BaseBusiness;
-import baccord.business.images.Editor;
 import baccord.business.images.Image;
 import baccord.business.images.ImageManager;
 import baccord.business.settings.Settings;
@@ -15,13 +14,17 @@ import java.io.Writer;
 import java.util.List;
 import baccord.tools.Observable;
 import baccord.tools.Observer;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
- *
+ * Implementation of StructureFromMotion for underlying Bundler
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class Bundler extends BaseBusiness implements StructureFromMotion, Runnable, Observer
@@ -29,7 +32,7 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	private static final Logger logger = Logger.getLogger(Bundler.class.getName());
 
 	private Settings settings;
-	private Editor editor;
+	private ImageManager imageManager;
 	
 	private String bundlerPath;
 	private String keypointMatcherPath;
@@ -38,6 +41,7 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	private String outputDirectory;
 	private String imageListFocalFilename = "imageListFocal.txt";
 	private String imageListExtraFilename = "imageListExtra.txt";
+	private String imageListKeysFilename = "imageListKeys.txt";
 	private String imageListBasicFilename = "imageListBasic.txt";
 	private String optionsFilename = "options.txt";
 	private String keypointMatchTableFilename = "matchTable.txt";
@@ -47,6 +51,7 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	private boolean isRunning;
 	private Thread thread;
 	private Process bundlerProcess;
+	private String imageDirectory;
 
 	public Bundler()
 	{
@@ -81,15 +86,15 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 		update(settings, null);
 	}
 	
-	public Editor getEditor()
+	public ImageManager getImageManager()
 	{
-		return editor;
+		return imageManager;
 	}
 
 	@Inject
-	public void setEditor(Editor editor)
+	public void setImageManager(ImageManager im)
 	{
-		this.editor = editor;
+		this.imageManager = im;
 	}
 	
 	public String getBundlerPath()
@@ -161,6 +166,17 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	{
 		this.imageListBasicFilename = path;
 	}
+	
+	
+	public String getImageListKeysFilename()
+	{
+		return imageListKeysFilename;
+	}
+
+	public void setImageListKeysFilename(String path)
+	{
+		this.imageListKeysFilename = path;
+	}
 
 	public String getKeypointMatchTableFilename()
 	{
@@ -170,6 +186,16 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	public void setKeypointMatchTableFilename(String path)
 	{
 		this.keypointMatchTableFilename = path;
+	}
+	
+	public String getImageDirectory()
+	{
+		return imageDirectory;
+	}
+	
+	public void setImageDirectory(String dir)
+	{
+		this.imageDirectory = dir;
 	}
 
 	public List<Image> getImages()
@@ -204,9 +230,37 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	
 	public void addReport(String line)
 	{
-		report.append(line);
-		report.append("\n");
-		notifyObservers();
+		line = line + "\n";
+//		report.append(line);
+//		report.append("\n");
+		notifyObservers(line);
+	}
+	
+	public void addReport(InputStream in, InputStream er) throws IOException
+	{
+		BufferedReader bin = new BufferedReader(new InputStreamReader(in));
+		BufferedReader ber = new BufferedReader(new InputStreamReader(er));
+		String lineIn = null;
+		String lineEr = null;
+		while( ((lineIn = bin.readLine()) != null)
+			|| ((lineEr = bin.readLine()) != null)
+		) {
+			if(lineIn != null) addReport(lineIn);
+			if(lineEr != null) addReport(lineEr);
+		}
+		bin.close();
+		ber.close();
+	}
+	
+	public void addReport(InputStream in) throws IOException
+	{
+		BufferedReader bin = new BufferedReader(new InputStreamReader(in));
+		String lineIn = null;
+		while( ((lineIn = bin.readLine()) != null)
+		) {
+			if(lineIn != null) addReport(lineIn);
+		}
+		bin.close();
 	}
 	
 	/**
@@ -215,19 +269,34 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	 * --------------------------------------------------------------------
 	 */
 
-	public void addImagesFromDirectory(String directory)
+	public void loadImagesFromDirectory(String directory)
 	{
+		images = new LinkedList<Image>();
+		
 		images.addAll(
-			editor.getImageManager().loadImagesFromDirectory(directory, false)
+			imageManager.loadImagesFromDirectory(directory, false)
 		);
 		
+		imageDirectory = directory;
 		outputDirectory = new File(directory, "bundler").getPath();
+	}
+	
+	public void assureLowerCaseAndSift()
+	{	
+		addReport("Renaming image filename extensions to lowercase");
+		imageManager.batchRenameImagesToLowerCase(images);
+		
+		addReport("Computing SIFT if not computed before");
+		for (Image image : images) {
+			if(!imageManager.hasSift(image)) {
+				imageManager.performSift(image);
+			}
+		}
 	}
 	
 	public void loadExifInformation()
 	{
 		addReport("Loading focal information");
-		ImageManager imageManager = editor.getImageManager();
 		
 		for (Image image : images) {
 			imageManager.loadExifInformation(image);
@@ -238,27 +307,41 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	{
 		addReport("Writting down focal information");
 		
-		File fileFocal = new File(FileHelper.mergePath(outputDirectory, imageListFocalFilename));
+		Collections.sort((List)images);
+		
+		File fileFocal = new File(FileHelper.mergePath(imageDirectory, imageListFocalFilename));
 		fileFocal.delete();
 		if(!fileFocal.exists()) {
 			fileFocal.createNewFile();
 		}
-		File fileBasic = new File(FileHelper.mergePath(outputDirectory, imageListBasicFilename));
+		File fileBasic = new File(FileHelper.mergePath(imageDirectory, imageListBasicFilename));
 		fileBasic.delete();
 		if(!fileBasic.exists()) {
 			fileBasic.createNewFile();
 		}
+		File fileKeys = new File(FileHelper.mergePath(imageDirectory, imageListKeysFilename));
+		fileKeys.delete();
+		if(!fileKeys.exists()) {
+			fileKeys.createNewFile();
+		}
+		
 		
 		Writer writerFocal = new FileWriter(fileFocal, true);
 		Writer writerBasic = new FileWriter(fileBasic, true);
+		Writer writerKeys = new FileWriter(fileKeys, true);
 		for (Image image : images) {
+			if(image.getFocalLength() == 0) continue;
+			
 			String focal = (image.getFocalLength() == 0) 
 				? "" 
-				: " 0 "+image.getFocalLength();
+				: " 0 " + image.getFocalLength(); // + String.format("%.5g%n", image.getFocalLength());
 			writerFocal.write(image.getPath()+focal+"\n");
 			writerBasic.write(image.getPath()+"\n");
+			writerKeys.write(image.getPath().replace(".jpg", ".key") +"\n");
 		}
 		
+		writerKeys.flush();
+		writerKeys.close();
 		writerFocal.flush();
 		writerFocal.close();
 		writerBasic.flush();
@@ -266,7 +349,7 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 		
 		if(existingBundlePath != null) {
 
-			File fileExtra = new File(FileHelper.mergePath(outputDirectory, imageListExtraFilename));
+			File fileExtra = new File(FileHelper.mergePath(imageDirectory, imageListExtraFilename));
 			fileExtra.delete();
 			if(!fileExtra.exists()) {
 				fileExtra.createNewFile();
@@ -282,25 +365,38 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 	public void createMatchTable() throws IOException, InterruptedException
 	{	
 		addReport("Matching keypoints started");
-		Process p = new ProcessBuilder(
+		
+//		File matchTable = new File(FileHelper.mergePath(imageDirectory, keypointMatchTableFilename));
+//		
+//		if(matchTable.exists()) {
+//			addReport("Match table \""+keypointMatchTableFilename+"\" exists, therefore skip matching");
+//			return;
+//		}
+		
+		ProcessBuilder pb = new ProcessBuilder(
 			keypointMatcherPath,
-			FileHelper.mergePath(outputDirectory, imageListBasicFilename),
-			FileHelper.mergePath(outputDirectory, keypointMatchTableFilename)
-		).start();
+			FileHelper.mergePath(imageDirectory, imageListKeysFilename),
+			FileHelper.mergePath(imageDirectory, keypointMatchTableFilename)
+		);
+		pb.directory(new File(imageDirectory));
+		Process p = pb.start();
+		
+		addReport(p.getInputStream(), p.getErrorStream());
 		
 		if(p.waitFor() != 0) {
 			addReport("Matching keypoints error");
+			stop();
 		}
 	}
 	
 	public void performSfm() throws IOException, InterruptedException
 	{	
-		File keypointMatchTableFile = new File(outputDirectory, keypointMatchTableFilename);
-		File imageListFocalFile = new File(outputDirectory, imageListFocalFilename);
+		File keypointMatchTableFile = new File(imageDirectory, keypointMatchTableFilename);
+		File imageListFocalFile = new File(imageDirectory, imageListFocalFilename);
 			
 		// create options file
 		addReport("Creating option file for Bundler");
-		File optionsFile = new File(outputDirectory, optionsFilename);
+		File optionsFile = new File(imageDirectory, optionsFilename);
 		optionsFile.delete();
 		optionsFile.createNewFile();
 		
@@ -324,15 +420,28 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 		writer.close();
 		
 		addReport("Bundler running");
-		bundlerProcess = new ProcessBuilder(
-			bundlerPath,
-			imageListFocalFile.getCanonicalPath(),
-			"--options_file " + optionsFile.getCanonicalPath()
-		).start();
+		String command = 
+			bundlerPath 
+			+ " " + imageListFocalFile.getCanonicalPath() 
+			+ " --options_file " + optionsFile.getCanonicalPath()
+			+ " > " + outputDirectory + File.separator +"out";
+		ProcessBuilder pb = new ProcessBuilder(
+			"/bin/sh", "-c",
+			command
+		);
+		pb.directory(new File(imageDirectory));
+		bundlerProcess = pb.start();
+		
+		//StreamHelper.print(bundlerProcess.getInputStream());
+		//StreamHelper.print(bundlerProcess.getErrorStream());
+		addReport(bundlerProcess.getErrorStream());
 		
 		if(bundlerProcess.waitFor() != 0) {
 			addReport("Bundler error");
+			stop();
 		}
+		
+		addReport("Bundler successfully finished");
 	}
 
 	public boolean isRunning()
@@ -359,17 +468,36 @@ public class Bundler extends BaseBusiness implements StructureFromMotion, Runnab
 			if(bundlerProcess != null) {
 				bundlerProcess.destroy();
 			}
+			for (Process process : imageManager.getActiveProcesses()) {
+				process.destroy();
+			}
 		}
 	}
-
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Implementation of Runnable
+	 * --------------------------------------------------------------------
+	 */
+	
 	public void run()
 	{
 		if(isRunning) {
 			try {
+				File outputDirFile = new File(outputDirectory);
+				if(!outputDirFile.exists()) {
+					outputDirFile.mkdirs();
+				}
+				
+				addReport("Image directory: "+imageDirectory);
+				addReport("Output directory: "+outputDirectory);
+				
+				assureLowerCaseAndSift();
 				loadExifInformation();
 				createImageList();
 				createMatchTable();
 				performSfm();
+				stop();
 				
 			} catch (InterruptedException ex) {
 				Logger.getLogger(Bundler.class.getName()).log(Level.SEVERE, null, ex);

@@ -2,16 +2,19 @@
 package baccord.business.images;
 
 import baccord.business.settings.Settings;
+import baccord.tools.Observable;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
- *
+ * Ensure essential manipulation with images, such as resizing, detecting 
+ * focal length, performing sift, testing if image has sift already computed.
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public interface ImageManager
+public interface ImageManager extends Observable
 {
-	
 	/**
 	 * --------------------------------------------------------------------
 	 *  Properties
@@ -30,13 +33,23 @@ public interface ImageManager
 	public String getMogrifyPath();
 	public void setMogrifyPath(String mogrifyPath);
 	
-	public Map<String, Float> getCcdWidths();
-	public void setCcdWidths(Map<String, Float> map);
-	public void addCcdWidth(String camera, float width);
-	public float getCcdWidth(String camera);
+	public String getJheadPath();
+	public void setJheadPath(String jheadPath);
+	
+	public Map<String, Double> getCcdWidths();
+	public void setCcdWidths(Map<String, Double> map);
+	public void addCcdWidth(String camera, double width);
+	public double getCcdWidth(String camera);
 	
 	public String getCcdWidthsStoragePath();
 	public void setCcdWidthsStoragePath(String cameraCcdWidthsStoragePath);
+	
+	public String getSiftExtension();
+	public void setSiftExtension(String e);
+	public String getPgmExtension();
+	public void setPgmExtension(String e);
+	
+	public Set<Process> getActiveProcesses();
 	
 	/**
 	 * --------------------------------------------------------------------
@@ -84,5 +97,11 @@ public interface ImageManager
 	 * @return list of found images
 	 */
 	public List<Image> loadImagesFromDirectory(String directory, boolean loadExif);
+	
+	/**
+	 * Rename multiple given images to lowercase
+	 * @param images 
+	 */
+	public void batchRenameImagesToLowerCase(List<Image> images);
 	
 }	

@@ -7,12 +7,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- *
+ * Common features of all manager objects in business layer.
+ * 
+ * Implements Observable, and thus is ready for work with Observers.
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class BaseBusiness implements Observable
 {
 	private Set<Observer> observers = new HashSet<Observer>();
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Implementation of Observable
+	 * --------------------------------------------------------------------
+	 */
 	
 	public void removeObserver(Observer observer)
 	{

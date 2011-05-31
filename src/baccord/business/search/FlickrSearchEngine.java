@@ -22,7 +22,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- *
+ * Implementation of search engine for Flicker API
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class FlickrSearchEngine implements SearchEngine
@@ -36,6 +36,15 @@ public class FlickrSearchEngine implements SearchEngine
 		loadApiDetails();
 	}
 	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Core logic
+	 * --------------------------------------------------------------------
+	 */
+	
+	/**
+	 * Will load api details from file
+	 */
 	private void loadApiDetails()
 	{
 		FileInputStream fin = null;
@@ -212,8 +221,88 @@ public class FlickrSearchEngine implements SearchEngine
 		
 		return result;
 	}
-
+	
 	public String getImageOriginalPath(ResultItem item)
+	{
+		// http://www.flickr.com/services/api/misc.urls.html
+		
+		boolean found = false;
+		
+		BufferedReader in = null;
+		JSONObject json = null;
+		
+		try {	
+			StringBuilder query = new StringBuilder();
+			query.append("http://api.flickr.com/services/rest/");
+			query.append("?method=flickr.photos.getInfo");
+			query.append("&api_key=");
+			query.append(key);
+			query.append("&photo_id=");
+			query.append(item.getId());
+			query.append("&format=json&nojsoncallback=1");
+			
+			System.out.println("Getting original path "+query.toString());
+			
+			URL url = new URL(query.toString());
+			URLConnection connection = url.openConnection();
+			in = new BufferedReader(
+				new InputStreamReader(
+					connection.getInputStream()
+				)
+			);
+			
+			json = (JSONObject) new JSONParser().parse(in);
+			
+		} catch (ParseException ex) {
+			Logger.getLogger(FlickrSearchEngine.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (UnsupportedEncodingException ex) {
+			Logger.getLogger(FlickrSearchEngine.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (MalformedURLException ex) {
+			Logger.getLogger(FlickrSearchEngine.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (IOException ex) {
+			Logger.getLogger(FlickrSearchEngine.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				if(in != null) {
+					in.close();
+				}
+			} catch (IOException ex) {
+				Logger.getLogger(FlickrSearchEngine.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		
+		if(json != null && ((String)json.get("stat")).equals("ok")) {
+			
+			JSONObject photo = (JSONObject) json.get("photo");
+			String originalFormat = (String)photo.get("originalformat");
+			if(originalFormat != null && originalFormat.equals("jpg")) {
+				item.setSecretOriginal((String)photo.get("originalsecret"));
+				found = true;
+			}
+			
+		} else if (json != null) {
+			Logger.getLogger(FlickrSearchEngine.class.getName()).log(Level.SEVERE, (String)json.get("message"));
+		}
+		
+		if(!found) {
+			return null;
+		}
+
+		StringBuilder result = new StringBuilder();
+		result.append("http://farm");
+		result.append(item.getFarm());
+		result.append(".static.flickr.com/");
+		result.append(item.getServer());
+		result.append("/");
+		result.append(item.getId());
+		result.append("_");
+		result.append(item.getSecret());
+		result.append("_o.jpg");
+		
+		return result.toString();
+	}
+	
+	public String getImageBigPath(ResultItem item)
 	{
 		// http://www.flickr.com/services/api/misc.urls.html
 		

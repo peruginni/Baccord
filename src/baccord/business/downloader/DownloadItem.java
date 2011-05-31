@@ -2,7 +2,10 @@
 package baccord.business.downloader;
 
 /**
- *
+ * Represent single downloaded item. Holds URL of source and information about 
+ * where to store image locally. Also is able to track its status within downloading 
+ * (ie. whether is waiting in queue, is downloading, is finished, or was skipped)
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class DownloadItem
@@ -33,6 +36,12 @@ public class DownloadItem
 		this.targetDirectory = targetDirectory;
 		this.status = status;
 	}
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
 
 	public String getSource()
 	{
@@ -90,6 +99,11 @@ public class DownloadItem
 	}
 	
 	public boolean isSkipped()
+	{
+		return status == SKIPPED;
+	}
+	
+	public boolean isEditing()
 	{
 		return status == SKIPPED;
 	}

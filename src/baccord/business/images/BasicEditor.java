@@ -1,5 +1,6 @@
 package baccord.business.images;
 
+import baccord.business.BaseBusiness;
 import baccord.business.downloader.DownloadItem;
 import baccord.tools.Observable;
 import com.google.inject.Inject;
@@ -12,7 +13,7 @@ import java.util.Queue;
  * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class BasicEditor implements Editor, Runnable
+public class BasicEditor extends BaseBusiness implements Editor, Runnable
 {
 	private boolean autoStart = false;
 	private boolean autoSift = false;
@@ -120,6 +121,9 @@ public class BasicEditor implements Editor, Runnable
 		if(isEditing) {
 			isEditing = false;
 			editingThread.interrupt();
+			for (Process process : imageManager.getActiveProcesses()) {
+				process.destroy();
+			}
 		}
 	}
 	
@@ -137,7 +141,13 @@ public class BasicEditor implements Editor, Runnable
 		}
 		
 	}
-
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Implementation of Runnable
+	 * --------------------------------------------------------------------
+	 */
+	
 	public void run() 
 	{
 		while(isEditing && !queue.isEmpty()) {
@@ -146,6 +156,7 @@ public class BasicEditor implements Editor, Runnable
 			editSingle(task);
 			
 			queue.poll();
+			notifyObservers(task);
 		}
 		
 		isEditing = false;

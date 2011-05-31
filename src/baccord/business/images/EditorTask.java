@@ -20,6 +20,12 @@ public class EditorTask
 		this.resizeDimension = dimension;
 	}
 	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
+	
 	public Image getImage()
 	{
 		return this.image;

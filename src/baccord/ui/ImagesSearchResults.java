@@ -265,10 +265,14 @@ public class ImagesSearchResults extends BaseUi
 		    SingleResult resultView = (SingleResult) component;
 		    if(!resultView.isSelected()) continue;
 		    
-		    DownloadItem item = new DownloadItem(
-			    searchEngine.getImageOriginalPath(resultView.getResult())
-		    );
-		    downloadManager.add(item);
+		    String url = searchEngine.getImageOriginalPath(resultView.getResult());
+		    
+		    if(url != null) {
+			    DownloadItem item = new DownloadItem(
+				    url
+			    );
+			    downloadManager.add(item);
+		    }
 	    }
 	    downloadManager.start();
 	    

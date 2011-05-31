@@ -25,17 +25,20 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="title" alignment="0" pref="770" max="32767" attributes="1"/>
+                  <Component id="title" alignment="0" pref="778" max="32767" attributes="1"/>
                   <Group type="102" alignment="0" attributes="1">
                       <Component id="browseDownloadsButton" min="-2" pref="194" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="searchResultsButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" pref="35" max="32767" attributes="0"/>
-                      <Component id="remainingDownloadsLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" pref="35" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="remainingEditingsLabel" pref="259" max="32767" attributes="0"/>
+                          <Component id="remainingDownloadsLabel" pref="259" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="continueSfmButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="progressScrollPane" alignment="0" pref="770" max="32767" attributes="1"/>
+                  <Component id="progressScrollPane" alignment="0" pref="778" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -47,13 +50,19 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="title" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Component id="progressScrollPane" pref="295" max="32767" attributes="0"/>
+              <Component id="progressScrollPane" pref="309" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="searchResultsButton" linkSize="1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="browseDownloadsButton" linkSize="1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="continueSfmButton" linkSize="1" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="remainingDownloadsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="searchResultsButton" linkSize="1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="browseDownloadsButton" linkSize="1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="continueSfmButton" linkSize="1" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="remainingDownloadsLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="remainingEditingsLabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -104,11 +113,11 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="continueSfmButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="remainingDownloadsLabel">
+    <Component class="javax.swing.JLabel" name="remainingEditingsLabel">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" resourceKey="remainingDownloadsLabel.text"/>
-        <Property name="name" type="java.lang.String" value="remainingDownloadsLabel" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="remainingEditingsLabel.text"/>
+        <Property name="name" type="java.lang.String" value="remainingEditingsLabel" noResource="true"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="progressScrollPane">
@@ -151,5 +160,12 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="remainingDownloadsLabel">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" resourceKey="remainingDownloadsLabel.text"/>
+        <Property name="name" type="java.lang.String" value="remainingDownloadsLabel" noResource="true"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

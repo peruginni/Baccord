@@ -4,7 +4,8 @@ package baccord.business.search;
 import java.util.Date;
 
 /**
- *
+ * Holder of search query informations.
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class SearchQuery
@@ -52,6 +53,12 @@ public class SearchQuery
 			this.name = name;
 		}
 	}
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
 
 	public String getKeywords()
 	{

@@ -40,7 +40,18 @@ public interface DownloadManager extends Observable
 	 */
 	public String getDownloadDirectory();
 
+	/**
+	 * Return instance of Editor for effective (queued) image editing
+	 * 
+	 * @return 
+	 */
 	public Editor getEditor();
+	
+	/**
+	 * Set editor
+	 * 
+	 * @param editor 
+	 */
 	public void setEditor(Editor editor);
 	
 	
@@ -88,6 +99,10 @@ public interface DownloadManager extends Observable
 	 */
 	public List<DownloadItem> getAll();
 	
+	/**
+	 * Get only remaining download items
+	 * @return 
+	 */
 	public List<DownloadItem> getRemaining();
 
 	/**

@@ -10,6 +10,7 @@ package baccord.ui;
 import baccord.BaccordApp;
 import baccord.business.images.ImageFolders;
 import baccord.business.search.ImageSearch;
+import baccord.business.sfm.StructureFromMotion;
 import baccord.tools.DI;
 import com.google.inject.Inject;
 import java.io.File;
@@ -25,6 +26,7 @@ public class ImagesDashboard extends BaseUi
 {
 	@Inject private ImageFolders imageFolders;
 	@Inject private ImageSearch imageSearch;
+	@Inject private StructureFromMotion sfm;
 	
 	/** Creates new form ImagesDashboard */
 	public ImagesDashboard() 
@@ -66,7 +68,7 @@ public class ImagesDashboard extends BaseUi
 			return;
 		}
 
-		imageFolders.saveRecentlyUsed(folder);
+		sfm.setImageDirectory(folder);
 		BaccordApp.getApplication().changeScreen(SfmSetup.class);
 	}
 	

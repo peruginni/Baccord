@@ -4,7 +4,8 @@ package baccord.tools;
 import java.util.Random;
 
 /**
- *
+ * Utility for working with text
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class TextHelper

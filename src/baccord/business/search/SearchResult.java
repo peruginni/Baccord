@@ -4,7 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Holder of results from search.
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class SearchResult
@@ -24,6 +25,12 @@ public class SearchResult
 		
 		items = new LinkedList<ResultItem>();
 	}
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
 	
 	public int getPage()
 	{
@@ -82,7 +89,7 @@ public class SearchResult
 	
 	public void addItem(String id, String secret, String server, String farm, String title)
 	{
-		ResultItem item = new ResultItem(id, secret, server, farm, title);
+		ResultItem item = new ResultItem(id, secret, null, server, farm, title);
 		items.add(item);
 	}
 	

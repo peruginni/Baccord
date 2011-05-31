@@ -2,16 +2,16 @@
 package baccord.business.images;
 
 /**
- *
+ * Representing image information. Hold path to image and width,height,focal length of image.
  * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
-public class Image
+public class Image implements Comparable<Image>
 {
 	private String path;
 	private int width;
 	private int height;
-	private float focalLength;
+	private double focalLength;
 	
 	public Image() 
 	{
@@ -22,7 +22,13 @@ public class Image
 	{
 		this.path = path;
 	}
-
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
+	
 	public String getPath()
 	{
 		return this.path;
@@ -53,14 +59,25 @@ public class Image
 		this.height = height;
 	}
 	
-	public float getFocalLength()
+	public double getFocalLength()
 	{
 		return this.focalLength;
 	}
 	
-	public void setFocalLength(float focalLength)
+	public void setFocalLength(double focalLength)
 	{
 		this.focalLength = focalLength;
+	}
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Implementation of Comparable
+	 * --------------------------------------------------------------------
+	 */
+
+	public int compareTo(Image o)
+	{
+		return path.compareTo(o.getPath());
 	}
 	
 }

@@ -24,10 +24,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="downloadProgressButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="646" max="32767" attributes="0"/>
+                      <EmptySpace pref="690" max="32767" attributes="0"/>
                       <Component id="searchButton" min="-2" pref="116" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="horizontalSeparator" alignment="0" pref="963" max="32767" attributes="0"/>
+                  <Component id="horizontalSeparator" alignment="0" pref="976" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="gpsPanel" alignment="0" max="32767" attributes="1"/>
@@ -42,9 +42,9 @@
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="downloadOptionsTitle" max="32767" attributes="1"/>
-                          <Component id="dimensionsPanel" alignment="0" pref="280" max="32767" attributes="1"/>
+                          <Component id="dimensionsPanel" alignment="0" pref="286" max="32767" attributes="1"/>
                           <Component id="siftPanel" alignment="0" max="32767" attributes="1"/>
-                          <Component id="downloadFolderPanel" alignment="0" pref="280" max="32767" attributes="1"/>
+                          <Component id="downloadFolderPanel" alignment="0" pref="286" max="32767" attributes="1"/>
                       </Group>
                   </Group>
               </Group>
@@ -68,7 +68,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="keywordsPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="gpsPanel" min="-2" pref="109" max="-2" attributes="0"/>
+                      <Component id="gpsPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="datePanel" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -124,7 +124,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="siftCheckbox" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="116" max="32767" attributes="0"/>
+                  <EmptySpace pref="129" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -365,8 +365,8 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="takenDateCheckbox" pref="286" max="32767" attributes="1"/>
-                      <Component id="uploadedDateCheckbox" alignment="0" pref="286" max="32767" attributes="1"/>
+                      <Component id="takenDateCheckbox" pref="301" max="32767" attributes="1"/>
+                      <Component id="uploadedDateCheckbox" alignment="0" pref="301" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -528,7 +528,7 @@
                       </Group>
                       <Component id="gpsLabel" alignment="0" min="-2" pref="584" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -536,7 +536,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="gpsLabel" max="32767" attributes="0"/>
+                  <Component id="gpsLabel" pref="22" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="gpsLabel1" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
@@ -619,7 +619,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="keywordsLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="keywordsTextfield" pref="554" max="32767" attributes="0"/>
+                  <Component id="keywordsTextfield" pref="575" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>

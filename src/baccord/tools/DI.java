@@ -29,6 +29,9 @@ public class DI extends AbstractModule
 {
 	private static Injector injector;
 
+	/**
+	 * Configuration of bindings and scope of created instances
+	 */
 	@Override
 	protected void configure()
 	{
@@ -51,7 +54,10 @@ public class DI extends AbstractModule
 		bind(Settings.class).in(Singleton.class);
 	}
 	
-	
+	/**
+	 * Return injector
+	 * @return 
+	 */
 	public static Injector get()
 	{
 		if(injector == null) {
@@ -61,6 +67,12 @@ public class DI extends AbstractModule
 		return injector;
 	}
 	
+	/**
+	 * Return instance according to given class name
+	 * @param <T>
+	 * @param t
+	 * @return 
+	 */
 	public static <T> T get(Class<T> t) 
 	{
 		return get().getInstance(t);

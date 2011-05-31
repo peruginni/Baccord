@@ -12,13 +12,11 @@ import baccord.business.downloader.DownloadManager;
 import baccord.business.images.Editor;
 import baccord.business.search.ImageSearch;
 import baccord.business.search.SearchQuery;
-import baccord.business.search.SearchQuery.GeoContext;
 import baccord.exceptions.CannotCreateDirectoryException;
 import baccord.exceptions.PathMustBeDirectoryException;
 import com.google.inject.Inject;
 import java.awt.Dimension;
 import java.io.File;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -59,14 +57,6 @@ public class ImagesSearchQuery extends BaseUi
 	public void init()
 	{
 		super.init();
-		
-		try {
-			downloadManager.setDownloadDirectory("/Users/peruginni/Downloads/Bac");
-		} catch (CannotCreateDirectoryException ex) {
-			Logger.getLogger(ImagesSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
-		} catch (PathMustBeDirectoryException ex) {
-			Logger.getLogger(ImagesSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
-		}
 		
 		SearchQuery query = imageSearch.getCurrentQuery();
 		if(query != null) {
@@ -634,20 +624,27 @@ public class ImagesSearchQuery extends BaseUi
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_searchButtonActionPerformed
     {//GEN-HEADEREND:event_searchButtonActionPerformed
-	    try {
-		    saveCurrentQuery();
-		    
-		    if(!imageSearch.getCurrentQuery().getKeywords().isEmpty()) {
-			    BaccordApp.getApplication().changeScreen(ImagesSearchResults.class);
-		    } else {
-			    Dialog.error(this, "Please fill keyword to search");
-		    }
-		    
+	    try {   
+		     saveCurrentQuery();
 	    } catch (CannotCreateDirectoryException ex) {
-		    Dialog.error(this, "Cannot create download directory");
 	    } catch (PathMustBeDirectoryException ex) {
 		    Dialog.error(this, "Download directory must be directory");
 	    }
+		   
+	    String downloadDirectory = downloadManager.getDownloadDirectory();
+	    if(downloadDirectory.isEmpty() || !(new File(downloadDirectory)).exists()) {
+		    Dialog.error(this, "Fill download directory");
+		    return;
+	    }
+
+	    String keywords = imageSearch.getCurrentQuery().getKeywords();
+	    if(keywords == null || keywords.isEmpty()) {
+		    Dialog.error(this, "Fill keyword to search");
+		    return;
+	    }
+
+	    BaccordApp.getApplication().changeScreen(ImagesSearchResults.class);
+		    
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void downloadProgressButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_downloadProgressButtonActionPerformed

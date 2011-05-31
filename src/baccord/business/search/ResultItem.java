@@ -1,13 +1,15 @@
 package baccord.business.search;
 
 /**
- *
+ * Represent one single result item. Holds id, secret, secret for original, server, farm and title
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class ResultItem
 {
 	private String id;
 	private String secret;
+	private String secretOriginal;
 	private String server;
 	private String farm;
 	private String title;
@@ -17,14 +19,21 @@ public class ResultItem
 		
 	}
 	
-	public ResultItem(String id, String secret, String server, String farm, String title)
+	public ResultItem(String id, String secret, String secretOriginal, String server, String farm, String title)
 	{
 		this.id = id;
 		this.secret = secret;
+		this.secretOriginal = secretOriginal;
 		this.server = server;
 		this.farm = farm;
 		this.title = title;
 	}
+	
+	/**
+	 * --------------------------------------------------------------------
+	 *  Properties
+	 * --------------------------------------------------------------------
+	 */
 	
 	public String getId()
 	{
@@ -44,6 +53,16 @@ public class ResultItem
 	public void setSecret(String secret)
 	{
 		this.secret = secret;
+	}
+	
+	public String getSecretOriginal()
+	{
+		return this.secretOriginal;
+	}
+	
+	public void setSecretOriginal(String secretOriginal)
+	{
+		this.secretOriginal = secretOriginal;
 	}
 	
 	public String getServer()

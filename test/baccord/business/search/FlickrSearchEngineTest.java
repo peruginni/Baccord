@@ -73,7 +73,7 @@ public class FlickrSearchEngineTest
 		
 		String originalUrl = instance.getImageOriginalPath(item);
 		String originalUrlExpected = "http://farm"+item.getFarm()+".static.flickr.com/"
-			+item.getServer()+"/"+item.getId()+"_"+item.getSecret()+"_b.jpg";
+			+item.getServer()+"/"+item.getId()+"_"+item.getSecret()+"_o.jpg";
 		assertEquals(originalUrl, originalUrlExpected);
 		
 		String thumbnailUrl = instance.getImageThumbnailPath(item);

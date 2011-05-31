@@ -9,7 +9,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Basic implementation of ImageSearch
+ * 
  * @author Ondřej Macoszek <ondra@macoszek.cz>
  */
 public class BasicImageSearch implements ImageSearch
