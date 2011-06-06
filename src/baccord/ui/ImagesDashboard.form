@@ -1,0 +1,150 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" max="-2" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="keywordsList" linkSize="7" min="-2" pref="354" max="-2" attributes="0"/>
+                  <Component id="downloadButton" linkSize="7" alignment="0" max="32767" attributes="1"/>
+                  <Component id="keywordsLabel" linkSize="7" alignment="0" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="orLabel" min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="foldersList" linkSize="7" alignment="1" max="32767" attributes="1"/>
+                  <Component id="foldersLabel" linkSize="7" max="32767" attributes="1"/>
+                  <Component id="chooseFolderButton" linkSize="7" min="-2" max="-2" attributes="1"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" max="-2" attributes="0">
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="downloadButton" linkSize="2" alignment="3" min="-2" pref="73" max="-2" attributes="1"/>
+                  <Component id="orLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="chooseFolderButton" linkSize="2" alignment="3" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="keywordsLabel" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="foldersLabel" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" max="-2" attributes="0">
+                  <Component id="keywordsList" linkSize="6" alignment="3" min="-2" pref="267" max="-2" attributes="0"/>
+                  <Component id="foldersList" linkSize="6" alignment="3" min="-2" pref="267" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="downloadButton">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="chooseFolderButton.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="downloadButton.text"/>
+        <Property name="name" type="java.lang.String" value="downloadButton" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="downloadButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="keywordsLabel">
+      <Properties>
+        <Property name="background" type="java.awt.Color" resourceKey="sectionTitle.background"/>
+        <Property name="font" type="java.awt.Font" resourceKey="sectionTitle.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="keywordsLabel.text"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="5" left="5" right="5" top="5"/>
+          </Border>
+        </Property>
+        <Property name="name" type="java.lang.String" value="keywordsLabel" noResource="true"/>
+        <Property name="opaque" type="boolean" value="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="chooseFolderButton">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="chooseFolderButton.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="chooseFolderButton.text"/>
+        <Property name="name" type="java.lang.String" value="chooseFolderButton" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chooseFolderButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JList" name="keywordsList">
+      <Properties>
+        <Property name="selectionMode" type="int" value="0"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="keywordsList" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="keywordsListMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JList" name="foldersList">
+      <Properties>
+        <Property name="selectionMode" type="int" value="0"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="foldersList" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="foldersListMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="foldersLabel">
+      <Properties>
+        <Property name="background" type="java.awt.Color" resourceKey="sectionTitle.background"/>
+        <Property name="font" type="java.awt.Font" resourceKey="sectionTitle.font"/>
+        <Property name="horizontalAlignment" type="int" value="4"/>
+        <Property name="text" type="java.lang.String" resourceKey="foldersLabel.text"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="5" left="5" right="5" top="5"/>
+          </Border>
+        </Property>
+        <Property name="name" type="java.lang.String" value="foldersLabel" noResource="true"/>
+        <Property name="opaque" type="boolean" value="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="orLabel">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" resourceKey="orLabel.text"/>
+        <Property name="name" type="java.lang.String" value="orLabel" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[20, 16]"/>
+        </Property>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
